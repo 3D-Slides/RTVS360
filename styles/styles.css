@@ -1,0 +1,30 @@
+#chatBoxContainer {
+	width: 400px;
+	height: 600px;
+	outline: red solid 2px;
+	float: left;
+	text-align: center;
+
+
+}
+#chatBoxContainer h1 {
+	margin-top: 60%;
+}
+
+#videoContainer {
+	width: 700px;
+	height: 400px;
+	outline: red solid 2px;
+	float: right;
+	text-align: center;
+}
+
+#videoContainer h1 {
+	margin-top: 25%;
+}
+
+#appContainer {
+	width: 1150px;
+	height: 1000px;
+	margin: auto;
+}
