@@ -1,2 +1,2 @@
 # RTVS360
-A realtime 360 Video sharing application
+Real time 360 Video Sharing Application
