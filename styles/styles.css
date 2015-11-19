@@ -28,3 +28,12 @@
 	height: 1000px;
 	margin: auto;
 }
+
+#modalContainer {
+    position: relative;
+    top: 38px;
+    outline: red solid 2px;
+    width: 700px;
+    height: 160px;
+    float: right;
+}
