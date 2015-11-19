@@ -4,7 +4,7 @@
   "description": "",
   "main": "main.jsx",
   "scripts": {
-    "start": "gulp"
+    "start": "node server/server.js"
   },
   "author": "Joshua David, Leonard Kee, James Burnell, Will Gottschalk",
   "license": "ISC",
@@ -14,6 +14,7 @@
     "gulp": "*",
     "history": "^1.13.1",
     "jquery": "*",
+    "path": "^0.12.7",
     "react": "^0.14.2",
     "react-dom": "*",
     "react-router": "^1.0.0",
