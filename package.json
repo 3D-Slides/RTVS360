@@ -11,9 +11,11 @@
   "dependencies": {
     "browserify": "*",
     "gulp": "*",
+    "history": "^1.13.1",
     "jquery": "*",
     "react": "^0.14.2",
     "react-dom": "*",
+    "react-router": "^1.0.0",
     "reactify": "*",
     "vinyl-source-stream": "*",
     "watchify": "*"
