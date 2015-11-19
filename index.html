@@ -16,9 +16,8 @@
 
   <style media="screen">
     h1 {
-      /*font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;*/
       margin: 0 auto;
-      font-family: 'Roboto', sans-serif;
+      font-family: 'Roboto', Helvetica, Arial, sans-serif;
       font-weight: bold;
       font-size: 120px;
       text-align: center;
@@ -35,49 +34,30 @@
       <div id="wrap" style="margin: 0 auto; display: table; width: 1350px; margin-top: -100px; min-height: 0px;">
 
         <!-- This div contains the left-most video -->
-        <div style="float: left; margin: 15px;">
+        <!-- <div style="float: left; margin: 15px;">
           <iframe id="player1" frameborder="0" allowfullscreen="1" title="YouTube video player" width="640" height="390"
           src="https://www.youtube.com/embed/0RPurvYriHI?modestbranding=1&amp;theme=light&amp;showinfo=0&amp;rel=0&amp;fs=0&amp;enablejsapi=1"></iframe>
-        </div>
+        </div> -->
 
         <!-- This div contains the subsequent video -->
-        <div style="float: left; margin: 15px;">
+<!--         <div style="float: left; margin: 15px;">
           <iframe id="player2" frameborder="0" allowfullscreen="1" title="YouTube video player" width="640" height="390"
           src="https://www.youtube.com/embed/0RPurvYriHI?modestbranding=1&amp;theme=light&amp;showinfo=0&amp;rel=0&amp;fs=0&amp;enablejsapi=1"></iframe>
-        </div>
+        </div> -->
       </div>
+
+    <div id="appContainer"></div>
 
 
     <!-- PubNub Scripts -->
     <script src="./assets/pubnub.min.js"></script>
+    <script src="https://www.youtube.com/iframe_api"></script>
     <script src="./assets/main.js"></script>
     <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="./videosync.js"></script>
 
     <script>
-
-      // Callback to run when the script is completed
-      var consolePrint = function(msg) {
-        var divId = "channel1";
-        if (msg.sender === "Player2") {
-          divId = "channel2";
-        }
-        var time = msg.time;
-        if (time === null) {
-          $("#" + divId).prepend("{type: " + msg.type + "}<br>");
-        }
-        else {
-          $("#" + divId).prepend("{type: " + msg.type + ", time: " + time + "}<br>");
-        }
-      };
-
-      // Create tag for the video url
-      var tag = document.createElement('script');
-      tag.src = "https://www.youtube.com/iframe_api";
-
-      var firstScriptTag = document.getElementsByTagName('script')[0];
-      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
+      console.log('the index.html script ran');
       // Player variables
       var playerVars = {
         modestbranding: 1,
@@ -96,7 +76,9 @@
       var player2;
 
       // When the Youtube API is ready and listening, create a new video player and assign it the subsequent properties
+
       function onYouTubeIframeAPIReady() {
+        console.log('players are assigned');
         player1 = new YT.Player('player1', {
           height: '390',
           width: '640',
@@ -119,33 +101,7 @@
           }
         });
       }
-
-      // Initialize PubNub and add api keys
-      var pubnub = PUBNUB.init({
-        publish_key: 'pub-c-11f66ba4-ca64-40e7-ba72-52a3bc76e0df',
-        subscribe_key: 'sub-c-0d831d40-8e2e-11e5-b7bf-02ee2ddab7fe',
-        uuid: "the watcher"
-      });
-
-      // Main PubNub function
-      pubnub.subscribe({
-        channel: "0RPurvYriHI" + rand,
-        callback: consolePrint
-      });
     </script>
-
-    <!-- Creates the spinning buffer icon -->
-    <div id="loading">
-      <div class="mask"></div>
-      <div class="indication"></div>
-    </div>
-
-		<div id="appContainer">
-
-		</div>
-
-
-		<script type="text/javascript" src="./dest/bundle.js"></script>
-
+    <script type="text/javascript" src="./dest/bundle.js"></script>
 </body>
 </html>
