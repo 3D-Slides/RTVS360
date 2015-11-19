@@ -6,7 +6,7 @@
   "scripts": {
     "start": "gulp"
   },
-  "author": "Josh David, Leonard Kee, James Burnell, Will Gottschalk",
+  "author": "Joshua David, Leonard Kee, James Burnell, Will Gottschalk",
   "license": "ISC",
   "dependencies": {
     "browserify": "*",
