@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "browserify": "*",
+    "express": "^4.13.3",
     "gulp": "*",
     "history": "^1.13.1",
     "jquery": "*",
