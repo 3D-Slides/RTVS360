@@ -40,7 +40,6 @@ var App = React.createClass({
 	},
 
 	render: function() {
-		console.log(this.props.children);
 		return (
 			<div>
 				{/* renders a child depending on the path, then passes App's props to that child. */}
