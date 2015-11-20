@@ -21,7 +21,7 @@ var App = React.createClass({
 			*/
 			videoUrl: null,
 			// store unique room id for room url *****(do we need this here?)*****
-			uniqueRoomId: null
+			uniqueRoomId: 0
 
 		}
 	},
@@ -37,6 +37,10 @@ var App = React.createClass({
 
 		console.log('hey!');
 		// e.preventDefault();
+		this.setState({
+			uniqueRoomId: Math.round(Math.random()*100000)
+		})
+		console.log(this.state.uniqueRoomId);
 	},
 
 	render: function() {
