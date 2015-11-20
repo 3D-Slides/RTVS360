@@ -2,5 +2,29 @@ var React = require('react');
 var App = require('./components/app.js');
 var ReactDOM = require('react-dom');
 
-ReactDOM.render(<App />, document.getElementById('appContainer'));
+var Router = require('react-router').Router;
+var Route = require('react-router').Route;
+var IndexRoute = require('react-router').IndexRoute;
+var Link = require('react-router').Link;
+
+var Landing = require('./components/landingComponents/landing');
+var MainRoom = require('./components/mainRoomComponent');
+
+
+// react component routes!
+
+ReactDOM.render(
+			
+				<Router>
+					<Route path="/" component={App}>
+						// This route shows up first
+						<IndexRoute component={Landing} />
+						// on submit/button click, this route shows up
+						<Route path="main" component={MainRoom} />
+
+					</Route>
+				</Router>
+
+			, document.getElementById('appContainer')
+			);
 
