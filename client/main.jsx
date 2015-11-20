@@ -15,7 +15,7 @@ var routes = require('./routes');
 // history.go(0);
 
 // render to DOM with the imported routes (this is the react router v1.0 way, different from old react router)
-ReactDOM.render(<Router history={createHistory()}>{routes}</Router>, document.getElementById('appContainer'));
+ReactDOM.render(<Router >{routes}</Router>, document.getElementById('appContainer'));
 
 	
 

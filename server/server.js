@@ -21,13 +21,10 @@ app.use(express.static(path.join(__dirname + './../')))
 //   });
 // });
 
-// app.get('/', function(req, res) {
-// 	res.sendFile(path.join(__dirname + 'index.html'))
-// })
-
-app.get('/main', function(req, res) {
-	res.redirect('/main')
+app.use('/', function(req, res) {
+	res.sendFile(path.join(__dirname + './../index.html'))
 })
+
 
 app.listen(3100, function(){
 	console.log("server is up and runnin' ...");

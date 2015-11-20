@@ -9,16 +9,18 @@ var App = require('./components/app.js');
 var Landing = require('./components/landingComponents/landing');
 var MainRoom = require('./components/mainRoomComponent');
 
+var createHistory = require('history').createHistory
+
 
 
 module.exports = [
 	<Router>
 		<Route path="/" component={App}>
 			// This route shows up first
-			<IndexRoute component={Landing} />
+			<IndexRoute history={createHistory()} component={Landing} />
 			// on submit/button click, this route shows up
 			<Route path="/main" component={MainRoom} />
-			<Route path="/main" component={MainRoom} />
+			// <Route path="/main" component={MainRoom} />
 
 		</Route>
 	</Router>

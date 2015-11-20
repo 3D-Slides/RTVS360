@@ -21,7 +21,7 @@ var App = React.createClass({
 			*/
 			videoUrl: null,
 			// store unique room id for room url *****(do we need this here?)*****
-			uniqueRoomId: 0
+			uniqueRoomId: Math.round(Math.random()*100000)
 
 		}
 	},
@@ -44,7 +44,7 @@ var App = React.createClass({
 	},
 
 	render: function() {
-		console.log(this.props.children);
+		// console.log(this.props.children);
 		return (
 			<div>
 				{/* renders a child depending on the path, then passes App's props to that child. */}
