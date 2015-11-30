@@ -1,107 +1,18 @@
 <!DOCTYPE html>
-<html data-ember-extension="1">
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-
-    <title>VS 360</title>
-
-    <meta name="description" content="360 Video Sharing ">
-    <meta name="viewport" content="width=device-width, target-densityDpi=device-dpi, initial-scale=1.0, maximum-scale=1.5;">
-    <link href='http://fonts.googleapis.com/css?family=Indie+Flower' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Roboto:400,700,100,100italic,300,300italic,400italic,500,500italic,700italic' rel='stylesheet' type='text/css'>
-		<link rel="stylesheet" type="text/css" href="./styles/styles.css">
-  </head>
-
-  <style media="screen">
-    h1 {
-      margin: 0 auto;
-      font-family: 'Roboto', Helvetica, Arial, sans-serif;
-      font-weight: bold;
-      font-size: 120px;
-      text-align: center;
-      color: #b30000;
-      padding-bottom: 120px;
-    }
-  </style>
-
-    <body>
-    <!-- Title -->
-    <h1>VS 360</h1>
-
-    <!-- Video wraper -->
-      <div id="wrap" style="margin: 0 auto; display: table; width: 1350px; margin-top: -100px; min-height: 0px;">
-
-        <!-- This div contains the left-most video -->
-        <!-- <div style="float: left; margin: 15px;">
-          <iframe id="player1" frameborder="0" allowfullscreen="1" title="YouTube video player" width="640" height="390"
-          src="https://www.youtube.com/embed/0RPurvYriHI?modestbranding=1&amp;theme=light&amp;showinfo=0&amp;rel=0&amp;fs=0&amp;enablejsapi=1"></iframe>
-        </div> -->
-
-        <!-- This div contains the subsequent video -->
-<!--         <div style="float: left; margin: 15px;">
-          <iframe id="player2" frameborder="0" allowfullscreen="1" title="YouTube video player" width="640" height="390"
-          src="https://www.youtube.com/embed/0RPurvYriHI?modestbranding=1&amp;theme=light&amp;showinfo=0&amp;rel=0&amp;fs=0&amp;enablejsapi=1"></iframe>
-        </div> -->
-      </div>
-
-    <div id="appContainer"></div>
-
-
-    <!-- PubNub Scripts -->
-    <script src="./assets/pubnub.min.js"></script>
-    <script src="https://www.youtube.com/iframe_api"></script>
-    <script src="./assets/main.js"></script>
-    <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
-    <script src="./videosync.js"></script>
-
-    <script>
-      console.log('the index.html script ran');
-      // Player variables
-      var playerVars = {
-        modestbranding: 1,
-        theme: 'light',
-        showinfo: 0,
-        rel: 0,
-        fs: 0
-      };
-
-      var rand = Math.random().toString();
-
-      // Variables that sync the videos
-      var vidSync1 = new VideoSync("0RPurvYriHI" + rand, "Player1");
-      var vidSync2 = new VideoSync("0RPurvYriHI" + rand, "Player2");
-      var player1;
-      var player2;
-
-      // When the Youtube API is ready and listening, create a new video player and assign it the subsequent properties
-
-      function onYouTubeIframeAPIReady() {
-        console.log('players are assigned');
-        player1 = new YT.Player('player1', {
-          height: '390',
-          width: '640',
-          videoId: '0RPurvYriHI',
-          playerVars: playerVars,
-          events: {
-            'onReady': vidSync1.onPlayerReady,
-            'onStateChange': vidSync1.onPlayerStateChange
-          }
-        });
-
-        player2 = new YT.Player('player2', {
-          height: '390',
-          width: '640',
-          videoId: '0RPurvYriHI',
-          playerVars: playerVars,
-          events: {
-            'onReady': vidSync2.onPlayerReady,
-            'onStateChange': vidSync2.onPlayerStateChange
-          }
-        });
-      }
-    </script>
-    <script type="text/javascript" src="./dest/bundle.js"></script>
-</body>
+<html>
+	<head>
+		<meta charset=utf-8>
+		<title>My first Three.js app</title>
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<script src="three.min.js"></script>
+		<script src="CSS3DRenderer.js"></script>
+	</head>
+	<body>
+		<script src="https://code.createjs.com/tweenjs-0.6.1.min.js"></script>
+		<script src="Projector.js"></script>
+		<script src="OrbitControls.js"></script>
+		<script src="TrackballControls.js"></script>
+		<script src="dat.gui.min.js"></script>
+		<script src="3dDom.js"></script>
+	</body>
 </html>
