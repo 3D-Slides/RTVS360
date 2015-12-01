@@ -30,3 +30,8 @@ div {
 canvas {
 	z-index: 1;
 }
+
+.slide {
+	width: 400px !important;
+	height: auto !important;
+}
