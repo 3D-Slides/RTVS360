@@ -3,16 +3,45 @@
 	<head>
 		<meta charset=utf-8>
 		<title>My first Three.js app</title>
-		<link rel="stylesheet" type="text/css" href="style.css">
 		<script src="three.min.js"></script>
 		<script src="CSS3DRenderer.js"></script>
+		<link rel="stylesheet" type="text/css" href="./reveal.js-3.2.0/css/reveal.css">
+		<link rel="stylesheet" type="text/css" href="./reveal.js-3.2.0/css/theme/solarized.css">
+		<link rel="stylesheet" type="text/css" href="style.css">
 	</head>
 	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<h1>Presentation on browser</h1>
+					<h3>Presentation Example MrBool.com </h3>
+				</section> <section> <h1>About Author</h1>
+					<ul>
+						<li>1 year experience</li>
+						<li> MrBool Author</li>
+					</ul>
+				</section>
+				<section>
+					<h1>reveal.js</h1>
+					<ul>
+						<li>Developed by Hakim El Hattab</li>
+						<li>open source</li>
+					</ul>
+				</section>
+			</div>
+		</div>
+    	<script src="./reveal.js-3.2.0/lib/js/head.min.js"></script>
+		<script src="./reveal.js-3.2.0/js/reveal.js"></script>
+		<script>
+		 	Reveal.initialize({});
+		</script>
 		<script src="https://code.createjs.com/tweenjs-0.6.1.min.js"></script>
 		<script src="Projector.js"></script>
 		<script src="OrbitControls.js"></script>
 		<script src="TrackballControls.js"></script>
 		<script src="dat.gui.min.js"></script>
+		<script src="gui.js"></script>
 		<script src="index.js"></script>
+		<script src="space.js"></script>
 	</body>
 </html>

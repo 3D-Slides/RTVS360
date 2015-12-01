@@ -1,8 +1,8 @@
 body {
-	background-color: #465362;
 	margin: 0;
 	overflow: hidden;
 }
+
 .test {
 	text-align: center;
 	-webkit-transform: translate3d(-50%, -50%, 0px) rotateX(180deg);
@@ -18,17 +18,11 @@ body {
   	width: 560px;
   	height: 315px;
 }
-.css-renderer {
+
+#gui {
 	position: absolute;
 	top: 0;
-}
-div {
-	font-family: Helvetica;
-	font-weight: 100;
-	font-size: 20px;
-}
-canvas {
-	z-index: 1;
+	z-index: 5;
 }
 
 .slide {

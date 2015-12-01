@@ -1,11 +1,11 @@
 var glScene, glRenderer;
-var box, plane, olsenPlane, fantasyPlane, lionPlane, mainPlane;
+var box, plane, slidePlane, floor, olsenPlane, fantasyPlane, lionPlane, mainPlane;
 var pivot;
 
 var cssScene, cssRenderer;
-var threeDOM, threeDOM2, threeDOM3, threeDOM4;
+var threeDOM, threeDOM1, threeDOM2, threeDOM3, threeDOM4;
 
-var camera, controls;
+var camera, controls, item;
 
 var cameraPivot;
 
@@ -25,15 +25,15 @@ function init() {
 	cssScene = new THREE.Scene();
 	
 
-	camera = new THREE.PerspectiveCamera(75, ASPECT, 0.1, 10000);
-	camera.position.set (0, 0, 500);
-	camera.lookAt(new THREE.Vector3(0, 0, 0));
-
 	//AXIS HELPER
 	// var axisHelper = new THREE.AxisHelper(1100);
 	// glScene.add( axisHelper );
 
 	loader = new THREE.TextureLoader();
+
+	camera = new THREE.PerspectiveCamera(75, ASPECT, 0.1, 40000);
+	camera.position.set (200, 350, 1900);
+	camera.lookAt(new THREE.Vector3(0, 0, 0));
 
 
 	// CONTRUCTING A BOX FOR WEBGL RENDERER
@@ -76,6 +76,32 @@ function init() {
 /*_____________________________________________________________________*/
 
 	// CONTRUCT A plane TO SHOW CLEAR IN THE BACKGROUND
+	var slidePlaneGeometry = new THREE.PlaneGeometry(1600, 760);
+	var slidePlaneMaterial = new THREE.MeshBasicMaterial({
+		color: 0x000000,
+		opacity: 0,
+		side: THREE.DoubleSide,
+		blending: THREE.NoBlending
+	});
+	slidePlane = new THREE.Mesh(slidePlaneGeometry, slidePlaneMaterial);
+	slidePlane.position.set(0, -300, 0)
+	glScene.add(slidePlane);
+	slidePlane.position.set(0,0,300);
+
+
+	// CONSTRUCT A FLOOR
+	var floorGeometry = new THREE.PlaneGeometry(7500, 7500);
+	var floorMaterial = new THREE.MeshBasicMaterial({
+		map:THREE.ImageUtils.loadTexture('assets/lava.jpg'),
+		side: THREE.DoubleSide
+	});
+	floor = new THREE.Mesh(floorGeometry, floorMaterial);
+	floor.rotation.x = -Math.PI/2;
+	floor.position.set(0, -450, -1000);
+	glScene.add(floor);
+
+
+	// CONTRUCT A plane TO SHOW CLEAR IN THE BACKGROUND
 	var planeGeometry = new THREE.PlaneGeometry(400, 250);
 	var planeMaterial = new THREE.MeshBasicMaterial({
 		color: 0x000000,
@@ -84,6 +110,7 @@ function init() {
 		blending: THREE.NoBlending
 	});
 	plane = new THREE.Mesh(planeGeometry, planeMaterial);
+	plane.position.set(0, -300, 0)
 	glScene.add(plane);
 	plane.position.set(0,0,300);
 
@@ -142,7 +169,13 @@ function init() {
 	var img = document.createElement('img');
 	img.className = 'slide';
 	img.src = "http://www.pageresource.com/wallpapers/wallpaper/cool-cat.jpg";
-	threeDOM = new THREE.CSS3DObject(img);
+	threeDOM1 = new THREE.CSS3DObject(img);
+	cssScene.add(threeDOM1);
+	threeDOM1.position.set(0,0,300);
+
+	var slides = document.getElementsByClassName('reveal')[0];
+	threeDOM = new THREE.CSS3DObject(slides);
+
 	cssScene.add(threeDOM);
 	threeDOM.position.set(0,0,300);
 
@@ -169,10 +202,6 @@ function init() {
 	threeDOM4.position.set(-300,0,0);
 	threeDOM4.rotation.y = Math.PI/2;
 /*_____________________________________________________________________*/
-
-
-
-
 
 	// CREATE THE GLRENDERER AND APPEND IT ON TOP OF HTML
 	// OR THE CSSRENDERER
@@ -223,21 +252,30 @@ function render() {
 	camera.lookAt( glScene.position )
 	animate();
 }
-var zAxis = 0;
+
 function animate () {
 
-	// zAxis += 0.01;
 
-	// threeDOM.rotation.y = zAxis;
-	// plane.rotation.y = threeDOM.rotation.y;
+	plane.position.x = item.translateX;
+	plane.position.y = item.translateY;
+	plane.position.z = item.translateZ;
 
-	// threeDOM.position.z = Math.sin(zAxis) * 400;
-	// plane.position.z = threeDOM.position.z;
+	plane.rotation.x = item.rotateX * Math.PI/180;
+	plane.rotation.y = item.rotateY * Math.PI/180;
+	plane.rotation.z = item.rotateZ * Math.PI/180;
+
+	plane.scale.set(item.size, item.size, 1);
+
+	threeDOM.position.copy(plane.position);
+	threeDOM.rotation.copy(plane.rotation);
+	threeDOM.scale.copy(plane.scale);
+
+
 }
 
 // ROTATE THE CAMERA AROUND THE BOX
 function rotateBox(e) {
-	var TIME = 500;
+	var TIME = 1000;
 	var RADIANS = Math.PI / 2;
 	var key = e.keyIdentifier;
 	var rotationCache = {
