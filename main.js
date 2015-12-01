@@ -49,6 +49,7 @@ function init () {
 	cssRenderer = new THREE.CSS3DRenderer();
 	cssRenderer.setSize(window.innerWidth, window.innerHeight);
 	cssRenderer.domElement.style.position = "absolute";
+	cssRenderer.domElement.style.zIndex = 0;
 	cssRenderer.domElement.style.top = 0;
 	document.body.appendChild( cssRenderer.domElement );
 	
@@ -286,7 +287,7 @@ function init () {
 	f3.add(item, 'ringZ', 0, 100).step(1).listen();
 	f3.add(item, 'stopRotation');
 	f3.add(item, 'resumeRotation');
-	gui.open();
+	gui.open()
 
 }
 // End of init function    
