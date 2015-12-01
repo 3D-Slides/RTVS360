@@ -24,3 +24,8 @@ body {
 	top: 0;
 	z-index: 5;
 }
+
+.slide {
+	width: 400px !important;
+	height: auto !important;
+}
