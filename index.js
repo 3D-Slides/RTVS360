@@ -2,7 +2,7 @@ var glScene, glRenderer;
 var box, plane, slidePlane, floor, olsenPlane, fantasyPlane, lionPlane, mainPlane;
 var pivot;
 
-var cssScene, cssRenderer;
+var cssScene, cssRenderer, cssMeshes;
 var threeDOM, threeDOM1, threeDOM2, threeDOM3, threeDOM4;
 
 var camera, controls, item;
@@ -11,8 +11,6 @@ var cameraPivot;
 
 var loader;
 
-var el = window;
-el.addEventListener('keydown', rotateBox);
 init();
 render();
 
@@ -24,8 +22,7 @@ function init() {
 	glScene = new THREE.Scene();
 	cssScene = new THREE.Scene();
 	
-
-	//AXIS HELPER
+	// AXIS HELPER
 	// var axisHelper = new THREE.AxisHelper(1100);
 	// glScene.add( axisHelper );
 
@@ -35,44 +32,7 @@ function init() {
 	camera.position.set (200, 350, 1900);
 	camera.lookAt(new THREE.Vector3(0, 0, 0));
 
-
-	// CONTRUCTING A BOX FOR WEBGL RENDERER
-	var boxGeometry = new THREE.BoxGeometry(10,10,10);
-	var boxMaterial = new THREE.MeshLambertMaterial({
-		// wireframe: true,
-		color: 0x000000,
-		opacity: 0
-
-	});
-	box = new THREE.Mesh(boxGeometry, boxMaterial);
-	box.position.set(0, 0, 0);
-	glScene.add(box);
-
-	// CREATE THE PIVOT SO CAMERA MOVES AROUND BOX
-	cameraPivot = new THREE.Object3D();
-	box.add(cameraPivot);
-	cameraPivot.add( camera );
-
-
-	//CONSTRUCT CABIN SPHERE
-	loader.load('./assets/2294472375_24a3b8ef46_o.jpg', function ( texture ) {
-		var mainPlaneGeometry = new THREE.SphereGeometry(3000, 50, 50);
-		var mainPlaneMaterial = new THREE.MeshBasicMaterial({
-			map: texture,
-			side: THREE.DoubleSide
-		});
-		mainPlaneGeometry.scale(-1,1,1)
-		mainPlane = new THREE.Mesh(mainPlaneGeometry, mainPlaneMaterial);
-		glScene.add( mainPlane );
-		mainPlane.position.set(0,0, 0);
-
-		// mainPlane.rotation.x = Math.PI/2;
-	})
-
-
-
-
-				 // CREATE OPAQUE PLANES FOR ELEMENTS
+					// CREATE OPAQUE PLANES FOR ELEMENTS
 /*_____________________________________________________________________*/
 
 	// CONTRUCT A plane TO SHOW CLEAR IN THE BACKGROUND
@@ -84,7 +44,6 @@ function init() {
 		blending: THREE.NoBlending
 	});
 	slidePlane = new THREE.Mesh(slidePlaneGeometry, slidePlaneMaterial);
-	slidePlane.position.set(0, -300, 0)
 	glScene.add(slidePlane);
 	slidePlane.position.set(0,0,300);
 
@@ -100,107 +59,17 @@ function init() {
 	floor.position.set(0, -450, -1000);
 	glScene.add(floor);
 
-
-	// CONTRUCT A plane TO SHOW CLEAR IN THE BACKGROUND
-	var planeGeometry = new THREE.PlaneGeometry(400, 250);
-	var planeMaterial = new THREE.MeshBasicMaterial({
-		color: 0x000000,
-		opacity: 0,
-		side: THREE.DoubleSide,
-		blending: THREE.NoBlending
-	});
-	plane = new THREE.Mesh(planeGeometry, planeMaterial);
-	plane.position.set(0, -300, 0)
-	glScene.add(plane);
-	plane.position.set(0,0,300);
-
 	var light = new THREE.HemisphereLight(0xffffbb, 0x080820, 1);
 	glScene.add(light);
 
-	//CONSTRUCT ANOTHER PLANE FOR OLSEN PICTURE
-	var olsenGeometry = new THREE.PlaneGeometry(400,250);
-	var olsenMaterial = new THREE.MeshBasicMaterial({
-		color: 0x000000,
-		opacity: 0,
-		side: THREE.DoubleSide,
-		blending: THREE.NoBlending
-	});
-
-	olsenPlane = new THREE.Mesh(olsenGeometry, olsenMaterial);
-	glScene.add( olsenPlane );
-	olsenPlane.position.set( 0,0,-300 );
-
-	//CONSTRUCT ANOTHER PLANE FOR FANTASY PICTURE
-	var fantasyGeometry = new THREE.PlaneGeometry(400,250);
-	var fantasyMaterial = new THREE.MeshBasicMaterial({
-		color: 0x000000,
-		opacity: 0,
-		side: THREE.DoubleSide,
-		blending: THREE.NoBlending
-	});
-
-	fantasyPlane = new THREE.Mesh(fantasyGeometry, fantasyMaterial);
-	glScene.add( fantasyPlane );
-	fantasyPlane.position.set( 300,0,0 );
-	fantasyPlane.rotation.y = Math.PI/2;
-
-	//CONSTRUCT ANOTHER PLANE FOR LION PICTURE
-	var lionGeometry = new THREE.PlaneGeometry(400,250);
-	var lionMaterial = new THREE.MeshBasicMaterial({
-		color: 0x000000,
-		opacity: 0,
-		side: THREE.DoubleSide,
-		blending: THREE.NoBlending
-	});
-
-	lionPlane = new THREE.Mesh(lionGeometry, lionMaterial);
-	glScene.add( lionPlane );
-	lionPlane.position.set( -300,0,0 );
-	lionPlane.rotation.y = Math.PI/2;
-
-/*_____________________________________________________________________*/
-
-
-
-
 							// CSS ELEMENTS
 /*_____________________________________________________________________*/
-
-	var img = document.createElement('img');
-	img.className = 'slide';
-	img.src = "http://www.pageresource.com/wallpapers/wallpaper/cool-cat.jpg";
-	threeDOM1 = new THREE.CSS3DObject(img);
-	cssScene.add(threeDOM1);
-	threeDOM1.position.set(0,0,300);
-
 	var slides = document.getElementsByClassName('reveal')[0];
+	console.log(slides);
 	threeDOM = new THREE.CSS3DObject(slides);
-
-	cssScene.add(threeDOM);
+	threeDOM.name = "CSS SLIDES";
 	threeDOM.position.set(0,0,300);
-
-	var img2 = document.createElement('img');
-	img2.className = 'slide';
-	img2.src = 'http://www.pageresource.com/wallpapers/wallpaper/olsen-twins-hot_200056.jpg';
-	threeDOM2 = new THREE.CSS3DObject(img2);
-	cssScene.add(threeDOM2);
-	threeDOM2.position.set(0,0,-300);
-
-	var img3 = document.createElement('img');
-	img3.className = 'slide';
-	img3.src = 'http://www.pageresource.com/wallpapers/wallpaper/final-fantasy-vii-anime-cloud-strife-sephiroth_358135.jpg';
-	threeDOM3 = new THREE.CSS3DObject(img3);
-	cssScene.add(threeDOM3);
-	threeDOM3.position.set(300,0,0);
-	threeDOM3.rotation.y = Math.PI/2;
-
-	var img4 = document.createElement('img');
-	img4.className = 'slide';
-	img4.src = 'http://www.pageresource.com/wallpapers/wallpaper/lion-noir-blanc-fond-cran_608217.jpg';
-	threeDOM4 = new THREE.CSS3DObject(img4);
-	cssScene.add(threeDOM4);
-	threeDOM4.position.set(-300,0,0);
-	threeDOM4.rotation.y = Math.PI/2;
+	cssScene.add(threeDOM);
 /*_____________________________________________________________________*/
 
 	// CREATE THE GLRENDERER AND APPEND IT ON TOP OF HTML
@@ -249,89 +118,56 @@ function render() {
 	glRenderer.render(glScene, camera);
 	cssRenderer.render(cssScene, camera);
 
-	camera.lookAt( glScene.position )
+	//if (pivot) pivot.rotation.y += 0.01;
+	camera.lookAt( glScene.position );
 	animate();
 }
 
 function animate () {
 
+	slidePlane.position.x = item.translateX;
+	slidePlane.position.y = item.translateY;
+	slidePlane.position.z = item.translateZ;
 
-	plane.position.x = item.translateX;
-	plane.position.y = item.translateY;
-	plane.position.z = item.translateZ;
+	slidePlane.rotation.x = item.rotateX * Math.PI/180;
+	slidePlane.rotation.y = item.rotateY * Math.PI/180;
+	slidePlane.rotation.z = item.rotateZ * Math.PI/180;
 
-	plane.rotation.x = item.rotateX * Math.PI/180;
-	plane.rotation.y = item.rotateY * Math.PI/180;
-	plane.rotation.z = item.rotateZ * Math.PI/180;
+	slidePlane.scale.set(item.size, item.size, 1);
 
-	plane.scale.set(item.size, item.size, 1);
+	threeDOM.position.copy(slidePlane.position);
+	threeDOM.rotation.copy(slidePlane.rotation);
+	threeDOM.scale.copy(slidePlane.scale);
 
-	threeDOM.position.copy(plane.position);
-	threeDOM.rotation.copy(plane.rotation);
-	threeDOM.scale.copy(plane.scale);
+	if (threeDOM1) {
+		//plane.rotation.y = pivot.rotation.y;
+		threeDOM1.position.x = (300 * Math.cos(-1*(pivot.rotation.y - Math.PI/2))) + pivot.position.x;
+		threeDOM1.position.y = pivot.position.y;
+		threeDOM1.position.z = (300 * Math.sin(-1*(pivot.rotation.y - Math.PI/2))) + pivot.position.z;
+		threeDOM1.rotation.y = pivot.rotation.y;
 
-
-}
-
-// ROTATE THE CAMERA AROUND THE BOX
-function rotateBox(e) {
-	var TIME = 1000;
-	var RADIANS = Math.PI / 2;
-	var key = e.keyIdentifier;
-	var rotationCache = {
-		x: cameraPivot.rotation.x,
-		y: cameraPivot.rotation.y
-	};
-
-	// console.log(e);
-
-	createjs.Ticker.setFPS(60);
-	var motion = createjs.Tween.get(cameraPivot.rotation);
-		
-	if(cameraPivot.rotation.x % RADIANS !== 0) {
-		if(key === 'Up') {
-			cameraPivot.rotation.x = rotationCache.x - RADIANS;
-			console.log('up auto');
-		}
-		if(key === 'Down') {
-			cameraPivot.rotation.x = rotationCache.x + RADIANS;
-			console.log('down auto');
-		}
 	}
-
-	if(cameraPivot.rotation.y % RADIANS === 0 && cameraPivot.rotation.x % RADIANS === 0) {
-		if(key === 'Right') {
-			motion.to({y: cameraPivot.rotation.y + RADIANS}, TIME, createjs.Ease.getBackOut(2));
-			console.log('right');
-		}
-		if(key === 'Left') {
-			motion.to({y: cameraPivot.rotation.y - RADIANS}, TIME, createjs.Ease.getBackOut(2));
-			console.log('left');
-		}
-		if(key === 'Up') {
-			motion.to({x: cameraPivot.rotation.x - RADIANS}, TIME, createjs.Ease.getBackOut(2));
-			console.log('up');
-		}
-		if(key === 'Down') {
-			motion.to({x: cameraPivot.rotation.x + RADIANS}, TIME, createjs.Ease.getBackOut(2));
-			console.log('down');
-		}
+	if (threeDOM2) {
+		//fantasyPlane.rotation.y = pivot.rotation.y + Math.PI/2;
+		threeDOM2.position.x = (300 * Math.cos((pivot.rotation.y)*(-1))) + pivot.position.x;
+		threeDOM2.position.y = pivot.position.y;
+		threeDOM2.position.z = (300 * Math.sin((pivot.rotation.y)*(-1))) + pivot.position.z;
+		threeDOM2.rotation.y = pivot.rotation.y + Math.PI/2;
 	}
-
-	// if(cameraPivot.rotation.y % RADIANS !== 0) {
-
-	// 	if(key === 'Right') {
-	// 		cameraPivot.rotation.y = rotationCache.y + RADIANS;
-	// 	createjs.Tween.removeAllTweens();
-
-	// 		console.log('right auto');
-	// 	}
-	// 	if(key === 'Left') {
-	// 		cameraPivot.rotation.y = rotationCache.y - RADIANS;
-	// 		console.log('left auto');
-	// 	}
-		
-	// } 
+	if (threeDOM3) {
+		//olsenPlane.rotation.y = pivot.rotation.y;
+		threeDOM3.position.x = (300 * Math.cos((pivot.rotation.y + Math.PI/2)*(-1))) + pivot.position.x;
+		threeDOM3.position.y = pivot.position.y;
+		threeDOM3.position.z = (300 * Math.sin((pivot.rotation.y + Math.PI/2)*(-1))) + pivot.position.z;
+		threeDOM3.rotation.y = pivot.rotation.y;
+	}
+	if (threeDOM4) {
+		//lionPlane.rotation.y = pivot.rotation.y - Math.PI/2;
+		threeDOM4.position.x = (300 * Math.cos((pivot.rotation.y + Math.PI)*(-1))) + pivot.position.x;
+		threeDOM4.position.y = pivot.position.y;
+		threeDOM4.position.z = (300 * Math.sin((pivot.rotation.y + Math.PI)*(-1))) + pivot.position.z;
+		threeDOM4.rotation.y = pivot.rotation.y - Math.PI/2;
+	}
 }
 
 
