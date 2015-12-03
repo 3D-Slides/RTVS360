@@ -26,6 +26,14 @@ body {
 }
 
 .slide {
-	width: 400px !important;
-	height: auto !important;
+	width: 1600px !important;
+	height: 760px !important;
+  color: goldenrod;
+  text-align: left;
+  font-size: 2.5em;
+}
+
+.worldSlide {
+  width: 400px !important;
+  height: auto;
 }

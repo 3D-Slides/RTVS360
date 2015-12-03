@@ -11,8 +11,16 @@ var cameraPivot;
 
 var loader;
 
+// window.onload = function(){
+
+	
+// }
+
 init();
 render();
+var slidesPositions = [[0,0,0],[1750,0,0]];
+var slidesArray = getSlides();
+addAllSlides( slidesArray, slidesPositions );
 
 function init() {
 	var WIDTH = window.innerWidth,
@@ -36,16 +44,16 @@ function init() {
 /*_____________________________________________________________________*/
 
 	// CONTRUCT A plane TO SHOW CLEAR IN THE BACKGROUND
-	var slidePlaneGeometry = new THREE.PlaneGeometry(1600, 760);
-	var slidePlaneMaterial = new THREE.MeshBasicMaterial({
-		color: 0x000000,
-		opacity: 0,
-		side: THREE.DoubleSide,
-		blending: THREE.NoBlending
-	});
-	slidePlane = new THREE.Mesh(slidePlaneGeometry, slidePlaneMaterial);
-	glScene.add(slidePlane);
-	slidePlane.position.set(0,0,300);
+	// var slidePlaneGeometry = new THREE.PlaneGeometry(1600, 760);
+	// var slidePlaneMaterial = new THREE.MeshBasicMaterial({
+	// 	color: 0x000000,
+	// 	opacity: 0,
+	// 	side: THREE.DoubleSide,
+	// 	blending: THREE.NoBlending
+	// });
+	// slidePlane = new THREE.Mesh(slidePlaneGeometry, slidePlaneMaterial);
+	// glScene.add(slidePlane);
+	// slidePlane.position.set(0,0,300);
 
 
 	// CONSTRUCT A FLOOR
@@ -64,12 +72,12 @@ function init() {
 
 							// CSS ELEMENTS
 /*_____________________________________________________________________*/
-	var slides = document.getElementsByClassName('reveal')[0];
-	console.log(slides);
-	threeDOM = new THREE.CSS3DObject(slides);
-	threeDOM.name = "CSS SLIDES";
-	threeDOM.position.set(0,0,300);
-	cssScene.add(threeDOM);
+	// var slides = document.getElementsByClassName('reveal')[0];
+	// // console.log(slides);
+	// threeDOM = new THREE.CSS3DObject(slides);
+	// threeDOM.name = "CSS SLIDES";
+	// threeDOM.position.set(0,0,300);
+	// cssScene.add(threeDOM);
 /*_____________________________________________________________________*/
 
 	// CREATE THE GLRENDERER AND APPEND IT ON TOP OF HTML
@@ -125,19 +133,19 @@ function render() {
 
 function animate () {
 
-	slidePlane.position.x = item.translateX;
-	slidePlane.position.y = item.translateY;
-	slidePlane.position.z = item.translateZ;
+	// slidePlane.position.x = item.translateX;
+	// slidePlane.position.y = item.translateY;
+	// slidePlane.position.z = item.translateZ;
 
-	slidePlane.rotation.x = item.rotateX * Math.PI/180;
-	slidePlane.rotation.y = item.rotateY * Math.PI/180;
-	slidePlane.rotation.z = item.rotateZ * Math.PI/180;
+	// slidePlane.rotation.x = item.rotateX * Math.PI/180;
+	// slidePlane.rotation.y = item.rotateY * Math.PI/180;
+	// slidePlane.rotation.z = item.rotateZ * Math.PI/180;
 
-	slidePlane.scale.set(item.size, item.size, 1);
+	// slidePlane.scale.set(item.size, item.size, 1);
 
-	threeDOM.position.copy(slidePlane.position);
-	threeDOM.rotation.copy(slidePlane.rotation);
-	threeDOM.scale.copy(slidePlane.scale);
+	// threeDOM.position.copy(slidePlane.position);
+	// threeDOM.rotation.copy(slidePlane.rotation);
+	// threeDOM.scale.copy(slidePlane.scale);
 
 	if (threeDOM1) {
 		//plane.rotation.y = pivot.rotation.y;
