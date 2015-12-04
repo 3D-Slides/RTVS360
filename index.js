@@ -18,7 +18,7 @@ var loader;
 
 init();
 render();
-var slidesPositions = [[0,0,0],[1750,0,0]];
+var slidesPositions = [[0,0,0],[1750,0,0], [3500, 0, 0]];
 var slidesArray = getSlides();
 addAllSlides( slidesArray, slidesPositions );
 
