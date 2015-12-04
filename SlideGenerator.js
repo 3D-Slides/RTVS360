@@ -1,18 +1,19 @@
 
 // ---------------------- GENERATE SLIDES --------------------- //
 
+function SlideGenerator3D (){
 
+}
 // Get all slides from html
-function getSlides() {
+
+SlideGenerator3D.prototype.getSlides = function () {
 	var slides = document.getElementsByClassName('slide');
 	console.log('got:', slides)
 	return slides;
 }
 
-
-
 // Add a single slide
-function addOneSlide(slideArray, index, coords) {
+SlideGenerator3D.prototype.addOneSlide = function (slideArray, index, coords) {
 	var slide, slidePlane, slidePlaneGeometry, slidePlaneMaterial;
 
 	var div, text, cssObj;
@@ -36,17 +37,14 @@ function addOneSlide(slideArray, index, coords) {
 	cssScene.add(cssObj);
 }
 
-
-
 // Add all slides in html
-function addAllSlides(slideArray, coordsArray){
+SlideGenerator3D.prototype.addAllSlides = function (slideArray, coordsArray) {
 
 	var slide, slidePlane, slidePlaneGeometry, slidePlaneMaterial;
 
 	var cssObj;
 
 	if(slideArray.length === coordsArray.length) {
-
 
 		for(var i = 0; i < slideArray.length; i++) {
 
@@ -81,27 +79,6 @@ function addAllSlides(slideArray, coordsArray){
 
 			glScene.add(group);
 			// group.setSize(1600, 750);
-
-
-			// slidePlaneGeometry = new THREE.PlaneGeometry(1600,760);
-			// slidePlaneMaterial = new THREE.MeshBasicMaterial({
-			// 	color: 0x000000,
-			// 	opacity: 0.5,
-			// 	side: THREE.DoubleSide,
-			// 	blending: THREE.NoBlending
-			// });
-			// slidePlane = new THREE.Mesh(slidePlaneGeometry, slidePlaneMaterial);
-			// console.log(slidePlane);
-			// slidePlane.position.set(coordsArray[i][0], coordsArray[i][1], coordsArray[i][2]);
-			// slidePlane.add(slideMesh);
-			// glScene.add(slidePlane);
-
-			// slide = slideArray[i];
-			// cssObj = new THREE.CSS3DObject(slide);
-			// cssObj.position.set(coordsArray[i][0], coordsArray[i][1], coordsArray[i][2]);
-			// cssScene.add(cssObj);
-
-
 		}
 	}
 }

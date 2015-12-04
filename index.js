@@ -15,12 +15,12 @@ var loader;
 
 	
 // }
-
+var SlideGenerator3D = new SlideGenerator3D();
 init();
 render();
 var slidesPositions = [[0,0,0],[0,400,0]];
-var slidesArray = getSlides();
-addAllSlides( slidesArray, slidesPositions );
+var slidesArray = SlideGenerator3D.getSlides();
+SlideGenerator3D.addAllSlides( slidesArray, slidesPositions );
 
 function init() {
 	var WIDTH = window.innerWidth,
