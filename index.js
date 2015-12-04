@@ -12,15 +12,15 @@ var cameraPivot;
 var loader;
 
 // window.onload = function(){
-
-	
 // }
 
 init();
 render();
+var SlideGenerator = new SlideGenerator();
+
 var slidesPositions = [[0,0,0],[1750,0,0], [3500, 0, 0]];
-var slidesArray = getSlides();
-addAllSlides( slidesArray, slidesPositions );
+var slidesArray = SlideGenerator.getSlides();
+SlideGenerator.addAllSlides( slidesArray, slidesPositions );
 
 function init() {
 	var WIDTH = window.innerWidth,
@@ -37,8 +37,9 @@ function init() {
 	loader = new THREE.TextureLoader();
 
 	camera = new THREE.PerspectiveCamera(75, ASPECT, 0.1, 40000);
-	camera.position.set (200, 350, 1900);
+	camera.position.set (0, 0, 800);
 	camera.lookAt(new THREE.Vector3(0, 0, 0));
+
 
 					// CREATE OPAQUE PLANES FOR ELEMENTS
 /*_____________________________________________________________________*/
@@ -69,6 +70,7 @@ function init() {
 
 	var light = new THREE.HemisphereLight(0xffffbb, 0x080820, 1);
 	glScene.add(light);
+
 
 							// CSS ELEMENTS
 /*_____________________________________________________________________*/

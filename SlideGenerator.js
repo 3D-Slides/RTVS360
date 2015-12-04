@@ -1,9 +1,14 @@
 
-// ---------------------- GENERATE SLIDES --------------------- //
+// ---------------------- GENERATE SLIDES FOR 3D-SLIDES PROJECT --------------------- //
+
+
+function SlideGenerator () {
+
+}
 
 
 // Get all slides from html
-function getSlides() {
+SlideGenerator.prototype.getSlides = function () {
 	var slides = document.getElementsByClassName('slide');
 	return slides;
 }
@@ -11,7 +16,7 @@ function getSlides() {
 
 
 // Add a single slide
-function addOneSlide(slideArray, index, coords) {
+SlideGenerator.prototype.addOneSlide = function (slideArray, index, coords) {
 	var slide, slidePlane, slidePlaneGeometry, slidePlaneMaterial;
 
 	var div, text, cssObj;
@@ -38,7 +43,7 @@ function addOneSlide(slideArray, index, coords) {
 
 
 // Add all slides in html
-function addAllSlides(slideArray, coordsArray){
+SlideGenerator.prototype.addAllSlides = function (slideArray, coordsArray) {
 
 	var slide, slidePlane, slidePlaneGeometry, slidePlaneMaterial;
 
@@ -67,6 +72,7 @@ function addAllSlides(slideArray, coordsArray){
 			slide = slideArray[i];
 			cssObj = new THREE.CSS3DObject(slide);
 			cssObj.position.set(coordsArray[i][0], coordsArray[i][1], coordsArray[i][2]);
+			// cssObj.style.padding = 20;
 			cssScene.add(cssObj);
 
 
