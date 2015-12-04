@@ -52,12 +52,13 @@ function addAllSlides(slideArray, coordsArray){
 
 			var title = slideArray[i].childNodes[1].children[0].innerText;
 			var titleComment = slideArray[i].childNodes[1].children[1].innerText;
+			var section2 = slideArray[i].childNodes[3].children[0].innerText
 
-			var group = new THREE.Group();
+			var group = new THREE.Object3D();
 
 			console.log(slideArray[i], coordsArray[i][0], coordsArray[i][1], coordsArray[i][2]);
 
-			var slideGeo = new THREE.TextGeometry( title +'\n'+ titleComment, {
+			var slideGeo = new THREE.TextGeometry( title , {
 				size: 200,
 				height: 50,
 				// weight: normal,
