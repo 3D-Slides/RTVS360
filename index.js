@@ -20,7 +20,7 @@ init();
 render();
 var slidesPositions = [[0,0,0],[0,400,0]];
 var slidesArray = SlideGenerator3D.getSlides();
-SlideGenerator3D.addAllSlides( slidesArray, slidesPositions );
+SlideGenerator3D.addOneSlide( slidesArray, 0, [0,500,0] );
 
 function init() {
 	var WIDTH = window.innerWidth,
@@ -57,15 +57,15 @@ function init() {
 
 
 	// CONSTRUCT A FLOOR
-	var floorGeometry = new THREE.PlaneGeometry(7500, 7500);
-	var floorMaterial = new THREE.MeshBasicMaterial({
-		map:THREE.ImageUtils.loadTexture('assets/lava.jpg'),
-		side: THREE.DoubleSide
-	});
-	floor = new THREE.Mesh(floorGeometry, floorMaterial);
-	floor.rotation.x = -Math.PI/2;
-	floor.position.set(0, -450, -1000);
-	glScene.add(floor);
+	// var floorGeometry = new THREE.PlaneGeometry(7500, 7500);
+	// var floorMaterial = new THREE.MeshBasicMaterial({
+	// 	map:THREE.ImageUtils.loadTexture('assets/lava.jpg'),
+	// 	side: THREE.DoubleSide
+	// });
+	// floor = new THREE.Mesh(floorGeometry, floorMaterial);
+	// floor.rotation.x = -Math.PI/2;
+	// floor.position.set(0, -450, -1000);
+	// glScene.add(floor);
 
 	var light = new THREE.HemisphereLight(0xffffbb, 0x080820, 1);
 	glScene.add(light);
