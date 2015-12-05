@@ -24,7 +24,7 @@ var SlideGenerator = new SlideGenerator();
 var slidesPositions = [[0,0,0],[2000,0,0],[4000,0,0]];
 var TwoDPositions = [[0,1000,0],[2000,1000,0],[4000,1000,0]];
 var slidesArray = SlideGenerator.getSlides();
-console.log('slidesArray:', slidesArray, 'slidesPositions:', slidesPositions)
+console.log('slidesArray:', slidesArray, 'slidesPositions:', slidesPositions);
 SlideGenerator.addAllSlides3D( slidesArray, slidesPositions );
 //SlideGenerator.addAllSlides(slidesArray, TwoDPositions);
 //:::::::::::::::::::
@@ -39,8 +39,8 @@ function init() {
 	cssScene = new THREE.Scene();
 	loader = new THREE.TextureLoader();
 	
-	var axisHelper = new THREE.AxisHelper(10000);
-	glScene.add(axisHelper);
+	// var axisHelper = new THREE.AxisHelper(10000);
+	// glScene.add(axisHelper);
 
 	camera = new THREE.PerspectiveCamera(75, ASPECT, 0.1, 60000);
 	camera.position.set (0, 1500, 20000);
@@ -72,16 +72,16 @@ function init() {
 	});
 	floor = new THREE.Mesh(floorGeometry, floorMaterial);
 	floor.rotation.x = -Math.PI/2;
-	floor.position.set(0, -200, -1000);
+	floor.position.set(0, -30, -1000);
 	glScene.add(floor);
 
 	var size = 20000, step = 2000;
 	var yDepth = 0;
 	var grid = new THREE.Group();
 	var material = new THREE.LineBasicMaterial({
-		// color: 0x01D5DA,
 		color: 0x00D1FF,
-		linewidth: 0.5
+		linewidth: 0.3,
+		fog: true
 	});
 
 	for (var i = -size; i <= size; i += step) {
@@ -89,18 +89,18 @@ function init() {
 		geometry.vertices.push(new THREE.Vector3(-i, -yDepth, size));
 		geometry.vertices.push(new THREE.Vector3(-i, -yDepth, -size));
 
-		var line = new THREE.Line( geometry, material);
+		var line = new THREE.LineSegments( geometry, material);
 
 		grid.add(line);
 	}
 
-	for (var i = -size; i <= size; i += step) {
+	for (var j = -size; j <= size; j += step) {
 
 		var geometry = new THREE.Geometry();
-		geometry.vertices.push(new THREE.Vector3(size, -yDepth, -i));
-		geometry.vertices.push(new THREE.Vector3(-size, -yDepth, -i));
+		geometry.vertices.push(new THREE.Vector3(size, -yDepth, -j));
+		geometry.vertices.push(new THREE.Vector3(-size, -yDepth, -j));
 
-		var line = new THREE.Line( geometry, material);
+		var line = new THREE.LineSegments( geometry, material);
 
 		grid.add(line);
 	}
