@@ -7,6 +7,7 @@ function SlideGenerator (){
 // Get all slides from html:
 SlideGenerator.prototype.getSlides = function () {
 	var slides = document.getElementsByClassName('slide');
+
 	return slides;
 }
 
@@ -100,7 +101,7 @@ SlideGenerator.prototype.addAllSlides3D = function (slideArray, coordsArray) {
 		for(var i = 0; i < slideArray.length; i++) {
 			var group = new THREE.Object3D();
 
-			group.position.set(coordsArray[i][0]-2500,coordsArray[i][1],coordsArray[i][2]);
+			group.position.set(coordsArray[i][0]-2500,coordsArray[i][1] + 1000,coordsArray[i][2]);
 
 			var coordsArr = [group.position.x, group.position.y, group.position.z]
 

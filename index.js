@@ -24,6 +24,7 @@ var SlideGenerator = new SlideGenerator();
 var slidesPositions = [[0,0,0],[2000,0,0],[4000,0,0]];
 var TwoDPositions = [[0,1000,0],[2000,1000,0],[4000,1000,0]];
 var slidesArray = SlideGenerator.getSlides();
+console.log('slidesArray:', slidesArray, 'slidesPositions:', slidesPositions)
 SlideGenerator.addAllSlides3D( slidesArray, slidesPositions );
 SlideGenerator.addAllSlides(slidesArray, TwoDPositions);
 //:::::::::::::::::::
