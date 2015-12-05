@@ -7,6 +7,7 @@ function SlideGenerator (){
 // Get all slides from html:
 SlideGenerator.prototype.getSlides = function () {
 	var slides = document.getElementsByClassName('slide');
+
 	return slides;
 }
 
