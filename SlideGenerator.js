@@ -1,19 +1,18 @@
 
 // ---------------------- GENERATE SLIDES --------------------- //
 
-function SlideGenerator3D (){
+function SlideGenerator (){
 
 }
-// Get all slides from html
 
-SlideGenerator3D.prototype.getSlides = function () {
+// Get all slides from html
+SlideGenerator.prototype.getSlides = function () {
 	var slides = document.getElementsByClassName('slide');
-	console.log('got:', slides)
 	return slides;
 }
 
-// Add a single slide
-SlideGenerator3D.prototype.addOneSlide = function (slideArray, index, coords) {
+// Add a single 3d slide
+SlideGenerator.prototype.addOneSlide3D = function (slideArray, index, coords) {
 	
 	// helper function for TextGeometry Props
 	function generateProps(size){
@@ -82,8 +81,8 @@ SlideGenerator3D.prototype.addOneSlide = function (slideArray, index, coords) {
 	glScene.add(group);
 }
 
-// Add all slides in html
-SlideGenerator3D.prototype.addAllSlides = function (slideArray, coordsArray) {
+// Add all 3d slides in html
+SlideGenerator.prototype.addAllSlides3D = function (slideArray, coordsArray) {
 
 	function generateProps(size){
 		return {
@@ -156,6 +155,72 @@ SlideGenerator3D.prototype.addAllSlides = function (slideArray, coordsArray) {
 				}
 				glScene.add(group);
 			}
+		}
+	}
+}
+
+
+// Add a single 2d slide
+SlideGenerator.prototype.addOneSlide = function (slideArray, index, coords) {
+	var slide, slidePlane, slidePlaneGeometry, slidePlaneMaterial;
+
+	var div, text, cssObj;
+
+	// Construct Transparent Plane For Slide to Lay On
+	slidePlaneGeometry = new THREE.PlaneGeometry(1600,760);
+	slidePlaneMaterial = new THREE.MeshBasicMaterial({
+		color: 0x000000,
+		opacity: 0,
+		side: THREE.DoubleSide,
+		blending: THREE.NoBlending
+	});
+	slidePlane = new THREE.Mesh(slidePlaneGeometry, slidePlaneMaterial);
+	slidePlane.position.set(coords[0], coords[1], coords[2]);
+	glScene.add(slidePlane);
+
+	slide = slideArray[index];
+	console.log('AddOneSlide:',slide)
+	cssObj = new THREE.CSS3DObject(slide);
+	cssObj.position.set(coords[0], coords[1], coords[2])
+	cssScene.add(cssObj);
+}
+
+
+
+// Add all 2d slides in html
+SlideGenerator.prototype.addAllSlides = function (slideArray, coordsArray) {
+
+	var slide, slidePlane, slidePlaneGeometry, slidePlaneMaterial;
+
+	var cssObj;
+
+	if(slideArray.length === coordsArray.length) {
+
+
+		for(var i = 0; i < slideArray.length; i++) {
+
+		console.log(slideArray[i], coordsArray[i][0], coordsArray[i][1], coordsArray[i][2])
+
+
+			slidePlaneGeometry = new THREE.PlaneGeometry(1600,760);
+			slidePlaneMaterial = new THREE.MeshBasicMaterial({
+				color: 0x000000,
+				opacity: 0,
+				side: THREE.DoubleSide,
+				blending: THREE.NoBlending
+			});
+			slidePlane = new THREE.Mesh(slidePlaneGeometry, slidePlaneMaterial);
+			console.log(slidePlane);
+			slidePlane.position.set(coordsArray[i][0], coordsArray[i][1], coordsArray[i][2]);
+			glScene.add(slidePlane);
+
+			slide = slideArray[i];
+			cssObj = new THREE.CSS3DObject(slide);
+			cssObj.position.set(coordsArray[i][0], coordsArray[i][1], coordsArray[i][2]);
+			// cssObj.style.padding = 20;
+			cssScene.add(cssObj);
+
+
 		}
 	}
 }

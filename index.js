@@ -15,12 +15,14 @@ var loader;
 
 	
 // }
-var SlideGenerator3D = new SlideGenerator3D();
+var SlideGenerator = new SlideGenerator();
 init();
 render();
 var slidesPositions = [[0,0,0],[2000,0,0], [4000,0,0]];
-var slidesArray = SlideGenerator3D.getSlides();
-SlideGenerator3D.addAllSlides( slidesArray, slidesPositions );
+var TwoDPositions = [[0,1000,0],[2000,1000,0], [4000,1000,0]];
+var slidesArray = SlideGenerator.getSlides();
+SlideGenerator.addAllSlides3D( slidesArray, slidesPositions );
+SlideGenerator.addAllSlides(slidesArray, TwoDPositions)
 
 function init() {
 	var WIDTH = window.innerWidth,

@@ -31,7 +31,8 @@ body {
   color: goldenrod;
   text-align: left;
   font-size: 2.5em;
-  display: none;
+  /*display: none;*/
+  background-color: black;
 }
 
 .worldSlide {
