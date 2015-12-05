@@ -18,7 +18,7 @@ var loader;
 var SlideGenerator3D = new SlideGenerator3D();
 init();
 render();
-var slidesPositions = [[0,0,0],[550,0,0], [1100,0,0]];
+var slidesPositions = [[0,0,0],[2000,0,0], [4000,0,0]];
 var slidesArray = SlideGenerator3D.getSlides();
 SlideGenerator3D.addAllSlides( slidesArray, slidesPositions );
 
