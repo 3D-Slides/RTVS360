@@ -103,18 +103,18 @@ function init() {
 		var line = new THREE.Line( geometry, material);
 
 		grid.add(line);
-}
+	}
 
-for (var i = -size; i <= size; i += step) {
+	for (var i = -size; i <= size; i += step) {
 
-	var geometry = new THREE.Geometry();
-	geometry.vertices.push(new THREE.Vector3(size, -yDepth, -i));
-	geometry.vertices.push(new THREE.Vector3(-size, -yDepth, -i));
+		var geometry = new THREE.Geometry();
+		geometry.vertices.push(new THREE.Vector3(size, -yDepth, -i));
+		geometry.vertices.push(new THREE.Vector3(-size, -yDepth, -i));
 
-	var line = new THREE.Line( geometry, material);
+		var line = new THREE.Line( geometry, material);
 
-	grid.add(line);
-}
+		grid.add(line);
+	}
 	glScene.add(grid);
 
 
