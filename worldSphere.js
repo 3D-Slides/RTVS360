@@ -3,7 +3,7 @@ el.addEventListener('keydown', rotateBox);
 
 //CONSTRUCT CABIN SPHERE
 loader.load('./assets/2294472375_24a3b8ef46_o.jpg', function ( texture ) {
-	var mainPlaneGeometry = new THREE.SphereGeometry(3500, 50, 50);
+	var mainPlaneGeometry = new THREE.SphereGeometry(1500, 50, 50);
 	var mainPlaneMaterial = new THREE.MeshBasicMaterial({
 		map: texture,
 		side: THREE.DoubleSide
@@ -110,7 +110,7 @@ function rotateBox(e) {
 
 	createjs.Ticker.setFPS(60);
 	var motion = createjs.Tween.get(pivot.rotation);
-		
+
 	if(pivot.rotation.x % RADIANS !== 0) {
 		if(key === 'Up') {
 			pivot.rotation.x = rotationCache.x - RADIANS;
