@@ -67,14 +67,14 @@ lionPlane.rotation.y = Math.PI/2;
 pivot.add(plane, olsenPlane, fantasyPlane, lionPlane );
 
 var img = document.createElement('img');
-img.className = 'slide';
+img.className = 'worldSlide';
 img.src = "http://www.pageresource.com/wallpapers/wallpaper/cool-cat.jpg";
 threeDOM1 = new THREE.CSS3DObject(img);
 threeDOM1.position.set(0,0,300);
 cssScene.add(threeDOM1);
 
 var img2 = document.createElement('img');
-img2.className = 'slide';
+img2.className = 'worldSlide';
 img2.src = 'http://www.pageresource.com/wallpapers/wallpaper/final-fantasy-vii-anime-cloud-strife-sephiroth_358135.jpg';
 threeDOM2 = new THREE.CSS3DObject(img2);
 threeDOM2.position.set(300,0,0);
@@ -82,7 +82,7 @@ threeDOM2.rotation.y = Math.PI/2;
 cssScene.add(threeDOM2);
 
 var img3 = document.createElement('img');
-img3.className = 'slide';
+img3.className = 'worldSlide';
 img3.src = 'http://www.pageresource.com/wallpapers/wallpaper/olsen-twins-hot_200056.jpg';
 threeDOM3 = new THREE.CSS3DObject(img3);
 threeDOM3.position.set(0,0,-300);
@@ -90,7 +90,7 @@ cssScene.add(threeDOM3);
 
 
 var img4 = document.createElement('img');
-img4.className = 'slide';
+img4.className = 'worldSlide';
 img4.src = 'http://www.pageresource.com/wallpapers/wallpaper/lion-noir-blanc-fond-cran_608217.jpg';
 threeDOM4 = new THREE.CSS3DObject(img4);
 threeDOM4.position.set(-300,0,0);
