@@ -21,12 +21,10 @@ render();
 
 //USER INPUT:::::::::
 var SlideGenerator = new SlideGenerator();
-var slidesPositions = [[0,0,0],[2000,0,0],[4000,0,0]];
-var TwoDPositions = [[0,1000,0],[2000,1000,0],[4000,1000,0]];
+var slidesPositions = [[0,0,0],[4000,0,0],[8000,0,0]];
 var slidesArray = SlideGenerator.getSlides();
 console.log('slidesArray:', slidesArray, 'slidesPositions:', slidesPositions)
 SlideGenerator.addAllSlides3D( slidesArray, slidesPositions );
-//SlideGenerator.addAllSlides(slidesArray, TwoDPositions);
 //:::::::::::::::::::
 
 function init() {
@@ -40,7 +38,7 @@ function init() {
 	loader = new THREE.TextureLoader();
 	
 	var axisHelper = new THREE.AxisHelper(10000);
-	glScene.add(axisHelper);
+	// glScene.add(axisHelper);
 
 	camera = new THREE.PerspectiveCamera(75, ASPECT, 0.1, 60000);
 	camera.position.set (0, 1500, 20000);
@@ -54,7 +52,9 @@ function init() {
 	lights.castShadow = true;
 	//camera.add(lights);
 
-	var light = new THREE.HemisphereLight(0xffffff, 0x080820, 1.5);
+	// Light follows the camera
+	var light = new THREE.SpotLight(0xffffff, 0.5, 0.0, Math.PI/3, 2, 5);
+	light.position.copy( camera.position );
 	glScene.add(light);
 
 
@@ -65,7 +65,7 @@ function init() {
 	// CONSTRUCT A FLOOR
 	var floorGeometry = new THREE.PlaneGeometry(40000, 42000);
 	var floorMaterial = new THREE.MeshLambertMaterial({
-		color: 0x1d1d1c,
+		color: 0x191919,
 		// wireframe: true,
 		// wireframeLineWidth: 5,
 		side: THREE.DoubleSide

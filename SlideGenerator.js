@@ -43,27 +43,27 @@ SlideGenerator.prototype.addOneSlide3D = function (slideArray, index, coords) {
 			if(nodes[j].localName ==='h1'){
 
 				var slideGeo = new THREE.TextGeometry(text, generateProps(350));
-				var slideMaterial = new THREE.MeshPhongMaterial( {color: 0x00d1ff, specular: 0xffffff} );
+				var slideMaterial = new THREE.MeshLambertMaterial( {color: 0x00d1ff, specular: 0xffffff} );
 
 			} else if (nodes[j].localName ==='h2'){
 
 				var slideGeo = new THREE.TextGeometry(text, generateProps(280));
-				var slideMaterial = new THREE.MeshPhongMaterial( {color: 0xffffff, specular: 0xffffff} );
+				var slideMaterial = new THREE.MeshLambertMaterial( {color: 0xffffff, specular: 0xffffff} );
 
 			} else if (nodes[j].localName ==='h3'){
 
 				var slideGeo = new THREE.TextGeometry('* ' +text, generateProps(250));
-				var slideMaterial = new THREE.MeshPhongMaterial( {color: 0xffffff, specular: 0xffffff} );
+				var slideMaterial = new THREE.MeshLambertMaterial( {color: 0xffffff, specular: 0xffffff} );
 
 			} else if (nodes[j].localName ==='p'){
 
 				var slideGeo = new THREE.TextGeometry('     - ' +text, generateProps(200));
-				var slideMaterial = new THREE.MeshPhongMaterial( {color: 0xB8F2FF, specular: 0xffffff} );
+				var slideMaterial = new THREE.MeshLambertMaterial( {color: 0xB8F2FF, specular: 0xffffff} );
 
 			} else if (nodes[j].localName ==='span'){
 
 				var slideGeo = new THREE.TextGeometry('            ' +text, generateProps(200));
-				var slideMaterial = new THREE.MeshPhongMaterial( {color: 0xB8F2FF, specular: 0xffffff} );
+				var slideMaterial = new THREE.MeshLambertMaterial( {color: 0xB8F2FF, specular: 0xffffff} );
 
 			} else {
 				console.error('Some of yout HTML is not rendering! Please enter valid HTML elements in your slide format (h1, h2, h3, p, span)')
