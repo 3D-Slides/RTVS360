@@ -13,7 +13,7 @@ SlideGenerator.prototype.getSlides = function () {
 
 // Add a single 3d slide:
 SlideGenerator.prototype.addOneSlide3D = function (slideArray, index, coords) {
-	
+
 	// helper function for TextGeometry Props
 	function generateProps(size){
 		return {
@@ -23,7 +23,7 @@ SlideGenerator.prototype.addOneSlide3D = function (slideArray, index, coords) {
 			font: 'helvetiker'
 		}
 	}
-	
+
 	var group = new THREE.Object3D();
 	group.position.set(coords[0]-1000,coords[1],coords[2]);
 
@@ -56,12 +56,12 @@ SlideGenerator.prototype.addOneSlide3D = function (slideArray, index, coords) {
 				var slideMaterial = new THREE.MeshPhongMaterial( {color: 0xffffff, specular: 0xffffff} );
 
 			} else if (nodes[j].localName ==='p'){
-				
+
 				var slideGeo = new THREE.TextGeometry('     - ' +text, generateProps(200));
 				var slideMaterial = new THREE.MeshPhongMaterial( {color: 0xB8F2FF, specular: 0xffffff} );
 
 			} else if (nodes[j].localName ==='span'){
-				
+
 				var slideGeo = new THREE.TextGeometry('            ' +text, generateProps(200));
 				var slideMaterial = new THREE.MeshPhongMaterial( {color: 0xB8F2FF, specular: 0xffffff} );
 
@@ -101,7 +101,7 @@ SlideGenerator.prototype.addAllSlides3D = function (slideArray, coordsArray) {
 		for(var i = 0; i < slideArray.length; i++) {
 			var group = new THREE.Object3D();
 
-			group.position.set(coordsArray[i][0]-2500,coordsArray[i][1] + 1000,coordsArray[i][2]);
+			group.position.set(coordsArray[i][0]-2500,coordsArray[i][1] + 2000,coordsArray[i][2]);
 
 			var coordsArr = [group.position.x, group.position.y, group.position.z]
 
@@ -132,12 +132,12 @@ SlideGenerator.prototype.addAllSlides3D = function (slideArray, coordsArray) {
 						var slideMaterial = new THREE.MeshPhongMaterial( {color: 0xffffff, specular: 0xffffff} );
 
 					} else if (nodes[j].localName ==='p'){
-						
+
 						var slideGeo = new THREE.TextGeometry('     - ' +text, generateProps(100));
 						var slideMaterial = new THREE.MeshPhongMaterial( {color: 0xB8F2FF, specular: 0xffffff} );
 
 					} else if (nodes[j].localName ==='span'){
-						
+
 						var slideGeo = new THREE.TextGeometry('            ' +text, generateProps(100));
 						var slideMaterial = new THREE.MeshPhongMaterial( {color: 0xB8F2FF, specular: 0xffffff} );
 
