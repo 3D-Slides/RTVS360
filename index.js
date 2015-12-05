@@ -13,7 +13,7 @@ var loader;
 
 // window.onload = function(){
 
-	
+
 // }
 
 init();
@@ -25,7 +25,7 @@ var slidesPositions = [[0,0,0],[2000,0,0],[4000,0,0]];
 var TwoDPositions = [[0,1000,0],[2000,1000,0],[4000,1000,0]];
 var slidesArray = SlideGenerator.getSlides();
 SlideGenerator.addAllSlides3D( slidesArray, slidesPositions );
-SlideGenerator.addAllSlides(slidesArray, TwoDPositions);
+//SlideGenerator.addAllSlides(slidesArray, TwoDPositions);
 //:::::::::::::::::::
 
 function init() {
@@ -78,7 +78,9 @@ function init() {
 	floor = new THREE.Mesh(floorGeometry, floorMaterial);
 	floor.rotation.x = -Math.PI/2;
 	// floor.position.set(0, -450, -1000);
-	floor.position.set(0, -100, -1000);
+
+	floor.position.set(0, -200, -1000);
+
 	glScene.add(floor);
 
 	// var light = new THREE.HemisphereLight(0xffffbb, 0x080820, 1);
@@ -90,7 +92,7 @@ function init() {
 	var material = new THREE.LineBasicMaterial({
 		// color: 0x01D5DA,
 		color: 0x00D1FF,
-		linewidth: 1
+		linewidth: 5
 	});
 
   for (var i = -size; i <= size; i += step) {
