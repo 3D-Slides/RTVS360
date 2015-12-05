@@ -80,7 +80,7 @@ function init() {
 	var material = new THREE.LineBasicMaterial({
 		// color: 0x01D5DA,
 		color: 0x00D1FF,
-		linewidth: 0.5
+		linewidth: 1
 	});
 
 	for (var i = -size; i <= size; i += step) {
