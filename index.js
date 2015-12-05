@@ -18,9 +18,9 @@ var loader;
 var SlideGenerator3D = new SlideGenerator3D();
 init();
 render();
-var slidesPositions = [[0,0,0],[0,400,0]];
+var slidesPositions = [[0,0,0],[550,0,0], [1100,0,0]];
 var slidesArray = SlideGenerator3D.getSlides();
-SlideGenerator3D.addOneSlide( slidesArray, 0, [0,500,0] );
+SlideGenerator3D.addAllSlides( slidesArray, slidesPositions );
 
 function init() {
 	var WIDTH = window.innerWidth,
@@ -37,7 +37,7 @@ function init() {
 	loader = new THREE.TextureLoader();
 
 	camera = new THREE.PerspectiveCamera(75, ASPECT, 0.1, 40000);
-	camera.position.set (200, 350, 1900);
+	camera.position.set (0, 500, 5000);
 	camera.lookAt(new THREE.Vector3(0, 0, 0));
 
 					// CREATE OPAQUE PLANES FOR ELEMENTS
