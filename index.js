@@ -13,7 +13,6 @@ var loader;
 
 init();
 render();
-
 function init() {
 	var WIDTH = window.innerWidth,
 		HEIGHT = window.innerHeight,
@@ -118,7 +117,7 @@ function render() {
 	glRenderer.render(glScene, camera);
 	cssRenderer.render(cssScene, camera);
 
-	//if (pivot) pivot.rotation.y += 0.01;
+	if(TWEEN) TWEEN.update();
 	camera.lookAt( glScene.position );
 	animate();
 }
@@ -169,5 +168,3 @@ function animate () {
 		threeDOM4.rotation.y = pivot.rotation.y - Math.PI/2;
 	}
 }
-
-
