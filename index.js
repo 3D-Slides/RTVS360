@@ -54,8 +54,8 @@ function init() {
 	lights.castShadow = true;
 	//camera.add(lights);
 
-	var ambientLight = new THREE.AmbientLight(0xf2f2f2)
-	glScene.add(ambientLight);
+	var light = new THREE.HemisphereLight(0xffffff, 0x080820, 1.5);
+	glScene.add(light);
 
 
 					// TODO
