@@ -15,14 +15,18 @@ var loader;
 
 	
 // }
-var SlideGenerator = new SlideGenerator();
+
 init();
 render();
-var slidesPositions = [[0,0,0],[2000,0,0], [4000,0,0]];
-var TwoDPositions = [[0,1000,0],[2000,1000,0], [4000,1000,0]];
+
+//USER INPUT:::::::::
+var SlideGenerator = new SlideGenerator();
+var slidesPositions = [[0,0,0],[2000,0,0],[4000,0,0]];
+var TwoDPositions = [[0,1000,0],[2000,1000,0],[4000,1000,0]];
 var slidesArray = SlideGenerator.getSlides();
 SlideGenerator.addAllSlides3D( slidesArray, slidesPositions );
-SlideGenerator.addAllSlides(slidesArray, TwoDPositions)
+SlideGenerator.addAllSlides(slidesArray, TwoDPositions);
+//:::::::::::::::::::
 
 function init() {
 	var WIDTH = window.innerWidth,
@@ -105,6 +109,7 @@ function init() {
 	document.body.appendChild( cssRenderer.domElement );
 
 	controls = new THREE.TrackballControls(camera, glRenderer.domElement);
+	controls.maxDistance = 9000;
 
 	window.addEventListener( 'resize', onWindowResize, false );
 // create window resize function
