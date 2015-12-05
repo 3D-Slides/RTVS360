@@ -9,7 +9,6 @@ var spaceUrls = ['assets/bottom.jpg',
 // var light = new THREE.HemisphereLight(0xffffff, 0x00d1ff, 1);
 // glScene.add(light);
 
-
 // Temp Cube
 var cubeGeometry = new THREE.BoxGeometry(2000,2000,2000);
 var cubeMaterial = new THREE.MeshPhongMaterial({

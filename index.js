@@ -30,61 +30,49 @@ SlideGenerator.addAllSlides3D( slidesArray, slidesPositions );
 
 function init() {
 
-	var axisHelper = new THREE.AxisHelper(10000);
-
-
 	var WIDTH = window.innerWidth,
 		HEIGHT = window.innerHeight,
 		ASPECT = WIDTH / HEIGHT;
 
 	glScene = new THREE.Scene();
 	cssScene = new THREE.Scene();
-	glScene.add(axisHelper);
-
-	// AXIS HELPER
-	// var axisHelper = new THREE.AxisHelper(1100);
-	// glScene.add( axisHelper );
-
 	loader = new THREE.TextureLoader();
+
+	var axisHelper = new THREE.AxisHelper(10000);
+	glScene.add(axisHelper);
 
 	camera = new THREE.PerspectiveCamera(75, ASPECT, 0.1, 60000);
 	camera.position.set (0, 1500, 20000);
 	camera.lookAt(new THREE.Vector3(0, 0, 0));
+	glScene.add(camera);
 
-					// CREATE OPAQUE PLANES FOR ELEMENTS
+	// Add Directional Light for cube to determine positioning
+	var lights = new THREE.DirectionalLight(0xffffff, 2, 15000);
+	lights.position.set(500, 200, 0);
+	lights.target.position.set(0, 0, -2000);
+	lights.castShadow = true;
+	//camera.add(lights);
+
+	var ambientLight = new THREE.AmbientLight(0xf2f2f2)
+	glScene.add(ambientLight);
+
+
+					// TODO
 /*_____________________________________________________________________*/
-
-	// CONTRUCT A plane TO SHOW CLEAR IN THE BACKGROUND
-	// var slidePlaneGeometry = new THREE.PlaneGeometry(1600, 760);
-	// var slidePlaneMaterial = new THREE.MeshBasicMaterial({
-	// 	color: 0x000000,
-	// 	opacity: 0,
-	// 	side: THREE.DoubleSide,
-	// 	blending: THREE.NoBlending
-	// });
-	// slidePlane = new THREE.Mesh(slidePlaneGeometry, slidePlaneMaterial);
-	// glScene.add(slidePlane);
-	// slidePlane.position.set(0,0,300);
 
 
 	// CONSTRUCT A FLOOR
 	var floorGeometry = new THREE.PlaneGeometry(40000, 42000);
 	var floorMaterial = new THREE.MeshLambertMaterial({
-		color: 0xd3d3d3,
+		color: 0x1d1d1c,
 		// wireframe: true,
 		// wireframeLineWidth: 5,
 		side: THREE.DoubleSide
 	});
 	floor = new THREE.Mesh(floorGeometry, floorMaterial);
 	floor.rotation.x = -Math.PI/2;
-	// floor.position.set(0, -450, -1000);
-
 	floor.position.set(0, -200, -1000);
-
 	glScene.add(floor);
-
-	// var light = new THREE.HemisphereLight(0xffffbb, 0x080820, 1);
-	// glScene.add(light);
 
 	var size = 20000, step = 2000;
 	var yDepth = 0;
@@ -92,10 +80,10 @@ function init() {
 	var material = new THREE.LineBasicMaterial({
 		// color: 0x01D5DA,
 		color: 0x00D1FF,
-		linewidth: 5
+		linewidth: 0.5
 	});
 
-  for (var i = -size; i <= size; i += step) {
+	for (var i = -size; i <= size; i += step) {
 		var geometry = new THREE.Geometry();
 		geometry.vertices.push(new THREE.Vector3(-i, -yDepth, size));
 		geometry.vertices.push(new THREE.Vector3(-i, -yDepth, -size));
@@ -116,20 +104,7 @@ function init() {
 		grid.add(line);
 	}
 	glScene.add(grid);
-
-
 	glScene.fog = new THREE.Fog(0x000000, 2000, 35000);
-
-
-							// CSS ELEMENTS
-/*_____________________________________________________________________*/
-	// var slides = document.getElementsByClassName('reveal')[0];
-	// // console.log(slides);
-	// threeDOM = new THREE.CSS3DObject(slides);
-	// threeDOM.name = "CSS SLIDES";
-	// threeDOM.position.set(0,0,300);
-	// cssScene.add(threeDOM);
-/*_____________________________________________________________________*/
 
 	// CREATE THE GLRENDERER AND APPEND IT ON TOP OF HTML
 	// OR THE CSSRENDERER
@@ -156,8 +131,8 @@ function init() {
 	controls = new THREE.TrackballControls(camera, glRenderer.domElement);
 	// controls.maxDistance = 9000;
 
+	// create window resize function
 	window.addEventListener( 'resize', onWindowResize, false );
-// create window resize function
 	function onWindowResize() {
 
 		WIDTH = window.innerWidth;
@@ -184,20 +159,6 @@ function render() {
 }
 
 function animate () {
-
-	// slidePlane.position.x = item.translateX;
-	// slidePlane.position.y = item.translateY;
-	// slidePlane.position.z = item.translateZ;
-	//
-	// slidePlane.rotation.x = item.rotateX * Math.PI/180;
-	// slidePlane.rotation.y = item.rotateY * Math.PI/180;
-	// slidePlane.rotation.z = item.rotateZ * Math.PI/180;
-	//
-	// slidePlane.scale.set(item.size, item.size, 1);
-	//
-	// threeDOM.position.copy(slidePlane.position);
-	// threeDOM.rotation.copy(slidePlane.rotation);
-	// threeDOM.scale.copy(slidePlane.scale);
 
 	if (threeDOM1) {
 		//plane.rotation.y = pivot.rotation.y;
@@ -228,6 +189,4 @@ function animate () {
 		threeDOM4.position.z = (300 * Math.sin((pivot.rotation.y + Math.PI)*(-1))) + pivot.position.z;
 		threeDOM4.rotation.y = pivot.rotation.y - Math.PI/2;
 	}
-
-	// space.update();
 }
