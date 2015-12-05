@@ -33,42 +33,42 @@ glScene.add(helper);
 
 
 // add spotlight for a bit of light
-  var spotLight0 = new THREE.SpotLight(0xcccccc);
-  spotLight0.position.set(-4000, 6000, -1000);
-  spotLight0.lookAt(plane);
-  glScene.add(spotLight0);
-
-	var spotLightHelper = new THREE.SpotLightHelper( spotLight );
-	glScene.add( spotLightHelper );
-
-  var target = new THREE.Object3D();
-  target.position = new THREE.Vector3(5000, 0, 0);
-
-  var hemiLight = new THREE.HemisphereLight(0x0000ff, 0x00ff00, 20.6);
-  hemiLight.position.set(0, 5000, 0);
-  glScene.add(hemiLight);
-
-  var pointColor = "#ffffff";
-
-
-// var dirLight = new THREE.SpotLight( pointColor);
-  var dirLight = new THREE.DirectionalLight(pointColor);
-  dirLight.position.set(3000, 1000, -5000);
-  dirLight.castShadow = true;
-
-
-// dirLight.shadowCameraNear = 0.1;
-// dirLight.shadowCameraFar = 100;
-// dirLight.shadowCameraFov = 50;
-  dirLight.target = plane;
-  dirLight.shadowCameraNear = 0.1;
-  dirLight.shadowCameraFar = 200;
-  dirLight.shadowCameraLeft = -50;
-  dirLight.shadowCameraRight = 50;
-  dirLight.shadowCameraTop = 50;
-  dirLight.shadowCameraBottom = -50;
-  dirLight.shadowMapWidth = 2048;
-  dirLight.shadowMapHeight = 2048;
+//   var spotLight0 = new THREE.SpotLight(0xcccccc);
+//   spotLight0.position.set(-4000, 6000, -1000);
+//   spotLight0.lookAt(plane);
+//   glScene.add(spotLight0);
+//
+// 	var spotLightHelper = new THREE.SpotLightHelper( spotLight );
+// 	glScene.add( spotLightHelper );
+//
+//   var target = new THREE.Object3D();
+//   target.position = new THREE.Vector3(5000, 0, 0);
+//
+//   var hemiLight = new THREE.HemisphereLight(0x0000ff, 0x00ff00, 20.6);
+//   hemiLight.position.set(0, 5000, 0);
+//   glScene.add(hemiLight);
+//
+//   var pointColor = "#ffffff";
+//
+//
+// // var dirLight = new THREE.SpotLight( pointColor);
+//   var dirLight = new THREE.DirectionalLight(pointColor);
+//   dirLight.position.set(3000, 1000, -5000);
+//   dirLight.castShadow = true;
+//
+//
+// // dirLight.shadowCameraNear = 0.1;
+// // dirLight.shadowCameraFar = 100;
+// // dirLight.shadowCameraFov = 50;
+//   dirLight.target = plane;
+//   dirLight.shadowCameraNear = 0.1;
+//   dirLight.shadowCameraFar = 200;
+//   dirLight.shadowCameraLeft = -50;
+//   dirLight.shadowCameraRight = 50;
+//   dirLight.shadowCameraTop = 50;
+//   dirLight.shadowCameraBottom = -50;
+//   dirLight.shadowMapWidth = 2048;
+//   dirLight.shadowMapHeight = 2048;
 
 
 var materials = [];
