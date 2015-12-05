@@ -17,7 +17,7 @@ var cubeMaterial = new THREE.MeshPhongMaterial({
 
 var cube = new THREE.Mesh(cubeGeometry, cubeMaterial);
 cube.position.set(200, 1500, 16000);
-glScene.add(cube);
+// glScene.add(cube);
 
 var materials = [];
 	for( var i = 0; i < spaceUrls.length; i++) {
