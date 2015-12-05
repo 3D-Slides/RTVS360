@@ -66,7 +66,7 @@ function init() {
 	floor = new THREE.Mesh(floorGeometry, floorMaterial);
 	floor.rotation.x = -Math.PI/2;
 	// floor.position.set(0, -450, -1000);
-	floor.position.set(0, 0, -1000);
+	floor.position.set(0, -200, -1000);
 	glScene.add(floor);
 
 	// var light = new THREE.HemisphereLight(0xffffbb, 0x080820, 1);
