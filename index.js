@@ -29,21 +29,26 @@ SlideGenerator.addAllSlides(slidesArray, TwoDPositions);
 //:::::::::::::::::::
 
 function init() {
+
+	var axisHelper = new THREE.AxisHelper(10000);
+
+
 	var WIDTH = window.innerWidth,
 		HEIGHT = window.innerHeight,
 		ASPECT = WIDTH / HEIGHT;
 
 	glScene = new THREE.Scene();
 	cssScene = new THREE.Scene();
-	
+	glScene.add(axisHelper);
+
 	// AXIS HELPER
 	// var axisHelper = new THREE.AxisHelper(1100);
 	// glScene.add( axisHelper );
 
 	loader = new THREE.TextureLoader();
 
-	camera = new THREE.PerspectiveCamera(75, ASPECT, 0.1, 40000);
-	camera.position.set (0, 500, 5000);
+	camera = new THREE.PerspectiveCamera(75, ASPECT, 0.1, 60000);
+	camera.position.set (0, 1500, 20000);
 	camera.lookAt(new THREE.Vector3(0, 0, 0));
 
 					// CREATE OPAQUE PLANES FOR ELEMENTS
@@ -63,18 +68,56 @@ function init() {
 
 
 	// CONSTRUCT A FLOOR
-	// var floorGeometry = new THREE.PlaneGeometry(7500, 7500);
-	// var floorMaterial = new THREE.MeshBasicMaterial({
-	// 	map:THREE.ImageUtils.loadTexture('assets/lava.jpg'),
-	// 	side: THREE.DoubleSide
-	// });
-	// floor = new THREE.Mesh(floorGeometry, floorMaterial);
-	// floor.rotation.x = -Math.PI/2;
+	var floorGeometry = new THREE.PlaneGeometry(40000, 42000);
+	var floorMaterial = new THREE.MeshLambertMaterial({
+		color: 0xd3d3d3,
+		// wireframe: true,
+		// wireframeLineWidth: 5,
+		side: THREE.DoubleSide
+	});
+	floor = new THREE.Mesh(floorGeometry, floorMaterial);
+	floor.rotation.x = -Math.PI/2;
 	// floor.position.set(0, -450, -1000);
-	// glScene.add(floor);
+	floor.position.set(0, -100, -1000);
+	glScene.add(floor);
 
-	var light = new THREE.HemisphereLight(0xffffbb, 0x080820, 1);
-	glScene.add(light);
+	// var light = new THREE.HemisphereLight(0xffffbb, 0x080820, 1);
+	// glScene.add(light);
+
+	var size = 20000, step = 2000;
+	var yDepth = 0;
+	var grid = new THREE.Group();
+	var material = new THREE.LineBasicMaterial({
+		// color: 0x01D5DA,
+		color: 0x00D1FF,
+		linewidth: 1
+	});
+
+  for (var i = -size; i <= size; i += step) {
+		var geometry = new THREE.Geometry();
+		geometry.vertices.push(new THREE.Vector3(-i, -yDepth, size));
+		geometry.vertices.push(new THREE.Vector3(-i, -yDepth, -size));
+
+		var line = new THREE.Line( geometry, material);
+
+		grid.add(line);
+}
+
+for (var i = -size; i <= size; i += step) {
+
+	var geometry = new THREE.Geometry();
+	geometry.vertices.push(new THREE.Vector3(size, -yDepth, -i));
+	geometry.vertices.push(new THREE.Vector3(-size, -yDepth, -i));
+
+	var line = new THREE.Line( geometry, material);
+
+	grid.add(line);
+}
+	glScene.add(grid);
+
+
+	glScene.fog = new THREE.Fog(0x000000, 2000, 35000);
+
 
 							// CSS ELEMENTS
 /*_____________________________________________________________________*/
@@ -109,7 +152,7 @@ function init() {
 	document.body.appendChild( cssRenderer.domElement );
 
 	controls = new THREE.TrackballControls(camera, glRenderer.domElement);
-	controls.maxDistance = 9000;
+	// controls.maxDistance = 9000;
 
 	window.addEventListener( 'resize', onWindowResize, false );
 // create window resize function
@@ -143,13 +186,13 @@ function animate () {
 	// slidePlane.position.x = item.translateX;
 	// slidePlane.position.y = item.translateY;
 	// slidePlane.position.z = item.translateZ;
-
+	//
 	// slidePlane.rotation.x = item.rotateX * Math.PI/180;
 	// slidePlane.rotation.y = item.rotateY * Math.PI/180;
 	// slidePlane.rotation.z = item.rotateZ * Math.PI/180;
-
+	//
 	// slidePlane.scale.set(item.size, item.size, 1);
-
+	//
 	// threeDOM.position.copy(slidePlane.position);
 	// threeDOM.rotation.copy(slidePlane.rotation);
 	// threeDOM.scale.copy(slidePlane.scale);
@@ -183,6 +226,6 @@ function animate () {
 		threeDOM4.position.z = (300 * Math.sin((pivot.rotation.y + Math.PI)*(-1))) + pivot.position.z;
 		threeDOM4.rotation.y = pivot.rotation.y - Math.PI/2;
 	}
+
+	// space.update();
 }
-
-
