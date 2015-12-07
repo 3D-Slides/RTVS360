@@ -7,9 +7,8 @@ function SlideGenerator (){
 // Get all slides from html:
 SlideGenerator.prototype.getSlides = function () {
 	var slides = document.getElementsByClassName('slide');
-
 	return slides;
-}
+};
 
 // Add a single 3d slide:
 SlideGenerator.prototype.addOneSlide3D = function (slideArray, index, coords) {
@@ -17,54 +16,39 @@ SlideGenerator.prototype.addOneSlide3D = function (slideArray, index, coords) {
 	// helper function for TextGeometry Props
 	function generateProps(size){
 		return {
-			size: size,
+			size: size/100,
 			height: 8,
 			curveSegments: 12,
 			font: 'helvetiker'
-		}
+		};
 	}
 
 	var group = new THREE.Object3D();
-	group.position.set(coords[0]-1000,coords[1],coords[2]);
-
-	var coordsArr = [group.position.x, group.position.y, group.position.z]
-
+	group.position.set(coords[0],coords[1],coords[2]);
+	var coordsArr = [group.position.x, group.position.y, group.position.z];
 	var elements = slideArray[index].children;
 
 	// Loop thru all the elements, grabbing each node
 	for(var k = 0; k < elements.length; k++){
-
 		var nodes = elements[k].children;
-
 		// Loop thru nodes, creating the slides
 		for (var j = 0; j < nodes.length; j++){
 			var text = nodes[j].innerText;
-
 			if(nodes[j].localName ==='h1'){
-
 				var slideGeo = new THREE.TextGeometry(text, generateProps(350));
-				var slideMaterial = new THREE.MeshPhongMaterial( {color: 0x00d1ff, specular: 0xffffff} );
-
-			} else if (nodes[j].localName ==='h2'){
-
+				var slideMaterial = new THREE.MeshLambertMaterial( {color: 0x00d1ff} );
+			} else if (nodes[j].localName ==='h2') {
 				var slideGeo = new THREE.TextGeometry(text, generateProps(280));
-				var slideMaterial = new THREE.MeshPhongMaterial( {color: 0xffffff, specular: 0xffffff} );
-
-			} else if (nodes[j].localName ==='h3'){
-
+				var slideMaterial = new THREE.MeshLambertMaterial( {color: 0xffffff} );
+			} else if (nodes[j].localName ==='h3') {
 				var slideGeo = new THREE.TextGeometry('* ' +text, generateProps(250));
-				var slideMaterial = new THREE.MeshPhongMaterial( {color: 0xffffff, specular: 0xffffff} );
-
-			} else if (nodes[j].localName ==='p'){
-
+				var slideMaterial = new THREE.MeshLambertMaterial( {color: 0xffffff} );
+			} else if (nodes[j].localName ==='p') {
 				var slideGeo = new THREE.TextGeometry('     - ' +text, generateProps(200));
-				var slideMaterial = new THREE.MeshPhongMaterial( {color: 0xB8F2FF, specular: 0xffffff} );
-
-			} else if (nodes[j].localName ==='span'){
-
+				var slideMaterial = new THREE.MeshLambertMaterial( {color: 0xB8F2FF} );
+			} else if (nodes[j].localName ==='span') {
 				var slideGeo = new THREE.TextGeometry('            ' +text, generateProps(200));
-				var slideMaterial = new THREE.MeshPhongMaterial( {color: 0xB8F2FF, specular: 0xffffff} );
-
+				var slideMaterial = new THREE.MeshLambertMaterial( {color: 0xB8F2FF} );
 			} else {
 				console.error('Some of yout HTML is not rendering! Please enter valid HTML elements in your slide format (h1, h2, h3, p, span)')
 			}
@@ -79,7 +63,7 @@ SlideGenerator.prototype.addOneSlide3D = function (slideArray, index, coords) {
 		}
 	}
 	glScene.add(group);
-}
+};
 
 // Add all 3d slides in html
 SlideGenerator.prototype.addAllSlides3D = function (slideArray, coordsArray) {
@@ -87,8 +71,8 @@ SlideGenerator.prototype.addAllSlides3D = function (slideArray, coordsArray) {
 	// helper func to get textGeo props
 	function generateProps(size){
 		return {
-			size: size,
-			height: 8,
+			size: size/100,
+			height: 0.5,
 			curveSegments: 12,
 			font: 'helvetiker'
 		}
@@ -101,7 +85,7 @@ SlideGenerator.prototype.addAllSlides3D = function (slideArray, coordsArray) {
 		for(var i = 0; i < slideArray.length; i++) {
 			var group = new THREE.Object3D();
 
-			group.position.set(coordsArray[i][0]-2500,coordsArray[i][1] + 2000,coordsArray[i][2]);
+			group.position.set(coordsArray[i][0],coordsArray[i][1],coordsArray[i][2]);
 
 			var coordsArr = [group.position.x, group.position.y, group.position.z]
 
@@ -119,27 +103,27 @@ SlideGenerator.prototype.addAllSlides3D = function (slideArray, coordsArray) {
 					if(nodes[j].localName ==='h1'){
 
 						var slideGeo = new THREE.TextGeometry(text, generateProps(175));
-						var slideMaterial = new THREE.MeshPhongMaterial( {color: 0x00d1ff, specular: 0xffffff} );
+						var slideMaterial = new THREE.MeshLambertMaterial( {color: 0x00d1ff} );
 
 					} else if (nodes[j].localName ==='h2'){
 
 						var slideGeo = new THREE.TextGeometry(text, generateProps(140));
-						var slideMaterial = new THREE.MeshPhongMaterial( {color: 0xffffff, specular: 0xffffff} );
+						var slideMaterial = new THREE.MeshLambertMaterial( {color: 0xffffff} );
 
 					} else if (nodes[j].localName ==='h3'){
 
 						var slideGeo = new THREE.TextGeometry('* ' +text, generateProps(125));
-						var slideMaterial = new THREE.MeshPhongMaterial( {color: 0xffffff, specular: 0xffffff} );
+						var slideMaterial = new THREE.MeshLambertMaterial( {color: 0xffffff} );
 
 					} else if (nodes[j].localName ==='p'){
 
 						var slideGeo = new THREE.TextGeometry('     - ' +text, generateProps(100));
-						var slideMaterial = new THREE.MeshPhongMaterial( {color: 0xB8F2FF, specular: 0xffffff} );
+						var slideMaterial = new THREE.MeshLambertMaterial( {color: 0xB8F2FF} );
 
 					} else if (nodes[j].localName ==='span'){
 
 						var slideGeo = new THREE.TextGeometry('            ' +text, generateProps(100));
-						var slideMaterial = new THREE.MeshPhongMaterial( {color: 0xB8F2FF, specular: 0xffffff} );
+						var slideMaterial = new THREE.MeshLambertMaterial( {color: 0xB8F2FF} );
 
 					} else {
 						console.error('Some of yout HTML is not rendering! Please enter valid HTML elements in your slide format (h1, h2, h3, p, span)')
@@ -147,11 +131,15 @@ SlideGenerator.prototype.addAllSlides3D = function (slideArray, coordsArray) {
 
 					//create the text shapes
 					var slideMesh = new THREE.Mesh( slideGeo, slideMaterial );
+					slideMesh.castShadow = true;
+					slideMesh.receiveShadow = true;
 					slideMesh.position.set( coordsArr[0], coordsArr[1], coordsArr[2] );
 
 					// Offset each line so they dont lay ontop of eachother:
-					coordsArr = [coordsArr[0], coordsArr[1]-250, coordsArr[2]];
+					coordsArr = [coordsArr[0], coordsArr[1]-4, coordsArr[2]];
 					group.add(slideMesh);
+					group.castShadow = true;
+					group.receiveShadow = true;
 				}
 				glScene.add(group);
 			}
@@ -159,7 +147,7 @@ SlideGenerator.prototype.addAllSlides3D = function (slideArray, coordsArray) {
 	} else {
 		console.error('Your coords do not match up with your slides!');
 	}
-}
+};
 
 // Add a single 2d slide
 SlideGenerator.prototype.addOneSlide = function (slideArray, index, coords) {
@@ -182,9 +170,9 @@ SlideGenerator.prototype.addOneSlide = function (slideArray, index, coords) {
 	//Create CSS slide that lays under transparent plane:
 	slide = slideArray[index];
 	cssObj = new THREE.CSS3DObject(slide);
-	cssObj.position.set(coords[0], coords[1], coords[2])
+	cssObj.position.set(coords[0], coords[1], coords[2]);
 	cssScene.add(cssObj);
-}
+};
 
 // Add all 2d slides in html
 SlideGenerator.prototype.addAllSlides = function (slideArray, coordsArray) {
@@ -218,4 +206,4 @@ SlideGenerator.prototype.addAllSlides = function (slideArray, coordsArray) {
 	} else {
 		console.error('Your coords do not match up with your slides!');
 	}
-}
+};
