@@ -5,7 +5,6 @@ var ReactRouter = require('react-router');
 // var Route = ReactRouter.Route;
 // var IndexRoute = require('react-router').IndexRoute;
 // var Link = require('react-router').Link;
-
 // var Header = require('./components/app.js');
 // var Landing = require('./components/landingComponents/landing');
 // var MainRoom = require('./components/mainRoomComponent');
@@ -110,8 +109,9 @@ var SlidesCreator = React.createClass({
 										<form className="form-horizontal form-bordered">
 											<div className="form-group">
 												<label className="col-md-1 control-label">Markdown</label>
-                      							<div className="col-md-11">
-												<textarea name="content" data-plugin-markdown-editor rows={16} defaultValue={"### Hello there\n    How are you?\n\n    I have a task for you :\n\n    Select from this text...\n    Click the bold on THIS WORD and make THESE ONE italic\n    Link GOOGLE to google.com\n    Test to insert image (and try to tab after write the image description)\n    Test Preview\n    And ending here... Click \"List\"\n\n    Enjoy!"} />
+                      <div className="col-md-11">
+													<textarea name="content" data-plugin-markdown-editor rows={16} defaultValue=
+                          {"### Hello there\n    How are you?\n\n    I have a task for you :\n\n    Select from this text...\n    Click the bold on THIS WORD and make THESE ONE italic\n    Link GOOGLE to google.com\n    Test to insert image (and try to tab after write the image description)\n    Test Preview\n    And ending here... Click \"List\"\n\n    Enjoy!"} />
 												</div>
 											</div>
 
