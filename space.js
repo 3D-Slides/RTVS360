@@ -1,11 +1,12 @@
-var spaceUrls = ['assets/bottom.jpg',
-	'assets/bottom.jpg',
-	'assets/bottom.jpg', // top
-	'assets/bottom.jpg', // bottom
-	'assets/bottom.jpg',
-	'assets/bottom.jpg'];
 
+// Black Background
+// var spaceGeometry = new THREE.CubeGeometry(45000, 45000, 45000);
+// var spaceMaterial = new THREE.MeshBasicMaterial({
+//   color: 0x000000,
+//   side: THREE.BackSide
+// });
 
+<<<<<<< HEAD
 // var light = new THREE.HemisphereLight(0xffffff, 0x00d1ff, 1);
 // glScene.add(light);
 
@@ -36,3 +37,7 @@ var spaceMaterial = new THREE.MeshFaceMaterial(materials);
 
 var space = new THREE.Mesh(spaceGeometry, spaceMaterial);
 glScene.add(space);
+=======
+// var space = new THREE.Mesh(spaceGeometry, spaceMaterial);
+//glScene.add(space);
+>>>>>>> 60478a564c174018780f74727fb000841acc0543
