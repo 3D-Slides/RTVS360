@@ -54,7 +54,7 @@ function init() {
 	lights.castShadow = true;
 	//camera.add(lights);
 
-	var light = new THREE.HemisphereLight(0xffffff, 0x080820, 1.5);
+	var light = new THREE.HemisphereLight(0xffffff, 0x080820, 1);
 	glScene.add(light);
 
 
@@ -65,7 +65,7 @@ function init() {
 	// CONSTRUCT A FLOOR
 	var floorGeometry = new THREE.PlaneGeometry(40000, 42000);
 	var floorMaterial = new THREE.MeshLambertMaterial({
-		color: 0x1d1d1c,
+		color: 0x191919,
 		// wireframe: true,
 		// wireframeLineWidth: 5,
 		side: THREE.DoubleSide
@@ -82,7 +82,6 @@ function init() {
 		// color: 0x01D5DA,
 		color: 0x00D1FF,
 		linewidth: 0.5
-		
 	});
 
 	for (var i = -size; i <= size; i += step) {
