@@ -21,14 +21,22 @@ render();
 
 //USER INPUT:::::::::
 var SlideGenerator = new SlideGenerator();
-var slidesPositions = [[0,0,0],[4000,0,0],[8000,0,0]];
+var slidesPositions = [[0,0,0]];
 var slidesArray = SlideGenerator.getSlides();
 console.log('slidesArray:', slidesArray, 'slidesPositions:', slidesPositions)
 SlideGenerator.addAllSlides3D( slidesArray, slidesPositions );
 //:::::::::::::::::::
 
-function init() {
+var converter = new showdown.Converter(),
+    text      = '#Item 1',
+    html      = converter.makeHtml(text);
 
+document.getElementsByClassName('slide').innerHTML= html;
+console.log(html);
+
+
+function init() {
+	
 	var WIDTH = window.innerWidth,
 		HEIGHT = window.innerHeight,
 		ASPECT = WIDTH / HEIGHT;

@@ -69,7 +69,7 @@ SlideGenerator.prototype.addOneSlide3D = function (slideArray, index, coords) {
 				console.error('Some of yout HTML is not rendering! Please enter valid HTML elements in your slide format (h1, h2, h3, p, span)')
 			}
 
-			// creat mesh for innerText, add to group.
+			// creat mesh for innerText
 			var slideMesh = new THREE.Mesh( slideGeo, slideMaterial );
 			slideMesh.position.set( coordsArr[0], coordsArr[1], coordsArr[2] );
 
@@ -93,7 +93,6 @@ SlideGenerator.prototype.addAllSlides3D = function (slideArray, coordsArray) {
 			font: 'helvetiker'
 		}
 	}
-
 	// Check if Slides Array and Coords Array match up
 	if(slideArray.length === coordsArray.length) {
 
@@ -115,6 +114,7 @@ SlideGenerator.prototype.addAllSlides3D = function (slideArray, coordsArray) {
 				// Loop thru all the nodes, creating 3d text for each
 				for (var j = 0; j < nodes.length; j++){
 					var text = nodes[j].innerText;
+
 
 					if(nodes[j].localName ==='h1'){
 
