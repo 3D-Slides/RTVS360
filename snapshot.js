@@ -13,31 +13,37 @@ var Slideshow = function(camera) {
 	var _transitions = [];
 
 	var move = function(index) {
-		var posTween = new TWEEN.Tween(camera.position);
-		var rotTween = new TWEEN.Tween(camera.rotation);
-		var dest = _snapshots[index];
+		var posTween = new TWEEN.Tween(camera.position),
+			rotTween = new TWEEN.Tween(camera.rotation),
+			look = new TWEEN.Tween(controls.target),
+			dest = _snapshots[index];
 
-		posTween
-			.to({
-				x: dest.location.x,
-				y: dest.location.y,
-				z: dest.location.z
-			})
-			.easing(_transitions[index])
-			.start();
+		posTween.to({
+			x: dest.location.x,
+			y: dest.location.y,
+			z: dest.location.z
+		})
+		.easing(_transitions[index])
+		.start();
 
-		rotTween
-			.to({
-				x: dest.rotation.x,
-				y: dest.rotation.y,
-				z: dest.rotation.z
-			})
-			.easing(_transitions[index])
-			.start();
+		rotTween.to({
+			x: dest.rotation.x,
+			y: dest.rotation.y,
+			z: dest.rotation.z
+		})
+		.easing(_transitions[index])
+		.start();
+
+		look.to({
+			x: dest.location.x,
+			y: dest.location.y,
+			z: 0
+		})
+		.easing(_transitions[index])
+		.start();
 
 		if (_currentSnap === _snapshots.length - 1) _currentSnap = -1;
 	};
-
 
 	this.addSnapshot = function(location, rotation, options) {
 		_snapshots.push( new Snapshot(location, rotation, options) );
@@ -58,18 +64,16 @@ var Slideshow = function(camera) {
 			if (TWEEN.Easing[ease][style]) {
 				_transitions[snapshotNum] = TWEEN.Easing[ease][style];
 			} else {
-				console.error(`There is a problem adding this transition. Please check spelling and/or make sure this transition property exists.`);
+				console.error('There is a problem adding this transition. Please check spelling and/or make sure this transition property exists.');
 			}
-
 			// warn for missing transitions
-			for (var i = 0; i < snapshotNum; i++) {
-				if (!_transitions[i]) count++;
+			for (var j = 0; j < snapshotNum; j++) {
+				if (!_transitions[j]) count++;
 			}
 			if (count > 0) {
-				console.warn(`ALERT! You are missing ${count} transitions between your snapshots.`);
+				console.warn('ALERT! You are missing ' + count + ' transitions between your snapshots.');
 			}
 		}
-		
 	};
 
 	this.presentSlideshow = function () {
@@ -83,30 +87,29 @@ Slideshow.prototype.constructor = Slideshow;
 
 var Snapshot = function(location, rotation, options) {
 	var _this = this;
-	this.coords = {};
+	var _coords = {};
 	if (!rotation) rotation = new THREE.Vector3(0,0,0);
 
-	var loadCoords = function(key, vector) {
+	function loadCoords(key, vector) {
 		if (vector instanceof THREE.Vector3) {
-			_this.coords[key] = JSON.parse(JSON.stringify(vector));
+			_coords[key] = JSON.parse(JSON.stringify(vector));
 		} else if (vector.constructor === Array) {
-			_this.coords[key] = new THREE.Vector3(vector[0], vector[1], vector[2]);
+			_coords[key] = new THREE.Vector3(vector[0], vector[1], vector[2]);
 		} else {
 			console.error("These are not coordinates!");
 		}
-	};
+	}
 
 	loadCoords('location', location);
 	loadCoords('rotation', rotation);
-
-	return this.coords;
+	return _coords;
 };
 Snapshot.prototype.constructor = Snapshot;
 
 var x = new Slideshow(camera);
 x.addSnapshot(camera.position, [0, 0, 0], null);
-x.addSnapshot([300, 700, 300]);
-x.addSnapshot([1000, -1000, 1500], [0, 0, Math.PI/2]);
+x.addSnapshot([8000, 3500, 5000]);
+x.addSnapshot([16000, 3500, 5000]);
 x.addTransitionTo('all', 'Cubic.InOut');
 
 
