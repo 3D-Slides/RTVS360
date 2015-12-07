@@ -79,43 +79,6 @@
 }).apply(this, [ jQuery ]);
 
 
-// MaxLength
-(function( $ ) {
-
-	'use strict';
-
-	if ( $.isFunction( $.fn[ 'maxlength' ]) ) {
-
-		$(function() {
-			$('[data-plugin-maxlength]').each(function() {
-				var $this = $( this ),
-					opts = {};
-
-				var pluginOptions = $this.data('plugin-options');
-				if (pluginOptions)
-					opts = pluginOptions;
-
-				$this.themePluginMaxLength(opts);
-			});
-		});
-
-	}
-
-}).apply(this, [ jQuery ]);
-
-
-(function( $ ) {
-
-	'use strict';
-
-	if ( $.isFunction( $.fn[ 'placeholder' ]) ) {
-
-		$('input[placeholder]').placeholder();
-
-	}
-
-}).apply(this, [ jQuery ]);
-
 
 // Select2
 (function( $ ) {
@@ -208,30 +171,6 @@
 					opts = pluginOptions;
 
 				$this.themePluginAnimate(opts);
-			});
-		});
-
-	}
-
-}).apply(this, [ jQuery ]);
-
-// Carousel
-(function( $ ) {
-
-	'use strict';
-
-	if ( $.isFunction($.fn[ 'owlCarousel' ]) ) {
-
-		$(function() {
-			$('[data-plugin-carousel]').each(function() {
-				var $this = $( this ),
-					opts = {};
-
-				var pluginOptions = $this.data('plugin-options');
-				if (pluginOptions)
-					opts = pluginOptions;
-
-				$this.themePluginCarousel(opts);
 			});
 		});
 
