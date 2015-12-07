@@ -34,7 +34,7 @@ function init() {
 	camera.position.set (0, 10, 30);
 	camera.lookAt(new THREE.Vector3(0, 0, 0));
 	glScene.add(camera);
-
+	
 	spotLight = new THREE.SpotLight(0xffffff, 2, 1000, Math.PI/3, 0.001);
 	spotLight.position.copy( camera.position );
 	spotLight.castShadow = true;
@@ -48,15 +48,10 @@ function init() {
 	glScene.add(spotLightHelper);
 	
 
-
 					// CONSTRUCTING A TRON GRID
 /*_____________________________________________________________________*/
 	// CONSTRUCT A FLOOR
-	var floorGeometry = new THREE.PlaneGeometry(400, 400, 80, 80);
-	var floorMaterial = new THREE.MeshPhongMaterial({
-		color: 0x1F1E24,
-		side: THREE.DoubleSide,
-	});
+
 	floor = new THREE.Mesh(floorGeometry, floorMaterial);
 	floor.rotation.x = -Math.PI/2;
 	floor.position.set(0, -0.1, 0);
@@ -139,5 +134,3 @@ function render() {
 	TWEEN.update();
 	//animate();
 }
-
-//function animate () {}

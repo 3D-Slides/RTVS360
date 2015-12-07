@@ -1,0 +1,26 @@
+{
+  "name": "RealTimeVid",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.jsx",
+  "scripts": {
+    "start": "nodemon server/server.js"
+  },
+  "author": "Joshua David, James Burnell, Will Gottschalk",
+  "license": "ISC",
+  "dependencies": {
+    "browserify": "*",
+    "express": "^4.13.3",
+    "gulp": "*",
+    "history": "^1.13.1",
+    "jquery": "*",
+    "nodemon": "^1.8.1",
+    "path": "^0.12.7",
+    "react": "^0.14.2",
+    "react-dom": "*",
+    "react-router": "^1.0.0",
+    "reactify": "*",
+    "vinyl-source-stream": "*",
+    "watchify": "*"
+  }
+}
