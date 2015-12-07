@@ -1,18 +1,12 @@
 
-
 var converter = new showdown.Converter(),
-    text      = 'A First Level Header\n'+
-				'====================\n'+
 
-				'A Second Level Header\n'+
-				'---------------------\n'+
-				'\n'+
-				'paragraph is paragrah is paragraph is paragraph is paragraph second half second half second half second half\n' +
-				'\n'+
-				'paragraph is paragraph',
+	text =  "A Second Level Header  ---------------------  Now is the time for all good men to come to  the aid",
 
-				
-    html      = converter.makeHtml(text);
+	trimmed = text.replace(/\s\s+/g, '\n');
+	console.log("trimmed:", trimmed);
+
+    html      = converter.makeHtml(trimmed);
 
 document.getElementById('slides').innerHTML = html;
 console.log('converted:', html);

@@ -100,21 +100,21 @@ var firstHalf, secondHalf;
 				for (var j = 0; j < nodes.length; j++){
 					
 					var text = nodes[j].innerText;
-					
+
 					console.log('text:', text);
-					if(nodes[j].localName ==='h1'){
+					if(nodes[j].localName === 'h1' ) {
 						var slideGeo = new THREE.TextGeometry(text, generateProps(175));
 						var slideMaterial = new THREE.MeshLambertMaterial( {color: 0x00d1ff} );
 
-					} else if (nodes[j].localName ==='h2'){
+					} else if (nodes[j].localName === 'h2' ) {
 						var slideGeo = new THREE.TextGeometry(text, generateProps(140));
 						var slideMaterial = new THREE.MeshLambertMaterial( {color: 0xffffff} );
 
-					} else if (nodes[j].localName ==='h3'){
+					} else if (nodes[j].localName === 'h3' ) {
 						var slideGeo = new THREE.TextGeometry('* ' +text, generateProps(125));
 						var slideMaterial = new THREE.MeshLambertMaterial( {color: 0xffffff} );
 
-					} else if (nodes[j].localName ==='p'){
+					} else if (nodes[j].localName === 'p' ) {
 
 						if(text.length < 100){
 							var slideGeo = new THREE.TextGeometry('     - ' +text, generateProps(100));
@@ -137,19 +137,12 @@ var firstHalf, secondHalf;
 							} else {
 								cutParagraphs(firstHalf);
 							}
-							if(secondHalf.length < 100){
-								console.log('secondhalf:',secondHalf)
-								var slideGeo = new THREE.TextGeometry('     - ' +secondHalf, generateProps(100));
-								var slideMaterial = new THREE.MeshLambertMaterial( {color: 0xB8F2FF} );
-							} else {
-								cutParagraphs(secondHalf);
-							}
 
-							// console.log('first half:', firstHalf)
-							// console.log('second half:', secondHalf)
+							// console.log( 'first half:', firstHalf )
+							// console.log( 'second half:', secondHalf )
 						}
 						
-					} else if (nodes[j].localName ==='span'){
+					} else if (nodes[j].localName ==='span') {
 						var slideGeo = new THREE.TextGeometry('            ' +text, generateProps(100));
 						var slideMaterial = new THREE.MeshLambertMaterial( {color: 0xB8F2FF} );
 					} else {
