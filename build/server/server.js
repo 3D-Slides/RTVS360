@@ -1,25 +1,31 @@
 var express = require('express');
+var cors = require('cors');
+var request = require('request');
 var path = require('path');
-var React = require('react');
-var ReactRouter = require('react-router');
-var Router = ReactRouter.Router;
-var history = require('history').createBrowserHistory
+var bodyParser = require('body-parser');
 
 var ReactDOMServer = require('react-dom/server');
 
 var app = express();
 
-app.use(express.static(path.join(__dirname + './../')))
-// var routes = require('../client/routes');
+app.use(bodyParser.text({ type: 'text/html' }));
 
-// app.use(function(req, res) {
-// 	ReactDOMServer.renderToString(<Router routes={routes} />)
-// })
+app.use(cors());
+
+app.use(express.static(path.join(__dirname + './../../')))
 
 app.get('/', function(req, res) {
-	res.sendFile(path.join(__dirname + 'index.html'))
+	res.sendFile(path.join(__dirname + './../index.html'))
 })
 
-app.listen(3100, function(){
-	console.log("The server is connected!' ...");
+app.get('/presentation', function(req, res) {
+	res.sendFile(path.join(__dirname +'./../../presentation.html'));
+})
+
+app.post('/presentation', function(req, res) {
+	res.send();
+})
+
+app.listen(3131, function(){
+	console.log("Yo fool! The server is connected on port 3131! ...");
 });
