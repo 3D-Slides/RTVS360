@@ -3,23 +3,32 @@
 var Slideshow = function(camera) {
 	document.addEventListener('keydown', function(e) {
 		if (e.keyIdentifier === 'Left' || e.keyIdentifier === 'Right') TWEEN.removeAll();
-		if (e.keyIdentifier === 'Right') move(_currentSnap++);
-		if (e.keyIdentifier === 'Left') move(_currentSnap--);
+		if (e.keyIdentifier === 'Right') move(++_currentSnap);
+		if (e.keyIdentifier === 'Left') move(--_currentSnap);
 	});
 	// Private Variables
 	var _this = this;
 	var _snapshots = [];
-	var _currentSnap = 0;
+	var _currentSnap = -1;
 	var _transitions = [];
 
 	var move = function(index) {
+		console.log(index);
+		if (index > _snapshots.length - 1) {
+			_currentSnap = index = 0;
+		}
+		if (index < 0) {
+			_currentSnap = index = 9;
+		}
+		console.log(_currentSnap, index);
+
 		var posTween = new TWEEN.Tween(camera.position),
 			targetTween = new TWEEN.Tween(marker.position),
 			look = new TWEEN.Tween(controls.target),
 			dest = _snapshots[index];
 
 		posTween.to({
-			x: dest.location.x + 12.5,
+			x: dest.location.x,
 			y: dest.location.y + 17,
 			z: (dest.location.z + 30)
 		}, 1500)
@@ -27,7 +36,7 @@ var Slideshow = function(camera) {
 		.start();
 
 		targetTween.to({
-			x: dest.location.x + 12.5,
+			x: dest.location.x,
 			y: dest.location.y,
 			z: dest.location.z
 		})
@@ -35,12 +44,13 @@ var Slideshow = function(camera) {
 		.start();
 
 		look.to({
-			x: dest.location.x + 12.5,
+			x: dest.location.x,
 			y: dest.location.y,
 			z: dest.location.z
 		})
 		.easing(_transitions[index])
 		.start();
+
 	};
 
 	this.addSnapshot = function(location, rotation, options) {
