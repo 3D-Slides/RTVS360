@@ -4,20 +4,19 @@ var cssScene, cssRenderer, cssMeshes;
 var camera, controls, spotLight;
 var cameraPivot;
 var loader;
+var SlideGenerator = new SlideGenerator();
+var posArray = [];
+for (var z = -50; z < 150; z += 100) {
+	for(var x = -85; x < 115; x+=40) {
+		posArray.push([x, 10, z]);
+	}
+}
 
 init();
 render();
 
-var SlideGenerator = new SlideGenerator();
-var posArray = [];
-for(var x = -100; x < 100; x+=40) {
-	for (var z = -50; z < 150; z += 100) {
-		posArray.push([x, 10, z]);
-	}
-}
-var slidesPositions = [[-10,20,0],[0,5,0],[10,5,0]];
+
 var slidesArray = SlideGenerator.getSlides();
-console.log(posArray.length, slidesArray.length);
 SlideGenerator.addAllSlides3D( slidesArray, posArray );
 //:::::::::::::::::::
 
@@ -29,13 +28,12 @@ function init() {
 		ASPECT = WIDTH / HEIGHT;
 
 	glScene = new THREE.Scene();
-	//glScene.fog = new THREE.FogExp2(0x000000, 0.05);
+	glScene.fog = new THREE.FogExp2(0x000000, 0.015);
 	cssScene = new THREE.Scene();
 	loader = new THREE.TextureLoader();
 
 	camera = new THREE.PerspectiveCamera(75, ASPECT, 0.1, 20000);
-	camera.position.set (0, 10, 20);
-	camera.lookAt(new THREE.Vector3(0, 0, 0));
+	camera.position.set (0, 5, 0);
 
 	glScene.add(camera);
 
@@ -49,19 +47,18 @@ function init() {
 	camera.add(spotLight);
 
 	glScene.add(camera);
-
-	var spotLightHelper = new THREE.SpotLightHelper(spotLight);
-	glScene.add(spotLightHelper);
 	
 
 					// CONSTRUCTING A TRON GRID
 /*_____________________________________________________________________*/
-	var markerGeometry = new THREE.BoxGeometry(80, 0.5, 40);
+	var markerGeometry = new THREE.BoxGeometry(0.5, -0.5, 0.5);
 	var markerMaterial = new THREE.MeshBasicMaterial({
-		color: 0xFF0000
+		color: 0xFF0000,
+		alpha: 0
 	});
 	marker = new THREE.Mesh(markerGeometry, markerMaterial);
-	marker.position.set(-160, 0, -50);
+	console.log(posArray);
+	marker.position.set(0,0,0);
 	glScene.add(marker);
 
 	// CONSTRUCT A FLOOR
@@ -70,7 +67,7 @@ function init() {
 	var floorMaterial = new THREE.MeshPhongMaterial({
 		color: 0x1F1E24,
 		side: THREE.DoubleSide
-	})
+	});
 	floor = new THREE.Mesh(floorGeometry, floorMaterial);
 	floor.rotation.x = -Math.PI/2;
 	floor.position.set(0, -0.1, 0);

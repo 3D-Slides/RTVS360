@@ -3,8 +3,8 @@
 var Slideshow = function(camera) {
 	document.addEventListener('keydown', function(e) {
 		if (e.keyIdentifier === 'Left' || e.keyIdentifier === 'Right') TWEEN.removeAll();
-		if (e.keyIdentifier === 'Right') move(++_currentSnap);
-		if (e.keyIdentifier === 'Left') move(--_currentSnap);
+		if (e.keyIdentifier === 'Right') move(_currentSnap++);
+		if (e.keyIdentifier === 'Left') move(_currentSnap--);
 	});
 	// Private Variables
 	var _this = this;
@@ -14,35 +14,33 @@ var Slideshow = function(camera) {
 
 	var move = function(index) {
 		var posTween = new TWEEN.Tween(camera.position),
-			rotTween = new TWEEN.Tween(camera.rotation),
+			targetTween = new TWEEN.Tween(marker.position),
 			look = new TWEEN.Tween(controls.target),
 			dest = _snapshots[index];
 
 		posTween.to({
-			x: dest.location.x,
+			x: dest.location.x + 12.5,
+			y: dest.location.y + 17,
+			z: (dest.location.z + 30)
+		}, 1500)
+		.easing(_transitions[index])
+		.start();
+
+		targetTween.to({
+			x: dest.location.x + 12.5,
 			y: dest.location.y,
 			z: dest.location.z
 		})
 		.easing(_transitions[index])
 		.start();
 
-		rotTween.to({
-			x: dest.rotation.x,
-			y: dest.rotation.y,
-			z: dest.rotation.z
-		})
-		.easing(_transitions[index])
-		.start();
-
 		look.to({
-			x: dest.location.x,
+			x: dest.location.x + 12.5,
 			y: dest.location.y,
-			z: 0
+			z: dest.location.z
 		})
 		.easing(_transitions[index])
 		.start();
-
-		if (_currentSnap === _snapshots.length - 1) _currentSnap = -1;
 	};
 
 	this.addSnapshot = function(location, rotation, options) {
@@ -106,11 +104,13 @@ var Snapshot = function(location, rotation, options) {
 };
 Snapshot.prototype.constructor = Snapshot;
 
-var x = new Slideshow(camera);
-x.addSnapshot(camera.position, [0, 0, 0], null);
-x.addSnapshot([-15, 10, 20]);
-x.addSnapshot([15, 10, 20]);
-x.addTransitionTo('all', 'Cubic.InOut');
+var show = new Slideshow(camera);
+posArray.forEach(function(coord) {
+	moveCoord = [coord[0] * 2, coord[1], coord[2] * 2];
+	console.log(coord, moveCoord);
+	show.addSnapshot(moveCoord);
+});
+show.addTransitionTo('all', 'Quadratic.InOut');
 
 
 
