@@ -101,17 +101,14 @@ SlideGenerator.prototype.addAllSlides3D = function (slideArray, coordsArray) {
 		slideMesh.castShadow = true;
 		slideMesh.receiveShadow = true;
 		// slideMesh.position.set( coordsArr[0], coordsArr[1], coordsArr[2] );
-		
+
 			// Offset each line so they dont lay ontop of eachother:
 			if(nodes[j].src){
-				console.log("LocalName!", nodes[j].localName)
 				coordsArr = [coordsArr[0], coordsArr[1]-10, coordsArr[2]];	
 				slideMesh.position.set( coordsArr[0], coordsArr[1], coordsArr[2] );
-
 			} else {
 				coordsArr = [coordsArr[0], coordsArr[1]-4, coordsArr[2]];	
 				slideMesh.position.set( coordsArr[0], coordsArr[1], coordsArr[2] );
-				
 			}
 		group.add(slideMesh);
 		group.castShadow = true;
@@ -168,14 +165,15 @@ SlideGenerator.prototype.addAllSlides3D = function (slideArray, coordsArray) {
 
 						// LOAD IMAGES AND MAP ONTO PLANE/SPRITE GEOMETRY
 					} else if (nodes[j].localName === 'img') {
-						var texture = THREE.ImageUtils.loadTexture(nodes[j].src);
+						console.log('src: ', nodes[j].height);
 						THREE.ImageUtils.crossOrigin = "anonymous";
+						var texture = THREE.ImageUtils.loadTexture(nodes[j].src);
 
 						// RENDER SPRITES
 						var material = new THREE.SpriteMaterial( {map: texture, color: 0xffffff, fog: true} )
 						var sprite = new THREE.Sprite( material )
-						sprite.position.set( coordsArr[0]+12.5, coordsArr[1]-10, coordsArr[2] );
-						sprite.scale.set( 25, 15, 10 );
+						sprite.position.set( coordsArr[0]+10, coordsArr[1]-12, coordsArr[2] );
+						sprite.scale.set( nodes[j].width/35, nodes[j].height/35, 10 );
 						sprite.castShadow = true;
 						sprite.receiveShadow = true;
 						group.add(sprite)
