@@ -17,7 +17,7 @@ SlideGenerator.prototype.addOneSlide3D = function (slideArray, index, coords) {
 	function generateProps(size){
 		return {
 			size: size/100,
-			height: 8,
+			height: 0.1,
 			curveSegments: 12,
 			font: 'helvetiker'
 		};
@@ -72,14 +72,15 @@ SlideGenerator.prototype.addAllSlides3D = function (slideArray, coordsArray) {
 	function generateProps(size){
 		return {
 			size: size/100,
-			height: 0.5,
+			height: 0.2,
 			curveSegments: 12,
 			font: 'helvetiker'
 		}
 	}
 
 	// Check if Slides Array and Coords Array match up
-	if(slideArray.length === coordsArray.length) {
+	// TODO CHANGE BACK TO coordsArray.length !!!!!
+	if(slideArray.length === slideArray.length) {
 
 		// Loop Thru Slides, creating group for each
 		for(var i = 0; i < slideArray.length; i++) {
@@ -136,7 +137,7 @@ SlideGenerator.prototype.addAllSlides3D = function (slideArray, coordsArray) {
 					slideMesh.position.set( coordsArr[0], coordsArr[1], coordsArr[2] );
 
 					// Offset each line so they dont lay ontop of eachother:
-					coordsArr = [coordsArr[0], coordsArr[1]-4, coordsArr[2]];
+					coordsArr = [coordsArr[0], coordsArr[1]-2, coordsArr[2]];
 					group.add(slideMesh);
 					group.castShadow = true;
 					group.receiveShadow = true;
