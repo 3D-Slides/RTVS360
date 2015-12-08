@@ -100,14 +100,17 @@ SlideGenerator.prototype.addAllSlides3D = function (slideArray, coordsArray) {
 		var slideMesh = new THREE.Mesh( slideGeo, slideMaterial );
 		slideMesh.castShadow = true;
 		slideMesh.receiveShadow = true;
-		slideMesh.position.set( coordsArr[0], coordsArr[1], coordsArr[2] );
+		// slideMesh.position.set( coordsArr[0], coordsArr[1], coordsArr[2] );
 			// Offset each line so they dont lay ontop of eachother:
-			if(nodes[j].localName === 'img'){
-			console.log("LocalName!", nodes[j].localName)
-				coordsArr = [coordsArr[0], coordsArr[1]-20, coordsArr[2]];	
-			} 
-			if (nodes[j].localName !== 'img'){
+			if(nodes[j].src){
+				console.log("LocalName!", nodes[j].localName)
+				coordsArr = [coordsArr[0], coordsArr[1]-10, coordsArr[2]];	
+				slideMesh.position.set( coordsArr[0], coordsArr[1], coordsArr[2] );
+
+			} else {
 				coordsArr = [coordsArr[0], coordsArr[1]-4, coordsArr[2]];	
+				slideMesh.position.set( coordsArr[0], coordsArr[1], coordsArr[2] );
+				
 			}
 		group.add(slideMesh);
 		group.castShadow = true;
@@ -170,7 +173,8 @@ SlideGenerator.prototype.addAllSlides3D = function (slideArray, coordsArray) {
 							console.log('ImgNode: ', nodes[j]);
 							var slideGeo = new THREE.PlaneGeometry(25,15);
 							var slideMaterial = new THREE.MeshLambertMaterial({
-								map: texture
+								map: texture,
+								side: THREE.DoubleSide
 							});
 							setMesh( slideGeo, slideMaterial );
 
