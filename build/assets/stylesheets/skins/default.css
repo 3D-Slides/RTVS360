@@ -315,6 +315,7 @@ p.drop-caps.colored.secundary:first-child:first-letter {
 /* Page Header */
 .page-header h2 {
 	border-bottom-color: #5cebff;
+	width: 100%;
 }
 
 .page-header .sidebar-right-toggle:hover {

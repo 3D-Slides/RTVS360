@@ -1,6 +1,6 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
-var ReactRouter = require('react-router');
+// var ReactRouter = require('react-router');
 
 
 var MarkDown = React.createClass({
@@ -30,17 +30,17 @@ var MarkDown = React.createClass({
 									<div className="panel-body">
 										<form className="form-horizontal form-bordered">
 											<div className="form-group">
-												<label className="col-md-1 control-label">Markdown</label>
-                      <div className="col-md-11">
-													<textarea name="content" data-plugin-markdown-editor  rows={16} defaultValue=
-                          {"### Hello there\n    How are you?\n\n    I have a task for you :\n\n    Select from this text...\n    Click the bold on THIS WORD and make THESE ONE italic\n    Link GOOGLE to google.com\n    Test to insert image (and try to tab after write the image description)\n    Test Preview\n    And ending here... Click \"List\"\n\n    Enjoy!"} />
+												{/* <label className="col-md-1 control-label">Markdown</label> */}
+                      <div className="col-md-12">
+													<textarea name="content" data-plugin-markdown-editor  data-savable="true" rows={17} defaultValue=
+                          {"### Hello there\n\n    How are you?\n\n    I have a task for you :\n\n    Select from this text...\n\n    Click the bold on THIS WORD and make THESE WORDS italic\n\n    Link GOOGLE to google.com\n\n    Test to insert an image (and try to tab over after you write the image in the description)\n    And ending here...\n\n    Enjoy!"} />
 												</div>
 											</div>
 
-                      <label className="checkbox">
+                      { /* <label className="checkbox">
                       </label>
                       <hr />
-                      <button type="submit" className="btn">Submit</button>
+                      <button type="submit" className="btn btn-info">Submit</button> */ }
 
 										</form>
 									</div>
