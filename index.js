@@ -4,20 +4,27 @@ var cssScene, cssRenderer, cssMeshes;
 var camera, controls, spotLight;
 var cameraPivot;
 var loader;
+
 var SlideGenerator = new SlideGenerator();
 var posArray = [];
 for (var z = -50; z < 150; z += 100) {
-	for(var x = -85; x < 115; x+=40) {
-		posArray.push([x, 20, z]);
+		for(var x = -85; x < 115; x+=40) {
+			posArray.push([x, 20, z]);
+		}
 	}
-}
 
+window.onload = function(){
+	
+	
+	var slidesArray = SlideGenerator.getSlides();
+	SlideGenerator.addAllSlides3D( slidesArray, posArray );
+	
+}
 init();
 render();
 
 
-var slidesArray = SlideGenerator.getSlides();
-SlideGenerator.addAllSlides3D( slidesArray, posArray );
+
 //:::::::::::::::::::
 
 function init() {
