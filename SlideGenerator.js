@@ -89,7 +89,7 @@ SlideGenerator.prototype.addAllSlides3D = function (slideArray, coordsArray) {
 	function generateProps(size){
 		return {
 			size: size/100,
-			height: 0.1,
+			height: 0.2,
 			curveSegments: 12,
 			font: 'helvetiker'
 		}
@@ -122,7 +122,7 @@ SlideGenerator.prototype.addAllSlides3D = function (slideArray, coordsArray) {
 				// Loop through the elements of eachSlide, finding the nodes:
 			for(var k = 0; k < elements.length; k++){
 				var nodes = elements[k].children;
-				console.log('nodes:',nodes)
+				//console.log('nodes:',nodes)
 
 					// Loop thru all the nodes, creating 3d text for each:
 				for (var j = 0; j < nodes.length; j++){
@@ -152,7 +152,7 @@ SlideGenerator.prototype.addAllSlides3D = function (slideArray, coordsArray) {
 						var liElements = nodes[j].children;
 
 						for(var h = 0; h < liElements.length; h++) {
-							console.log('li:', liElements[h]);
+							//console.log('li:', liElements[h]);
 							var liText = liElements[h].innerText;
 							var slideGeo = new THREE.TextGeometry('         - ' +liText, generateProps(100));
 							var slideMaterial = new THREE.MeshLambertMaterial( {color: 0xB8F2FF} );
@@ -161,7 +161,7 @@ SlideGenerator.prototype.addAllSlides3D = function (slideArray, coordsArray) {
 
 						// Not working yet!
 					} else if (nodes[j].localName === 'img') {
-						console.log('in img')
+						//console.log('in img')
 						loader.load('assets/lp0xdkiphsondrnxtzqi.jpg', function ( texture ) {
 							var slideGeo = new THREE.PlaneGeometry(500,500);
 							var slideMaterial = new THREE.MeshLambertMaterial({
