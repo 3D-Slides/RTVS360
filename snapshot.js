@@ -19,7 +19,7 @@ var Slideshow = function(camera) {
 			dest = _snapshots[index];
 
 		posTween.to({
-			x: dest.location.x + 12.5,
+			x: dest.location.x + 7,
 			y: dest.location.y + 17,
 			z: (dest.location.z + 30)
 		}, 1500)
@@ -27,7 +27,7 @@ var Slideshow = function(camera) {
 		.start();
 
 		targetTween.to({
-			x: dest.location.x + 12.5,
+			x: dest.location.x + 7,
 			y: dest.location.y,
 			z: dest.location.z
 		})
@@ -35,7 +35,7 @@ var Slideshow = function(camera) {
 		.start();
 
 		look.to({
-			x: dest.location.x + 12.5,
+			x: dest.location.x + 7,
 			y: dest.location.y,
 			z: dest.location.z
 		})
