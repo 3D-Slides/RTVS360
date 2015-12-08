@@ -18,15 +18,15 @@ var Header = React.createClass({
   					</div>
   				</div>
 
-          <div className="container-fluid">
+          { /*<div className="container-fluid">
           <ul className="nav navbar-nav navbar-right">
             <li><a href="#">HOME</a></li>
 
             <li><a href="#">ABOUT</a></li>
-            
+
             <li><a href="#">CREATE SLIDES</a></li>
           </ul>
-        </div>
+        </div> */}
   			</header>
 
   			{/* end: header */}
