@@ -108,8 +108,8 @@ Snapshot.prototype.constructor = Snapshot;
 
 var x = new Slideshow(camera);
 x.addSnapshot(camera.position, [0, 0, 0], null);
-x.addSnapshot([8000, 3500, 5000]);
-x.addSnapshot([16000, 3500, 5000]);
+x.addSnapshot([-15, 10, 20]);
+x.addSnapshot([15, 10, 20]);
 x.addTransitionTo('all', 'Cubic.InOut');
 
 

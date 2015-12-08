@@ -17,7 +17,7 @@ SlideGenerator.prototype.addOneSlide3D = function (slideArray, index, coords) {
 	function generateProps(size){
 		return {
 			size: size/100,
-			height: 8,
+			height: 0.1,
 			curveSegments: 12,
 			font: 'helvetiker'
 		};
@@ -108,7 +108,6 @@ SlideGenerator.prototype.addAllSlides3D = function (slideArray, coordsArray) {
 		group.receiveShadow = true;
 		
 	}
-
 		// Check if Slides Array and Coords Array match up:
 	if(slideArray.length === coordsArray.length) {
 
