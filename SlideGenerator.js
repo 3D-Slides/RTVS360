@@ -168,8 +168,10 @@ SlideGenerator.prototype.addAllSlides3D = function (slideArray, coordsArray) {
 
 						// LOAD IMAGES AND MAP ONTO PLANE/SPRITE GEOMETRY
 					} else if (nodes[j].localName === 'img') {
-						var texture = THREE.ImageUtils.loadTexture(nodes[j].src);
+						console.log('first time', nodes[j].height);
 						THREE.ImageUtils.crossOrigin = "anonymous";
+						var texture = THREE.ImageUtils.loadTexture(nodes[j].src);
+						console.log('second time', nodes[j]);
 
 						// RENDER SPRITES
 						var material = new THREE.SpriteMaterial( {map: texture, color: 0xffffff, fog: true} )

@@ -37,7 +37,7 @@ function init() {
 
 	glScene.add(camera);
 
-	spotLight = new THREE.SpotLight(0xffffff, 2, 1000, Math.PI/3, 0.001);
+	spotLight = new THREE.SpotLight(0xffffff, 1.2, 1000, Math.PI/3, 0.001);
 	spotLight.position.copy( camera.position );
 	spotLight.castShadow = true;
 	spotLight.shadowMapWidth = 1024;
