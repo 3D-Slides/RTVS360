@@ -1,8 +1,3 @@
-/*
-Name: 			Theme Base
-Written by: 	Okler Themes - (http://www.okler.net)
-Theme Version: 	1.3.0
-*/
 html,
 body {
 	background: #ecedf0;
@@ -43,7 +38,7 @@ a:active {
 
 /* Layout Base - Header */
 .header {
-	height: 60px;
+	height: 80px;
 	left: 0;
 	position: absolute;
 	right: 0;
@@ -64,6 +59,7 @@ a:active {
 .content-body {
 	display: table-cell;
 	padding: 40px;
+	margin-top: 17px;
 	position: relative;
 	vertical-align: top;
 }
@@ -74,7 +70,7 @@ a:active {
 
 /* Layout Base - Page Header */
 .page-header {
-	background: #171717;
+	background: #191c21;
 	border-bottom: none;
 	border-left: 1px solid #3a3a3a;
 	box-shadow: 1px 3px 0 1px #cccccc;
@@ -198,7 +194,7 @@ a:active {
 		margin: 0;
 		position: fixed;
 		right: 0;
-		top: 60px;
+		top: 80px;
 	}
 
 	/* Layout Fixed - Sidebar Left */
@@ -207,7 +203,7 @@ a:active {
 		left: 0;
 		padding-bottom: 50px;
 		position: fixed;
-		top: 60px;
+		top: 80px;
 	}
 
 	html.fixed .sidebar-left .nano-content {
@@ -1548,7 +1544,7 @@ html.header-dark .header .input-search .input-group-btn .btn-default {
 	right: 0;
 	width: 73px;
 	height: 50px;
-	background-color: #171717;
+	/*background-color: #171717;*/
 	border-radius: 0 0 0 5px;
 	text-align: center;
 	cursor: pointer;

@@ -170,7 +170,7 @@ SlideGenerator.prototype.addAllSlides3D = function (slideArray, coordsArray) {
 								overdraw: 0.5
 							});
 							setMesh( slideGeo, slideMaterial );
-							
+
 						})
 					} else {
 						console.error('Some of yout HTML is not rendering! Please enter valid HTML elements in your slide format (h1, h2, h3, p, span)')
@@ -238,6 +238,7 @@ SlideGenerator.prototype.addAllSlides = function (slideArray, coordsArray) {
 			cssObj = new THREE.CSS3DObject(slide);
 			cssObj.position.set(coordsArray[i][0], coordsArray[i][1], coordsArray[i][2]);
 			cssScene.add(cssObj);
+			
 		}
 	} else {
 		console.error('Your coords do not match up with your slides!');
