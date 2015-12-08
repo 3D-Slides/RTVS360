@@ -102,11 +102,16 @@ SlideGenerator.prototype.addAllSlides3D = function (slideArray, coordsArray) {
 		slideMesh.receiveShadow = true;
 		slideMesh.position.set( coordsArr[0], coordsArr[1], coordsArr[2] );
 			// Offset each line so they dont lay ontop of eachother:
-		coordsArr = [coordsArr[0], coordsArr[1]-4, coordsArr[2]];
+			if(nodes[j].localName === 'img'){
+			console.log("LocalName!", nodes[j].localName)
+				coordsArr = [coordsArr[0], coordsArr[1]-20, coordsArr[2]];	
+			} 
+			if (nodes[j].localName !== 'img'){
+				coordsArr = [coordsArr[0], coordsArr[1]-4, coordsArr[2]];	
+			}
 		group.add(slideMesh);
 		group.castShadow = true;
 		group.receiveShadow = true;
-		
 	}
 		// Check if Slides Array and Coords Array match up:
 	if(slideArray.length === coordsArray.length) {
@@ -150,7 +155,6 @@ SlideGenerator.prototype.addAllSlides3D = function (slideArray, coordsArray) {
 						setMesh( slideGeo, slideMaterial );
 					} else if (nodes[j].localName === 'ul') {	
 						var liElements = nodes[j].children;
-
 						for(var h = 0; h < liElements.length; h++) {
 							console.log('li:', liElements[h]);
 							var liText = liElements[h].innerText;
@@ -159,20 +163,19 @@ SlideGenerator.prototype.addAllSlides3D = function (slideArray, coordsArray) {
 							setMesh( slideGeo, slideMaterial );
 						}
 
-						// Not working yet!
+						// LOAD IMAGES AND MAP ONTO PLANE GEOMETRY
 					} else if (nodes[j].localName === 'img') {
-						console.log('in img')
-						loader.load('assets/lp0xdkiphsondrnxtzqi.jpg', function ( texture ) {
-							var slideGeo = new THREE.PlaneGeometry(500,500);
+						var texture = THREE.ImageUtils.loadTexture(nodes[j].src);
+						THREE.ImageUtils.crossOrigin = "anonymous";
+							console.log('ImgNode: ', nodes[j]);
+							var slideGeo = new THREE.PlaneGeometry(25,15);
 							var slideMaterial = new THREE.MeshLambertMaterial({
-								map: texture, 
-								overdraw: 0.5
+								map: texture
 							});
 							setMesh( slideGeo, slideMaterial );
 
-						})
 					} else {
-						console.error('Some of yout HTML is not rendering! Please enter valid HTML elements in your slide format (h1, h2, h3, p, span)')
+						console.error('Some of yout HTML is not rendering! Please enter valid HTML elements in your slide format (h1, h2, h3, p, ul, li)')
 					}
 				}
 				glScene.add(group);
