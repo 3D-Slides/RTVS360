@@ -8,16 +8,20 @@ var loader;
 init();
 render();
 
-//USER INPUT:::::::::
 var SlideGenerator = new SlideGenerator();
+var posArray = [];
+for(var x = -100; x < 100; x+=40) {
+	for (var z = -50; z < 150; z += 100) {
+		posArray.push([x, 10, z]);
+	}
+}
 var slidesPositions = [[-10,20,0],[0,5,0],[10,5,0]];
 var slidesArray = SlideGenerator.getSlides();
-console.log(slidesArray);
-SlideGenerator.addAllSlides3D( slidesArray, slidesPositions );
+console.log(posArray.length, slidesArray.length);
+SlideGenerator.addAllSlides3D( slidesArray, posArray );
 //:::::::::::::::::::
 
 function init() {
-
 						// INIT SCENE PROCEDURES
 /*_____________________________________________________________________*/
 	var WIDTH = window.innerWidth,
@@ -25,16 +29,18 @@ function init() {
 		ASPECT = WIDTH / HEIGHT;
 
 	glScene = new THREE.Scene();
-	glScene.fog = new THREE.FogExp2(0x000000, 0.05);
+	//glScene.fog = new THREE.FogExp2(0x000000, 0.05);
 	cssScene = new THREE.Scene();
 	loader = new THREE.TextureLoader();
 
 	camera = new THREE.PerspectiveCamera(75, ASPECT, 0.1, 20000);
 	camera.position.set (0, 10, 20);
 	camera.lookAt(new THREE.Vector3(0, 0, 0));
-	
-	spotLight = new THREE.SpotLight(0xffffff, 2, 3000, Math.PI/9, 0.001);
-	spotLight.position.set(0, 20, 35);
+
+	glScene.add(camera);
+
+	spotLight = new THREE.SpotLight(0xffffff, 2, 1000, Math.PI/3, 0.001);
+	spotLight.position.copy( camera.position );
 	spotLight.castShadow = true;
 	spotLight.shadowMapWidth = 1024;
 	spotLight.shadowMapHeight = 1024;
@@ -48,22 +54,23 @@ function init() {
 	glScene.add(spotLightHelper);
 	
 
-
 					// CONSTRUCTING A TRON GRID
 /*_____________________________________________________________________*/
-	var markerGeometry = new THREE.BoxGeometry(0.5, 0.5, 0.5);
+	var markerGeometry = new THREE.BoxGeometry(80, 0.5, 40);
 	var markerMaterial = new THREE.MeshBasicMaterial({
 		color: 0xFF0000
 	});
 	marker = new THREE.Mesh(markerGeometry, markerMaterial);
+	marker.position.set(-160, 0, -50);
 	glScene.add(marker);
 
 	// CONSTRUCT A FLOOR
-	var floorGeometry = new THREE.PlaneGeometry(400, 400, 80, 80);
+
+	var floorGeometry = new THREE.PlaneGeometry(400,400,80,80);
 	var floorMaterial = new THREE.MeshPhongMaterial({
 		color: 0x1F1E24,
-		side: THREE.DoubleSide,
-	});
+		side: THREE.DoubleSide
+	})
 	floor = new THREE.Mesh(floorGeometry, floorMaterial);
 	floor.rotation.x = -Math.PI/2;
 	floor.position.set(0, -0.1, 0);
@@ -119,7 +126,7 @@ function init() {
 	cssRenderer.domElement.style.top = 0;
 	document.body.appendChild( cssRenderer.domElement );
 
-	controls = new THREE.TrackballControls(camera, glRenderer.domElement);
+	controls = new THREE.OrbitControls(camera, glRenderer.domElement);
 	// controls.maxDistance = 9000;
 
 	// create window resize function
