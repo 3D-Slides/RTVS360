@@ -3,16 +3,25 @@
 var Slideshow = function(camera) {
 	document.addEventListener('keydown', function(e) {
 		if (e.keyIdentifier === 'Left' || e.keyIdentifier === 'Right') TWEEN.removeAll();
-		if (e.keyIdentifier === 'Right') move(_currentSnap++);
-		if (e.keyIdentifier === 'Left') move(_currentSnap--);
+		if (e.keyIdentifier === 'Right') move(++_currentSnap);
+		if (e.keyIdentifier === 'Left') move(--_currentSnap);
 	});
 	// Private Variables
 	var _this = this;
 	var _snapshots = [];
-	var _currentSnap = 0;
+	var _currentSnap = -1;
 	var _transitions = [];
 
 	var move = function(index) {
+		console.log(index);
+		if (index > _snapshots.length - 1) {
+			_currentSnap = index = 0;
+		}
+		if (index < 0) {
+			_currentSnap = index = 9;
+		}
+		console.log(_currentSnap, index);
+
 		var posTween = new TWEEN.Tween(camera.position),
 			targetTween = new TWEEN.Tween(marker.position),
 			look = new TWEEN.Tween(controls.target),
@@ -41,6 +50,7 @@ var Slideshow = function(camera) {
 		})
 		.easing(_transitions[index])
 		.start();
+
 	};
 
 	this.addSnapshot = function(location, rotation, options) {
