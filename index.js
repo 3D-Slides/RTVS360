@@ -9,14 +9,14 @@ init();
 render();
 
 var SlideGenerator = new SlideGenerator();
-window.onload = function(){
+
 	//USER INPUT:::::::::
-	var slidesPositions = [[0,10,0]];
+	var slidesPositions = [[0,15,0],[15,15,0]];
 	var slidesArray = SlideGenerator.getSlides();
 	console.log(slidesArray);
 	SlideGenerator.addAllSlides3D( slidesArray, slidesPositions );
 	//:::::::::::::::::::
-}
+
 
 function init() {
 						// INIT SCENE PROCEDURES
@@ -34,7 +34,7 @@ function init() {
 	camera.position.set (0, 10, 30);
 	camera.lookAt(new THREE.Vector3(0, 0, 0));
 	glScene.add(camera);
-	
+
 	spotLight = new THREE.SpotLight(0xffffff, 2, 1000, Math.PI/3, 0.001);
 	spotLight.position.copy( camera.position );
 	spotLight.castShadow = true;
@@ -52,6 +52,11 @@ function init() {
 /*_____________________________________________________________________*/
 	// CONSTRUCT A FLOOR
 
+	var floorGeometry = new THREE.PlaneGeometry(400,400,80,80);
+	var floorMaterial = new THREE.MeshPhongMaterial({
+		color: 0x1F1E24,
+		side: THREE.DoubleSide
+	})
 	floor = new THREE.Mesh(floorGeometry, floorMaterial);
 	floor.rotation.x = -Math.PI/2;
 	floor.position.set(0, -0.1, 0);

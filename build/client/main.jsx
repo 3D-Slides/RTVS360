@@ -1,25 +1,46 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
 var ReactRouter = require('react-router');
-// var Router = ReactRouter.Router;
-// var Route = ReactRouter.Route;
-// var IndexRoute = require('react-router').IndexRoute;
-// var Link = require('react-router').Link;
-// var Header = require('./components/app.js');
-// var Landing = require('./components/landingComponents/landing');
-// var MainRoom = require('./components/mainRoomComponent');
+var request = require('request');
+
 
 var SlidesCreator = React.createClass({
-  render: function() {
-    return (
-      <section className="body">
 
-      {/* start: header */}
+	postSubmit: function (event) {
+		event.preventDefault();
+		var markdownText = document.getElementById('markdownInput').value;
+		var markString = JSON.stringify(markdownText);
+		
+		request({
+			url: 'http://localhost:3131/presentation',
+			method: 'POST',
+			headers: {
+				'Content-Type': 'text/html',
+				'data': JSON.stringify(markdownText)
+			}
+		}, function (error,response,body) {
+			if(error) {
+				console.log(error);
+			} else {
+				console.log(response.statusCode, response.headers);
+			}
+		})
+		// localStorage.setItem('markDown', JSON.stringify(markdownText));
+		document.cookie = `${markString}`;
+
+		window.location.href = 'http://localhost:3131/presentation';
+	},
+
+	render: function() {
+	return (
+	  <section className="body">
+
+	  {/* start: header */}
 
 			<header className="header">
 				<div className="logo-container">
 					<a href="../" className="logo">
-						<img src="assets/images/logo.png" height="35"/>
+						<img src="build/assets/images/logo.png" height="35"/>
 					</a>
 					<div className="visible-xs toggle-sidebar-left" data-toggle-className="sidebar-left-opened" data-target="html" data-fire-event="sidebar-left-opened">
 						<i className="fa fa-bars" aria-label="Toggle sidebar"></i>
@@ -77,7 +98,7 @@ var SlidesCreator = React.createClass({
 							</nav>
 
 							<hr className="separator" />
-            <hr className="separator" />
+	        <hr className="separator" />
 
 						</div>
 
@@ -99,7 +120,7 @@ var SlidesCreator = React.createClass({
 									<header className="panel-heading">
 										<div className="panel-actions">
 											<a href="#" className="fa fa-caret-down"></a>
-                    						<a href="#" className="fa fa-times"></a>
+	                						<a href="#" className="fa fa-times"></a>
 										</div>
 
 										<h2 className="panel-title">Markdown Editor</h2>
@@ -109,16 +130,16 @@ var SlidesCreator = React.createClass({
 										<form className="form-horizontal form-bordered">
 											<div className="form-group">
 												<label className="col-md-1 control-label">Markdown</label>
-                      <div className="col-md-11">
-													<textarea name="content" data-plugin-markdown-editor rows={16} defaultValue=
-                          {"### Hello there\n    How are you?\n\n    I have a task for you :\n\n    Select from this text...\n    Click the bold on THIS WORD and make THESE ONE italic\n    Link GOOGLE to google.com\n    Test to insert image (and try to tab after write the image description)\n    Test Preview\n    And ending here... Click \"List\"\n\n    Enjoy!"} />
+	                  <div className="col-md-11">
+													<textarea name="content" id="markdownInput" data-plugin-markdown-editor rows={16} defaultValue=
+	                      {"# Hello there\n YOOO \n##How are you?\n\nI have a task for you :\n\nSelect from this text...\n\nClick the bold on THIS WORD and make THESE ONE italic\n"} />
 												</div>
 											</div>
 
-                      <label className="checkbox">
-                      </label>
-                      <hr />
-                      <button type="submit" className="btn">Submit</button>
+	                  <label className="checkbox">
+	                  </label>
+	                  <hr />
+	                  <button type="submit" onClick={this.postSubmit} className="btn">Submit</button>
 
 										</form>
 									</div>
@@ -128,9 +149,9 @@ var SlidesCreator = React.createClass({
 					{/* end: page */}
 				</section>
 			</div>
-      </section>
-    )
-  }
+	  </section>
+	)
+	}
 });
 
 ReactDOM.render(<SlidesCreator/>, document.getElementById('appContainer'));

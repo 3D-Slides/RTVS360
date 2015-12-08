@@ -1,12 +1,15 @@
 
-var converter = new showdown.Converter(),
+var converter = new showdown.Converter();
 
-	text =  "A Second Level Header  ---------------------  Now is the time for all good men to come to  the aid",
+var text    =  document.cookie;
 
-	trimmed = text.replace(/\s\s+/g, '\n');
-	console.log("trimmed:", trimmed);
+var	trimmed = JSON.parse(text).replace(/\\n/g, ' ');
+var	remBack = trimmed.replace(/\\/g, ' ');
+var html    = converter.makeHtml(remBack);
 
-    html      = converter.makeHtml(trimmed);
+console.log('text: ', text);
+console.log('trimmed: ', trimmed);
+
 
 document.getElementById('slides').innerHTML = html;
 console.log('converted:', html);
