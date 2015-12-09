@@ -4,20 +4,27 @@ var cssScene, cssRenderer, cssMeshes;
 var camera, controls, spotLight;
 var cameraPivot;
 var loader;
+
 var SlideGenerator = new SlideGenerator();
 var posArray = [];
 for (var z = -50; z < 150; z += 100) {
-	for(var x = -85; x < 115; x+=40) {
-		posArray.push([x, 20, z]);
+		for(var x = -85; x < 115; x+=40) {
+			posArray.push([x, 16, z]);
+		}
 	}
-}
 
+window.onload = function(){
+	
+	
+	var slidesArray = SlideGenerator.getSlides();
+	SlideGenerator.addAllSlides3D( slidesArray, posArray );
+	
+}
 init();
 render();
 
 
-var slidesArray = SlideGenerator.getSlides();
-SlideGenerator.addAllSlides3D( slidesArray, posArray );
+
 //:::::::::::::::::::
 
 function init() {
@@ -37,8 +44,10 @@ function init() {
 
 	glScene.add(camera);
 
-	spotLight = new THREE.SpotLight(0xffffff, 1.2, 1000, Math.PI/3, 0.001);
+	spotLight = new THREE.SpotLight(0xffffff, 2.2, 1000, Math.PI/3, 0.001);
 	spotLight.position.copy( camera.position );
+	spotLight.position.z = 10;
+	spotLight.position.y = 25;
 	spotLight.castShadow = true;
 	spotLight.shadowMapWidth = 1024;
 	spotLight.shadowMapHeight = 1024;
