@@ -107,7 +107,7 @@ SlideGenerator.prototype.addAllSlides3D = function (slideArray, coordsArray) {
 				coordsArr = [coordsArr[0], coordsArr[1]-10, coordsArr[2]];	
 				slideMesh.position.set( coordsArr[0], coordsArr[1], coordsArr[2] );
 			} else {
-				coordsArr = [coordsArr[0], coordsArr[1]-4, coordsArr[2]];	
+				coordsArr = [coordsArr[0], coordsArr[1]-2, coordsArr[2]];	
 				slideMesh.position.set( coordsArr[0], coordsArr[1], coordsArr[2] );
 			}
 		group.add(slideMesh);
@@ -158,21 +158,20 @@ SlideGenerator.prototype.addAllSlides3D = function (slideArray, coordsArray) {
 						var liElements = nodes[j].children;
 						for(var h = 0; h < liElements.length; h++) {
 							var liText = liElements[h].innerText;
-							var slideGeo = new THREE.TextGeometry('         - ' +liText, generateProps(100));
+							var slideGeo = new THREE.TextGeometry(' - ' +liText, generateProps(100));
 							var slideMaterial = new THREE.MeshLambertMaterial( {color: 0xB8F2FF} );
 							setMesh( slideGeo, slideMaterial );
 						}
 
 						// LOAD IMAGES AND MAP ONTO PLANE/SPRITE GEOMETRY
 					} else if (nodes[j].localName === 'img') {
-						console.log('src: ', nodes[j].height);
 						THREE.ImageUtils.crossOrigin = "anonymous";
 						var texture = THREE.ImageUtils.loadTexture(nodes[j].src);
 
 						// RENDER SPRITES
 						var material = new THREE.SpriteMaterial( {map: texture, color: 0xffffff, fog: true} )
 						var sprite = new THREE.Sprite( material )
-						sprite.position.set( coordsArr[0]+10, coordsArr[1]-12, coordsArr[2] );
+						sprite.position.set( coordsArr[0]+10, coordsArr[1]-14, coordsArr[2] );
 						sprite.scale.set( nodes[j].width/35, nodes[j].height/35, 10 );
 						sprite.castShadow = true;
 						sprite.receiveShadow = true;
