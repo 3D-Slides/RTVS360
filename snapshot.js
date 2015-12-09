@@ -5,6 +5,7 @@ var Slideshow = function(camera) {
 		if (e.keyIdentifier === 'Left' || e.keyIdentifier === 'Right') TWEEN.removeAll();
 		if (e.keyIdentifier === 'Right') move(++_currentSnap);
 		if (e.keyIdentifier === 'Left') move(--_currentSnap);
+		if (e.keyIdentifier === "Up") shuffle();
 	});
 	// Private Variables
 	var _this = this;
@@ -12,6 +13,40 @@ var Slideshow = function(camera) {
 	var _currentSnap = -1;
 	var _transitions = [];
 
+	var shuffle = function() {
+		console.log('i ran');
+		var card1 = new TWEEN.Tween(glScene.children[8].children[1].position);
+		var card2A = new TWEEN.Tween(glScene.children[8].children[2].position);
+		var card2B = new TWEEN.Tween(glScene.children[8].children[2].position);
+		var card2C = new TWEEN.Tween(glScene.children[8].children[2].position);
+		card1.to({
+			z: -60
+		}, 400)
+		.delay(200)
+		.easing(TWEEN.Easing.Quadratic.In)
+		.start();
+
+		card2A.to({
+			x: 130
+		}, 500)
+		.easing(TWEEN.Easing.Cubic.InOut);
+
+		card2B.to({
+			z: -50
+		}, 500)
+		.easing(TWEEN.Easing.Linear.None);
+
+		card2C.to({
+			x: 85
+		}, 500)
+		.easing(TWEEN.Easing.Cubic.InOut);
+
+		card2A.start();
+		card2B.chain(card2C).start();
+
+
+		
+	};
 	var move = function(index) {
 		if (index > _snapshots.length - 1) _currentSnap = index = 0;
 		if (index < 0) _currentSnap = index = 9;
