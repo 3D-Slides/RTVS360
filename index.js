@@ -9,7 +9,7 @@ var SlideGenerator = new SlideGenerator();
 var posArray = [];
 for (var z = -50; z < 150; z += 100) {
 		for(var x = -85; x < 115; x+=40) {
-			posArray.push([x, 20, z]);
+			posArray.push([x, 16, z]);
 		}
 	}
 
@@ -19,7 +19,7 @@ window.onload = function(){
 	var slidesArray = SlideGenerator.getSlides();
 	SlideGenerator.addAllSlides3D( slidesArray, posArray );
 	
-}
+};
 init();
 render();
 
@@ -40,12 +40,13 @@ function init() {
 	loader = new THREE.TextureLoader();
 
 	camera = new THREE.PerspectiveCamera(75, ASPECT, 0.1, 20000);
-	camera.position.set (0, 5, 0);
-
+	camera.position.set(0, 5, 0);
 	glScene.add(camera);
 
-	spotLight = new THREE.SpotLight(0xffffff, 1.2, 1000, Math.PI/3, 0.001);
+	spotLight = new THREE.SpotLight(0xffffff, 2.2, 1000, Math.PI/3, 0.001);
 	spotLight.position.copy( camera.position );
+	spotLight.position.z = 40;
+	spotLight.position.y = 25;
 	spotLight.castShadow = true;
 	spotLight.shadowMapWidth = 1024;
 	spotLight.shadowMapHeight = 1024;
@@ -160,4 +161,5 @@ function render() {
 
 function animate () {
 	spotLight.target = marker;
+	camera.rotation.set(-0.44, 0, 0);
 }
