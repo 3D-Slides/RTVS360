@@ -9,7 +9,7 @@ var SlideGenerator = new SlideGenerator();
 var posArray = [];
 for (var z = -50; z < 150; z += 100) {
 		for(var x = -85; x < 115; x+=40) {
-			posArray.push([x, 16, z]);
+			posArray.push([x, 18, z]);
 		}
 	}
 
@@ -45,8 +45,9 @@ function init() {
 
 	spotLight = new THREE.SpotLight(0xffffff, 2.2, 1000, Math.PI/3, 0.001);
 	spotLight.position.copy( camera.position );
-	spotLight.position.z = 40;
-	spotLight.position.y = 25;
+	spotLight.position.z = 10;
+	spotLight.position.y = 45;
+	spotLight.position.x = 50;
 	spotLight.castShadow = true;
 	spotLight.shadowMapWidth = 1024;
 	spotLight.shadowMapHeight = 1024;
@@ -64,7 +65,7 @@ function init() {
 		color: 0xFF0000,
 		alpha: 0
 	});
-	marker = new THREE.Mesh(markerGeometry, markerMaterial);
+	marker = new THREE.Object3D();
 	console.log(posArray);
 	marker.position.set(0,0,0);
 	glScene.add(marker);
@@ -161,5 +162,4 @@ function render() {
 
 function animate () {
 	spotLight.target = marker;
-	camera.rotation.set(-0.44, 0, 0);
 }

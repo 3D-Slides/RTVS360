@@ -16,20 +16,20 @@ var Slideshow = function(camera) {
 		if (index > _snapshots.length - 1) _currentSnap = index = 0;
 		if (index < 0) _currentSnap = index = 9;
 
-		var posTween = new TWEEN.Tween(camera.position),
-			targetTween = new TWEEN.Tween(marker.position),
+		var cameraTween = new TWEEN.Tween(camera.position),
+			markerTween = new TWEEN.Tween(marker.position),
 			look = new TWEEN.Tween(controls.target),
 			dest = _snapshots[index];
 
-		posTween.to({
+		cameraTween.to({
 			x: dest.location.x + 13,
-			y: dest.location.y + 13,
-			z: (dest.location.z + 20)
+			y: dest.location.y + 9,
+			z: (dest.location.z + 25)
 		}, 1500)
 		.easing(_transitions[index])
 		.start();
 
-		targetTween.to({
+		markerTween.to({
 			x: dest.location.x + 13,
 			y: dest.location.y,
 			z: dest.location.z
