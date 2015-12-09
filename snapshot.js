@@ -13,14 +13,8 @@ var Slideshow = function(camera) {
 	var _transitions = [];
 
 	var move = function(index) {
-		console.log(index);
-		if (index > _snapshots.length - 1) {
-			_currentSnap = index = 0;
-		}
-		if (index < 0) {
-			_currentSnap = index = 9;
-		}
-		console.log(_currentSnap, index);
+		if (index > _snapshots.length - 1) _currentSnap = index = 0;
+		if (index < 0) _currentSnap = index = 9;
 
 		var posTween = new TWEEN.Tween(camera.position),
 			targetTween = new TWEEN.Tween(marker.position),
@@ -29,7 +23,7 @@ var Slideshow = function(camera) {
 
 		posTween.to({
 			x: dest.location.x + 13,
-			y: dest.location.y + 17,
+			y: dest.location.y + 13,
 			z: (dest.location.z + 20)
 		}, 1500)
 		.easing(_transitions[index])
@@ -45,7 +39,7 @@ var Slideshow = function(camera) {
 
 		look.to({
 			x: dest.location.x + 13,
-			y: dest.location.y,
+			y: dest.location.y + 5,
 			z: dest.location.z
 		})
 		.easing(_transitions[index])

@@ -107,7 +107,7 @@ SlideGenerator.prototype.addAllSlides3D = function (slideArray, coordsArray) {
 				coordsArr = [coordsArr[0], coordsArr[1]-10, coordsArr[2]];	
 				slideMesh.position.set( coordsArr[0], coordsArr[1], coordsArr[2] );
 			} else {
-				coordsArr = [coordsArr[0], coordsArr[1]-4, coordsArr[2]];	
+				coordsArr = [coordsArr[0], coordsArr[1]-2, coordsArr[2]];	
 				slideMesh.position.set( coordsArr[0], coordsArr[1], coordsArr[2] );
 			}
 		group.add(slideMesh);
