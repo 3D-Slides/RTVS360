@@ -103,13 +103,10 @@ SlideGenerator.prototype.addAllSlides3D = function (slideArray, coordsArray) {
 		// slideMesh.position.set( coordsArr[0], coordsArr[1], coordsArr[2] );
 
 			// Offset each line so they dont lay ontop of eachother:
-			if(nodes[j].src){
-				coordsArr = [coordsArr[0], coordsArr[1]-10, coordsArr[2]];	
-				slideMesh.position.set( coordsArr[0], coordsArr[1], coordsArr[2] );
-			} else {
+
 				coordsArr = [coordsArr[0], coordsArr[1]-2, coordsArr[2]];	
 				slideMesh.position.set( coordsArr[0], coordsArr[1], coordsArr[2] );
-			}
+			
 		group.add(slideMesh);
 		group.castShadow = true;
 		group.receiveShadow = true;
@@ -171,7 +168,9 @@ SlideGenerator.prototype.addAllSlides3D = function (slideArray, coordsArray) {
 						// RENDER SPRITES
 						var material = new THREE.SpriteMaterial( {map: texture, color: 0xffffff, fog: true} )
 						var sprite = new THREE.Sprite( material )
-						sprite.position.set( coordsArr[0]+10, coordsArr[1]-14, coordsArr[2] );
+						sprite.position.set( coordsArr[0]+10, coordsArr[1]-12, coordsArr[2] );
+						coordsArr = [coordsArr[0], coordsArr[1]-20, coordsArr[2]];
+
 						sprite.scale.set( nodes[j].width/35, nodes[j].height/35, 10 );
 						sprite.castShadow = true;
 						sprite.receiveShadow = true;
