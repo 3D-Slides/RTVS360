@@ -30,9 +30,9 @@ SlideGenerator.prototype.addOneSlide3D = function (slideArray, index, coords) {
 		group.add(slideMesh);
 	}
 	
-
 	var group = new THREE.Object3D();
 	group.position.set(coords[0],coords[1],coords[2]);
+	
 	var coordsArr = [group.position.x, group.position.y, group.position.z];
 	var elements = slideArray[index].children;
 
