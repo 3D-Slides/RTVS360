@@ -1,17 +1,17 @@
 // ---------------------- GENERATE SLIDES --------------------- //
 
 function SlideGenerator (){
-
+	this.slides = document.getElementsByClassName('slide');
 }
 
 // Get all slides from html:
-SlideGenerator.prototype.getSlides = function () {
-	var slides = document.getElementsByClassName('slide');
-	return slides;
-};
+// SlideGenerator.prototype.getSlides = function () {
+// 	var slides = 
+// 	return slides;
+// };
 
 // Add a single 3d slide:
-SlideGenerator.prototype.addOneSlide3D = function (slideArray, index, coords) {
+SlideGenerator.prototype.addOneSlide3D = function (index, coords) {
 
 	// helper function for TextGeometry Props
 	function generateProps(size){
@@ -34,49 +34,76 @@ SlideGenerator.prototype.addOneSlide3D = function (slideArray, index, coords) {
 	group.position.set(coords[0],coords[1],coords[2]);
 	
 	var coordsArr = [group.position.x, group.position.y, group.position.z];
-	var elements = slideArray[index].children;
+	var elements = this.slides[index].children;
 
 	// Loop thru all the elements, grabbing each node
 	for(var k = 0; k < elements.length; k++){
 		var nodes = elements[k].children;
-		// Loop thru nodes, creating the slides
+		//console.log('nodes:',nodes)
+
+			// Loop thru all the nodes, creating 3d text for each:
 		for (var j = 0; j < nodes.length; j++){
 			var text = nodes[j].innerText;
 
-			if(nodes[j].localName ==='h1'){
-				var slideGeo = new THREE.TextGeometry(text, generateProps(350));
+			if(nodes[j].localName === 'h1' ) {
+				var slideGeo = new THREE.TextGeometry(text, generateProps(175));
 				var slideMaterial = new THREE.MeshLambertMaterial( {color: 0x00d1ff} );
 				setMesh( slideGeo, slideMaterial );
-			} else if (nodes[j].localName ==='h2') {
-				var slideGeo = new THREE.TextGeometry(text, generateProps(280));
+			} else if (nodes[j].localName === 'h2' ) {
+				var slideGeo = new THREE.TextGeometry(text, generateProps(140));
 				var slideMaterial = new THREE.MeshLambertMaterial( {color: 0xffffff} );
 				setMesh( slideGeo, slideMaterial );
-			} else if (nodes[j].localName ==='h3') {
-				var slideGeo = new THREE.TextGeometry('* ' +text, generateProps(250));
+			} else if (nodes[j].localName === 'h3' ) {
+				var slideGeo = new THREE.TextGeometry('* ' +text, generateProps(125));
 				var slideMaterial = new THREE.MeshLambertMaterial( {color: 0xffffff} );
 				setMesh( slideGeo, slideMaterial );
-			} else if (nodes[j].localName ==='p') {
-				var slideGeo = new THREE.TextGeometry('     - ' +text, generateProps(200));
+			} else if (nodes[j].localName === 'p' ) {
+				var slideGeo = new THREE.TextGeometry('       ' +text, generateProps(100));
+				var slideMaterial = new THREE.MeshLambertMaterial( {color: 0xB8F2FF} );	
+				setMesh( slideGeo, slideMaterial );
+			} else if (nodes[j].localName === 'pre') {
+				var slideGeo = new THREE.TextGeometry('            ' +text, generateProps(100));
 				var slideMaterial = new THREE.MeshLambertMaterial( {color: 0xB8F2FF} );
 				setMesh( slideGeo, slideMaterial );
-			} else if (nodes[j].localName ==='span') {
-				var slideGeo = new THREE.TextGeometry('            ' +text, generateProps(200));
-				var slideMaterial = new THREE.MeshLambertMaterial( {color: 0xB8F2FF} );
-				setMesh( slideGeo, slideMaterial );
-			} else if (nodes[j].localName === 'ul'){
+			} else if (nodes[j].localName === 'ul') {	
 				var liElements = nodes[j].children;
-				for (var h = 0; h < liElements.length; h++) {
+				for(var h = 0; h < liElements.length; h++) {
 					var liText = liElements[h].innerText;
-					var slideGeo = new THREE.TextGeometry('            > ' +liText, generateProps(100));
+					var slideGeo = new THREE.TextGeometry(' - ' +liText, generateProps(100));
 					var slideMaterial = new THREE.MeshLambertMaterial( {color: 0xB8F2FF} );
 					setMesh( slideGeo, slideMaterial );
 				}
+
+				// LOAD IMAGES AND MAP ONTO PLANE/SPRITE GEOMETRY
+			} else if (nodes[j].localName === 'img') {
+				THREE.ImageUtils.crossOrigin = "anonymous";
+				var texture = THREE.ImageUtils.loadTexture(nodes[j].src);
+
+				// RENDER SPRITES
+				var material = new THREE.SpriteMaterial( {map: texture, color: 0xffffff, fog: true} )
+				var sprite = new THREE.Sprite( material )
+				sprite.position.set( coordsArr[0]+10, coordsArr[1]-14, coordsArr[2] );
+				coordsArr = [coordsArr[0], coordsArr[1]-20, coordsArr[2]];
+
+				sprite.scale.set( nodes[j].width/35, nodes[j].height/35, 10 );
+				sprite.castShadow = true;
+				sprite.receiveShadow = true;
+				group.add(sprite);
+
+				// RENDER PLANES INSTEAD OF SPRITES:
+				// var slideGeo = new THREE.PlaneGeometry(25,15);
+				// var slideMaterial = new THREE.MeshLambertMaterial({
+				// 	map: texture,
+				// 	side: THREE.DoubleSide
+				// });
+				// setMesh( slideGeo, slideMaterial );
+
 			} else {
-				console.error('Some of yout HTML is not rendering! Please enter valid HTML elements in your slide format (h1, h2, h3, p, span)')
+				console.error('Some of yout HTML is not rendering! Please enter valid HTML elements in your slide format (h1, h2, h3, p, ul, li)')
 			}
 		}
+		glScene.add(group);
 	}
-	glScene.add(group);
 };
 
 // Add all 3d slides in html:
@@ -173,7 +200,7 @@ SlideGenerator.prototype.addAllSlides3D = function (slideArray, coordsArray) {
 						sprite.scale.set( nodes[j].width/35, nodes[j].height/35, 10 );
 						sprite.castShadow = true;
 						sprite.receiveShadow = true;
-						group.add(sprite)
+						group.add(sprite);
 
 						// RENDER PLANES INSTEAD OF SPRITES:
 						// var slideGeo = new THREE.PlaneGeometry(25,15);
