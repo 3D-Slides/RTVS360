@@ -32,7 +32,7 @@ var MarkDown = React.createClass({
 											<div className="form-group">
 												{/* <label className="col-md-1 control-label">Markdown</label> */}
                       <div className="col-md-12">
-													// <textarea name="content" data-plugin-markdown-editor  rows={18} defaultValue=
+													<textarea name="content" data-plugin-markdown-editor  rows={16} defaultValue=
                           {"### Hello there\n\n    How are you?\n\n    I have a task for you :\n\n    Select from this text...\n\n    Click the bold on THIS WORD and make THESE WORDS italic\n\n    Link GOOGLE to google.com\n\n    Test to insert an image (and try to tab over after you write the image in the description)\n    And ending here...\n\n    Enjoy!"} />
 												</div>
 											</div>
@@ -40,7 +40,7 @@ var MarkDown = React.createClass({
                       <label className="checkbox">
                       </label>
                       <hr />
-                      <button type="submit" className="btn btn-info">Submit</button>
+                      <button type="submit" className="btn btn-info ">Submit</button>
 
 										</form>
 									</div>
