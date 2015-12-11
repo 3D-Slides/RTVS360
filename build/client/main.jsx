@@ -2,12 +2,10 @@ var React = require('react');
 var ReactDOM = require('react-dom');
 var ReactRouter = require('react-router');
 var request = require('request');
-
 var Header = require('./components/header.jsx');
 var SideNav = require('./components/side-nav.jsx');
 var MarkDown = require('./components/markDownEditor.jsx');
-
-
+var CodeEditor = require('./components/codeEditor.jsx');
 var SlidesCreator = React.createClass({
 
 
@@ -15,7 +13,7 @@ var SlidesCreator = React.createClass({
 		event.preventDefault();
 		var markdownText = document.getElementById('markdownInput').value;
 		var markString = JSON.stringify(markdownText);
-		
+
 		request({
 			url: 'http://localhost:3131/presentation',
 			method: 'POST',
@@ -30,9 +28,8 @@ var SlidesCreator = React.createClass({
 				console.log(response.statusCode, response.headers);
 			}
 		})
-		// localStorage.setItem('markDown', JSON.stringify(markdownText));
-		document.cookie = `${markString}`;
 
+		document.cookie = `${markString}`;
 		window.location.href = 'http://localhost:3131/presentation';
 	},
 
@@ -45,10 +42,9 @@ var SlidesCreator = React.createClass({
 
         <div className="inner-wrapper">
 
-
           <SideNav/>
           <MarkDown postSub={this.postSubmit}/>
-
+					<CodeEditor />
 
         </div>
       </section>
