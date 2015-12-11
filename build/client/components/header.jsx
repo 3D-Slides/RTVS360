@@ -18,6 +18,7 @@ var Header = React.createClass({
   					</div>
   				</div>
 
+
           { /*<div className="container-fluid">
           <ul className="nav navbar-nav navbar-right">
             <li><a href="#">HOME</a></li>
@@ -28,6 +29,8 @@ var Header = React.createClass({
           </ul>
         </div> */}
   			</header>
+
+        <div> </div>
 
   			{/* end: header */}
       </div>
