@@ -29,20 +29,7 @@ var CodeEditor = React.createClass({
                   <div className="col-md-12">
 
                       <textarea rows={16} className="form-control" id="codemirror_html_code" name="code_html"
-                        data-plugin-codemirror data-plugin-options="{ mode: text/html }" defaultValue=
-                      {"    <html style=\"color: green\">\n    <head>\n
-                      <title>Mixed HTML Example</title>\n
-                      <style type=\"text/css\">\n    h1 {font-family: comic sans; color: #f0f;}\n\n
-                       div {background: yellow !important;}\n\n    body {\n    max-width: 50em;\n
-                         margin: 1em 2em 1em 5em;\n    }\n    </style>\n
-                       </head>\n
-
-                        <body>\n
-                           <h1>Mixed HTML Example</h1>\n
-
-                        </body>\n
-                      </html>"} />
-
+                        data-plugin-codemirror data-plugin-options="{ mode: text/html }" 
                     </div>
                   </div>
 

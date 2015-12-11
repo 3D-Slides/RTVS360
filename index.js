@@ -1,23 +1,34 @@
 var glScene, glRenderer;
-var box, plane, slidePlane, floor, olsenPlane, fantasyPlane, lionPlane, mainPlane;
+var box, plane, slidePlane, floor, olsenPlane, fantasyPlane, lionPlane, mainPlane, marker;
 var cssScene, cssRenderer, cssMeshes;
 var camera, controls, spotLight;
 var cameraPivot;
 var loader;
 
+var SlideGenerator = new SlideGenerator();
+var posArray = [];
+for (var z = -50; z < 150; z += 100) {
+		for(var x = -85; x < 115; x+=40) {
+			posArray.push([x, 18, z]);
+		}
+	}
+
+window.onload = function(){
+	
+	
+	var slidesArray = SlideGenerator.getSlides();
+	SlideGenerator.addAllSlides3D( slidesArray, posArray );
+	glScene.children[8].children[1].position.set(85, 4, -50);
+	glScene.children[8].children[2].position.set(85, 4, -60);
+	
+};
 init();
 render();
 
-//USER INPUT:::::::::
-var SlideGenerator = new SlideGenerator();
-var slidesPositions = [[-10,5,0],[0,5,0],[10,5,0]];
-var slidesArray = SlideGenerator.getSlides();
-console.log(slidesArray);
-SlideGenerator.addAllSlides3D( slidesArray, slidesPositions );
+
 //:::::::::::::::::::
 
 function init() {
-
 						// INIT SCENE PROCEDURES
 /*_____________________________________________________________________*/
 	var WIDTH = window.innerWidth,
@@ -25,20 +36,48 @@ function init() {
 		ASPECT = WIDTH / HEIGHT;
 
 	glScene = new THREE.Scene();
-	glScene.fog = new THREE.FogExp2(0x000000, 0.025);
+	glScene.fog = new THREE.FogExp2(0x000000, 0.015);
 	cssScene = new THREE.Scene();
 	loader = new THREE.TextureLoader();
 
 	camera = new THREE.PerspectiveCamera(75, ASPECT, 0.1, 20000);
-	camera.position.set (0, 10, 30);
-	camera.lookAt(new THREE.Vector3(0, 0, 0));
+	camera.position.set(0, 5, 0);
 	glScene.add(camera);
 
+	spotLight = new THREE.SpotLight(0xffffff, 2.2, 1000, Math.PI/3, 0.001);
+	spotLight.position.copy( camera.position );
+	spotLight.position.z = 10;
+	spotLight.position.y = 45;
+	spotLight.position.x = 50;
+	spotLight.castShadow = true;
+	spotLight.shadowMapWidth = 1024;
+	spotLight.shadowMapHeight = 1024;
+	spotLight.shadowCameraNear = 1;
+	spotLight.shadowCameraFar = 1000;
+	camera.add(spotLight);
+
+	glScene.add(camera);
+	
 
 					// CONSTRUCTING A TRON GRID
 /*_____________________________________________________________________*/
+	var markerGeometry = new THREE.BoxGeometry(0.5, -0.5, 0.5);
+	var markerMaterial = new THREE.MeshBasicMaterial({
+		color: 0xFF0000,
+		alpha: 0
+	});
+	marker = new THREE.Object3D();
+	console.log(posArray);
+	marker.position.set(0,0,0);
+	glScene.add(marker);
+
 	// CONSTRUCT A FLOOR
 
+	var floorGeometry = new THREE.PlaneGeometry(400,400,80,80);
+	var floorMaterial = new THREE.MeshPhongMaterial({
+		color: 0x1F1E24,
+		side: THREE.DoubleSide
+	});
 	floor = new THREE.Mesh(floorGeometry, floorMaterial);
 	floor.rotation.x = -Math.PI/2;
 	floor.position.set(0, -0.1, 0);
@@ -94,7 +133,7 @@ function init() {
 	cssRenderer.domElement.style.top = 0;
 	document.body.appendChild( cssRenderer.domElement );
 
-	controls = new THREE.TrackballControls(camera, glRenderer.domElement);
+	controls = new THREE.OrbitControls(camera, glRenderer.domElement);
 	// controls.maxDistance = 9000;
 
 	// create window resize function
@@ -119,5 +158,9 @@ function render() {
 	glRenderer.render(glScene, camera);
 	cssRenderer.render(cssScene, camera);
 	TWEEN.update();
-	//animate();
+	animate();
+}
+
+function animate () {
+	spotLight.target = marker;
 }
