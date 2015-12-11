@@ -11,9 +11,9 @@ var Header = React.createClass({
   			<header className="header">
   				<div className="logo-container">
   					<a href="../" className="logo">
-  						<img src="build/assets/images/logo.png" height="55"/>
+  						<img src="/build/assets/images/logo.png" height="55"/>
   					</a>
-  					<div className="visible-xs toggle-sidebar-left" data-toggle-className="sidebar-left-opened" data-target="html" data-fire-event="sidebar-left-opened">
+  					<div className="visible-xs toggle-sidebar-left" data-toggle-classname="sidebar-left-opened" data-target="html" data-fire-event="sidebar-left-opened">
   						<i className="fa fa-bars" aria-label="Toggle sidebar"></i>
   					</div>
   				</div>
