@@ -5,7 +5,7 @@ var ReactDOM = require('react-dom');
 var CodeEditor = React.createClass({
   render: function() {
     return (
-
+      <div>
       <section role="main" className="content-body">
 
         {/* start: page */}
@@ -23,17 +23,32 @@ var CodeEditor = React.createClass({
             <div className="panel-body">
               <form className="form-horizontal" action="#">
                 <div className="form-group">
-                  <label className="col-md-2 control-label" htmlFor="textareaDefault">HTML Editor</label>
-                  <div className="col-md-10">
-                    
+
+                  <div className="col-md-12">
+
+                    {/* Test */}
+
+                    <textarea rows={16} className="form-control" id="codemirror_html_code" name="code_html" data-plugin-codemirror />
+
                   </div>
                 </div>
+
+                <label className="checkbox">
+                </label>
+                <hr />
+
+                <button type="submit" onClick={this.props.postSub} className="btn btn-info">Submit</button>
+
+
               </form>
             </div>
           </section>
         </div>
       </div>
-      {/* end: page */}
+    </section>
+    </div>
+
+
     );
   }
 });
