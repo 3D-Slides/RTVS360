@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="dark  fixed">
+<html class="dark fixed">
 	<head>
 		<meta charset="UTF-8">
 
@@ -19,16 +19,16 @@
 
 		<!-- Favicon -->
 
-		<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
-		<link rel="icon" href="/favicon.ico" type="image/x-icon">
+		<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+
 
 		<!-- Specific Page CSS -->
 		<link rel="stylesheet" href="build/assets/vendor/jquery-ui/css/ui-lightness/jquery-ui-1.10.4.custom.css" />
-		<link rel="stylesheet" href="build/assets/vendor/select2/select2.css" />
-		<link rel="stylesheet" href="build/assets/vendor/bootstrap-multiselect/bootstrap-multiselect.css" />
 		<link rel="stylesheet" href="build/assets/vendor/bootstrap-markdown/css/bootstrap-markdown.min.css" />
 		<link rel="stylesheet" href="build/assets/vendor/summernote/summernote.css" />
 		<link rel="stylesheet" href="build/assets/vendor/summernote/summernote-bs3.css" />
+		<link rel="stylesheet" href="build/assets/vendor/codemirror/lib/codemirror.css" />
+		<link rel="stylesheet" href="build/assets/vendor/codemirror/theme/monokai.css" />
 
 
 		<!-- Main CSS -->
@@ -45,9 +45,6 @@
     <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
 
 	</head>
-  <style media="screen">
-
-  </style>
 
   <body>
 
@@ -70,6 +67,15 @@
 		<script src="build/assets/vendor/bootstrap-markdown/js/to-markdown.js"></script>
 		<script src="build/assets/vendor/bootstrap-markdown/js/bootstrap-markdown.js"></script>
 		<script src="build/assets/vendor/summernote/summernote.js"></script>
+
+		<!-- Code Mirror -->
+		<script src="build/assets/vendor/codemirror/lib/codemirror.js"></script>
+		<script src="build/assets/vendor/codemirror/addon/selection/active-line.js"></script>
+		<script src="build/assets/vendor/codemirror/addon/edit/matchbrackets.js"></script>
+		<script src="build/assets/vendor/codemirror/mode/javascript/javascript.js"></script>
+		<script src="build/assets/vendor/codemirror/mode/xml/xml.js"></script>
+		<script src="build/assets/vendor/codemirror/mode/htmlmixed/htmlmixed.js"></script>
+		<script src="build/assets/vendor/codemirror/mode/css/css.js"></script>
 
 
     <!-- Components and Settings -->
