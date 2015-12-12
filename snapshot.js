@@ -16,7 +16,7 @@ var Slideshow = function(camera) {
 	var shuffle = function() {
 		console.log('i ran');
 		var card1 = new TWEEN.Tween(glScene.children[8].children[1].position);
-		var card2A = new TWEEN.Tween(glScene.children[8].children[2].position);
+		var card2A = new TWEEN.Tween(glScene.children[8].children[2].position);55555556 
 		var card2B = new TWEEN.Tween(glScene.children[8].children[2].position);
 		var card2C = new TWEEN.Tween(glScene.children[8].children[2].position);
 		card1.to({
@@ -146,7 +146,6 @@ Snapshot.prototype.constructor = Snapshot;
 var show = new Slideshow(camera);
 posArray.forEach(function(coord) {
 	moveCoord = [coord[0] * 2, coord[1], coord[2] * 2];
-	console.log(coord, moveCoord);
 	show.addSnapshot(moveCoord);
 });
 show.addTransitionTo('all', 'Quadratic.InOut');

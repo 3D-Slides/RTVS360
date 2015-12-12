@@ -1,9 +1,8 @@
 // ---------------------- GENERATE SLIDES --------------------- //
 
 function SlideGenerator (){
-
+	this.slides = document.getElementsByClassName('slide');
 }
-
 // Get all slides from html:
 SlideGenerator.prototype.getSlides = function () {
 	var slides = document.getElementsByClassName('slide');
@@ -12,7 +11,7 @@ SlideGenerator.prototype.getSlides = function () {
 
 // Add a single 3d slide:
 SlideGenerator.prototype.addOneSlide3D = function (slideArray, index, coords) {
-
+	var slides = document.getElementsByClassName('slide');
 	// helper function for TextGeometry Props
 	function generateProps(size){
 		return {
@@ -81,7 +80,7 @@ SlideGenerator.prototype.addOneSlide3D = function (slideArray, index, coords) {
 
 // Add all 3d slides in html:
 SlideGenerator.prototype.addAllSlides3D = function (slideArray, coordsArray) {
-	
+	console.log(typeof this.slides);
 	var firstHalf, secondHalf;
 	var loader = new THREE.TextureLoader();
 	
@@ -276,3 +275,30 @@ SlideGenerator.prototype.addAllSlides = function (slideArray, coordsArray) {
 // 	cutParagraphs(firstHalf);
 // }
 
+// function render(tag, content) {
+//     console.log((content+" will be renderer as a "+ tag));
+//     console.log(tag+" will have props " + JSON.stringify(tagProps[tag]));
+// }
+// var tagStore = [];
+// var contentStore = [];
+
+// var split1 = R.split('<');
+// var split2 = R.split('>');
+// var sep = R.map(split2);
+
+// var trimmedData = R.compose(R.tail, sep, split1)(data);
+
+// var renderData = R.forEach(function(subArray) {
+//   if( R.test(/\//, subArray[0]) ) {
+//     var tag = tagStore.pop();
+//     var content = contentStore.pop();
+//     if(content) {
+//       render(tag, content);
+//     }
+//   } else {
+//     tagStore.push(subArray[0]);
+//     contentStore.push(subArray[1]);
+//   }
+// });
+
+// renderData(trimmedData);

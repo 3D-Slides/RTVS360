@@ -5,11 +5,15 @@ var camera, controls, spotLight;
 var cameraPivot;
 var loader;
 
+var counter = 0;
 var SlideGenerator = new SlideGenerator();
 var posArray = [];
 for (var z = -50; z < 150; z += 100) {
 		for(var x = -85; x < 115; x+=40) {
 			posArray.push([x, 18, z]);
+			if(++counter > 6) {
+				break;
+			}
 		}
 	}
 
@@ -67,7 +71,6 @@ function init() {
 		alpha: 0
 	});
 	marker = new THREE.Object3D();
-	console.log(posArray);
 	marker.position.set(0,0,0);
 	glScene.add(marker);
 
