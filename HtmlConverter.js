@@ -1,5 +1,14 @@
 
-var data = '<div class="slide"><section><h2>Whats the Catch?</h2><p>Im a paragraph, yo</p><ul><li>You have to bind this manually whenever you add a method</li><li>No this.isMounted method</li><li>Lack of mixin support (proposals to fix in ES7)</li></ul></section></div>';
+var html = document.cookie.replace(/\\t|\\n+|\s{2,}/g, '');
+
+var splitSlides = R.split('<br/>');
+
+var data = splitSlides(html);
+
+// var	trimmed = JSON.parse(data).replace(/\\n/g, ' ');
+// var	remBack = trimmed.replace(/\\/g, ' ');
+
+console.log("data:", data);
 
 // generate test slide
 generateSlide([-100, 18, -110], data);
