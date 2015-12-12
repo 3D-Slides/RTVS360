@@ -107,7 +107,7 @@ SlideGenerator.prototype.addOneSlide3D = function (index, coords) {
 };
 
 // Add all 3d slides in html:
-SlideGenerator.prototype.addAllSlides3D = function (slideArray, coordsArray) {
+SlideGenerator.prototype.addAllSlides3D = function (coordsArray) {
 	
 	var firstHalf, secondHalf;
 	var loader = new THREE.TextureLoader();
@@ -142,6 +142,8 @@ SlideGenerator.prototype.addAllSlides3D = function (slideArray, coordsArray) {
 
 			// Loop Thru Slides, creating group for each:
 		for(var i = 0; i < this.slides.length; i++) {
+			console.log(coordsArr);
+			this.addOneSlide3D(i, coordsArr[i]);
 
 			var group = new THREE.Object3D();
 			group.position.set(coordsArray[i][0],coordsArray[i][1],coordsArray[i][2]);
@@ -149,8 +151,6 @@ SlideGenerator.prototype.addAllSlides3D = function (slideArray, coordsArray) {
 			var elements = slideArray[i].children;
 
 				// Loop through the elements of eachSlide, finding the nodes:
-			
-			
 		}
 	} else {
 		console.error('Your coords do not match up with your slides!');

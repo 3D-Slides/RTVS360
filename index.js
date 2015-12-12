@@ -5,7 +5,7 @@ var camera, controls, spotLight;
 var cameraPivot;
 var loader;
 
-var SlideGenerator = new SlideGenerator();
+// var SlideGenerator = new SlideGenerator();
 var posArray = [];
 for (var z = -50; z < 150; z += 100) {
 		for(var x = -85; x < 115; x+=40) {
@@ -14,13 +14,8 @@ for (var z = -50; z < 150; z += 100) {
 	}
 
 window.onload = function(){
-	
-	
 	// var slidesArray = SlideGenerator.getSlides();
-	SlideGenerator.addOneSlide3D( 0, posArray[0] );
-	glScene.children[8].children[1].position.set(85, 4, -50);
-	glScene.children[8].children[2].position.set(85, 4, -60);
-	
+	// SlideGenerator.addOneSlide3D( 0, posArray[0] );
 };
 init();
 render();
@@ -67,7 +62,6 @@ function init() {
 		alpha: 0
 	});
 	marker = new THREE.Object3D();
-	console.log(posArray);
 	marker.position.set(0,0,0);
 	glScene.add(marker);
 

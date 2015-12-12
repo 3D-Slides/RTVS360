@@ -1,8 +1,84 @@
 
+var data = '<div class="slide"><section><h2>Whats the Catch?</h2><p>Im a paragraph, yo</p><ul><li>You have to bind this manually whenever you add a method</li><li>No this.isMounted method</li><li>Lack of mixin support (proposals to fix in ES7)</li></ul></section></div>';
 
-console.log('in html converter');
-var html = '<div class="slide"><section><h1>Higher Order Components</h1></section></div><div class="slide"><section><h2>ES6 Class keyword</h2><ul><li>Syntactic sugar for constructor functions</li><li>Javascript still uses prototypal inheritance</li><li>Uses the \'constructor\' method to create an object</li><li>Extends allows for sub classing</li></ul></section></div><div class="slide"><section><h2>Constructor</h2><img style="" data-natural-width="917" data-natural-height="900" src="https://s3.amazonaws.com/media-p.slid.es/uploads/396586/images/2042502/Screen_Shot_2015-12-07_at_4.19.47_PM.png"/></section></div><div class="slide"><section><h2>Class</h2><img style="" data-natural-width="1066" data-natural-height="806" src="https://s3.amazonaws.com/media-p.slid.es/uploads/396586/images/2042503/Screen_Shot_2015-12-07_at_4.32.04_PM.png"/></section></div><div class="slide"><section><h2>React just uses functions</h2><img data-natural-width="1302" data-natural-height="624" style="" src="https://s3.amazonaws.com/media-p.slid.es/uploads/396586/images/2042401/Screen_Shot_2015-12-07_at_2.39.38_PM.png"/><img data-natural-width="1302" data-natural-height="618" style="" src="https://s3.amazonaws.com/media-p.slid.es/uploads/396586/images/2042400/Screen_Shot_2015-12-07_at_2.39.23_PM.png"/></section></div><div class="slide"><section><h1>But wait! It\'s almost 2016</h1><h2>React + ES2015 = ?</h2></section></div><div class="slide"><section><h1>The Component of the Future!</h1><img src="https://s3.amazonaws.com/media-p.slid.es/uploads/396586/images/2043144/Screen_Shot_2015-12-07_at_7.42.17_PM.png" data-natural-width="1074" data-natural-height="586" style=""/></section></div><div class="slide"><section><h2>What\'s the Catch?</h2><ul><li>You have to bind "this" manually whenever you add a method</li><li>No this.isMounted method</li><li>Lack of mixin support (proposals to fix in ES7)</li></ul></section></div><div class="slide"><section><h2>The HOC basics</h2><ul><li>Takes a component as an argument</li><li>Adds additional functionality to the component</li><li>Returns the augmented component</li></ul></section></div><div class="slide"><section><h1>Higher Order Component</h1><img src="https://s3.amazonaws.com/media-p.slid.es/uploads/396586/images/2043532/Screen_Shot_2015-12-07_at_11.37.17_PM.png" data-natural-width="1094" data-natural-height="900" style=""/></section></div>';
+// generate test slide
+generateSlide([-100, 18, -110], data);
 
-console.log('Html Loaded: ', html)
- // Maybe, could send it in local storage instead....
-document.getElementById('slides').innerHTML = html;  // Could append to body, might make it easier/cleaner
+function generateSlide (coords, html) {
+
+	var tagStore = [];
+	var contentStore = [];
+
+	// split html data at tags
+	var divideOnTagName = R.split('<');
+	var divideContentAndTag = R.split('>');
+	var divideAllContent = R.map(divideContentAndTag);
+
+	// save the broken up html data into array
+	var group = new THREE.Object3D();
+
+	// individual properties for each tag
+	var tagProps = {
+		h1: {
+			color: 0x00d1ff,
+			size: 1.75,
+			indent: ''
+		},
+		h2: {
+			color: 0xffffff,
+			size: 1.4,
+			indent: ''
+		},
+		h3: {
+			color: 0xffffff,
+			size: 1.25,
+			indent: '* '
+		},
+		p: {
+			color: 0xB8F2FF,
+			size: 1,
+			indent: '       '
+		},
+		li: {
+			color: 0xB8F2FF,
+			size: 1,
+			indent: ' - '
+		}
+	}
+
+	var posArray = coords;
+
+	function makeMesh(tag, content) {
+		var props =  tagProps[tag];
+		var slideGeo = new THREE.TextGeometry(props.indent +content, {
+			size: props.size,
+			height: 0.1,
+			curveSegments: 12,
+			font: 'helvetiker'
+		});
+		var slideMaterial = new THREE.MeshLambertMaterial( {color: props.color} );
+		var slideMesh = new THREE.Mesh( slideGeo, slideMaterial );
+		slideMesh.position.set(posArray[0], posArray[1], posArray[2])
+		posArray[1]-=4;
+		return slideMesh;
+	}
+
+	// check if element has /, if it does then pop it into variable then render the content
+	var createSlide = R.forEach(function(subArray) {
+	  if( R.test(/\//, subArray[0]) ) {
+	    var tag = tagStore.pop();
+	    var content = contentStore.pop();
+	    if(content !== '') {
+	      var mesh = makeMesh(tag, content);
+	      group.add(mesh);
+	    }
+	  } else {
+	    tagStore.push(subArray[0]);
+	    contentStore.push(subArray[1]);
+	  }
+	});
+
+	var generate3D = R.compose(createSlide, R.tail, divideAllContent, divideOnTagName);
+	generate3D(html);
+	glScene.add(group);
+}
