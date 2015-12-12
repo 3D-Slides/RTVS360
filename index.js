@@ -14,13 +14,8 @@ for (var z = -50; z < 150; z += 100) {
 	}
 
 window.onload = function(){
-	
-	
-	var slidesArray = SlideGenerator.getSlides();
-	SlideGenerator.addAllSlides3D( slidesArray, posArray );
-	glScene.children[8].children[1].position.set(85, 4, -50);
-	glScene.children[8].children[2].position.set(85, 4, -60);
-	
+	// var slidesArray = SlideGenerator.getSlides();
+	SlideGenerator.addOneSlide3D( [-100, 18, -110], SlideGenerator.data );
 };
 init();
 render();
@@ -67,7 +62,6 @@ function init() {
 		alpha: 0
 	});
 	marker = new THREE.Object3D();
-	console.log(posArray);
 	marker.position.set(0,0,0);
 	glScene.add(marker);
 

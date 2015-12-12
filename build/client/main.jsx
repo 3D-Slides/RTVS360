@@ -44,7 +44,7 @@ var SlidesCreator = React.createClass({
 
           <SideNav/>
           <MarkDown postSub={this.postSubmit}/>
-					<CodeEditor />
+		  <CodeEditor />
 
         </div>
       </section>
