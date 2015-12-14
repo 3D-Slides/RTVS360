@@ -47,6 +47,7 @@ var SlidesCreator = React.createClass({
 					<CodeEditor postSub={this.postSubmit}/>
 
 
+
         </div>
       </section>
     )
