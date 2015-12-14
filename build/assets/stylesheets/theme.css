@@ -89,6 +89,7 @@ a:active {
 	vertical-align: top;
 	width: 300px;
 	z-index: 1010;
+	top: 17px;
 }
 
 /* Layout Base - Sidebar Left Opened ( Larger than mobile ) */
@@ -124,7 +125,7 @@ a:active {
 		margin-right: 0;
 	}
 }
-/* Layout Base - Flexbox supported */
+
 @media only screen and (min-width: 768px) {
 	html.flexbox .inner-wrapper,
 	html.flexboxlegacy .inner-wrapper {
@@ -244,7 +245,7 @@ a:active {
 @media only screen and (min-width: 1200px) {
 	/* Layout Boxed - Body Tag */
 	html.boxed body {
-		background: url(../images/patterns/denim.png) repeat;
+		background: url(../images/patterns/gray_jean.png) repeat;
 	}
 
 	/* Layout Boxed - Main Wrapper */
@@ -258,7 +259,7 @@ a:active {
 	/* Layout Boxed - Header */
 	html.boxed .header {
 		border-top: 3px solid #cccccc;
-		height: 63px;
+		height: 80px;
 		position: absolute;
 		top: 25px;
 	}

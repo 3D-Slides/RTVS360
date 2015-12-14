@@ -15,7 +15,7 @@ var SideNav = React.createClass({
 						<div className="sidebar-title">
 							Navigation
 						</div>
-						<div className="sidebar-toggle hidden-xs" data-toggle-className="sidebar-left-collapsed"
+						<div className="sidebar-toggle hidden-xs" data-toggle-classname="sidebar-left-collapsed"
 						data-target="html" data-fire-event="sidebar-left-toggle">
 							<i className="fa fa-bars" aria-label="Toggle sidebar"></i>
 						</div>

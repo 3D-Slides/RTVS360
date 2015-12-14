@@ -14,9 +14,8 @@ var Slideshow = function(camera) {
 	var _transitions = [];
 
 	var shuffle = function() {
-		console.log('i ran');
 		var card1 = new TWEEN.Tween(glScene.children[8].children[1].position);
-		var card2A = new TWEEN.Tween(glScene.children[8].children[2].position);55555556 
+		var card2A = new TWEEN.Tween(glScene.children[8].children[2].position);
 		var card2B = new TWEEN.Tween(glScene.children[8].children[2].position);
 		var card2C = new TWEEN.Tween(glScene.children[8].children[2].position);
 		card1.to({
@@ -41,12 +40,9 @@ var Slideshow = function(camera) {
 		}, 500)
 		.easing(TWEEN.Easing.Cubic.InOut);
 
-		card2A.start();
-		card2B.chain(card2C).start();
-
-
-		
+		card2A.chain(card2B).chain(card2C).start();	
 	};
+
 	var move = function(index) {
 		if (index > _snapshots.length - 1) _currentSnap = index = 0;
 		if (index < 0) _currentSnap = index = 9;
