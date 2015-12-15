@@ -12,7 +12,7 @@ var SlidesCreator = React.createClass({
 
 	postSubmit: function (event) {
 		event.preventDefault();
-		var markdownText = document.getElementById('markdownInput').value;
+		var markdownText = document.getElementById('code-input-box').value;
 		var markString = JSON.stringify(markdownText);
 
 		request({
