@@ -28,6 +28,7 @@ var CodeEditor = React.createClass({
 
                   <div className="col-md-12">
 
+
                     <textarea data-uk-htmleditor defaultValue={"..."} id="code-input-box"/>
                     {/* Test */}
 

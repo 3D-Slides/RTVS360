@@ -1,4 +1,6 @@
 
+// Check if incoming data is either html or markdown.
+
 var html = document.cookie.replace(/\\t|\\n+|\s{2,}/g, '');
 
 var splitSlides = R.split('<br/>');

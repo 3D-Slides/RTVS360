@@ -1,18 +1,55 @@
 // ---------------------- GENERATE SLIDES --------------------- //
 
 function SlideGenerator (){
-	var html = document.cookie.replace(/\\t|\\n+|\s{2,}/g, '');
-	var splitSlides = R.split('<hr>');
+	var cookieData = document.cookie;
+	console.log('char 1:', cookieData);
+
+	if( cookieData.charAt(1) === '<' ) {
+		var html = cookieData.replace(/\\t|\\n+|\s{2,}/g, '');
+		this.data = html;
+
+	} else {
+
+		var converter = new showdown.Converter({noHeaderId: true});
+		var clipQuotes = R.replace(/"/g, '');
+		var removeNewLines = R.replace(/\\n+|\\t|\\r/g, '   ');
+		var splitMkdn = R.split( '   ' );
+		var addQuotes = function(data){return '"'+data+'"'};
+		var trimmedArray = R.compose(splitMkdn, removeNewLines, clipQuotes)(cookieData);
+		
+		console.log('trimmedArray: ', trimmedArray);
+		
+		var htmlConvert = '';
+		for(var i = 0; i < trimmedArray.length; i++){
+			var convertedMkdn = converter.makeHtml( trimmedArray[i] );
+			htmlConvert += convertedMkdn.replace(/\n+/g, '');
+
+		}
+
+		var html = addQuotes(htmlConvert);
+		console.log('html: ', html);
+
+		
+		console.log('split html:', html)
+		
+
+	}
+		
+	
+
+	console.log("data: ", this.data);
+
+	var splitSlides = R.split('<hr />');
 
 	this.data = splitSlides(html);
 	this.slideLocations = [];
+
 }
 
 // Add a single 3d slide:
 SlideGenerator.prototype.addOneSlide3D = function (coords, html) {
 	var tagStore = [];
 	var contentStore = [];
-
 	// split html data at tags
 	var divideOnTagName = R.split('<');
 	var divideContentAndTag = R.split('>');
@@ -52,6 +89,7 @@ SlideGenerator.prototype.addOneSlide3D = function (coords, html) {
 	// helper function to create 3D Text Mesh
 	function makeMesh(tag, content) {
 		var props =  tagProps[tag];
+		console.log('props:', tagProps[tag])
 		var slideGeo = new THREE.TextGeometry(props.indent +content, {
 			size: props.size,
 			height: 0.1,
@@ -69,23 +107,29 @@ SlideGenerator.prototype.addOneSlide3D = function (coords, html) {
 
 	// check if element has /, if it does then pop it into variable then render the content
 	var createSlide = R.forEach(function(subArray) {
-		if( R.test(/\//, subArray[0]) ) {
-			var tag = tagStore.pop();
-			var content = contentStore.pop();
-			if(content !== '') {
-				var mesh = makeMesh(tag, content);
-				group.add(mesh);
-			}
-		} else {
-			tagStore.push(subArray[0]);
-			contentStore.push(subArray[1]);
-		}
+	  if( R.test(/\//, subArray[0]) ) {
+	    var tag = tagStore.pop();
+	    var content = contentStore.pop();
+	    if(content !== '') {
+	      var mesh = makeMesh(tag, content);
+	      group.add(mesh);
+	    }
+	  } else {
+	    tagStore.push(subArray[0]);
+	    contentStore.push(subArray[1]);
+		console.log('Tag Store: ', tagStore, 'Content Store: ', contentStore)
+
+	  }
 	});
 
 	// save the broken up html data into array
 	var group = new THREE.Object3D();
 
 	var generate3D = R.compose(createSlide, R.tail, divideAllContent, divideOnTagName);
+	
+	console.log('debug:', R.compose(R.tail, divideAllContent, divideOnTagName)(html));
+	
+
 	generate3D(html);
 	group.castShadow = true;
 	group.receiveShadow = true;
