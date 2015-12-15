@@ -14,6 +14,7 @@ var Slideshow = function(camera) {
 	var _transitions = [];
 
 	var shuffle = function() {
+		// TODO: Fix the hard coding of this function
 		var card1 = new TWEEN.Tween(glScene.children[8].children[1].position);
 		var card2A = new TWEEN.Tween(glScene.children[8].children[2].position);
 		var card2B = new TWEEN.Tween(glScene.children[8].children[2].position);
@@ -40,7 +41,7 @@ var Slideshow = function(camera) {
 		}, 500)
 		.easing(TWEEN.Easing.Cubic.InOut);
 
-		card2A.chain(card2B).chain(card2C).start();	
+		card2A.chain(card2B).chain(card2C).start();
 	};
 
 	var move = function(index) {
@@ -139,12 +140,17 @@ var Snapshot = function(location, rotation, options) {
 };
 Snapshot.prototype.constructor = Snapshot;
 
+
 var show = new Slideshow(camera);
-posArray.forEach(function(coord) {
-	moveCoord = [coord[0] * 2, coord[1], coord[2] * 2];
+var posArray = SlideGenerator.slideLocations;
+var saveCoords = R.forEach(function(coord) {
+	console.log(coord);
+	moveCoord = [ coord[0], coord[1], coord[2] ];
 	show.addSnapshot(moveCoord);
-});
+})(posArray);
 show.addTransitionTo('all', 'Quadratic.InOut');
+
+
 
 
 

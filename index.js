@@ -7,21 +7,11 @@ var loader;
 
 var counter = 0;
 var SlideGenerator = new SlideGenerator();
-var posArray = [];
-for (var z = -50; z < 150; z += 100) {
-		for(var x = -85; x < 115; x+=40) {
-			posArray.push([x, 18, z]);
-			if(++counter > 6) {
-				break;
-			}
-		}
-	}
 
-window.onload = function(){
+
 	// var slidesArray = SlideGenerator.getSlides();
-	SlideGenerator.addOneSlide3D( [-100, 18, -110], SlideGenerator.data );
-};
 init();
+SlideGenerator.addAllSlides3D( [-160, 25, -50], SlideGenerator.data );
 render();
 
 
@@ -35,7 +25,7 @@ function init() {
 		ASPECT = WIDTH / HEIGHT;
 
 	glScene = new THREE.Scene();
-	glScene.fog = new THREE.FogExp2(0x000000, 0.015);
+	//glScene.fog = new THREE.FogExp2(0x000000, 0.015);
 	cssScene = new THREE.Scene();
 	loader = new THREE.TextureLoader();
 

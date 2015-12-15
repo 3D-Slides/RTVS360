@@ -2,10 +2,12 @@ var React = require('react');
 var ReactDOM = require('react-dom');
 // var ReactRouter = require('react-router');
 
+
 var CodeEditor = React.createClass({
   render: function() {
     return (
       <div>
+
       <section role="main" className="content-body">
 
         {/* start: page */}
@@ -26,9 +28,11 @@ var CodeEditor = React.createClass({
 
                   <div className="col-md-12">
 
+                    <textarea data-uk-htmleditor defaultValue={"..."} id="code-input-box"/>
                     {/* Test */}
 
-                    <textarea rows={16} className="form-control" id="codemirror_html_code" name="code_html" data-plugin-codemirror />
+
+
 
                   </div>
                 </div>

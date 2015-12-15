@@ -1,17 +1,19 @@
 // ---------------------- GENERATE SLIDES --------------------- //
 
 function SlideGenerator (){
+	if markdown -> convert markdown
+		
 	var html = document.cookie.replace(/\\t|\\n+|\s{2,}/g, '');
-	// var splitSlides = R.split('<br/>');
+	var splitSlides = R.split('<hr>');
 
-	this.data = html;
-
+	this.data = splitSlides(html);
+	this.slideLocations = [];
 	console.log("data:", this.data);
 }
 
 // Add a single 3d slide:
 SlideGenerator.prototype.addOneSlide3D = function (coords, html) {
-
+	console.log(coords, html);
 	var tagStore = [];
 	var contentStore = [];
 
@@ -19,9 +21,6 @@ SlideGenerator.prototype.addOneSlide3D = function (coords, html) {
 	var divideOnTagName = R.split('<');
 	var divideContentAndTag = R.split('>');
 	var divideAllContent = R.map(divideContentAndTag);
-
-	// save the broken up html data into array
-	var group = new THREE.Object3D();
 
 	// individual properties for each tag
 	var tagProps = {
@@ -66,6 +65,8 @@ SlideGenerator.prototype.addOneSlide3D = function (coords, html) {
 		var slideMaterial = new THREE.MeshLambertMaterial( {color: props.color} );
 		var slideMesh = new THREE.Mesh( slideGeo, slideMaterial );
 		slideMesh.position.set(posArray[0], posArray[1], posArray[2]);
+		slideMesh.castShadow = true;
+		slideMesh.receiveShadow = true;
 		posArray[1]-=4;
 		return slideMesh;
 	}
@@ -85,59 +86,33 @@ SlideGenerator.prototype.addOneSlide3D = function (coords, html) {
 		}
 	});
 
+	// save the broken up html data into array
+	var group = new THREE.Object3D();
+
 	var generate3D = R.compose(createSlide, R.tail, divideAllContent, divideOnTagName);
 	generate3D(html);
+	group.castShadow = true;
+	group.receiveShadow = true;
 	glScene.add(group);
 	
 };
 
 // Add all 3d slides in html:
-SlideGenerator.prototype.addAllSlides3D = function (coordsArray) {
-	var firstHalf, secondHalf;
-	var loader = new THREE.TextureLoader();
-	
-		// helper func to get textGeo props:
-	function generateProps(size){
-		return {
-			size: size/100,
-			height: 0.2,
-			curveSegments: 12,
-			font: 'helvetiker'
-		}
+SlideGenerator.prototype.addAllSlides3D = function(location, slides) {
+	var x = location[0];
+	var y = location[1];
+	var z = location[2];
+
+	if (x > 160) {
+		x = -160;
+		z += 100;
 	}
-		// helper to create mesh text shapes
-	function setMesh( geo, material ) {
-			//create the text shapes:
-		var slideMesh = new THREE.Mesh( slideGeo, slideMaterial );
-		slideMesh.castShadow = true;
-		slideMesh.receiveShadow = true;
-		// slideMesh.position.set( coordsArr[0], coordsArr[1], coordsArr[2] );
 
-			// Offset each line so they dont lay ontop of eachother:
-				coordsArr = [coordsArr[0], coordsArr[1]-2, coordsArr[2]];	
-				slideMesh.position.set( coordsArr[0], coordsArr[1], coordsArr[2] );
-			
-		group.add(slideMesh);
-		group.castShadow = true;
-		group.receiveShadow = true;
-	}
-		// Check if Slides Array and Coords Array match up:
-	if(this.slides.length === coordsArray.length) {
-
-			// Loop Thru Slides, creating group for each:
-		for(var i = 0; i < this.slides.length; i++) {
-			console.log(coordsArr);
-			this.addOneSlide3D(i, coordsArr[i]);
-
-			var group = new THREE.Object3D();
-			group.position.set(coordsArray[i][0],coordsArray[i][1],coordsArray[i][2]);
-			var coordsArr = [group.position.x, group.position.y, group.position.z]
-			var elements = slideArray[i].children;
-
-				// Loop through the elements of eachSlide, finding the nodes:
-		}
-	} else {
-		console.error('Your coords do not match up with your slides!');
+	var head = R.head(slides);
+	if (head) {
+		this.slideLocations.push([x, y, z]);
+		this.addOneSlide3D([x, y, z], head);
+		this.addAllSlides3D([x+80, y, z], R.tail(slides));
 	}
 };
 

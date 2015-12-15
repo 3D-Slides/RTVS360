@@ -4,14 +4,15 @@ var ReactRouter = require('react-router');
 var request = require('request');
 var Header = require('./components/header.jsx');
 var SideNav = require('./components/side-nav.jsx');
-var MarkDown = require('./components/markDownEditor.jsx');
 var CodeEditor = require('./components/codeEditor.jsx');
+
+
 var SlidesCreator = React.createClass({
 
 
 	postSubmit: function (event) {
 		event.preventDefault();
-		var markdownText = document.getElementById('markdownInput').value;
+		var markdownText = document.getElementById('code-input-box').value;
 		var markString = JSON.stringify(markdownText);
 
 		request({
@@ -43,8 +44,9 @@ var SlidesCreator = React.createClass({
         <div className="inner-wrapper">
 
           <SideNav/>
-          <MarkDown postSub={this.postSubmit}/>
-		  <CodeEditor />
+					<CodeEditor postSub={this.postSubmit}/>
+
+
 
         </div>
       </section>

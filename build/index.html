@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="dark fixed">
+<html class=" fixed sidebar-left-collapsed">
 	<head>
 		<meta charset="UTF-8">
 
@@ -25,11 +25,12 @@
 		<!-- Specific Page CSS -->
 		<link rel="stylesheet" href="build/assets/vendor/jquery-ui/css/ui-lightness/jquery-ui-1.10.4.custom.css" />
 		<link rel="stylesheet" href="build/assets/vendor/bootstrap-markdown/css/bootstrap-markdown.min.css" />
-		<link rel="stylesheet" href="build/assets/vendor/summernote/summernote.css" />
-		<link rel="stylesheet" href="build/assets/vendor/summernote/summernote-bs3.css" />
-		<link rel="stylesheet" href="build/assets/vendor/codemirror/lib/codemirror.css" />
-		<link rel="stylesheet" href="build/assets/vendor/codemirror/theme/monokai.css" />
-
+		<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/pure-min.css" />
+	  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/styles/github.min.css" />
+		<link rel="stylesheet" href="build/assets/vendor/uikit/css/uikit.css" />
+		<link rel="stylesheet" href="build/assets/vendor/codemirror/lib/codemirror.css">
+		<link rel="stylesheet" href="build/assets/vendor/uikit/css/components/htmleditor.css">
+		<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.0.0/styles/default.min.css">
 
 		<!-- Main CSS -->
 		<link rel="stylesheet" href="build/assets/stylesheets/theme.css" />
@@ -43,10 +44,22 @@
 		<!-- Head Libs -->
 		<script src="build/assets/vendor/modernizr/modernizr.js"></script>
     <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/highlight.js/8.4.0/highlight.min.js"></script>
+		<!-- <script src="build/assets/vendor/jquery/jquery.js"></script> -->
+		<script src="build/assets/vendor/uikit/js/uikit.min.js"></script>
+    <script src="build/assets/vendor/codemirror/lib/codemirror.js"></script>
+    <script src="build/assets/vendor/codemirror/mode/markdown/markdown.js"></script>
+    <script src="build/assets/vendor/codemirror/addon/mode/overlay.js"></script>
+    <script src="build/assets/vendor/codemirror/mode/xml/xml.js"></script>
+    <script src="build/assets/vendor/codemirror/mode/gfm/gfm.js"></script>
+    <script src="build/assets/vendor/marked/lib/marked.js"></script>
+		<script src="build/assets/vendor/uikit/js/components/htmleditor.js"></script>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.0.0/highlight.min.js"></script>
+
 
 	</head>
 
-  <body>
+  <body style="font-family: "Proxima Nova", "Helvetica Neue", Helvetica, Arial, sans-serif;">
 
 
     <div id="appContainer"></div>
@@ -66,16 +79,14 @@
 		<script src="build/assets/vendor/bootstrap-markdown/js/markdown.js"></script>
 		<script src="build/assets/vendor/bootstrap-markdown/js/to-markdown.js"></script>
 		<script src="build/assets/vendor/bootstrap-markdown/js/bootstrap-markdown.js"></script>
-		<script src="build/assets/vendor/summernote/summernote.js"></script>
 
-		<!-- Code Mirror -->
-		<script src="build/assets/vendor/codemirror/lib/codemirror.js"></script>
-		<script src="build/assets/vendor/codemirror/addon/selection/active-line.js"></script>
-		<script src="build/assets/vendor/codemirror/addon/edit/matchbrackets.js"></script>
-		<script src="build/assets/vendor/codemirror/mode/javascript/javascript.js"></script>
-		<script src="build/assets/vendor/codemirror/mode/xml/xml.js"></script>
-		<script src="build/assets/vendor/codemirror/mode/htmlmixed/htmlmixed.js"></script>
-		<script src="build/assets/vendor/codemirror/mode/css/css.js"></script>
+
+		<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js"></script>
+
+    <!-- <script src="build/assets/javascripts/codemirror.js"></script>
+    <script src="build/assets/javascripts/demo.js"></script> -->
+
+
 
 
     <!-- Components and Settings -->

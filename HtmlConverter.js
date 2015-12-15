@@ -74,17 +74,17 @@ function generateSlide (coords, html) {
 
 	// check if element has /, if it does then pop it into variable then render the content
 	var createSlide = R.forEach(function(subArray) {
-	  if( R.test(/\//, subArray[0]) ) {
-	    var tag = tagStore.pop();
-	    var content = contentStore.pop();
-	    if(content !== '') {
-	      var mesh = makeMesh(tag, content);
-	      group.add(mesh);
-	    }
-	  } else {
-	    tagStore.push(subArray[0]);
-	    contentStore.push(subArray[1]);
-	  }
+		if( R.test(/\//, subArray[0]) ) {
+			var tag = tagStore.pop();
+			var content = contentStore.pop();
+			if(content !== '') {
+				var mesh = makeMesh(tag, content);
+				group.add(mesh);
+			}
+		} else {
+			tagStore.push(subArray[0]);
+			contentStore.push(subArray[1]);
+		}
 	});
 
 	var generate3D = R.compose(createSlide, R.tail, divideAllContent, divideOnTagName);
