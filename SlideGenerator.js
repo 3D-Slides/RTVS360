@@ -1,12 +1,45 @@
 // ---------------------- GENERATE SLIDES --------------------- //
 
 function SlideGenerator (){
-	var html = document.cookie.replace(/\\t|\\n+|\s{2,}/g, '');
-	// var splitSlides = R.split('<br/>');
+	var cookieData = document.cookie;
+	console.log('char 1:', cookieData);
 
-	this.data = html;
+	if( cookieData.charAt(1) === '<' ) {
+		var html = cookieData.replace(/\\t|\\n+|\s{2,}/g, '');
+		this.data = html;
 
-	console.log("data:", this.data);
+	} else {
+
+		var converter = new showdown.Converter({noHeaderId: true});
+		var clipQuotes = R.replace(/"/g, '');
+		var removeNewLines = R.replace(/\\n+|\\t|\\r/g, '   ');
+		var splitMkdn = R.split( '   ' );
+		var addQuotes = function(data){return '"'+data+'"'};
+		var trimmedArray = R.compose(splitMkdn, removeNewLines, clipQuotes)(cookieData);
+		
+		console.log('trimmedArray: ', trimmedArray);
+		
+		var htmlConvert = '';
+		for(var i = 0; i < trimmedArray.length; i++){
+			var convertedMkdn = converter.makeHtml( trimmedArray[i] );
+			htmlConvert += convertedMkdn.replace(/\n+/g, '');
+
+		}
+
+		var htmlString = addQuotes(htmlConvert);
+		console.log('html: ', htmlString);
+
+		var splitSlides = R.split('<hr/>');
+		var html = splitSlides(htmlString);
+		console.log('split html:', html)
+		this.data = html;
+
+	}
+		
+	
+
+	console.log("data: ", this.data);
+
 }
 
 // Add a single 3d slide:
@@ -14,11 +47,11 @@ SlideGenerator.prototype.addOneSlide3D = function (coords, html) {
 
 	var tagStore = [];
 	var contentStore = [];
-
 	// split html data at tags
 	var divideOnTagName = R.split('<');
 	var divideContentAndTag = R.split('>');
 	var divideAllContent = R.map(divideContentAndTag);
+
 
 	// save the broken up html data into array
 	var group = new THREE.Object3D();
@@ -57,6 +90,7 @@ SlideGenerator.prototype.addOneSlide3D = function (coords, html) {
 	// helper function to create 3D Text Mesh
 	function makeMesh(tag, content) {
 		var props =  tagProps[tag];
+		console.log('props:', tagProps[tag])
 		var slideGeo = new THREE.TextGeometry(props.indent +content, {
 			size: props.size,
 			height: 0.1,
@@ -82,10 +116,16 @@ SlideGenerator.prototype.addOneSlide3D = function (coords, html) {
 	  } else {
 	    tagStore.push(subArray[0]);
 	    contentStore.push(subArray[1]);
+		console.log('Tag Store: ', tagStore, 'Content Store: ', contentStore)
+
 	  }
 	});
 
 	var generate3D = R.compose(createSlide, R.tail, divideAllContent, divideOnTagName);
+	
+	console.log('debug:', R.compose(R.tail, divideAllContent, divideOnTagName)(html));
+	
+
 	generate3D(html);
 	glScene.add(group);
 	

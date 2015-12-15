@@ -27,8 +27,9 @@ var CodeEditor = React.createClass({
                 <div className="form-group">
 
                   <div className="col-md-12">
-
-                    <textarea data-uk-htmleditor defaultValue={"..."} />
+                  
+                    // added an ID to this box, enables us to grab the value and send to 3D presentation
+                    <textarea data-uk-htmleditor id="codeInputBox" defaultValue={"..."} />
                     {/* Test */}
 
 
