@@ -1,19 +1,15 @@
 // ---------------------- GENERATE SLIDES --------------------- //
 
 function SlideGenerator (){
-	if markdown -> convert markdown
-		
 	var html = document.cookie.replace(/\\t|\\n+|\s{2,}/g, '');
 	var splitSlides = R.split('<hr>');
 
 	this.data = splitSlides(html);
 	this.slideLocations = [];
-	console.log("data:", this.data);
 }
 
 // Add a single 3d slide:
 SlideGenerator.prototype.addOneSlide3D = function (coords, html) {
-	console.log(coords, html);
 	var tagStore = [];
 	var contentStore = [];
 

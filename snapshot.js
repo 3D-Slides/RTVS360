@@ -144,7 +144,6 @@ Snapshot.prototype.constructor = Snapshot;
 var show = new Slideshow(camera);
 var posArray = SlideGenerator.slideLocations;
 var saveCoords = R.forEach(function(coord) {
-	console.log(coord);
 	moveCoord = [ coord[0], coord[1], coord[2] ];
 	show.addSnapshot(moveCoord);
 })(posArray);
