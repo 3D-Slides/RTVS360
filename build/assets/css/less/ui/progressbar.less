@@ -1,0 +1,41 @@
+@import "../variable";
+@import "../mixins";
+
+
+.progress {
+  -webkit-box-shadow:none;
+  background:#ebedef;
+  border-radius:32px;
+  box-shadow:none;
+  height:12px;
+}
+.progress-bar {
+  -webkit-box-shadow:none;
+  background:@primary;
+  box-shadow:none;
+  line-height:12px;
+}
+.progress-bar-success {
+  background-color:@success;
+}
+.progress-bar-warning {
+  background-color:@warning;
+}
+.progress-bar-danger {
+  background-color:@danger;
+}
+.progress-bar-info {
+  background-color:@info;
+}
+.progress-bar-purple {
+  background-color:@purple
+}
+.progress.progress-bar-thin {
+  height: 5px;
+}
+.progress.progress-bar-large {
+  height: 20px;
+  .progress-bar {
+    line-height: 20px;
+  }
+}
