@@ -9,7 +9,7 @@ var SideNav = React.createClass({
       <div>
 
       {/* BEGIN SIDEBAR */}
-      <div className="sidebar ">
+      <div className="sidebar">
         <div className="logopanel">
           <h1>
             <a href="#" />
@@ -23,18 +23,18 @@ var SideNav = React.createClass({
                 <span>Navigation</span>
                 <div className="pull-right menu-settings">
                   <a href="#" className="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true" data-delay={300} aria-expanded="false">
-                    <i className="icon-settings" />
+                    { /*<i className="icon-settings"  /> */}
                   </a>
                 </div>
               </div>
               <ul className="nav nav-sidebar">
-                <li className="tm nav-active active">
+              {/*  <li className=" tm nav-parent">
                   <a href="my-link.html">
                     <i className="icon-home" />
                     <span>HOME</span>
                   </a>
-                </li>
-                <li className="tm nav-parent">
+                </li> */}
+                <li className="tm nav-active active">
                   <a href="#">
                     <i className="icon-puzzle" />
                     <span>BUILD</span>
@@ -42,9 +42,9 @@ var SideNav = React.createClass({
                 </li>
               </ul>
               <div className="sidebar-widgets" style={{}} />
-              <div className="sidebar-footer clearfix" style={{}}>
+              <div className="sidebar-footer clearfix" style={{height: 40}}>
                 <a className="pull-left toggle_fullscreen" href="#" data-rel="tooltip" data-placement="top" data-original-title="Fullscreen">
-                  <i className="icon-size-fullscreen" />
+                {/*   <i className="icon-size-fullscreen" /> */}
                 </a>
               </div>
             </div>

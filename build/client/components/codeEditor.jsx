@@ -6,11 +6,11 @@ var CodeEditor = React.createClass({
   render: function() {
     return (
       <div>
-        <div className="custom-page m-t-60 text-center">
+      {  /* <div className="custom-page m-t-60 text-center">
           <h2 className="m-b-20">Now you can create your presentation in 3D with <strong>3D Slides</strong>!</h2>
           <a href="#" id="no-page-builder" className="btn btn-dark btn-lg btn-square">Awesome!</a>
           <a href="#" id="no-page-builder" className="btn btn-primary btn-lg btn-square">Let's Do It!</a>
-        </div>
+        </div> */}
         <div className="row">
           <div className="col-md-12 portlets">
             <div className="panel">
@@ -23,7 +23,7 @@ var CodeEditor = React.createClass({
               <div className="panel-content">
                 <div className="row">
                   <div className="col-md-12">
-                    <textarea data-uk-htmleditor defaultValue={"# **Markdown Demo**\n---\n\n### Changes are automatically rendered as you type.\n\n* Item\n* Item\n* Item\n* Item with `code` !\n\n## HTML block\n\n<blockquote>\n    <strong>This is a blockquote</strong>.\n</blockquote>\n\n## How about some code?\n\n```js\nvar React = require('react');\nvar ReactDom = require('react-dom');\n\nvar CommentBox = React.createClass({\n  render: function() {\n    return (\n      <div className=\"commentBox\">\n        Hello, world! I am a CommentBox.\n      </div>\n    );\n  }\n});\nReactDOM.render(\n  <CommentBox />,\n  document.getElementById('content')\n);\n```\n## More info?\n\nThis is a link [Link](//github.com/)\n\n---------------\n\n# What about HTML?\n\n<span>\n<img style=\"width: 80%; margin:0 auto; display: block;\" src=\"https://s-media-cache-ak0.pinimg.com/736x/fd/55/f6/fd55f6fafd8f42f17690081960005fed.jpg\" alt=\"the Octotron\">\n</span>\n\n\n                      "} />
+                    <textarea data-uk-htmleditor defaultValue={"\n<h1><strong>Welcome to 3D Slides Beta Version 0.0.1!</strong></h1>\n<h1>You can currently use h1 tags,</h1>\n<h2>h2 tags,</h2>\n<h3>h3 tags,</h3>\n<ul>\n    <li>List items work!</li>\n    <li>Ordered and unordered lists render the same</li>\n    <li>Updates to tags rendered are currently in the works!</li>\n</ul>\n\n<p>paragraph tags render as well, if your list item runs too long, use a paragraph tag to escape to next line.</p>\n<hr />\n<h1>To start a new slide, use the 'hr' tag</h1>\n<p>Img tags, among others, will render with the next update, so hold tight!</p>\n<hr />\n\n# **Same goes for markdown**\n# H1 tags start with #\n## H2 tags start with ##\n### H3 tags start with ###\n\n* You can make an un-ordered list by preceding list items with either a * or a - \n- For now, ordered lists render the same\n\nTo start a paragraph with markdown, just start a new line with no indicators.\n\n# **Now your all set!** \n## Give it a try, have fun, and let us know what you want added!\n\n"} />
                     <div className="custom-page m-t-60 text-center">
                       <a href="#" id="no-page-builder" onClick={this.props.postSub} className="btn btn-primary btn-lg btn-square">Create Slides</a>
                     </div>
