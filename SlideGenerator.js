@@ -153,7 +153,9 @@ SlideGenerator.prototype.addAllSlides3D = function(location, slides) {
 	var x = location[0];
 	var y = location[1];
 	var z = location[2];
-
+	
+	// assigning rows and columns for the slides. x values are rows,
+	// z values are the columns
 	if (x > 160) {
 		x = -160;
 		z += 100;
