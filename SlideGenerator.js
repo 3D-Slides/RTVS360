@@ -80,7 +80,6 @@ SlideGenerator.prototype.addOneSlide3D = function (coords, html) {
 	// helper function to create 3D Text Mesh
 	function makeMesh(tag, content) {
 		var props =  tagProps[tag];
-		console.log('props:', tagProps[tag])
 		var slideGeo = new THREE.TextGeometry(props.indent +content, {
 			size: props.size,
 			height: 0.1,
