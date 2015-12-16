@@ -1,0 +1,145 @@
+@import "../variable";
+@import "../mixins";
+
+.badge {
+  border-radius: 2px;
+  font-weight: 300;
+}
+.badge-dark {
+  background-color: @dark;
+}
+.badge-white {
+  background-color: @white;
+  color:#2B2E33;
+}
+.badge-default {
+  background-color: @default;
+}
+.badge-primary {
+  background-color: @primary;
+}
+.badge-success {
+  background-color: @success;
+}
+.badge-info {
+  background-color: @info;
+}
+.badge-warning {
+  background-color: @warning;
+}
+.badge-danger {
+  background-color: @danger;
+}
+.badge-rounded {
+  border:2px solid rgba(255,255,255,0.5);
+  height:24px;
+  padding:0;
+  text-align: center;
+  width:24px;
+  .border-radius(12px);
+}
+.badge-sold {
+  text-transform: uppercase;
+}
+.badge-stock {
+  text-decoration: line-through;
+}
+.label {
+  font-weight: 500;
+}
+.label-default {
+  background-color:@default;
+  color:#121212;
+}
+.label-default[href] {
+  &:hover {
+    background-color:@default-hover;
+  }
+  &:focus {
+    background-color:@default-hover;
+  }
+}
+.label-primary {
+  background-color:@primary;
+  &:hover {
+    background-color:@primary-hover;
+  }
+}
+.label-primary[href] {
+  &:hover {
+    background-color:@primary;
+  }
+  &:focus {
+    background-color:@primary-hover;
+  }
+}
+.label-success {
+  background-color:@success;
+  &:hover {
+    background-color:@success-hover;
+  }
+}
+.label-success[href] {
+  &:hover {
+    background-color:@success-hover;
+  }
+  &:focus {
+    background-color:@success-hover;
+  }
+}
+.label-info {
+  background-color: @info;
+  &:hover {
+    background-color: @info-hover;
+  }
+}
+.label-info[href] {
+  &:hover {
+    background-color:@info-hover;
+  }
+  &:focus {
+    background-color:@info-hover;
+  }
+}
+.label-warning {
+  background-color: @warning;
+  &:hover {
+    background-color:@warning-hover;
+  }
+}
+.label-warning[href] {
+  &:hover {
+    background-color:@warning-hover;
+  }
+  &:focus {
+    background-color:@warning-hover;
+  }
+}
+.label-danger {
+  background-color:@danger;
+  &:hover {
+    background-color:@danger-hover;
+  }
+}
+.label-danger[href] {
+  &:hover {
+    background-color:@danger-hover;
+  }
+  &:focus {
+    background-color:@danger-hover;
+  }
+}
+.label-blue {
+  background-color:@blue;
+  &:hover {
+    background-color:@blue-hover;
+  }
+}
+.label-blue[href] {
+  &:hover {
+    background-color:@blue-hover;
+  }
+  &:focus {
+    background-color:@blue-hover;
+  }
+}

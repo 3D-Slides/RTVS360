@@ -58,7 +58,7 @@ function init() {
 
 	// CONSTRUCT A FLOOR
 
-	var floorGeometry = new THREE.PlaneGeometry(400,400,80,80);
+	var floorGeometry = new THREE.PlaneGeometry(450,450,90,90);
 	var floorMaterial = new THREE.MeshPhongMaterial({
 		color: 0x1F1E24,
 		side: THREE.DoubleSide
@@ -69,7 +69,7 @@ function init() {
 	floor.receiveShadow = true;
 	glScene.add(floor);
 
-	var size = 200, step = 5;
+	var size = 225, step = 5;
 	var yDepth = 0;
 	var grid = new THREE.Group();
 	var material = new THREE.LineBasicMaterial({

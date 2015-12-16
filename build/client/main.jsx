@@ -5,6 +5,7 @@ var request = require('request');
 var Header = require('./components/header.jsx');
 var SideNav = require('./components/side-nav.jsx');
 var CodeEditor = require('./components/codeEditor.jsx');
+var Footer = require('./components/footer.jsx');
 
 
 var SlidesCreator = React.createClass({
@@ -29,20 +30,20 @@ var SlidesCreator = React.createClass({
 
 	render: function() {
 	return (
-	  <section className="body">
+	  <div className="main-content">
 
-	  {/* start: header */}
+	  		{/* BEGIN HEADER */}
         <Header/>
 
-        <div className="inner-wrapper">
+					{ /*<!-- BEGIN PAGE CONTENT -->*/ }
+	        <div className="page-content page-editors">
 
           <SideNav/>
 					<CodeEditor postSub={this.postSubmit}/>
+					<Footer />
 
-
-
-        </div>
-      </section>
+        	</div>
+    </div>
     )
   }
 });

@@ -1,99 +1,62 @@
-<!doctype html>
-<html class=" fixed sidebar-left-collapsed">
-	<head>
-		<meta charset="UTF-8">
+<html class="" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <link rel="shortcut icon" href="build/assets/images/favicon.ico" type="image/png">
+    <title>3D-SLIDES - Present your HTML and or Markup slides in a 3D Universe.</title>
+    <link href="http://fonts.googleapis.com/css?family=Nothing+You+Could+Do" rel="stylesheet" type="text/css">
+    <link href="build/assets/css/style.css" rel="stylesheet">
+    <link href="build/assets/css/theme.css" rel="stylesheet">
+    <link href="build/assets/css/ui.css" rel="stylesheet">
+    <link rel="stylesheet" href="build/assets/plugins/uikit/css/uikit.css" />
 
-		<title>3D-SLIDES Creator</title>
-		<meta name="keywords" content="3D-Slides" />
-		<meta name="description" content="3D-Slides">
+    <script src="build/assets/plugins/jquery/jquery.js"></script>
+    <script src="build/assets/plugins/uikit/js/uikit.min.js"></script>
 
-		<!-- Mobile Metas -->
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <link rel="stylesheet" href="build/assets/plugins/codemirror/lib/codemirror.css">
+    <script src="build/assets/plugins/codemirror/lib/codemirror.js"></script>
+    <script src="build/assets/plugins/codemirror/mode/markdown/markdown.js"></script>
+    <script src="build/assets/plugins/codemirror/addon/mode/overlay.js"></script>
+    <script src="build/assets/plugins/codemirror/mode/xml/xml.js"></script>
+    <script src="build/assets/plugins/codemirror/mode/gfm/gfm.js"></script>
+    <script src="build/assets/plugins/marked/lib/marked.js"></script>
 
-		<!-- Web Fonts  -->
-		<link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800|Shadows+Into+Light" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="build/assets/plugins/uikit/css/components/htmleditor.css">
+    <script src="build/assets/plugins/uikit/js/components/htmleditor.js"></script>
 
-		<!-- Third Party CSS -->
-		<link rel="stylesheet" href="build/assets/vendor/bootstrap/css/bootstrap.css" />
-		<link rel="stylesheet" href="build/assets/vendor/font-awesome/css/font-awesome.css" />
+  </head>
 
-		<!-- Favicon -->
-
-		<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
-
-
-		<!-- Specific Page CSS -->
-		<link rel="stylesheet" href="build/assets/vendor/jquery-ui/css/ui-lightness/jquery-ui-1.10.4.custom.css" />
-		<link rel="stylesheet" href="build/assets/vendor/bootstrap-markdown/css/bootstrap-markdown.min.css" />
-		<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/pure-min.css" />
-	  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/styles/github.min.css" />
-		<link rel="stylesheet" href="build/assets/vendor/uikit/css/uikit.css" />
-		<link rel="stylesheet" href="build/assets/vendor/codemirror/lib/codemirror.css">
-		<link rel="stylesheet" href="build/assets/vendor/uikit/css/components/htmleditor.css">
-		<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.0.0/styles/default.min.css">
-
-		<!-- Main CSS -->
-		<link rel="stylesheet" href="build/assets/stylesheets/theme.css" />
-
-		<!-- Skin CSS -->
-		<link rel="stylesheet" href="build/assets/stylesheets/skins/default.css" />
-
-		<!-- Custom CSS -->
-		<link rel="stylesheet" href="build/assets/stylesheets/theme-custom.css">
-
-		<!-- Head Libs -->
-		<script src="build/assets/vendor/modernizr/modernizr.js"></script>
-    <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
-		<script src="https://cdn.jsdelivr.net/highlight.js/8.4.0/highlight.min.js"></script>
-		<!-- <script src="build/assets/vendor/jquery/jquery.js"></script> -->
-		<script src="build/assets/vendor/uikit/js/uikit.min.js"></script>
-    <script src="build/assets/vendor/codemirror/lib/codemirror.js"></script>
-    <script src="build/assets/vendor/codemirror/mode/markdown/markdown.js"></script>
-    <script src="build/assets/vendor/codemirror/addon/mode/overlay.js"></script>
-    <script src="build/assets/vendor/codemirror/mode/xml/xml.js"></script>
-    <script src="build/assets/vendor/codemirror/mode/gfm/gfm.js"></script>
-    <script src="build/assets/vendor/marked/lib/marked.js"></script>
-		<script src="build/assets/vendor/uikit/js/components/htmleditor.js"></script>
-		<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.0.0/highlight.min.js"></script>
+	<!-- BEGIN BODY -->
+	<body class="sidebar-condensed color-default bg-lighter fixed-sidebar theme-sdtl ">
+	  <section style="opacity: 1;">
 
 
-	</head>
-
-  <body style="font-family: "Proxima Nova", "Helvetica Neue", Helvetica, Arial, sans-serif;">
+    	<div id="appContainer"></div>
 
 
-    <div id="appContainer"></div>
+		</section>
 
 
-    <!-- Third Party -->
-    	<script src="//cdnjs.cloudflare.com/ajax/libs/ramda/0.18.0/ramda.min.js"></script>
-		<script src="build/assets/vendor/jquery-browser-mobile/jquery.browser.mobile.js"></script>
-		<script src="build/assets/vendor/bootstrap/js/bootstrap.js"></script>
-		<script src="build/assets/vendor/nanoscroller/nanoscroller.js"></script>
-		<script src="build/assets/vendor/jquery-placeholder/jquery.placeholder.js"></script>
+		<!-- BEGIN PAGE SCRIPTS -->
+		<script src="build/assets/plugins/jquery/jquery-1.11.1.min.js"></script>
+		<script src="build/assets/plugins/jquery/jquery-migrate-1.2.1.min.js"></script>
+		<script src="build/assets/plugins/jquery-ui/jquery-ui-1.11.2.min.js"></script>
+		<script src="build/assets/plugins/jquery-block-ui/jquery.blockUI.min.js"></script>
+		<script src="build/assets/plugins/translate/jqueryTranslator.min.js"></script>
+		<script src="build/assets/plugins/bootbox/bootbox.min.js"></script>
+		<script src="build/assets/plugins/mcustom-scrollbar/jquery.mCustomScrollbar.concat.min.js"></script> <!-- Custom Scrollbar sidebar -->
+		<script src="build/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+		<script src="build/assets/plugins/bootstrap-dropdown/bootstrap-hover-dropdown.min.js"></script> <!-- Show Dropdown on Mouseover -->
+		<script src="build/assets/plugins/jquery-cookies/jquery.cookies.js"></script> <!-- Jquery Cookies, for theme -->
+		<script src="build/assets/plugins/touchspin/jquery.bootstrap-touchspin.min.js"></script> <!-- A mobile and touch friendly input spinner component for Bootstrap -->
+		<script src="build/assets/plugins/autosize/autosize.min.js"></script> <!-- Textarea autoresize -->
+		<script src="build/assets/plugins/prettify/prettify.min.js"></script> <!-- Show html code -->
+		<script src="build/assets/plugins/bootstrap-slider/bootstrap-slider.js"></script> <!-- Bootstrap Input Slider -->
+		<script src="build/assets/js/sidebar_hover.js"></script>
+		<script src="build/assets/js/application.js"></script> <!-- Main Application Script -->
+		<script src="build/assets/js/plugins.js"></script> <!-- Main Plugin Initialization Script -->
+		<!-- END PAGE SCRIPTS -->
 
-		<!-- Specific Page Third Party -->
-		<script src="build/assets/vendor/jquery-ui/js/jquery-ui-1.10.4.custom.js"></script>
-		<script src="build/assets/vendor/jquery-ui-touch-punch/jquery.ui.touch-punch.js"></script>
-		<script src="build/assets/vendor/jquery-maskedinput/jquery.maskedinput.js"></script>
-		<script src="build/assets/vendor/bootstrap-markdown/js/markdown.js"></script>
-		<script src="build/assets/vendor/bootstrap-markdown/js/to-markdown.js"></script>
-		<script src="build/assets/vendor/bootstrap-markdown/js/bootstrap-markdown.js"></script>
-
-
-		<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.5/highlight.min.js"></script>
-
-    <!-- <script src="build/assets/javascripts/codemirror.js"></script>
-    <script src="build/assets/javascripts/demo.js"></script> -->
-
-
-
-
-    <!-- Components and Settings -->
-    <script src="build/assets/javascripts/theme.js"></script>
-
-    <!-- Initialization Files -->
-    <script src="build/assets/javascripts/theme.init.js"></script>
 
     <script type="text/javascript" src="./build/dest/bundle.js"></script>
 		<!-- <script type="text/jsx" src=".client/components/main.jsx"></script> -->

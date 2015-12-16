@@ -1,0 +1,594 @@
+@import "../variable";
+@import "../mixins";
+
+.note-editor {
+  border:none;
+  position:relative;
+  .note-dropzone {
+    background-color:@summernote-white;
+    border:2px dashed #87cefa;
+    color:#87cefa;
+    display:none;
+    opacity:.95;
+    pointer-event:none;
+    position:absolute;
+    z-index:1;
+    .note-dropzone-message {
+      display:table-cell;
+      font-size:28px;
+      font-weight:700;
+      text-align:center;
+      vertical-align:middle;
+    }
+  }
+  .note-dropzone.hover {
+    border:2px dashed #098ddf;
+    color:#098ddf;
+  }
+  .note-statusbar {
+    background-color:@summernote-light;
+    .note-resizebar {
+      border-top:1px solid #ECECEC;
+      cursor:ns-resize;
+      height:8px;
+      width:100%;
+      .note-icon-bar {
+        border-top:1px solid #a9a9a9;
+        margin:1px auto;
+        width:20px;
+      }
+    }
+  }
+  .note-editable[contenteditable=true] {
+    &:empty:not(:focus):before {
+      color:#a9a9a9;
+      content:attr(data-placeholder);
+    }
+  }
+  .note-editable {
+    border: 1px solid @summernote-light;
+    outline:0;
+    overflow:auto;
+    padding:10px;
+  }
+  .note-editable[contenteditable="false"] {
+    background-color:#e5e5e5;
+  }
+  .note-codable {
+    -moz-border-radius:0;
+    -moz-box-sizing:border-box;
+    -ms-box-sizing:border-box;
+    -webkit-border-radius:0;
+    -webkit-box-sizing:border-box;
+    background-color:#222222;
+    border-radius:0;
+    border:0;
+    box-shadow:none;
+    box-sizing:border-box;
+    color:#cccccc;
+    display:none;
+    font-family:Menlo,Monaco,monospace,sans-serif;
+    font-size:14px;
+    margin-bottom:0;
+    padding:10px;
+    resize:none;
+    width:100%;
+  }
+  .btn {
+    height: 37px;
+    margin-bottom: 0 !important;
+  }
+}
+.note-editor.dragover {
+  .note-dropzone {
+    display:table;
+  }
+}
+.note-editor.fullscreen {
+  left:0;
+  position:fixed;
+  top:0;
+  width:100%;
+  z-index:1050;
+  .note-editable {
+    background-color:@summernote-white;
+  }
+  .note-resizebar {
+    display:none;
+  }
+}
+.note-editor.codeview {
+  .note-editable {
+    display:none;
+  }
+  .note-codable {
+    display:block;
+  }
+}
+.note-air-editor {
+  outline:0;
+}
+.note-popover {
+  .popover {
+    max-width:none;
+    .popover-content {
+      background: @summernote-light;
+      margin:0;
+      padding:0;
+      a {
+        border-right: 1px solid rgba(12, 12, 12, 0.1) !important;
+        display:inline-block;
+        max-width:200px;
+        overflow:hidden;
+        text-align: center;
+        text-overflow:ellipsis;
+        vertical-align:middle;
+        white-space:nowrap;
+        width: 45px;
+      }
+      .btn-group {
+        .note-table {
+          min-width:0;
+          padding:5px;
+          .note-dimension-picker {
+            font-size:18px;
+            .note-dimension-picker-mousecatcher {
+              cursor:pointer;
+              height:10em;
+              position:absolute!important;
+              width:10em;
+              z-index:3;
+            }
+            .note-dimension-picker-unhighlighted {
+              background:url(data:image/png; base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASAgMAAAAroGbEAAAACVBMVEUAAIj4+Pjp6ekKlAqjAAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfYAR0BKhmnaJzPAAAAG0lEQVQI12NgAAOtVatWMTCohoaGUY+EmIkEAEruEzK2J7tvAAAAAElFTkSuQmCC) repeat;
+              height:5em;
+              position:relative!important;
+              width:5em;
+              z-index:1;
+            }
+            .note-dimension-picker-highlighted {
+              background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASAgMAAAAroGbEAAAACVBMVEUAAIjd6vvD2f9LKLW+AAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfYAR0BKwNDEVT0AAAAG0lEQVQI12NgAAOtVatWMTCohoaGUY+EmIkEAEruEzK2J7tvAAAAAElFTkSuQmCC) repeat;
+              height:1em;
+              position:absolute!important;
+              width:1em;
+              z-index:2;
+            }
+          }
+        }
+      }
+      .note-color {
+        .dropdown-toggle {
+          padding-left:5px;
+          width:20px;
+        }
+        .dropdown-menu {
+          min-width:340px;
+          .btn-group {
+            margin:0;
+            &:first-child {
+              margin:0 5px;
+            }
+            .note-palette-title {
+              border-bottom:1px solid #eeeeee;
+              font-size:12px;
+              margin:2px 7px;
+              text-align:center;
+            }
+            .note-color-reset {
+              -moz-border-radius:5px;
+              -webkit-border-radius:5px;
+              border-radius:5px;
+              cursor:pointer;
+              font-size:11px;
+              margin:3px;
+              padding:0 3px;
+              &:hover {
+                background:#eeeeee;
+              }
+            }
+            .note-color-row {
+              height:20px;
+            }
+          }
+        }
+      }
+      .note-para {
+        .dropdown-menu {
+          min-width:216px;
+          padding:5px;
+        }
+        .dropdown-menu>div {
+          &:first-child {
+            margin-right:5px;
+          }
+        }
+      }
+      .dropdown-menu {
+        min-width:90px;
+        li {
+          a {
+            i {
+              color:#00bfff;
+              visibility:hidden;
+            }
+          }
+          a.checked {
+            i {
+              visibility:visible;
+            }
+          }
+        }
+      }
+      .dropdown-menu.right {
+        left:auto;
+        right:0;
+        &::before {
+          left:auto!important;
+          right:9px;
+        }
+        &::after {
+          left:auto!important;
+          right:10px;
+        }
+      }
+      .note-fontsize-10 {
+        font-size:10px;
+      }
+      .note-color-palette {
+        line-height:1;
+        div {
+          .note-color-btn {
+            border:1px solid @summernote-white;
+            height:20px;
+            margin:0;
+            padding:0;
+            width:20px;
+            &:hover {
+              border:1px solid @summernote-dark;
+            }
+          }
+        }
+      }
+    }
+    .arrow {
+      left:20px;
+    }
+    .popover-content>.btn-group {
+      margin-left:0;
+      margin-right:5px;
+      margin-top:0;
+    }
+  }
+  .btn {
+    margin-bottom: 0 !important;
+  }
+  .fa-magic {
+    padding-top: 6px;
+  }
+}
+.note-toolbar {
+  background: @summernote-light;
+  margin:0;
+  padding:0;
+  .btn-group {
+    .note-table {
+      min-width:0;
+      padding:5px;
+      .note-dimension-picker {
+        font-size:18px;
+        .note-dimension-picker-mousecatcher {
+          cursor:pointer;
+          height:10em;
+          position:absolute!important;
+          width:10em;
+          z-index:3;
+        }
+        .note-dimension-picker-unhighlighted {
+          background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASAgMAAAAroGbEAAAACVBMVEUAAIj4+Pjp6ekKlAqjAAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfYAR0BKhmnaJzPAAAAG0lEQVQI12NgAAOtVatWMTCohoaGUY+EmIkEAEruEzK2J7tvAAAAAElFTkSuQmCC) repeat;
+          height:5em;
+          position:relative!important;
+          width:5em;
+          z-index:1;
+        }
+        .note-dimension-picker-highlighted {
+          background:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASAgMAAAAroGbEAAAACVBMVEUAAIjd6vvD2f9LKLW+AAAAAXRSTlMAQObYZgAAAAFiS0dEAIgFHUgAAAAJcEhZcwAACxMAAAsTAQCanBgAAAAHdElNRQfYAR0BKwNDEVT0AAAAG0lEQVQI12NgAAOtVatWMTCohoaGUY+EmIkEAEruEzK2J7tvAAAAAElFTkSuQmCC) repeat;
+          height:1em;
+          position:absolute!important;
+          width:1em;
+          z-index:2;
+        }
+      }
+    }
+  }
+  .note-color {
+    .dropdown-toggle {
+      padding-left:5px;
+      width:20px;
+    }
+    .dropdown-menu {
+      min-width:340px;
+      .btn-group {
+        margin:0;
+        &:first-child {
+          margin:0 5px;
+        }
+        .note-palette-title {
+          border-bottom:1px solid #eeeeee;
+          font-size:12px;
+          margin:2px 7px;
+          text-align:center;
+        }
+        .note-color-reset {
+          -moz-border-radius:5px;
+          -webkit-border-radius:5px;
+          border-radius:5px;
+          cursor:pointer;
+          font-size:11px;
+          margin:3px;
+          padding:0 3px;
+          &:hover {
+            background:#eeeeee;
+          }
+        }
+        .note-color-row {
+          height:20px;
+        }
+      }
+    }
+  }
+  .note-para {
+    .dropdown-menu {
+      min-width:216px;
+      padding:5px;
+    }
+    .dropdown-menu>div {
+      &:first-child {
+        margin-right:5px;
+      }
+    }
+  }
+  .dropdown-menu {
+    min-width:90px;
+    li {
+      a {
+        i {
+          color:#00bfff;
+          visibility:hidden;
+        }
+      }
+      a.checked {
+        i {
+          visibility:visible;
+        }
+      }
+    }
+  }
+  .dropdown-menu.right {
+    left:auto;
+    right:0;
+    &::before {
+      left:auto!important;
+      right:9px;
+    }
+    &::after {
+      left:auto!important;
+      right:10px;
+    }
+  }
+  .note-fontsize-10 {
+    font-size:10px;
+  }
+  .note-color-palette {
+    line-height:1;
+    div {
+      .note-color-btn {
+        border:1px solid @summernote-white;
+        height:20px;
+        margin:0;
+        padding:0;
+        width:20px;
+        &:hover {
+          border:1px solid @summernote-dark;
+        }
+      }
+    }
+  }
+}
+.note-toolbar>.btn-group {
+  margin-left:0;
+  margin-right:5px;
+  margin-top:0;
+}
+.note-popover .popover .popover-content .note-style h1,.note-toolbar .note-style h1,.note-popover .popover .popover-content .note-style h2,.note-toolbar .note-style h2,.note-popover .popover .popover-content .note-style h3,.note-toolbar .note-style h3,.note-popover .popover .popover-content .note-style h4,.note-toolbar .note-style h4,.note-popover .popover .popover-content .note-style h5,.note-toolbar .note-style h5,.note-popover .popover .popover-content .note-style h6,.note-toolbar .note-style h6,.note-popover .popover .popover-content .note-style blockquote,.note-toolbar .note-style blockquote {
+  margin:0;
+}
+.note-dialog>div {
+  display:none;
+}
+.note-dialog {
+  .note-modal-form {
+    margin:0;
+  }
+  .note-image-dialog {
+    .note-dropzone {
+      border:4px dashed lightgray;
+      color:lightgray;
+      font-size:30px;
+      line-height:4;
+      margin-bottom:10px;
+      min-height:100px;
+      text-align:center;
+    }
+  }
+  .note-help-dialog {
+    -khtml-opacity:.9;
+    -moz-opacity:.9;
+    -ms-filter:alpha(opacity=90);
+    -webkit-opacity:.9;
+    background-color:#222222!important;
+    background:transparent;
+    border:0;
+    color:#cccccc;
+    filter:alpha(opacity=90);
+    font-size:12px;
+    opacity:.9;
+    .modal-content {
+      -moz-border-radius:5px;
+      -moz-box-shadow:none;
+      -webkit-border-radius:5px;
+      -webkit-box-shadow:none;
+      background:transparent;
+      border-radius:5px;
+      border:1px solid @summernote-white;
+      box-shadow:none;
+    }
+    a {
+      color:@summernote-white;
+      font-size:12px;
+    }
+    .title {
+      border-bottom:@summernote-white 1px solid;
+      color:@summernote-white;
+      font-size:14px;
+      font-weight:700;
+      margin-bottom:10px;
+      padding-bottom:5px;
+    }
+    .modal-close {
+      color:#dddd00;
+      cursor:pointer;
+      font-size:14px;
+    }
+    .text-center {
+      margin:10px 0 0;
+    }
+    .note-shortcut {
+      padding-bottom:8px;
+      padding-top:8px;
+    }
+    .note-shortcut-row {
+      margin-left:-5px;
+      margin-right:-5px;
+    }
+    .note-shortcut-col {
+      padding-left:5px;
+      padding-right:5px;
+    }
+    .note-shortcut-title {
+      color:#dddd00;
+      font-size:13px;
+      font-weight:700;
+    }
+    .note-shortcut-key {
+      color:#dddd00;
+      font-family:"Courier New";
+      text-align:right;
+    }
+  }
+}
+.note-handle {
+  .note-control-selection {
+    border:1px solid @summernote-dark;
+    display:none;
+    position:absolute;
+    .note-control-selection-bg {
+      -khtml-opacity:.3;
+      -moz-opacity:.3;
+      -ms-filter:alpha(opacity=30);
+      -webkit-opacity:.3;
+      background-color:@summernote-dark;
+      filter:alpha(opacity=30);
+      height:100%;
+      opacity:.3;
+      width:100%;
+    }
+    .note-control-handle {
+      border:1px solid @summernote-dark;
+      height:7px;
+      width:7px;
+    }
+    .note-control-holder {
+      border:1px solid @summernote-dark;
+      height:7px;
+      width:7px;
+    }
+    .note-control-sizing {
+      background-color:@summernote-white;
+      border:1px solid @summernote-dark;
+      height:7px;
+      width:7px;
+    }
+    .note-control-nw {
+      border-bottom:0;
+      border-right:0;
+      left:-5px;
+      top:-5px;
+    }
+    .note-control-ne {
+      border-bottom:0;
+      border-left:none;
+      right:-5px;
+      top:-5px;
+    }
+    .note-control-sw {
+      border-right:0;
+      border-top:0;
+      bottom:-5px;
+      left:-5px;
+    }
+    .note-control-se {
+      bottom:-5px;
+      cursor:se-resize;
+      right:-5px;
+    }
+    .note-control-selection-info {
+      -khtml-opacity:.7;
+      -moz-border-radius:5px;
+      -moz-opacity:.7;
+      -ms-filter:alpha(opacity=70);
+      -webkit-border-radius:5px;
+      -webkit-opacity:.7;
+      background-color:@summernote-dark;
+      border-radius:5px;
+      bottom:0;
+      color:@summernote-white;
+      filter:alpha(opacity=70);
+      font-size:12px;
+      margin:5px;
+      opacity:.7;
+      padding:5px;
+      right:0;
+    }
+  }
+  .note-control-selection>div {
+    position:absolute;
+  }
+}
+.note-style {
+  height: 37px;
+  overflow: visible;
+  blockquote {
+    padding-bottom: 0;
+    padding-top: 0;
+  }
+  i {
+    font-size: 15px !important;
+  }
+}
+.note-style h1, .note-style h2, .note-style h3, .note-style h4, .note-style h5  {
+  margin-bottom: 0 !important;
+  margin-top: 0 !important;
+}
+.note-air-popover.popover {
+  background: @summernote-light;
+}
+.note-air-popover.popover.bottom>.arrow {
+  &:after {
+    border-bottom-color: @summernote-light;
+  }
+}
+.note-link-popover.popover.bottom>.arrow {
+  &:after {
+    border-bottom-color: @summernote-light;
+  }
+}

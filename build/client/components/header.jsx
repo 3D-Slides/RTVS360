@@ -5,37 +5,25 @@ var ReactDOM = require('react-dom');
 var Header = React.createClass({
   render: function() {
     return (
+
       <div>
-        {/* start: header */}
 
-  			<header className="header">
-  				<div className="logo-container">
-  					<a href="../" className="logo">
-  						<img src="/build/assets/images/3D-Slides-logo.png" height="55"/>
-  					</a>
-  					<div className="visible-xs toggle-sidebar-left" data-toggle-classname="sidebar-left-opened" data-target="html" data-fire-event="sidebar-left-opened">
-  						<i className="fa fa-bars" aria-label="Toggle sidebar"></i>
-  					</div>
-  				</div>
-
-
-          { /*<div className="container-fluid">
-          <ul className="nav navbar-nav navbar-right">
-            <li><a href="#">HOME</a></li>
-
-            <li><a href="#">ABOUT</a></li>
-
-            <li><a href="#">CREATE SLIDES</a></li>
-          </ul>
-        </div> */}
-  			</header>
-
-        <div> </div>
-
-  			{/* end: header */}
+      {/* BEGIN TOPBAR */}
+      <div className="topbar">
+        <div className="header-left" style={{display: 'block'}}>
+          <div className="topnav">
+            <a className="menutoggle" href="#" data-toggle="sidebar-collapsed">
+              <span className="menu__handle">
+                <span>Menu</span>
+              </span>
+            </a>
+          </div>
+        </div>
       </div>
+      {/* END TOPBAR */}
+
+    </div>
     );
   }
 });
-
 module.exports = Header;
