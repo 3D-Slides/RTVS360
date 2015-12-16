@@ -27,7 +27,9 @@ function init() {
 	glScene = new THREE.Scene();
 	glScene.fog = new THREE.FogExp2(0x000000, 0.015);
 	cssScene = new THREE.Scene();
-	loader = new THREE.TextureLoader();
+	loader = new THREE.ImageLoader();
+	loader.setCrossOrigin = "anonymous";
+
 
 	camera = new THREE.PerspectiveCamera(75, ASPECT, 0.1, 20000);
 	camera.position.set(0, 5, 0);
@@ -56,7 +58,7 @@ function init() {
 
 	// CONSTRUCT A FLOOR
 
-	var floorGeometry = new THREE.PlaneGeometry(400,400,80,80);
+	var floorGeometry = new THREE.PlaneGeometry(450,450,90,90);
 	var floorMaterial = new THREE.MeshPhongMaterial({
 		color: 0x1F1E24,
 		side: THREE.DoubleSide
@@ -67,7 +69,7 @@ function init() {
 	floor.receiveShadow = true;
 	glScene.add(floor);
 
-	var size = 200, step = 5;
+	var size = 225, step = 5;
 	var yDepth = 0;
 	var grid = new THREE.Group();
 	var material = new THREE.LineBasicMaterial({

@@ -54,24 +54,24 @@ var Slideshow = function(camera) {
 			dest = _snapshots[index];
 
 		cameraTween.to({
-			x: dest.location.x + 13,
-			y: dest.location.y + 9,
-			z: (dest.location.z + 25)
+			x: dest.location.x + 25,
+			y: dest.location.y - 9,
+			z: (dest.location.z + 30)
 		}, 1500)
 		.easing(_transitions[index])
 		.start();
 
 		markerTween.to({
-			x: dest.location.x + 13,
-			y: dest.location.y,
+			x: dest.location.x + 25,
+			y: dest.location.y - 13,
 			z: dest.location.z
 		})
 		.easing(_transitions[index])
 		.start();
 
 		look.to({
-			x: dest.location.x + 13,
-			y: dest.location.y + 5,
+			x: dest.location.x + 25,
+			y: dest.location.y - 11,
 			z: dest.location.z
 		})
 		.easing(_transitions[index])
