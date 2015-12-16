@@ -110,13 +110,19 @@ SlideGenerator.prototype.addOneSlide3D = function (coords, html) {
 		
 		for (var i = 0; i < url.length; i++) {
 			if(url[i].charAt(0) === 's' && url[i].charAt(1) === 'r') {
-				var imgSrc = url[i].replace(/src=/g, '');
+				var imgSrc = url[i].replace(/src=|\s+/g, '');
 				console.log('src ya:', imgSrc);
-				THREE.ImageUtils.crossOrigin = "anonymous";
-				var texture = new THREE.ImageUtils.loadTexture(imgSrc);
-				var spriteMaterial = new THREE.SpriteMaterial( { map: texture, color: 0xffffff } );
-				var sprite = new THREE.Sprite( spriteMaterial );
-				group.add(sprite);
+
+				loader.load(imgSrc, function ( texture ) {
+					var spriteMaterial = new THREE.SpriteMaterial( { map: texture, color: 0xffffff } );
+					var sprite = new THREE.Sprite( spriteMaterial );
+					sprite.scale.set( 35, 35, 10 );
+					sprite.castShadow = true;
+					sprite.receiveShadow = true;
+					group.add(sprite);
+				});
+
+				
 				
 			}
 		}

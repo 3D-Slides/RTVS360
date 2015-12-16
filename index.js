@@ -25,9 +25,11 @@ function init() {
 		ASPECT = WIDTH / HEIGHT;
 
 	glScene = new THREE.Scene();
-	//glScene.fog = new THREE.FogExp2(0x000000, 0.015);
+	glScene.fog = new THREE.FogExp2(0x000000, 0.015);
 	cssScene = new THREE.Scene();
-	loader = new THREE.TextureLoader();
+	loader = new THREE.ImageLoader();
+	loader.setCrossOrigin = "anonymous";
+
 
 	camera = new THREE.PerspectiveCamera(75, ASPECT, 0.1, 20000);
 	camera.position.set(0, 5, 0);
