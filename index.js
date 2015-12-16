@@ -25,7 +25,7 @@ function init() {
 		ASPECT = WIDTH / HEIGHT;
 
 	glScene = new THREE.Scene();
-	//glScene.fog = new THREE.FogExp2(0x000000, 0.015);
+	glScene.fog = new THREE.FogExp2(0x000000, 0.015);
 	cssScene = new THREE.Scene();
 	loader = new THREE.TextureLoader();
 
@@ -50,11 +50,6 @@ function init() {
 
 					// CONSTRUCTING A TRON GRID
 /*_____________________________________________________________________*/
-	var markerGeometry = new THREE.BoxGeometry(0.5, -0.5, 0.5);
-	var markerMaterial = new THREE.MeshBasicMaterial({
-		color: 0xFF0000,
-		alpha: 0
-	});
 	marker = new THREE.Object3D();
 	marker.position.set(0,0,0);
 	glScene.add(marker);
@@ -68,7 +63,7 @@ function init() {
 	});
 	floor = new THREE.Mesh(floorGeometry, floorMaterial);
 	floor.rotation.x = -Math.PI/2;
-	floor.position.set(0, -0.1, 0);
+	floor.position.set(0, -0.03, 0);
 	floor.receiveShadow = true;
 	glScene.add(floor);
 
