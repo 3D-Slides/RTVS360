@@ -45,8 +45,9 @@ var Slideshow = function(camera) {
 	};
 
 	var move = function(index) {
+		console.log(index, _snapshots.length - 1);
 		if (index > _snapshots.length - 1) _currentSnap = index = 0;
-		if (index < 0) _currentSnap = index = 9;
+		if (index < 0) _currentSnap = index = _snapshots.length - 1;
 
 		var cameraTween = new TWEEN.Tween(camera.position),
 			markerTween = new TWEEN.Tween(marker.position),
