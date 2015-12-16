@@ -2,22 +2,21 @@
 
 function SlideGenerator (){
 	var cookieData = document.cookie;
-	console.log('char 1:', cookieData);
+	// console.log('char 1:', cookieData);
 
 	if( cookieData.charAt(1) === '<' ) {
 		var html = cookieData.replace(/\\t|\\n+|\s{2,}/g, '');
 		this.data = html;
 
 	} else {
+		var converter = new showdown.Converter({noHeaderId: true}),
+		    clipQuotes = R.replace(/"/g, ''),
+		    removeNewLines = R.replace(/\\n+|\\t|\\r/g, '   '),
+		    splitMkdn = R.split( '   ' ),
+		    addQuotes = function(data){return '"'+data+'"'};
 
-		var converter = new showdown.Converter({noHeaderId: true});
-		var clipQuotes = R.replace(/"/g, '');
-		var removeNewLines = R.replace(/\\n+|\\t|\\r/g, '   ');
-		var splitMkdn = R.split( '   ' );
-		var addQuotes = function(data){return '"'+data+'"'};
 		var trimmedArray = R.compose(splitMkdn, removeNewLines, clipQuotes)(cookieData);
-		
-		console.log('trimmedArray: ', trimmedArray);
+		// console.log('trimmedArray: ', trimmedArray);
 		
 		var htmlConvert = '';
 		for(var i = 0; i < trimmedArray.length; i++){
@@ -27,17 +26,9 @@ function SlideGenerator (){
 		}
 
 		var html = addQuotes(htmlConvert);
-		console.log('html: ', html);
-
-		
-		console.log('split html:', html)
-		
-
 	}
 		
-	
-
-	console.log("data: ", this.data);
+	// console.log("data: ", this.data);
 
 	var splitSlides = R.split('<hr />');
 
@@ -107,18 +98,33 @@ SlideGenerator.prototype.addOneSlide3D = function (coords, html) {
 
 	// check if element has /, if it does then pop it into variable then render the content
 	var createSlide = R.forEach(function(subArray) {
-	  if( R.test(/\//, subArray[0]) ) {
+	  if( R.test(/\//, subArray[0]) && subArray[0][0] !== 'i') {
 	    var tag = tagStore.pop();
 	    var content = contentStore.pop();
 	    if(content !== '') {
-	      var mesh = makeMesh(tag, content);
-	      group.add(mesh);
+	      	var mesh = makeMesh(tag, content);
+	      	group.add(mesh);
 	    }
+	  } else if (subArray[0][0] === 'i'){
+		var url = subArray[0].split(' ');
+		
+		for (var i = 0; i < url.length; i++) {
+			if(url[i].charAt(0) === 's' && url[i].charAt(1) === 'r') {
+				var imgSrc = url[i].replace(/src=/g, '');
+				console.log('src ya:', imgSrc);
+				THREE.ImageUtils.crossOrigin = "anonymous";
+				var texture = new THREE.ImageUtils.loadTexture(imgSrc);
+				var spriteMaterial = new THREE.SpriteMaterial( { map: texture, color: 0xffffff } );
+				var sprite = new THREE.Sprite( spriteMaterial );
+				group.add(sprite);
+				
+			}
+		}
+
+	  
 	  } else {
 	    tagStore.push(subArray[0]);
 	    contentStore.push(subArray[1]);
-		console.log('Tag Store: ', tagStore, 'Content Store: ', contentStore)
-
 	  }
 	});
 
@@ -127,14 +133,13 @@ SlideGenerator.prototype.addOneSlide3D = function (coords, html) {
 
 	var generate3D = R.compose(createSlide, R.tail, divideAllContent, divideOnTagName);
 	
-	console.log('debug:', R.compose(R.tail, divideAllContent, divideOnTagName)(html));
+	// console.log('debug:', R.compose(R.tail, divideAllContent, divideOnTagName)(html));
 	
 
 	generate3D(html);
 	group.castShadow = true;
 	group.receiveShadow = true;
-	glScene.add(group);
-	
+	glScene.add(group);	
 };
 
 // Add all 3d slides in html:
@@ -216,3 +221,10 @@ SlideGenerator.prototype.addAllSlides = function (slideArray, coordsArray) {
 		console.error('Your coords do not match up with your slides!');
 	}
 };
+
+// else if (tag.charAt(1) === 'i'){
+// 			var regex = tag.replace(/<img[^>]+src="?/g, '');
+// 			var url = regex.split(' ');
+// 			console.log('imageUrl:', url[0]);
+
+// 	  }

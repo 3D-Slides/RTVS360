@@ -4,6 +4,15 @@ var ReactDOM = require('react-dom');
 
 
 var CodeEditor = React.createClass({
+
+  getLocalStorage: function () {
+    if(window.localStorage.input){
+      return window.localStorage.input;
+    } else {
+      return "...";
+    }
+  },
+
   render: function() {
     return (
       <div>
@@ -29,7 +38,7 @@ var CodeEditor = React.createClass({
                   <div className="col-md-12">
 
 
-                    <textarea data-uk-htmleditor defaultValue={"..."} id="code-input-box"/>
+                    <textarea data-uk-htmleditor defaultValue={this.getLocalStorage()} id="code-input-box"/>
                     {/* Test */}
 
 

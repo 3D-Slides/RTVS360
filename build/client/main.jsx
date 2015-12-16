@@ -16,22 +16,14 @@ var SlidesCreator = React.createClass({
 		var markdownText = document.getElementById('code-input-box').value;
 		var markString = JSON.stringify(markdownText);
 
-		request({
-			url: 'http://localhost:3131/presentation',
-			method: 'POST',
-			headers: {
-				'Content-Type': 'text/html',
-				'data': JSON.stringify(markdownText)
-			}
-		}, function (error,response,body) {
-			if(error) {
-				console.log(error);
-			} else {
-				console.log(response.statusCode, response.headers);
-			}
-		})
+		var now = new Date(),
+		    time = now.getTime(),
+		    expireTime = now + 10000;
+		now.setTime(expireTime);
 
-		document.cookie = `${markString}`;
+
+		document.cookie = `${markString}`+ ';max-age=1';
+		window.localStorage.setItem('input', markdownText);
 		window.location.href = 'http://localhost:3131/presentation';
 	},
 
