@@ -56,7 +56,7 @@ function init() {
 
 	// CONSTRUCT A FLOOR
 
-	var floorGeometry = new THREE.PlaneGeometry(400,400,160,160);
+	var floorGeometry = new THREE.PlaneGeometry(400,400,80,80);
 	var floorMaterial = new THREE.MeshPhongMaterial({
 		color: 0x1F1E24,
 		side: THREE.DoubleSide
