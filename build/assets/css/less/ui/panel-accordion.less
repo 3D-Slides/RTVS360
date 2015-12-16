@@ -1,0 +1,115 @@
+@import "../variable";
+@import "../mixins";
+
+.panel-accordion {
+  .panel-default {
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    margin-bottom: 5px !important;
+  }
+  h4 {
+    margin-bottom: 0;
+    margin-top: 0;
+    width: 100%;
+  }
+  .panel-default>.panel-heading {
+    background-color: #ffffff;
+    border-color: #ffffff;
+    padding: 0;
+    a {
+      border: 1px solid #EDEDED;
+      display: block;
+      text-decoration: none !important;
+    }
+  }
+  .panel {
+    border-top: none;
+    border: 1px solid #DFDFDF;
+    border:none;
+    box-shadow: none;
+    margin-bottom: 4px;
+    .border-radius(3px);
+    h4>a {
+      &:not(.collapsed) {
+        background-color: #F3F3F3;
+      }
+    }
+  }
+  .panel-collapse {
+    .panel-body {
+      background: #F7F7F7;
+      border:none !important;
+    }
+  }
+  a {
+    background-color: #ffffff;
+    color:#121212;
+    display:inline-block;
+    padding: 15px;
+    width: 100%;
+    &:hover {
+      text-decoration:none;
+    }
+  }
+  a.collapsed {
+    background-color: #ffffff;
+    color:#121212;
+  }
+  .collapse.in {
+    margin-top: -1px;
+  }
+}
+.panel-accordion.dark-accordion {
+  a {
+    background-color: #ffffff;
+    color:#121212;
+  }
+  a.collapsed {
+    background-color: #2B2E33;
+    color:#dadada;
+  }
+  .panel-heading {
+    .panel-title>a.collapsed {
+      &:after {
+        color: #767B80;
+      }
+    }
+  }
+}
+.panel-heading {
+  .panel-title>a {
+    &:after {
+      color: #DFE5E9;
+      content: "\f068";
+      float: right;
+      font-family: "line-icons" !important;
+    }
+  }
+  h4>a {
+    .transition(all, .4s, ease-out);
+    &:after {
+      color: #838F99;
+      content: "\e122";
+      float: right;
+      font-family: 'line-icons';
+      font-size: 18px;
+      margin-top: 4px;
+    }
+  }
+  h4>a.collapsed {
+    &:after {
+      color: #7E7E7E;
+      content: "\e095";
+      float: right;
+      font-family: 'simple-line-icons';
+      font-size: 18px;
+      margin-top: 4px;
+      opacity:0.5;
+    }
+    &:hover {
+      after {
+        opacity: 1;
+      }
+    }
+  }
+}
