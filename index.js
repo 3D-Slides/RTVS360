@@ -5,19 +5,13 @@ var camera, controls, spotLight;
 var cameraPivot;
 var loader;
 
+var counter = 0;
 var SlideGenerator = new SlideGenerator();
-var posArray = [];
-for (var z = -50; z < 150; z += 100) {
-		for(var x = -85; x < 115; x+=40) {
-			posArray.push([x, 18, z]);
-		}
-	}
 
-window.onload = function(){
+
 	// var slidesArray = SlideGenerator.getSlides();
-	SlideGenerator.addOneSlide3D( [-100, 18, -110], SlideGenerator.data );
-};
 init();
+SlideGenerator.addAllSlides3D( [-160, 25, -50], SlideGenerator.data );
 render();
 
 
@@ -56,11 +50,6 @@ function init() {
 
 					// CONSTRUCTING A TRON GRID
 /*_____________________________________________________________________*/
-	var markerGeometry = new THREE.BoxGeometry(0.5, -0.5, 0.5);
-	var markerMaterial = new THREE.MeshBasicMaterial({
-		color: 0xFF0000,
-		alpha: 0
-	});
 	marker = new THREE.Object3D();
 	marker.position.set(0,0,0);
 	glScene.add(marker);
@@ -74,7 +63,7 @@ function init() {
 	});
 	floor = new THREE.Mesh(floorGeometry, floorMaterial);
 	floor.rotation.x = -Math.PI/2;
-	floor.position.set(0, -0.1, 0);
+	floor.position.set(0, -0.03, 0);
 	floor.receiveShadow = true;
 	glScene.add(floor);
 

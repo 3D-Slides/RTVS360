@@ -1,5 +1,4 @@
 
-var converter = new showdown.Converter();
 
 var text    =  document.cookie;
 
