@@ -1,0 +1,461 @@
+@import "../variable";
+@import "../mixins";
+
+
+.rtl ul, .rtl li, .rtl input, .rtl p, .rtl label, .rtl div, .rtl section, .rtl textarea  {
+  text-align: right;
+}
+.rtl {
+  .fileinput-new.input-group {
+    .btn-file {
+      border-radius: 4px 0 0 4px;
+    }
+  }
+  .fileinput-new {
+    .input-group {
+      .btn-file {
+        border-radius: 4px 0 0 4px;
+      }
+    }
+  }
+  .ui-timepicker-div {
+    dl {
+      dt {
+        clear: right;
+        float: right;
+        padding: 5px 5px 0 0;
+        text-align: right;
+      }
+      dd {
+        margin: 0 40% 20px 10px;
+        text-align: right;
+      }
+    }
+    .ui-slider-horizontal {
+      .ui-slider-handle {
+        margin-left:0;
+        margin-right: -.6em;
+      }
+    }
+    .ui-slider {
+      .ui-slider-handle {
+        &:before {
+          left: auto;
+          right:4px;
+        }
+      }
+    }
+  }
+  .ui-datepicker {
+    .ui-datepicker-buttonpane {
+      button.ui-datepicker-current {
+        float: right;
+      }
+      button {
+        float: left;
+      }
+    }
+  }
+  .ui-datepicker-buttonpane {
+    clear:both;
+    &:before {
+      content: " ";
+      display: table;
+    }
+    &:after {
+      clear: both;
+      content: " ";
+      display: table;
+    }
+  }
+  .main-content {
+    .page-content {
+      .ui-datepicker {
+        i {
+          float:none !important;
+          padding-left: 6px !important;
+          padding-right: 6px !important;
+        }
+      }
+      .panel {
+        .panel-content {
+          i {
+            float: right;
+            padding-left: 6px;
+            padding-right: 0;
+            padding-top: 2px;
+          }
+          .inside-tooltip {
+            i {
+              padding-top: 0;
+            }
+          }
+        }
+      }
+      table {
+        i {
+          padding-left: 0 !important;
+        }
+        .btn {
+          height:26px;
+        }
+        .btn.edit {
+          i {
+            margin-top: 2px;
+          }
+        }
+      }
+      .pagination {
+        i {
+          padding-top: 0 !important;
+        }
+      }
+    }
+  }
+  .media-left {
+    padding-left: 10px;
+    padding-right: 0;
+  }
+  .media>.pull-left {
+    padding-left: 10px;
+    padding-right: 0;
+  }
+  .bootstrap-touchspin {
+    .input-group-btn-vertical {
+      .bootstrap-touchspin-up {
+        -moz-border-radius: 4px 0 0 0;
+        -webkit-border-radius:4px 0 0 0;
+        border-radius:4px 0 0 0;
+      }
+      .bootstrap-touchspin-down {
+        -moz-border-radius: 0 0 0 4px;
+        -webkit-border-radius:0 0 0 4px;
+        border-radius:0 0 0 4px;
+      }
+    }
+  }
+  .input-group-btn-vertical {
+    i {
+      padding-left: 0 !important;
+      padding-top: 0 !important;
+    }
+  }
+  .bootstrap-tagsinput {
+    .tag {
+      display: inline-block;
+      position: relative;
+    }
+    .tag[data-role="remove"] {
+      float: left;
+      margin-left: 0;
+      margin-right: 8px;
+    }
+  }
+  .switch-input {
+    left:auto;
+    right:0;
+    &:checked~.switch-handle {
+      left:auto;
+      right:40px;
+    }
+  }
+  .switch-label {
+    &:before {
+      content:attr(data-off);
+      left:7px;
+      right:auto;
+    }
+    &:after {
+      content:attr(data-on);
+      left:0;
+      right:11px;
+    }
+  }
+  .switch-handle {
+    -moz-transition:right .15s ease-out;
+    -o-transition:right .15s ease-out;
+    -webkit-transition:right .15s ease-out;
+    left:auto;
+    right:4px;
+    transition:right .15s ease-out;
+    &:before {
+      right:50%;
+    }
+  }
+  .form-right {
+    .control-label {
+      text-align: left !important;
+    }
+  }
+  .append-icon {
+    i {
+      left:0;
+      right:auto;
+    }
+  }
+  .ios-switch {
+    input[type="checkbox"] {
+      &:checked+div {
+        padding-left:0;
+        padding-right: 2em;
+        text-align: right;
+      }
+    }
+    input[type="checkbox"]+div {
+      &:before {
+        float:right;
+        text-align: right;
+      }
+      &:after {
+        float:right;
+        text-align: right;
+      }
+    }
+  }
+  .onoffswitch {
+    float: right;
+    margin-left: 20px;
+    margin-right: 0;
+    .onoffswitch-inner {
+      margin-left: 0;
+      margin-right:-100%;
+      .onoffswitch-active {
+        padding-left:0;
+        padding-right: 15px;
+      }
+      .onoffswitch-inactive {
+        padding-left: 15px;
+        padding-right:0;
+        text-align:left;
+      }
+    }
+    .onoffswitch-inner>span {
+      float:right;
+    }
+    .onoffswitch-active {
+      .onoffswitch-switch {
+        left:auto;
+        right:0;
+        &:before {
+          border-color: rgba(0, 0, 0, 0) #34A7C1 #34A7C1 rgba(0, 0, 0, 0);
+          left:auto;
+          right:40px;
+        }
+      }
+    }
+    .onoffswitch-inactive {
+      .onoffswitch-switch {
+        left:0;
+        right:auto;
+        &:before {
+          border-color: #A1A1A1 rgba(0, 0, 0, 0) rgba(0, 0, 0, 0) #A1A1A1;
+          left:40px;
+          right:auto;
+        }
+      }
+    }
+    .onoffswitch-checkbox {
+      &:checked+.onoffswitch-label {
+        .onoffswitch-inner {
+          margin-left:auto;
+          margin-right: 0;
+        }
+      }
+    }
+  }
+  .onoffswitch2 {
+    float: right;
+    margin-left: 20px;
+    margin-right: 0;
+    .onoffswitch-inner {
+      margin-left:auto;
+      margin-right: -100%;
+      &:before {
+        float: right;
+        padding-left: 0;
+        padding-left: 10px;
+        padding-right: 8px;
+      }
+      &:after {
+        float: right;
+        padding-left: 10px;
+        padding-left: 10px;
+        text-align: left;
+      }
+    }
+    .onoffswitch-checkbox {
+      &:checked+.onoffswitch-label {
+        .onoffswitch-switch {
+          left:0;
+          left:0;
+          right: auto;
+          right: auto;
+        }
+        .onoffswitch-inner {
+          margin-left: auto;
+          margin-right: 0;
+        }
+      }
+    }
+    .onoffswitch-switch {
+      left:45px;
+      right: auto;
+    }
+  }
+  input[type=checkbox].switch-iphone {
+    &:checked {
+      before {
+        margin-left: 0;
+        margin-right: 33px;
+      }
+    }
+  }
+  .DTTT_container.btn-group>.btn {
+    span {
+      i {
+        margin-top: 2px;
+      }
+    }
+  }
+  .dataTables_filter {
+    float: right;
+  }
+  .DTTT_container {
+    float: left;
+  }
+  table.dataTable {
+    thead {
+      .sorting {
+        &:before {
+          float: left;
+        }
+      }
+      .sorting_asc {
+        &:before {
+          float: left;
+        }
+      }
+    }
+  }
+  .dataTable {
+    thead {
+      th {
+        input[type=text] {
+          background-position: 95% 10px;
+          background: url(../images/various/icon-search-gray.png) no-repeat right 12px;
+          padding-left: 12px;
+          padding-right:32px;
+        }
+      }
+    }
+    tfoot {
+      th {
+        input[type=text] {
+          background-position: 95% 10px;
+          background: url(../images/various/icon-search-gray.png) no-repeat right 12px;
+          padding-left: 12px;
+          padding-right:32px;
+        }
+      }
+    }
+  }
+  .filter-right {
+    .dataTables_filter {
+      float: left !important;
+    }
+  }
+  .form-inline {
+    label {
+      margin-left: 10px;
+      margin-right: 0;
+    }
+  }
+  .pagination {
+    li {
+      float: right;
+      margin-left: 0;
+      margin-right: 5px;
+    }
+  }
+  .pagination2 {
+    .fa-angle-right {
+      &:before {
+        content: "Next";
+      }
+    }
+  }
+  .fa-angle-right {
+    &:before {
+      content: "\f104";
+    }
+  }
+  .select2-container {
+    .select2-choice {
+      abbr {
+        left:31px;
+        right:auto;
+      }
+    }
+  }
+  .after-tooltip {
+    i {
+      float:left;
+      left:0;
+      right: auto;
+    }
+    input {
+      float: right;
+    }
+  }
+  .before-tooltip {
+    i {
+      left: auto;
+      right:-18px;
+    }
+  }
+  .inside-tooltip {
+    i {
+      left: auto;
+      right:17px;
+    }
+    input {
+      padding-left: 0;
+      padding-right: 36px;
+    }
+    span {
+      padding-left: 0;
+      padding-right: 36px;
+    }
+  }
+  .panel-heading {
+    h4>a {
+      &:after {
+        float: left;
+      }
+    }
+    h4>a.collapsed {
+      &:after {
+        float: left;
+      }
+    }
+  }
+  .jstree-default {
+    .jstree-node {
+      margin-left: 0;
+      margin-right: 24px;
+    }
+  }
+  .dropdown-menu {
+    li {
+      a {
+        i {
+          padding-left: 8px;
+          padding-right: 0;
+        }
+      }
+    }
+  }
+}
+.rtl input,.rtl p,.rtl label,.rtl div,.rtl section,.rtl textarea, .rtl .form-horizontal .control-label  {
+  text-align: right;
+}

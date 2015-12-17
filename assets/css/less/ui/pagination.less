@@ -1,0 +1,121 @@
+@import "../variable";
+@import "../mixins";
+
+.pagination>li>a {
+  -moz-transition: all 0.4s ease;
+  -o-transition: all 0.4s ease;
+  -webkit-transition: all 0.4s ease;
+  background: none;
+  border: none;
+  color: #636e7b;
+}
+.pagination>li>span {
+  -moz-transition: all 0.4s ease;
+  -o-transition: all 0.4s ease;
+  -webkit-transition: all 0.4s ease;
+  background: none;
+  border: none;
+  color: #636e7b;
+}
+.pagination>li {
+  &:first-child>a {
+    border-bottom-left-radius: 3px;
+    border-top-left-radius: 3px;
+  }
+  &:first-child>span {
+    border-bottom-left-radius: 3px;
+    border-top-left-radius: 3px;
+  }
+  &:last-child>a {
+    border-bottom-right-radius: 3px;
+    border-top-right-radius: 3px;
+  }
+  &:last-child>span {
+    border-bottom-right-radius: 3px;
+    border-top-right-radius: 3px;
+  }
+}
+.pagination>li>a:hover,.pagination>li>span:hover,.pagination>li>a:focus,.pagination>li>span:focus  {
+  background:none;
+}
+.pagination {
+  li {
+    display: inline-block;
+    float: left;
+    margin-left: 5px;
+    &:first-child {
+      margin-left: 0;
+    }
+    a {
+      color:#A2A2A2;
+      font-size: 12px;
+    }
+  }
+}
+.pagination>.active>a,.pagination>.active>span,.pagination>.active>a:hover,.pagination>.active>span:hover,.pagination>.active>a:focus, .pagination>.active>span:focus  {
+  background: none;
+  border:none;
+  color:#3C3C3C;
+}
+ul.pagination>.disabled>span, ul.pagination>.disabled>a, ul.pagination>.disabled>a i, ul.pagination>.disabled>a:hover, ul.pagination>.disabled>a:focus  {
+  opacity: 0 !important;
+}
+.pagination>li:last-child>a, .pagination>li:last-child>span, .pagination>li:first-child>a, .pagination>li:first-child>span  {
+  padding: 6px 6px 4px 6px !important;
+}
+.pagination2 {
+  th {
+    font-size: 12px;
+  }
+  .pagination {
+    background: #EFEFEF;
+    border:1px solid #E2E2E2;
+    float: right;
+    li {
+      height: 29px !important;
+      margin-left: 0;
+      a {
+        height: 29px;
+        line-height: 20px;
+      }
+    }
+  }
+  .fa-angle-left {
+    &:before {
+      content: "Prev";
+      font-family: 'Lato', 'Lucida Grande', 'Lucida Sans Unicode', Helvetica, sans-serif;
+      line-height: 20px;
+    }
+  }
+  .fa-angle-right {
+    &:before {
+      content: "Next";
+      font-family: 'Lato', 'Lucida Grande', 'Lucida Sans Unicode', Helvetica, sans-serif;
+      line-height: 20px;
+    }
+  }
+  .pagination>li>a {
+    background-color: #EFEFEF;
+    &:hover {
+      background-color: #D3D3D3;
+    }
+  }
+  .pagination>li>span {
+    background-color: #EFEFEF;
+    &:hover {
+      background-color: #D3D3D3;
+    }
+  }
+}
+.pagination2 ul.pagination>.disabled>span, .pagination2 ul.pagination>.disabled>a, .pagination2 ul.pagination>.disabled>a i, .pagination2 ul.pagination>.disabled>a:hover, .pagination2 ul.pagination>.disabled>a:focus  {
+  background-color: #EFEFEF;
+  line-height: 20px;
+  opacity: 0.7 !important;
+}
+.pagination2 .pagination>.active>a, .pagination2 .pagination>.active>span, .pagination2 .pagination>.active>a:hover, .pagination2 .pagination>.active>span:hover, .pagination2 .pagination>.active>a:focus, .pagination2 .pagination>.active>span:focus  {
+  background: @primary;
+  border: none;
+  color: #ffffff;
+  height: 31px;
+  margin-top: -1px;
+}

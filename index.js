@@ -1,38 +1,56 @@
 var glScene, glRenderer;
-var box, plane, slidePlane, floor, olsenPlane, fantasyPlane, lionPlane, mainPlane;
-var pivot;
-
+var box, plane, slidePlane, floor, olsenPlane, fantasyPlane, lionPlane, mainPlane, marker;
 var cssScene, cssRenderer, cssMeshes;
-var threeDOM, threeDOM1, threeDOM2, threeDOM3, threeDOM4;
-
-var camera, controls, item;
-
+var camera, controls, spotLight;
 var cameraPivot;
-
 var loader;
 
-// window.onload = function(){
-// }
 
-init();
-render();
+var counter = 0;
 var SlideGenerator = new SlideGenerator();
 
-var slidesPositions = [[0,0,0],[1750,0,0], [3500, 0, 0]];
-var slidesArray = SlideGenerator.getSlides();
-SlideGenerator.addAllSlides( slidesArray, slidesPositions );
+	// var slidesArray = SlideGenerator.getSlides();
+init();
+SlideGenerator.addAllSlides3D( [-160, 25, -50], SlideGenerator.data );
+render();
+
+
+
+//:::::::::::::::::::
+
 
 function init() {
+						// INIT SCENE PROCEDURES
+/*_____________________________________________________________________*/
 	var WIDTH = window.innerWidth,
 		HEIGHT = window.innerHeight,
 		ASPECT = WIDTH / HEIGHT;
 
 	glScene = new THREE.Scene();
+	glScene.fog = new THREE.FogExp2(0x000000, 0.015);
 	cssScene = new THREE.Scene();
+	loader = new THREE.ImageLoader();
+	loader.setCrossOrigin = "anonymous";
+
+
+	camera = new THREE.PerspectiveCamera(75, ASPECT, 0.1, 20000);
+	camera.position.set(0, 5, 0);
+	glScene.add(camera);
+
+	spotLight = new THREE.SpotLight(0xffffff, 2.2, 1000, Math.PI/3, 0.001);
+	spotLight.position.copy( camera.position );
+	spotLight.position.z = 10;
+	spotLight.position.y = 45;
+	spotLight.position.x = 50;
+	spotLight.castShadow = true;
+	spotLight.shadowMapWidth = 1024;
+	spotLight.shadowMapHeight = 1024;
+	spotLight.shadowCameraNear = 1;
+	spotLight.shadowCameraFar = 1000;
+	camera.add(spotLight);
+
+	glScene.add(camera);
 	
-	// AXIS HELPER
-	// var axisHelper = new THREE.AxisHelper(1100);
-	// glScene.add( axisHelper );
 
 	loader = new THREE.TextureLoader();
 
@@ -43,54 +61,61 @@ function init() {
 
 					// CREATE OPAQUE PLANES FOR ELEMENTS
 /*_____________________________________________________________________*/
-
-	// CONTRUCT A plane TO SHOW CLEAR IN THE BACKGROUND
-	// var slidePlaneGeometry = new THREE.PlaneGeometry(1600, 760);
-	// var slidePlaneMaterial = new THREE.MeshBasicMaterial({
-	// 	color: 0x000000,
-	// 	opacity: 0,
-	// 	side: THREE.DoubleSide,
-	// 	blending: THREE.NoBlending
-	// });
-	// slidePlane = new THREE.Mesh(slidePlaneGeometry, slidePlaneMaterial);
-	// glScene.add(slidePlane);
-	// slidePlane.position.set(0,0,300);
-
+	marker = new THREE.Object3D();
+	marker.position.set(0,0,0);
+	glScene.add(marker);
 
 	// CONSTRUCT A FLOOR
-	var floorGeometry = new THREE.PlaneGeometry(7500, 7500);
-	var floorMaterial = new THREE.MeshBasicMaterial({
-		map:THREE.ImageUtils.loadTexture('assets/lava.jpg'),
+
+	var floorGeometry = new THREE.PlaneGeometry(450,450,90,90);
+	var floorMaterial = new THREE.MeshPhongMaterial({
+		color: 0x1F1E24,
 		side: THREE.DoubleSide
 	});
 	floor = new THREE.Mesh(floorGeometry, floorMaterial);
 	floor.rotation.x = -Math.PI/2;
-	floor.position.set(0, -450, -1000);
+	floor.position.set(0, -0.03, 0);
+	floor.receiveShadow = true;
 	glScene.add(floor);
 
-	var light = new THREE.HemisphereLight(0xffffbb, 0x080820, 1);
-	glScene.add(light);
+	var size = 225, step = 5;
+	var yDepth = 0;
+	var grid = new THREE.Group();
+	var material = new THREE.LineBasicMaterial({
+		color: 0x00D1FF,
+		linewidth: 0.3,
+		fog: true
+	});
 
 
-							// CSS ELEMENTS
-/*_____________________________________________________________________*/
-	// var slides = document.getElementsByClassName('reveal')[0];
-	// // console.log(slides);
-	// threeDOM = new THREE.CSS3DObject(slides);
-	// threeDOM.name = "CSS SLIDES";
-	// threeDOM.position.set(0,0,300);
-	// cssScene.add(threeDOM);
-/*_____________________________________________________________________*/
+	for (var i = -size; i <= size; i += step) {
+		var verticalGeometry = new THREE.Geometry();
+		verticalGeometry.vertices.push(new THREE.Vector3(-i, yDepth, size));
+		verticalGeometry.vertices.push(new THREE.Vector3(-i, yDepth, -size));
+		var line = new THREE.LineSegments( verticalGeometry, material);
+		grid.add(line);
+	}
+
+	for (var j = -size; j <= size; j += step) {
+		var horizontalGeometry = new THREE.Geometry();
+		horizontalGeometry.vertices.push(new THREE.Vector3(size, yDepth, -j));
+		horizontalGeometry.vertices.push(new THREE.Vector3(-size, yDepth, -j));
+		var line = new THREE.LineSegments( horizontalGeometry, material);
+		grid.add(line);
+	}
+	glScene.add(grid);
+
 
 	// CREATE THE GLRENDERER AND APPEND IT ON TOP OF HTML
 	// OR THE CSSRENDERER
 	glRenderer = new THREE.WebGLRenderer({
 		antialias: true,
-		alpha: true
+		alpha: true,
 	});
 	glRenderer.setSize(WIDTH, HEIGHT);
 	glRenderer.setPixelRatio(window.devicePixelRatio);
-	glRenderer.setClearColor(0xFFFFFF, 0);
+	glRenderer.setClearColor(0x000000, 1);
+	glRenderer.shadowMap.enabled = true;
 	glRenderer.domElement.style.position = 'absolute';
 	glRenderer.domElement.style.top = 0;
 	glRenderer.domElement.style.zIndex = 1;
@@ -104,10 +129,11 @@ function init() {
 	cssRenderer.domElement.style.top = 0;
 	document.body.appendChild( cssRenderer.domElement );
 
-	controls = new THREE.TrackballControls(camera, glRenderer.domElement);
+	controls = new THREE.OrbitControls(camera, glRenderer.domElement);
+	// controls.maxDistance = 9000;
 
+	// create window resize function
 	window.addEventListener( 'resize', onWindowResize, false );
-// create window resize function
 	function onWindowResize() {
 
 		WIDTH = window.innerWidth;
@@ -127,57 +153,10 @@ function render() {
 	controls.update();
 	glRenderer.render(glScene, camera);
 	cssRenderer.render(cssScene, camera);
-
-	//if (pivot) pivot.rotation.y += 0.01;
-	camera.lookAt( glScene.position );
+	TWEEN.update();
 	animate();
 }
 
 function animate () {
-
-	// slidePlane.position.x = item.translateX;
-	// slidePlane.position.y = item.translateY;
-	// slidePlane.position.z = item.translateZ;
-
-	// slidePlane.rotation.x = item.rotateX * Math.PI/180;
-	// slidePlane.rotation.y = item.rotateY * Math.PI/180;
-	// slidePlane.rotation.z = item.rotateZ * Math.PI/180;
-
-	// slidePlane.scale.set(item.size, item.size, 1);
-
-	// threeDOM.position.copy(slidePlane.position);
-	// threeDOM.rotation.copy(slidePlane.rotation);
-	// threeDOM.scale.copy(slidePlane.scale);
-
-	if (threeDOM1) {
-		//plane.rotation.y = pivot.rotation.y;
-		threeDOM1.position.x = (300 * Math.cos(-1*(pivot.rotation.y - Math.PI/2))) + pivot.position.x;
-		threeDOM1.position.y = pivot.position.y;
-		threeDOM1.position.z = (300 * Math.sin(-1*(pivot.rotation.y - Math.PI/2))) + pivot.position.z;
-		threeDOM1.rotation.y = pivot.rotation.y;
-
-	}
-	if (threeDOM2) {
-		//fantasyPlane.rotation.y = pivot.rotation.y + Math.PI/2;
-		threeDOM2.position.x = (300 * Math.cos((pivot.rotation.y)*(-1))) + pivot.position.x;
-		threeDOM2.position.y = pivot.position.y;
-		threeDOM2.position.z = (300 * Math.sin((pivot.rotation.y)*(-1))) + pivot.position.z;
-		threeDOM2.rotation.y = pivot.rotation.y + Math.PI/2;
-	}
-	if (threeDOM3) {
-		//olsenPlane.rotation.y = pivot.rotation.y;
-		threeDOM3.position.x = (300 * Math.cos((pivot.rotation.y + Math.PI/2)*(-1))) + pivot.position.x;
-		threeDOM3.position.y = pivot.position.y;
-		threeDOM3.position.z = (300 * Math.sin((pivot.rotation.y + Math.PI/2)*(-1))) + pivot.position.z;
-		threeDOM3.rotation.y = pivot.rotation.y;
-	}
-	if (threeDOM4) {
-		//lionPlane.rotation.y = pivot.rotation.y - Math.PI/2;
-		threeDOM4.position.x = (300 * Math.cos((pivot.rotation.y + Math.PI)*(-1))) + pivot.position.x;
-		threeDOM4.position.y = pivot.position.y;
-		threeDOM4.position.z = (300 * Math.sin((pivot.rotation.y + Math.PI)*(-1))) + pivot.position.z;
-		threeDOM4.rotation.y = pivot.rotation.y - Math.PI/2;
-	}
+	spotLight.target = marker;
 }
-
-
