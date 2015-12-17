@@ -29,9 +29,9 @@ function init() {
 	glScene = new THREE.Scene();
 	glScene.fog = new THREE.FogExp2(0x000000, 0.015);
 	cssScene = new THREE.Scene();
-	loader = new THREE.ImageLoader();
-	loader.setCrossOrigin = "anonymous";
 
+	loader = new THREE.TextureLoader();
+	loader.crossOrigin = "anonymous";
 
 	camera = new THREE.PerspectiveCamera(75, ASPECT, 0.1, 20000);
 	camera.position.set(0, 5, 0);
@@ -51,10 +51,6 @@ function init() {
 
 	glScene.add(camera);
 	
-
-	loader = new THREE.TextureLoader();
-
-
 					// CREATE OPAQUE PLANES FOR ELEMENTS
 /*_____________________________________________________________________*/
 	marker = new THREE.Object3D();
