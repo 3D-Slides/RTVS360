@@ -110,14 +110,15 @@ SlideGenerator.prototype.addOneSlide3D = function (coords, html) {
 		
 		for (var i = 0; i < url.length; i++) {
 			if(url[i].charAt(0) === 's' && url[i].charAt(1) === 'r') {
-
+				console.log('cross origin set');
+				
 				loader = new THREE.TextureLoader();
+				loader.crossOrigin = "anonymous";
 
 				var imgSrc = url[i].replace(/src=|\s+|\'|\"/g, '');
 				console.log('trimmed src:', imgSrc);
 
 				loader.load(imgSrc, function ( texture ) {
-					loader.crossOrigin = "anonymous";
 					console.log(texture, texture.image.width, texture.image.height);
 					var spriteMaterial = new THREE.SpriteMaterial( { map: texture, color: 0xffffff } );
 					var sprite = new THREE.Sprite( spriteMaterial );
