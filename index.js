@@ -54,10 +54,6 @@ function init() {
 
 	loader = new THREE.TextureLoader();
 
-	camera = new THREE.PerspectiveCamera(75, ASPECT, 0.1, 40000);
-	camera.position.set (0, 0, 800);
-	camera.lookAt(new THREE.Vector3(0, 0, 0));
-
 
 					// CREATE OPAQUE PLANES FOR ELEMENTS
 /*_____________________________________________________________________*/

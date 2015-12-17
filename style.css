@@ -26,20 +26,16 @@ body {
 }
 
 .slide {
-<<<<<<< HEAD
+
 	width: 1600px !important;
 	height: 760px !important;
-=======
-  width: 1600px !important;
-  height: 760px !important;
->>>>>>> deploy1
   color: #00d1ff;
   text-align: left;
   font-size: 2.5em;
   background-color: #000;
   padding: 10%;
   font-family: 'Roboto', sans-serif;
-<<<<<<< HEAD
+
 }
 
 .slide h1 {
@@ -59,10 +55,6 @@ body {
 
 .slide ul {
   margin-left: 50px;
-
-=======
-	display: none;
->>>>>>> deploy1
 }
 
 .slide h1 {
