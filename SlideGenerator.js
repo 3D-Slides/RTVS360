@@ -111,10 +111,6 @@ SlideGenerator.prototype.addOneSlide3D = function (coords, html) {
 		for (var i = 0; i < url.length; i++) {
 			if(url[i].charAt(0) === 's' && url[i].charAt(1) === 'r') {
 				console.log('cross origin set');
-				
-				loader = new THREE.TextureLoader();
-				loader.crossOrigin = "anonymous";
-
 				var imgSrc = url[i].replace(/src=|\s+|\'|\"/g, '');
 				console.log('trimmed src:', imgSrc);
 

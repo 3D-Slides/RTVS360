@@ -45,6 +45,7 @@ function init() {
 	
 
 	loader = new THREE.TextureLoader();
+	loader.setCrossOrigin = "use-credentials";
 
 
 					// CREATE OPAQUE PLANES FOR ELEMENTS
