@@ -8,8 +8,7 @@
     "postinstall": "gulp"
   },
   "engines": {
-    "node" : "4.2.2",
-    "npm" : "2.14.7"
+    "node" : "4.2.2"
   },
   "author": "Joshua David, James Burnell, Will Gottschalk",
   "license": "ISC",
