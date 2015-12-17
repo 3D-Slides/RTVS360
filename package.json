@@ -4,7 +4,7 @@
   "description": "Create a beautiful 3D slide environment",
   "main": "server/server.js",
   "scripts": {
-    "postinstall": "gulp",
+    "postinstall": "gulp browserify",
     "start": "node server/server.js"
   },
   "engines": {
