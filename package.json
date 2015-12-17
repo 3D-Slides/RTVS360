@@ -4,8 +4,8 @@
   "description": "Create a beautiful 3D slide environment",
   "main": "server/server.js",
   "scripts": {
-    "start": "node server/server.js",
-    "postinstall": "gulp"
+    "postinstall": "gulp",
+    "start": "node server/server.js"
   },
   "engines": {
     "node" : "4.2.2"
