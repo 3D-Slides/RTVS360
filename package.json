@@ -8,11 +8,12 @@
     "start": "node server/server.js"
   },
   "engines": {
-    "node" : "4.2.2"
+    "node": "4.2.2"
   },
   "author": "Joshua David, James Burnell, Will Gottschalk",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.14.2",
     "browserify": "*",
     "cors": "^2.7.1",
     "express": "^4.13.3",
