@@ -5,7 +5,7 @@
   "main": "server/server.js",
   "scripts": {
     "postinstall": "gulp",
-    "start": "node server/server.js"
+    "start": "nodemon server/server.js"
   },
   "engines": {
     "node": "4.2.2"
