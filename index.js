@@ -9,14 +9,9 @@ var loader;
 var counter = 0;
 var SlideGenerator = new SlideGenerator();
 
-	// var slidesArray = SlideGenerator.getSlides();
 init();
 SlideGenerator.addAllSlides3D( [-160, 25, -50], SlideGenerator.data );
 render();
-
-
-
-//:::::::::::::::::::
 
 
 function init() {
@@ -50,7 +45,7 @@ function init() {
 	camera.add(spotLight);
 
 	glScene.add(camera);
-	
+
 					// CREATE OPAQUE PLANES FOR ELEMENTS
 /*_____________________________________________________________________*/
 	marker = new THREE.Object3D();
