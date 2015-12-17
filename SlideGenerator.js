@@ -1,3 +1,4 @@
+
 // ---------------------- GENERATE SLIDES --------------------- //
 
 function SlideGenerator (){
@@ -80,7 +81,6 @@ SlideGenerator.prototype.addOneSlide3D = function (coords, html) {
 	// helper function to create 3D Text Mesh
 	function makeMesh(tag, content) {
 		var props =  tagProps[tag];
-		console.log('props:', tagProps[tag])
 		var slideGeo = new THREE.TextGeometry(props.indent +content, {
 			size: props.size,
 			height: 0.1,
@@ -169,6 +169,7 @@ SlideGenerator.prototype.addAllSlides3D = function(location, slides) {
 	}
 };
 
+
 // Add a single 2d slide:
 SlideGenerator.prototype.addOneSlide = function (slideArray, index, coords) {
 	
@@ -196,6 +197,7 @@ SlideGenerator.prototype.addOneSlide = function (slideArray, index, coords) {
 };
 
 // Add all 2d slides in html
+
 SlideGenerator.prototype.addAllSlides = function (slideArray, coordsArray) {
 
 	var slide, slidePlane, slidePlaneGeometry, slidePlaneMaterial;
@@ -222,6 +224,7 @@ SlideGenerator.prototype.addAllSlides = function (slideArray, coordsArray) {
 			slide = slideArray[i];
 			cssObj = new THREE.CSS3DObject(slide);
 			cssObj.position.set(coordsArray[i][0], coordsArray[i][1], coordsArray[i][2]);
+			// cssObj.style.padding = 20;
 			cssScene.add(cssObj);
 			
 		}
