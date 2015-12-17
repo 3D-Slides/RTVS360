@@ -116,8 +116,8 @@ SlideGenerator.prototype.addOneSlide3D = function (coords, html) {
 				var imgSrc = url[i].replace(/src=|\s+|\'|\"/g, '');
 				console.log('trimmed src:', imgSrc);
 
-				loader.load('./star-wars.jpg', function ( texture ) {
-					loader.setCrossOrigin = "anonymous";
+				loader.load(imgSrc, function ( texture ) {
+					loader.crossOrigin = "anonymous";
 					console.log(texture, texture.image.width, texture.image.height);
 					var spriteMaterial = new THREE.SpriteMaterial( { map: texture, color: 0xffffff } );
 					var sprite = new THREE.Sprite( spriteMaterial );
@@ -128,7 +128,7 @@ SlideGenerator.prototype.addOneSlide3D = function (coords, html) {
 					group.add( sprite );
 
 						// check for image size, set size accordingly
-					if(texture.image.width < 500 || texture.image.height < 200){
+					if (texture.image.width < 500 || texture.image.height < 200){
 						sprite.scale.set( texture.image.width, texture.image.height, 10 );
 					} else if ( 500 < texture.image.width < 700 || 200 < texture.image.height < 400) {
 						sprite.scale.set( texture.image.width/20, texture.image.height/20, 10 );
