@@ -2,7 +2,7 @@
   "name": "3DSlides",
   "version": "1.0.0",
   "description": "Create a beautiful 3D slide environment",
-  "main": "main.jsx",
+  "main": "server/server.js",
   "scripts": {
     "start": "node server/server.js",
     "postinstall": "gulp"
