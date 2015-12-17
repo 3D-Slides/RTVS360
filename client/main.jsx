@@ -1,7 +1,5 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
-var ReactRouter = require('react-router');
-var request = require('request');
 var Header = require('./components/header.jsx');
 var SideNav = require('./components/side-nav.jsx');
 var CodeEditor = require('./components/codeEditor.jsx');

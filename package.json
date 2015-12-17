@@ -4,8 +4,9 @@
   "description": "Create a beautiful 3D slide environment",
   "main": "server/server.js",
   "scripts": {
-    "postinstall": "gulp",
-    "start": "nodemon server/server.js"
+
+    "postinstall": "gulp browserify",
+    "start": "node server/server.js"
   },
   "engines": {
     "node": "4.2.2"
@@ -23,10 +24,8 @@
     "react": "^0.14.2",
     "react-dom": "*",
     "react-markdown": "^1.1.1",
-    "react-router": "^1.0.0",
     "reactify": "*",
     "remarkable": "^1.6.1",
-    "request": "^2.67.0",
     "vinyl-source-stream": "*",
     "watchify": "*"
   }

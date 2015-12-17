@@ -44,8 +44,6 @@ gulp.task('browserify', function() {
 		fullPaths: true
 	});
 
-	var watcher = watchify(bundler);
-
 	return bundler
 		.bundle()
 		.on('error', function(err) {
