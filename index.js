@@ -5,9 +5,9 @@ var camera, controls, spotLight;
 var cameraPivot;
 var loader;
 
+
 var counter = 0;
 var SlideGenerator = new SlideGenerator();
-
 
 	// var slidesArray = SlideGenerator.getSlides();
 init();
@@ -15,7 +15,9 @@ SlideGenerator.addAllSlides3D( [-160, 25, -50], SlideGenerator.data );
 render();
 
 
+
 //:::::::::::::::::::
+
 
 function init() {
 						// INIT SCENE PROCEDURES
@@ -50,7 +52,10 @@ function init() {
 	glScene.add(camera);
 	
 
-					// CONSTRUCTING A TRON GRID
+	loader = new THREE.TextureLoader();
+
+
+					// CREATE OPAQUE PLANES FOR ELEMENTS
 /*_____________________________________________________________________*/
 	marker = new THREE.Object3D();
 	marker.position.set(0,0,0);
@@ -78,6 +83,7 @@ function init() {
 		fog: true
 	});
 
+
 	for (var i = -size; i <= size; i += step) {
 		var verticalGeometry = new THREE.Geometry();
 		verticalGeometry.vertices.push(new THREE.Vector3(-i, yDepth, size));
@@ -94,6 +100,7 @@ function init() {
 		grid.add(line);
 	}
 	glScene.add(grid);
+
 
 	// CREATE THE GLRENDERER AND APPEND IT ON TOP OF HTML
 	// OR THE CSSRENDERER

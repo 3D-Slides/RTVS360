@@ -1,5 +1,4 @@
 dest/bundle.js
 node_modules
 .DS_store
-bower_components
 config

@@ -26,6 +26,6 @@ app.post('/presentation', function(req, res) {
 	res.send();
 })
 
-app.listen(3131, function(){
+app.listen(process.env.PORT || 3131, function(){
 	console.log("Yo fool! The server is connected on port 3131! ...");
 });

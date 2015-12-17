@@ -1,11 +1,14 @@
 {
   "name": "3DSlides",
   "version": "1.0.0",
-  "description": "",
-  "main": "main.jsx",
+  "description": "Create a beautiful 3D slide environment",
+  "main": "server/server.js",
   "scripts": {
     "start": "node server/server.js",
     "postinstall": "gulp"
+  },
+  "engines": {
+    "node" : "4.2.2"
   },
   "author": "Joshua David, James Burnell, Will Gottschalk",
   "license": "ISC",
