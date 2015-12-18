@@ -21,12 +21,12 @@ var CodeEditor = React.createClass({
         </div> */}
         <div className="row">
           <div className="col-md-12 portlets">
-            <div className="panel">
+            <div className="panel maximized">
               <div className="panel-header ">
                 <h3><i className="icon-note" /> <strong>Code</strong> Editor</h3>
-                <div className="control-btn">
+                { /*<div className="control-btn">
                   <a href="#" className="panel-maximize"><i className="icon-size-fullscreen" /></a>
-                </div>
+                </div> */ }
               </div>
               <div className="panel-content">
                 <div className="row">
