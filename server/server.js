@@ -5,6 +5,8 @@ var bodyParser = require('body-parser');
 
 var app = express();
 
+var port = process.env.PORT || 3131;
+
 app.use(bodyParser.text({ type: 'text/html' }));
 
 app.use(cors());
@@ -27,6 +29,6 @@ app.post('/presentation', function(req, res) {
 	res.send();
 });
 
-app.listen(process.env.PORT || 3131, function(){
+app.listen(port, function(){
 	console.log("Yo fool! The server is connected on port 3131! ...");
 });
