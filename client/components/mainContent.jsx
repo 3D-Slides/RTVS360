@@ -1,12 +1,13 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
-// var ReactRouter = require('react-router');
 
 var Main = React.createClass({
   render: function() {
     return (
 
       {/* Main */}
+      <div>
+
 
         <div className="title">Details</div>
         <div id="main" className="container">
@@ -70,6 +71,8 @@ var Main = React.createClass({
             </ul>
           </section>
         </div>
+
+      </div>
     );
   }
 });

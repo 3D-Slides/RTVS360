@@ -4,9 +4,8 @@
   "description": "Create a beautiful 3D slide environment",
   "main": "server/server.js",
   "scripts": {
-
     "postinstall": "gulp browserify",
-    "start": "node server/server.js"
+    "start": "nodemon server/server.js"
   },
   "engines": {
     "node": "4.2.2"
@@ -18,6 +17,7 @@
     "browserify": "*",
     "cors": "^2.7.1",
     "express": "^4.13.3",
+    "glob": "^6.0.1",
     "gulp": "*",
     "nodemon": "^1.8.1",
     "path": "^0.12.7",

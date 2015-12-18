@@ -1,7 +1,5 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
-var ReactRouter = require('react-router');
-var request = require('request');
 var Header = require('./components/homeHeader.jsx');
 var Intro = require('./components/intro.jsx');
 var Main = require('./components/mainContent.jsx');

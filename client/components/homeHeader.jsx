@@ -1,12 +1,11 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
-// var ReactRouter = require('react-router');
 
 var Header = React.createClass({
   render: function() {
     return (
-
       {/* Header */}
+
       <div id="header-wrapper" className="wrapper">
         <div id="header">
           {/* Logo */}
