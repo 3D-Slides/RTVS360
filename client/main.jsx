@@ -21,9 +21,9 @@ var SlidesCreator = React.createClass({
 		now.setTime(expireTime);
 
 
-		document.cookie = `${markString}`+ ';max-age=1';
+		document.cookie = `${markString}`+ ';max-age=10';
 		window.localStorage.setItem('input', markdownText);
-		window.location.href = 'http://localhost:3131/presentation';
+		window.location.href = '/presentation';
 	},
 
 	render: function() {

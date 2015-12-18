@@ -110,24 +110,34 @@ SlideGenerator.prototype.addOneSlide3D = function (coords, html) {
 		
 		for (var i = 0; i < url.length; i++) {
 			if(url[i].charAt(0) === 's' && url[i].charAt(1) === 'r') {
-				var imgSrc = url[i].replace(/src=|\s+/g, '');
-				console.log('src ya:', imgSrc);
+				console.log('cross origin set');
+				var imgSrc = url[i].replace(/src=|\s+|\'|\"/g, '');
+				console.log('trimmed src:', imgSrc);
 
 				loader.load(imgSrc, function ( texture ) {
+					console.log(texture, texture.image.width, texture.image.height);
 					var spriteMaterial = new THREE.SpriteMaterial( { map: texture, color: 0xffffff } );
 					var sprite = new THREE.Sprite( spriteMaterial );
-					sprite.scale.set( 35, 35, 10 );
+					sprite.position.set(posArray[0] + 20, posArray[1]-10, posArray[2]);
+					posArray[1]-=4;
 					sprite.castShadow = true;
 					sprite.receiveShadow = true;
-					group.add(sprite);
-				});
+					group.add( sprite );
 
-				
-				
+						// check for image size, set size accordingly
+					if (texture.image.width < 500 || texture.image.height < 200){
+						sprite.scale.set( texture.image.width, texture.image.height, 10 );
+					} else if ( 500 < texture.image.width < 700 || 200 < texture.image.height < 400) {
+						sprite.scale.set( texture.image.width/20, texture.image.height/20, 10 );
+					} else if (700 < texture.image.width < 1100 || 400 < texture.image.height < 700 ) {
+						sprite.scale.set( texture.image.width/40, texture.image.height/40, 10 );
+					} else if (1100 < texture.image.width < 1500 || 700 < texture.image.height < 1200) {
+						sprite.scale.set( texture.image.width/80, texture.image.height/80, 10 );
+					}
+
+				});
 			}
 		}
-
-	  
 	  } else {
 	    tagStore.push(subArray[0]);
 	    contentStore.push(subArray[1]);
@@ -169,8 +179,9 @@ SlideGenerator.prototype.addAllSlides3D = function(location, slides) {
 	}
 };
 
-
-// Add a single 2d slide:
+						 //------------------------------------------//
+// ----------------------- FOR 2D SLIDES, RENDERED WITH CSS3DRENDERER -------------------------------- //
+					     //------------------------------------------//
 SlideGenerator.prototype.addOneSlide = function (slideArray, index, coords) {
 	
 	var slide, slidePlane, slidePlaneGeometry, slidePlaneMaterial;
@@ -232,10 +243,3 @@ SlideGenerator.prototype.addAllSlides = function (slideArray, coordsArray) {
 		console.error('Your coords do not match up with your slides!');
 	}
 };
-
-// else if (tag.charAt(1) === 'i'){
-// 			var regex = tag.replace(/<img[^>]+src="?/g, '');
-// 			var url = regex.split(' ');
-// 			console.log('imageUrl:', url[0]);
-
-// 	  }
