@@ -3,7 +3,7 @@ var box, plane, slidePlane, floor, olsenPlane, fantasyPlane, lionPlane, mainPlan
 var cssScene, cssRenderer, cssMeshes;
 var camera, controls, spotLight;
 var cameraPivot;
-var loader;
+var loader, manager;
 
 
 var counter = 0;
@@ -43,9 +43,7 @@ function init() {
 
 	glScene.add(camera);
 	
-
 	loader = new THREE.TextureLoader();
-	loader.setCrossOrigin = "use-credentials";
 
 
 					// CREATE OPAQUE PLANES FOR ELEMENTS

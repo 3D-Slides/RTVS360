@@ -111,18 +111,23 @@ SlideGenerator.prototype.addOneSlide3D = function (coords, html) {
 		for (var i = 0; i < url.length; i++) {
 			if(url[i].charAt(0) === 's' && url[i].charAt(1) === 'r') {
 				console.log('cross origin set');
-				var imgSrc = url[i].replace(/src=|\s+|\'|\"/g, '');
+				var imgSrc = url[i].replace(/src=|\s+|\'|\"|\\/g, '');
 				console.log('trimmed src:', imgSrc);
 
+				loader.crossOrigin = 'anonymous';
+
 				loader.load(imgSrc, function ( texture ) {
-					console.log(texture, texture.image.width, texture.image.height);
-					var spriteMaterial = new THREE.SpriteMaterial( { map: texture, color: 0xffffff } );
+					console.log(texture);
+					var spriteMaterial = new THREE.SpriteMaterial( { 
+						map: texture 
+					} );
 					var sprite = new THREE.Sprite( spriteMaterial );
-					sprite.position.set(posArray[0] + 20, posArray[1]-10, posArray[2]);
+					sprite.position.set(posArray[0]+20, posArray[1]-10, posArray[2]);
 					posArray[1]-=4;
 					sprite.castShadow = true;
 					sprite.receiveShadow = true;
 					group.add( sprite );
+					console.log( sprite );
 
 						// check for image size, set size accordingly
 					if (texture.image.width < 500 || texture.image.height < 200){
@@ -134,7 +139,6 @@ SlideGenerator.prototype.addOneSlide3D = function (coords, html) {
 					} else if (1100 < texture.image.width < 1500 || 700 < texture.image.height < 1200) {
 						sprite.scale.set( texture.image.width/80, texture.image.height/80, 10 );
 					}
-
 				});
 			}
 		}
