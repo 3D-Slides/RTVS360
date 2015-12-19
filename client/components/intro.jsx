@@ -9,7 +9,7 @@ var Intro = React.createClass({
       <div id="intro-wrapper" className="wrapper style1">
         <div className="title">Introduction</div>
         <section id="intro" className="container">
-          <p className="style1">So in case you were wondering what this is all about ...</p>
+          <p className="style1">So, in case you were wondering what this is all about ...</p>
           <p className="style2">
             3D-SLIDES is a free application which allows you to<br className="mobile-hide" />
             present your HTML and or Markup slides in a  <a href className="nobr">3D Universe.</a>

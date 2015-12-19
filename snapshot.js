@@ -2,10 +2,10 @@
 
 var Slideshow = function(camera) {
 	document.addEventListener('keydown', function(e) {
-		if (e.keyIdentifier === 'Left' || e.keyIdentifier === 'Right') TWEEN.removeAll();
-		if (e.keyIdentifier === 'Right') move(++_currentSnap);
-		if (e.keyIdentifier === 'Left') move(--_currentSnap);
-		if (e.keyIdentifier === "Up") shuffle();
+		if (e.keyCode === 37 || e.keyCode === 39) TWEEN.removeAll();
+		if (e.keyCode === 39) move(++_currentSnap);
+		if (e.keyCode === 37) move(--_currentSnap);
+
 	});
 	// Private Variables
 	var _this = this;
@@ -29,12 +29,14 @@ var Slideshow = function(camera) {
 		card2A.to({
 			x: 130
 		}, 500)
-		.easing(TWEEN.Easing.Cubic.InOut);
+		.easing(TWEEN.Easing.Cubic.InOut)
+		.start();
 
 		card2B.to({
 			z: -50
 		}, 500)
-		.easing(TWEEN.Easing.Linear.None);
+		.easing(TWEEN.Easing.Linear.None)
+		.start();
 
 		card2C.to({
 			x: 85
