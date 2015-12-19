@@ -3,6 +3,7 @@ var reactify = require('reactify');
 var browserify = require('browserify');
 var watchify = require('watchify');
 var source = require('vinyl-source-stream');
+var glob = require('glob');
 
 gulp.task('watchify', function() {
 	var bundler = browserify({
@@ -35,8 +36,9 @@ gulp.task('watchify', function() {
 
 
 gulp.task('browserify', function() {
+	var testFiles = glob.sync('./client/**/*.jsx');
 	var bundler = browserify({
-		entries: ['./client/main.jsx'],
+		entries: testFiles,
 		transform: [reactify],
 		debug: true,
 		cache: {},
@@ -53,4 +55,4 @@ gulp.task('browserify', function() {
 		.pipe(gulp.dest('./dest/'));
 });
 
-gulp.task('default', ['browserify']);
+gulp.task('default', ['gulp browserify']);

@@ -26,7 +26,11 @@ app.get('/', function(req, res) {
 app.get('*', function(req, res) {
 	res.header("Access-Controll-Allow-Origin", "*");
 	res.header("Access-Controll-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-})
+});
+
+app.get('/home', function(req, res) {
+	res.sendFile(path.join(__dirname + './../home.html'));
+});
 
 app.get('/presentation', function(req, res) {
 	res.sendFile(path.join(__dirname +'./../presentation.html'));
