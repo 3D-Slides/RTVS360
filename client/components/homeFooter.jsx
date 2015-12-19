@@ -6,9 +6,9 @@ var Footer = React.createClass({
   render: function() {
     return (
 
-      {/* Footer */}
+
       <div id="footer-wrapper" className="wrapper">
-        <div className="title">The Rest Of It</div>
+        <div id="foot" className="title">All of the other stuff</div>
         <div id="footer" className="container">
           <header className="style1">
             <h2>Not convinced yet?</h2>

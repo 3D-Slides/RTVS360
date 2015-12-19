@@ -5,11 +5,10 @@ var Main = React.createClass({
   render: function() {
     return (
 
-      {/* Main */}
       <div>
 
 
-        <div className="title">Details</div>
+        <div id="details" className="title">Details</div>
         <div id="main" className="container">
           {/* Image */}
           {/* <a href="#" class="image featured">
@@ -66,8 +65,8 @@ var Main = React.createClass({
               </div>
             </div>
             <ul className="actions actions-centered">
-              <li><a href="#" className="button style1 big">Get Started</a></li>
-              <li><a href="#" className="button style2 big">More Info</a></li>
+              <li><a href="/create" className="button style1 big">Get Started</a></li>
+              <li><a href="/" className="button style2 big">More Info</a></li>
             </ul>
           </section>
         </div>

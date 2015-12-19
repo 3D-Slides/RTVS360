@@ -72,12 +72,12 @@ div.CodeMirror-overwrite div.CodeMirror-cursor {}
 .cm-s-default .cm-number {color: #164;}
 .cm-s-default .cm-def {color: #00f;}
 .cm-s-default .cm-variable {color: black;}
-.cm-s-default .cm-variable-2 {color: #05a;}
+.cm-s-default .cm-variable-2 {color: #d14;}
 .cm-s-default .cm-variable-3 {color: #085;}
 .cm-s-default .cm-property {color: black;}
 .cm-s-default .cm-operator {color: black;}
 .cm-s-default .cm-comment {color: #d14;}
-.cm-s-default .cm-string {color: #a11;}
+.cm-s-default .cm-string {color: #05a;}
 .cm-s-default .cm-string-2 {color: #f50;}
 .cm-s-default .cm-meta {color: #555;}
 .cm-s-default .cm-qualifier {color: #555;}
