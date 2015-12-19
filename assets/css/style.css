@@ -4509,7 +4509,7 @@ body:not(.fixed-sidebar):not(.fixed-topbar):not(.sidebar-top) .sidebar .logopane
   z-index: 2;
 }
 .main-content .page-content .portlets.ui-sortable .panel-header {
-  cursor: move;
+  /*cursor: move;*/
 }
 .main-content .page-content .panel.bg-aero .panel-content {
   color: #5b5b5b !important;
