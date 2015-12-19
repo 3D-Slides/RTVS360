@@ -2,15 +2,40 @@
 	<head>
 		<meta charset=utf-8>
 		<title>3D Slides Presentation Mode</title>
+		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.0/animate.min.css">
 		<link rel="stylesheet" type="text/css" href="./style.css">
 	</head>
 	<body>
-
+		<div class="overlay">
+			<div class="modal">
+				<p>To enable presentation mode, press command + shift + F.</p>
+				<p>Use the left and right arrow keys to navigate</p>
+			</div>
+		</div>
+		<script>
+			window.onload = function() {
+				console.log('window loaded');
+			}
+			
+			function fadeModal(e) {
+				if (e.keyCode === 37 ||
+					e.keyCode === 39 ||
+					e.keyCode === 70) {
+					var modal = document.getElementsByClassName('modal')[0];
+					modal.className += " fade-out-up";
+					modal.parentElement.className += " fade"
+					setTimeout(function() {
+						modal.parentElement.style.display = "none";
+					}, 1500);
+					document.removeEventListener('keydown', fadeModal);
+				}
+			}
+			document.addEventListener('keydown', fadeModal);
+		</script>
 		<script src="lib/three.min.js"></script>
 		<script src="lib/CSS3DRenderer.js"></script>
 		<script src="lib/showdown.min.js"></script>
 		<script src="lib/ramda.min.js"></script>
-		<script src="https://code.createjs.com/tweenjs-0.6.1.min.js"></script>
 		<script src="lib/TextGeometry.js"></script>
 		<script src="lib/FontUtils.js"></script>
 		<script src="lib/helvetiker_regular.typeface.js"></script>
@@ -20,8 +45,5 @@
 		<script src="SlideGenerator.js"></script>
 		<script src="index.js"></script>
 		<script src="snapshot.js"></script>
-		<script type="text/javascript">
-		
-		</script>
 	</body>
 </html>
