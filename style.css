@@ -82,6 +82,10 @@ body {
 
 }
 
+.slideImage {
+  width: auto;
+  height: auto;
+}
 
 .worldSlide {
   width: 400px !important;

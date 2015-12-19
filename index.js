@@ -1,6 +1,6 @@
 var glScene, glRenderer;
 var box, plane, slidePlane, floor, olsenPlane, fantasyPlane, lionPlane, mainPlane, marker;
-var cssScene, cssRenderer, cssMeshes;
+var cssScene, cssRenderer, cssMeshes, cssObj, imgPlane;
 var camera, controls, spotLight;
 var cameraPivot;
 var loader, manager;
@@ -146,4 +146,6 @@ function render() {
 
 function animate () {
 	spotLight.target = marker;
+	// cssObj.position.copy(imgPlane.position);
+	// cssObj.rotation.copy(imgPlane.rotation);
 }
