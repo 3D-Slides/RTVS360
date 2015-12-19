@@ -11,21 +11,10 @@ app.use(bodyParser.text({ type: 'text/html' }));
 
 app.use(cors());
 
-// app.use(function(req,res,next){
-// 	res.header("Access-Controll-Allow-Origin", "*");
-// 	res.header("Access-Controll-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-// 	next();
-// })
-
 app.use(express.static(path.join(__dirname + './../')));
 
 app.get('/create', function(req, res) {
 	res.sendFile(path.join(__dirname + './../create.html'));
-});
-
-app.get('*', function(req, res) {
-	res.header("Access-Controll-Allow-Origin", "*");
-	res.header("Access-Controll-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
 });
 
 app.get('/', function(req, res) {
