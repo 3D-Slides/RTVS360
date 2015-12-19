@@ -4,6 +4,7 @@ var Header = require('./components/homeHeader.jsx');
 var Intro = require('./components/intro.jsx');
 var Main = require('./components/mainContent.jsx');
 var Footer = require('./components/homeFooter.jsx');
+var Info = require('./components/info.jsx');
 
 
 var LandingPage = React.createClass({
@@ -16,10 +17,18 @@ var LandingPage = React.createClass({
         <Header/>
         <Intro />
 
+					<div className="wrapper style3">
+
+					<Info/>
+
+					</div>
+
 					{ /*<!-- BEGIN PAGE CONTENT -->*/ }
-	        <div className="wrapper style2">
+	        <div id="main" className="wrapper style2">
           	<Main/>
+
         	</div>
+
 
 					<Footer />
     </div>

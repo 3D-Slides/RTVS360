@@ -19,8 +19,8 @@ app.use(cors());
 
 app.use(express.static(path.join(__dirname + './../')));
 
-app.get('/', function(req, res) {
-	res.sendFile(path.join(__dirname + './index.html'));
+app.get('/create', function(req, res) {
+	res.sendFile(path.join(__dirname + './../create.html'));
 });
 
 app.get('*', function(req, res) {
@@ -28,9 +28,9 @@ app.get('*', function(req, res) {
 	res.header("Access-Controll-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
 });
 
-app.get('/home', function(req, res) {
-	res.sendFile(path.join(__dirname + './../home.html'));
-});
+app.get('/', function(req, res) {
+	res.sendFile(path.join(__dirname + './index.html'))
+})
 
 app.get('/presentation', function(req, res) {
 	res.sendFile(path.join(__dirname +'./../presentation.html'));

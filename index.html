@@ -1,72 +1,39 @@
-<html class="" lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-    <link rel="shortcut icon" href="assets/images/favicon.ico" type="image/png">
-    <title>3D-SLIDES - Present your HTML and or Markup slides in a 3D Universe.</title>
-    <link href="http://fonts.googleapis.com/css?family=Nothing+You+Could+Do" rel="stylesheet" type="text/css">
-    <link href="assets/css/style.css" rel="stylesheet">
-    <link href="assets/css/theme.css" rel="stylesheet">
-    <link href="assets/css/ui.css" rel="stylesheet">
-    <link rel="stylesheet" href="assets/plugins/uikit/css/uikit.css" />
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>3D-SLIDES - Present your HTML and or Markup slides in a 3D Universe.</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+	</head>
 
-    <script src="assets/plugins/jquery/jquery.js"></script>
-    <script src="assets/plugins/uikit/js/uikit.min.js"></script>
+	<body class="homepage">
 
-    <link rel="stylesheet" href="assets/plugins/codemirror/lib/codemirror.css">
-    <script src="assets/plugins/codemirror/lib/codemirror.js"></script>
-    <script src="assets/plugins/codemirror/mode/markdown/markdown.js"></script>
-    <script src="assets/plugins/codemirror/addon/mode/overlay.js"></script>
-    <script src="assets/plugins/codemirror/mode/xml/xml.js"></script>
-    <script src="assets/plugins/codemirror/mode/gfm/gfm.js"></script>
-    <script src="assets/plugins/marked/lib/marked.js"></script>
+		<div id="page-wrapper">
 
-    <link rel="stylesheet" href="assets/plugins/uikit/css/components/htmleditor.css">
-    <script src="assets/plugins/uikit/js/components/htmleditor.js"></script>
+			<div id="homeContainer"></div>
 
-  </head>
+		</div>
 
-	<!-- BEGIN BODY -->
-	<body class="sidebar-collapsed color-default bg-lighter fixed-sidebar theme-sdtl ">
-	  <section style="opacity: 1;">
+		<!-- Scripts -->
 
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.dropotron.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/skel-viewport.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
 
-    	<div id="appContainer"></div>
+			<script type="text/javascript" src="dest/homebundle.js"></script>
 
+			<script type="text/jsx">
 
-		</section>
+			var homepage = React.createElement(LandingPage);
+			React.render(homepage, document.body);
 
+			</script>
 
-		<!-- BEGIN PAGE SCRIPTS -->
-		<script src="assets/plugins/jquery/jquery-1.11.1.min.js"></script>
-		<script src="assets/plugins/jquery/jquery-migrate-1.2.1.min.js"></script>
-		<script src="assets/plugins/jquery-ui/jquery-ui-1.11.2.min.js"></script>
-		<script src="assets/plugins/jquery-block-ui/jquery.blockUI.min.js"></script>
-		<script src="assets/plugins/translate/jqueryTranslator.min.js"></script>
-		<script src="assets/plugins/bootbox/bootbox.min.js"></script>
-		<script src="assets/plugins/mcustom-scrollbar/jquery.mCustomScrollbar.concat.min.js"></script> <!-- Custom Scrollbar sidebar -->
-		<script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
-		<script src="assets/plugins/bootstrap-dropdown/bootstrap-hover-dropdown.min.js"></script> <!-- Show Dropdown on Mouseover -->
-		<script src="assets/plugins/jquery-cookies/jquery.cookies.js"></script> <!-- Jquery Cookies, for theme -->
-		<script src="assets/plugins/autosize/autosize.min.js"></script> <!-- Textarea autoresize -->
-		<script src="assets/plugins/prettify/prettify.min.js"></script> <!-- Show html code -->
-		<script src="assets/plugins/bootstrap-slider/bootstrap-slider.js"></script> <!-- Bootstrap Input Slider -->
-		<script src="assets/js/sidebar_hover.js"></script>
-		<script src="assets/js/application.js"></script> <!-- Main Application Script -->
-		<script src="assets/js/plugins.js"></script> <!-- Main Plugin Initialization Script -->
-		<!-- END PAGE SCRIPTS -->
-
-
-    <script type="text/javascript" src="./dest/bundle.js"></script>
-		<!-- <script type="text/jsx" src=".client/components/main.jsx"></script> -->
-
-		<script type="text/jsx">
-
-		var slides = React.createElement(SlidesCreator);
-		React.render(slides, document.body);
-
-		</script>
-
-  </body>
-
+	</body>
 </html>
