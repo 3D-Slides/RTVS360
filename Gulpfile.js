@@ -36,7 +36,7 @@ gulp.task('watchify', function() {
 
 
 gulp.task('browserify', function() {
-	var testFiles = glob.sync('./client/**/*.jsx');
+	var testFiles = glob.sync('./client/main.jsx');
 	var bundler = browserify({
 		entries: testFiles,
 		transform: [reactify],
@@ -55,4 +55,24 @@ gulp.task('browserify', function() {
 		.pipe(gulp.dest('./dest/'));
 });
 
-gulp.task('default', ['gulp browserify']);
+gulp.task('home', function() {
+	var testFiles = glob.sync('./client/homepage.jsx');
+	var bundler = browserify({
+		entries: testFiles,
+		transform: [reactify],
+		debug: true,
+		cache: {},
+		packageCache: {},
+		fullPaths: true
+	});
+
+	return bundler
+		.bundle()
+		.on('error', function(err) {
+			console.log('There was an error compiling the components.', err.message);
+		})
+		.pipe(source('homeBundle.js'))
+		.pipe(gulp.dest('./dest/'));
+});
+
+gulp.task('default', ['browserify', 'home']);
