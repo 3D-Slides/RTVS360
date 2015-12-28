@@ -3,25 +3,26 @@
 
 function SlideGenerator (){
 	var cookieData = document.cookie;
+	// console.log(cookieData);
 
 	if( cookieData.charAt(1) === '<' ) {
 		var html = cookieData.replace(/\\t|\\n+|\s{2,}/g, '');
 		this.data = html;
 
 	} else {
-		var converter = new showdown.Converter({noHeaderId: true}),
+		var converter = new showdown.Converter({ noHeaderId: true }),
 		    clipQuotes = R.replace(/"/g, ''),
 		    removeNewLines = R.replace(/\\n+|\\t|\\r/g, '   '),
 		    splitMkdn = R.split( '   ' ),
-		    addQuotes = function(data){return '"'+data+'"'};
+		    addQuotes = function(data){return '"'+data+'"'},
+		    trimmedArray = R.compose(splitMkdn, removeNewLines, clipQuotes)(cookieData);
 
-		var trimmedArray = R.compose(splitMkdn, removeNewLines, clipQuotes)(cookieData);
-		
 		var htmlConvert = '';
 		for(var i = 0; i < trimmedArray.length; i++){
 			var convertedMkdn = converter.makeHtml( trimmedArray[i] );
 			htmlConvert += convertedMkdn.replace(/\n+/g, '');
 		}
+		console.log(htmlConvert);
 		var html = addQuotes(htmlConvert);
 	}
 	var splitSlides = R.split('<hr />');
@@ -57,6 +58,11 @@ SlideGenerator.prototype.addOneSlide3D = function (coords, html) {
 			size: 1.25,
 			indent: '* '
 		},
+		h4: {
+			color: 0x00d1ff,
+			size: 1,
+			indent: ''
+		},
 		p: {
 			color: 0xB8F2FF,
 			size: 1,
@@ -66,7 +72,8 @@ SlideGenerator.prototype.addOneSlide3D = function (coords, html) {
 			color: 0xB8F2FF,
 			size: 1,
 			indent: ' - '
-		}
+		},
+		
 	};
 
 	var posArray = coords;
@@ -106,23 +113,29 @@ SlideGenerator.prototype.addOneSlide3D = function (coords, html) {
 				var imgSrc = url[i].replace(/src=|\s+|\'|\"|\\/g, '');
 				// console.log('trimmed src:', imgSrc);
 
-				// create image element to get the width 
-				// and height attributes so we can render
-				// the sprite at the nessessary size
+				// create image element to get the width and height attributes so we can render the sprite at the nessessary size
 				var image = document.createElement('img');
 				image.src = imgSrc;
-				console.log(image.width, image.height);
 				
 				loader.crossOrigin = 'anonymous';
 				loader.load( imgSrc, function ( texture ) {
 					var material = new THREE.SpriteMaterial({ map: texture, color: 0xffffff})
 					var sprite = new THREE.Sprite( material );
-					sprite.position.set( posArray[0], posArray[1], posArray[2] )
-					sprite.scale.set( image.width/20, image.height/20 );
+					sprite.position.set( posArray[0]+20, posArray[1]-9, posArray[2] )
 					group.add( sprite );
 					posArray[1]-=20;
-
-				})
+					// set max height and width for sprites
+					var maxHeight = 23,
+						maxWidth = 25,
+					    height = image.height,
+					    width = image.width,
+					    ratio = 1;
+					// Check size of incoming image, change aspect accordingly
+					if( height > maxHeight) {
+						ratio = maxHeight / height;
+					}
+					sprite.scale.set( width * ratio, height * ratio );
+				});
 			}
 		}
 	  } else {
