@@ -1,9 +1,9 @@
 var glScene, glRenderer;
 var box, plane, slidePlane, floor, olsenPlane, fantasyPlane, lionPlane, mainPlane, marker;
-var cssScene, cssRenderer, cssMeshes;
+var cssScene, cssRenderer, cssMeshes, cssObj, imgPlane;
 var camera, controls, spotLight;
 var cameraPivot;
-var loader;
+var loader, manager;
 
 
 var counter = 0;
@@ -43,7 +43,6 @@ function init() {
 	spotLight.shadowCameraNear = 1;
 	spotLight.shadowCameraFar = 1000;
 	camera.add(spotLight);
-
 	glScene.add(camera);
 
 					// CREATE OPAQUE PLANES FOR ELEMENTS
@@ -146,4 +145,6 @@ function render() {
 
 function animate () {
 	spotLight.target = marker;
+	// cssObj.position.copy(imgPlane.position);
+	// cssObj.rotation.copy(imgPlane.rotation);
 }
