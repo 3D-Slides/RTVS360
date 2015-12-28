@@ -45,22 +45,22 @@ SlideGenerator.prototype.addOneSlide3D = function (coords, html) {
 	var tagProps = {
 		h1: {
 			color: 0x00d1ff,
-			size: 1.75,
+			size: 2,
 			indent: ''
 		},
 		h2: {
 			color: 0xffffff,
-			size: 1.4,
+			size: 1.75,
 			indent: ''
 		},
 		h3: {
 			color: 0xffffff,
-			size: 1.25,
+			size: 1.4,
 			indent: '* '
 		},
 		h4: {
 			color: 0x00d1ff,
-			size: 1,
+			size: 1.25,
 			indent: ''
 		},
 		p: {
@@ -73,7 +73,7 @@ SlideGenerator.prototype.addOneSlide3D = function (coords, html) {
 			size: 1,
 			indent: ' - '
 		},
-		
+
 	};
 
 	var posArray = coords;
