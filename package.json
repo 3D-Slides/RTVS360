@@ -20,6 +20,7 @@
     "express": "^4.13.3",
     "glob": "^6.0.1",
     "gulp": "^3.9.0",
+    "gulp-streamify": "^1.0.2",
     "gulp-uglify": "^1.5.1",
     "nodemon": "^1.8.1",
     "path": "^0.12.7",
