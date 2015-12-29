@@ -28,7 +28,11 @@
     "react-markdown": "^1.1.1",
     "reactify": "^1.1.1",
     "remarkable": "^1.6.1",
+    "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0",
     "watchify": "^3.6.1"
+  },
+  "devDependencies": {
+    "gulp-minify": "0.0.5"
   }
 }

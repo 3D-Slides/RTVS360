@@ -5,6 +5,7 @@ var watchify = require('watchify');
 var source = require('vinyl-source-stream');
 var uglify = require('gulp-uglify');
 var glob = require('glob');
+var buffer = require('vinyl-buffer');
 
 gulp.task('watchify', function() {
 	var bundler = browserify({
@@ -35,11 +36,10 @@ gulp.task('watchify', function() {
 		.pipe(gulp.dest('./dest/'));
 });
 
-
 gulp.task('browserify', function() {
 	var testFiles = glob.sync('./client/main.jsx');
 	var bundler = browserify({
-		entries: ['./client/main.jsx'],
+		entries: testFiles,
 		transform: [reactify],
 		debug: true,
 		cache: {},
