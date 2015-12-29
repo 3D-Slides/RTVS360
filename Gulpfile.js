@@ -3,6 +3,7 @@ var reactify = require('reactify');
 var browserify = require('browserify');
 var watchify = require('watchify');
 var source = require('vinyl-source-stream');
+var uglify = require('gulp-uglify');
 var glob = require('glob');
 
 gulp.task('watchify', function() {
@@ -38,7 +39,7 @@ gulp.task('watchify', function() {
 gulp.task('browserify', function() {
 	var testFiles = glob.sync('./client/main.jsx');
 	var bundler = browserify({
-		entries: testFiles,
+		entries: ['./client/main.jsx'],
 		transform: [reactify],
 		debug: true,
 		cache: {},
