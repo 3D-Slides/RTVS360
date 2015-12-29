@@ -32,7 +32,7 @@
             toolbar      : [ 'bold', 'italic', 'strike', 'link', 'image', 'blockquote', 'listUl', 'listOl' ],
             lblPreview   : 'Preview',
             lblCodeview  : 'HTML',
-            lblMarkedview: 'Markdown'
+            lblMarkedview: 'Editor'
         },
 
         boot: function() {

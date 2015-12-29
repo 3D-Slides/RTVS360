@@ -3425,7 +3425,8 @@
 .bg-lighter .sidebar-mailbox.sidebar .sidebar-inner .nav-sidebar > li.active > a,
 .bg-lighter .sidebar-mailbox.sidebar .nav-sidebar > li.active > a:hover,
 .bg-lighter .sidebar-mailbox.sidebar .nav-sidebar > li.active > a:focus {
-  background: #efefef;
+  /*background: #efefef;*/
+  background: #fff;
 }
 .bg-light-default,
 .bg-light-default > section,

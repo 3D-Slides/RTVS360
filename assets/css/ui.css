@@ -1159,6 +1159,7 @@ address {
 .btn.btn-lg {
   font-size: 16px;
   padding: 11px 48px;
+  text-transform: uppercase;
 }
 .btn.btn-lg i {
   font-size: 18px;
@@ -1531,6 +1532,10 @@ fieldset[disabled].btn-default.active {
 .btn-primary {
   background-color: #319db5;
   color: #fff;
+  margin-right: 24px;
+  margin-top: -15px;
+  float: right;
+
 }
 .btn-primary:active {
   background: #267a8d;
