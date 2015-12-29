@@ -16,12 +16,12 @@ var Header = React.createClass({
 
           <ul className="actions actions-centered">
             <li><a href="/create" className="button style1 big">Get Started</a></li>
-            <li><a href="#howitworks" className="button style2 big">More Info</a></li>
+            <li><a href="#intro-wrapper" className="button style2 big">More Info</a></li>
           </ul>
           {/* Nav */}
           <nav id="nav">
             <ul>
-              <li className="current"><a href="#intro">Introduction</a></li>
+              <li className="current"><a href="#intro-wrapper">Introduction</a></li>
               <li><a href="#howitworks">How it Works</a></li>
               <li><a href="#details">Current Features</a></li>
               <li><a href="#foot">Contact</a></li>
