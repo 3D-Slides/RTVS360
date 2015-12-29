@@ -55,8 +55,8 @@ gulp.task('browserify', function() {
 			console.log('There was an error compiling the components.', err.message);
 		})
 		.pipe(source('bundle.js'))
-		.pipe(buffer())
-		.pipe(uglify())
+		// .pipe(buffer())
+		// .pipe(uglify())
 		.pipe(gulp.dest('./dest/'));
 	}
 	return rebundle();
@@ -80,8 +80,8 @@ gulp.task('home', function() {
 			console.log('There was an error compiling the components.', err.message);
 		})
 		.pipe(source('homeBundle.js'))
-		.pipe(buffer())
-		.pipe(uglify())
+		// .pipe(buffer())
+		// .pipe(uglify())
 		.pipe(gulp.dest('./dest/'));
 	}
 
