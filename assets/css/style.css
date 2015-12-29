@@ -4184,7 +4184,7 @@ body:not(.fixed-sidebar):not(.fixed-topbar):not(.sidebar-top) .sidebar .logopane
 }
 .main-content {
   background: #F5F5F5;
-  margin-left: 240px;
+  /*margin-left: 240px;*/
   min-height: 750px;
 }
 .main-content .page-content {
@@ -4343,7 +4343,7 @@ body:not(.fixed-sidebar):not(.fixed-topbar):not(.sidebar-top) .sidebar .logopane
 .main-content .page-content .panel .panel-header {
   display: block;
   height: auto;
-  padding: 6px 15px 6px 18px;
+  padding: 16px 15px 6px 18px;
 }
 .main-content .page-content .panel .panel-header h2 {
   color: #5b5b5b;
@@ -4364,6 +4364,7 @@ body:not(.fixed-sidebar):not(.fixed-topbar):not(.sidebar-top) .sidebar .logopane
   line-height: normal;
   margin-bottom: 10px;
   margin-top: 10px;
+  margin-left: 22px;
   text-transform: uppercase;
 }
 .main-content .page-content .panel .panel-header:hover .control-btn > a {
@@ -4509,7 +4510,7 @@ body:not(.fixed-sidebar):not(.fixed-topbar):not(.sidebar-top) .sidebar .logopane
   z-index: 2;
 }
 .main-content .page-content .portlets.ui-sortable .panel-header {
-  cursor: move;
+  /*cursor: move;*/
 }
 .main-content .page-content .panel.bg-aero .panel-content {
   color: #5b5b5b !important;
@@ -4817,7 +4818,8 @@ body:not(.fixed-sidebar):not(.fixed-topbar):not(.sidebar-top) .sidebar .logopane
   top: 115px;
 }
 .sidebar-collapsed .main-content .page-content .panel.maximized {
-  left: 50px;
+  /*left: 50px;*/
+  left: 0px;
 }
 body:not(.fixed-topbar) .main-content .page-content {
   margin-top: 0;

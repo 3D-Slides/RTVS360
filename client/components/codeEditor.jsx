@@ -23,7 +23,10 @@ var CodeEditor = React.createClass({
           <div className="col-md-12 portlets">
             <div className="panel maximized">
               <div className="panel-header ">
-                <h3><i className="icon-note" /> <strong>Code</strong> Editor</h3>
+                <h3><i className="icon-note" /> <strong>Slides</strong> Editor
+                  <button type="submit" id="no-page-builder" onClick={this.props.postSub} className="btn btn-primary btn-lg btn-square">Create Slides</button>
+                  </h3>
+
                 { /*<div className="control-btn">
                   <a href="#" className="panel-maximize"><i className="icon-size-fullscreen" /></a>
                 </div> */ }
@@ -33,9 +36,7 @@ var CodeEditor = React.createClass({
                   <div className="col-md-12">
 
                     <textarea data-uk-htmleditor id="code-input-box" defaultValue={this.getLocalStorage()} />
-                    <div className="custom-page m-t-60 text-center">
-                      <button type="submit" id="no-page-builder" onClick={this.props.postSub} className="btn btn-primary btn-lg btn-square">Create Slides</button>
-                    </div>
+
 
                   </div>
                 </div>
