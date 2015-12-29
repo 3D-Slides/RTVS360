@@ -64,10 +64,10 @@ var Main = React.createClass({
                 </div>
               </div>
             </div>
-            <ul className="actions actions-centered">
+            { /* <ul className="actions actions-centered">
               <li><a href="/create" className="button style1 big">Get Started</a></li>
               <li><a href="/" className="button style2 big">More Info</a></li>
-            </ul>
+            </ul> */ }
           </section>
         </div>
 
