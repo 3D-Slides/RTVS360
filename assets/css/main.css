@@ -1098,7 +1098,7 @@
 		-webkit-transition: color .25s ease-in-out;
 		-ms-transition: color .25s ease-in-out;
 		transition: color .25s ease-in-out;
-		text-decoration: underline;
+		text-decoration: none;
 		color: #717479;
 	}
 
