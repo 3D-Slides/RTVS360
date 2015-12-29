@@ -6,16 +6,17 @@
 	</head>
 	<body>
 		<div class="overlay">
-			<div class="modal">
+			<div class="modal" style="opacity:0;">
 				<p>To enable presentation mode, press command + shift + F.</p>
 				<p>Use the left and right arrow keys to navigate</p>
 			</div>
 		</div>
 		<script>
 			window.onload = function() {
-				console.log('window loaded');
+				var modal = document.getElementsByClassName('modal')[0];
+				modal.className += " fade-in-down";
 			}
-			
+			document.ready
 			function fadeModal(e) {
 				if (e.keyCode === 37 ||
 					e.keyCode === 39 ||
