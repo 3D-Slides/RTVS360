@@ -25,13 +25,13 @@ var Main = React.createClass({
                 <div className="6u 12u(mobile)">
                   <section>
                     <h3 className="icon fa-font">Convert Markdown to 3D Slides</h3>
-                    <p>Simply enter your markdown into the editor, look to the right to preview your slide and once you're finished click save.</p>
+                    <p>Simply enter your markdown into the editor, look to the right to preview your slide and once you're finished click Create Slides.</p>
                   </section>
                 </div>
                 <div className="6u 12u(mobile)">
                   <section>
                     <h3 className="icon fa-html5">Convert HTML to Slide Presentations</h3>
-                    <p>Simply enter your HTML into the editor, look to the right to preview your slide and once you're finished click save.</p>
+                    <p>Simply enter your HTML into the editor, look to the right to preview your slide and once you're finished click Create Slides.</p>
                   </section>
                 </div>
               </div>
@@ -39,13 +39,13 @@ var Main = React.createClass({
                 <div className="6u 12u(mobile)">
                   <section>
                     <h3 className="icon fa-picture-o">Add images to your slides</h3>
-                    <p>Simply enter your markdown into the editor, look to the right to preview your slide and once you're finished click save.</p>
+                    <p>You can add images by selecting the image Icon at the top of the editor. At this point only https images are supported.</p>
                   </section>
                 </div>
                 <div className="6u 12u(mobile)">
                   <section>
-                    <h3 className="icon fa-exchange">Select Multiple Transitions</h3>
-                    <p>Determine which transitions you want to add to not only your text, but also your images and backgrounds.</p>
+                    <h3 className="icon fa-exchange">Extremely Easy to Use</h3>
+                    <p>In two clicks you can have all of your slides created and placed in the 3D environment. Go ahead, get started!</p>
                   </section>
                 </div>
                 {/*<div className="6u 12u(mobile)">
@@ -56,7 +56,7 @@ var Main = React.createClass({
                 </div> */}
               </div>
 
-              
+
               {/* <div className="row">
                 <div className="6u 12u(mobile)">
                   <section>

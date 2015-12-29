@@ -77,7 +77,7 @@ var Footer = React.createClass({
                     <section>
                       <h3 className="icon fa-github-alt">Github Repo</h3>
                       <p>
-                        <a href="https://github.com/3D-Slides/RTVS360">Github</a>
+                        <a href="https://github.com/3D-Slides/RTVS360">Fork Me</a>
                       </p>
                     </section>
 
