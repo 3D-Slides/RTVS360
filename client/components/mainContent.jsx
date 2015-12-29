@@ -44,7 +44,7 @@ var Main = React.createClass({
                 </div>
                 <div className="6u 12u(mobile)">
                   <section>
-                    <h3 className="icon fa-exchange">Extremely Easy to Use</h3>
+                    <h3 className="icon fa-user">Extremely Easy to Use</h3>
                     <p>In two clicks you can have all of your slides created and placed in the 3D environment. Go ahead, get started!</p>
                   </section>
                 </div>
