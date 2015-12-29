@@ -17,9 +17,9 @@ var Intro = React.createClass({
           <p className="style3">It's <strong>simple</strong>, built on <strong>THREE.JS</strong> and <strong>Web GL</strong>, and released for
             free under the <a href>The MIT License (MIT)</a>, so use it for any of
             your personal or commercial projects – just be sure to credit us!</p>
-          <ul className="actions">
+          { /* <ul className="actions">
             <li><a href="/create" className="button style3 big">Get Started</a></li>
-          </ul>
+          </ul> */ }
         </section>
       </div>
 
