@@ -4184,7 +4184,7 @@ body:not(.fixed-sidebar):not(.fixed-topbar):not(.sidebar-top) .sidebar .logopane
 }
 .main-content {
   background: #F5F5F5;
-  margin-left: 240px;
+  /*margin-left: 240px;*/
   min-height: 750px;
 }
 .main-content .page-content {
