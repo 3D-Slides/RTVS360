@@ -48,8 +48,16 @@ var Main = React.createClass({
                     <p>Determine which transitions you want to add to not only your text, but also your images and backgrounds.</p>
                   </section>
                 </div>
+                {/*<div className="6u 12u(mobile)">
+                  <section>
+                    <h3 className="icon fa-exchange">Select Multiple Transitions</h3>
+                    <p>Determine which transitions you want to add to not only your text, but also your images and backgrounds.</p>
+                  </section>
+                </div> */}
               </div>
-              <div className="row">
+
+              
+              {/* <div className="row">
                 <div className="6u 12u(mobile)">
                   <section>
                     <h3 className="icon fa-code">Add code into your slides</h3>
@@ -62,7 +70,7 @@ var Main = React.createClass({
                     <p>Don't stress. You can save your progress at any time and come back later. You can also save your whole presentation and present again and again.</p>
                   </section>
                 </div>
-              </div>
+              </div> */}
             </div>
             { /* <ul className="actions actions-centered">
               <li><a href="/create" className="button style1 big">Get Started</a></li>
