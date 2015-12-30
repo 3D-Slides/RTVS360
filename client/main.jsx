@@ -56,7 +56,7 @@ var SlidesCreator = React.createClass({
 				.css("font-family", "Helvetica")
 				.css("font-weight", "500");
 		});
-		
+
 	},
 
 	postSubmit: function (event) {
@@ -87,7 +87,7 @@ var SlidesCreator = React.createClass({
 		    expireTime = now + 10000;
 		now.setTime(expireTime);
 
-		document.cookie = `${markString}`+ ';max-age=10';
+		document.cookie = '${markString}' + ';max-age=10';
 		window.localStorage.setItem('input', markdownText);
 		window.localStorage.setItem('colors', JSON.stringify(colorScheme));
 		window.localStorage.setItem('world', worldInfo);
