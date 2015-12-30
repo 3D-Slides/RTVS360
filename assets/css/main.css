@@ -1098,7 +1098,7 @@
 		-webkit-transition: color .25s ease-in-out;
 		-ms-transition: color .25s ease-in-out;
 		transition: color .25s ease-in-out;
-		text-decoration: underline;
+		text-decoration: none;
 		color: #717479;
 	}
 
@@ -1538,7 +1538,7 @@
 				left: -35px;
 				width: 35px;
 				height: 38px;
-				background: url("images/shadow.png");
+				/*background: url("images/shadow.png");*/
 			}
 
 			.wrapper .title:after {
@@ -1552,7 +1552,7 @@
 				right: -35px;
 				width: 35px;
 				height: 38px;
-				background: url("images/shadow.png");
+				/*background: url("images/shadow.png");*/
 			}
 
 		.wrapper.style1 {
@@ -1831,7 +1831,7 @@
 		/* List */
 
 			ul.actions {
-				margin: 3em 0 0 0;
+				margin: 15em 0 0 0;
 			}
 
 				ul.actions li {
@@ -1967,7 +1967,8 @@
 			}
 
 			.homepage #header {
-				padding: 18em 0;
+				/*padding: 18em 0;*/
+
 			}
 
 		/* Logo */
@@ -1975,7 +1976,7 @@
 			#logo {
 				position: absolute;
 				height: 5em;
-				top: 50%;
+				top: 40%;
 				left: 0;
 				width: 100%;
 				text-align: center;
@@ -1992,7 +1993,7 @@
 			}
 
 			#logo p {
-				margin: 1.25em 0 0 0;
+				/*margin: 1.25em 0 0 0;*/
 				display: block;
 				letter-spacing: 0.2em;
 				font-size: 0.9em;

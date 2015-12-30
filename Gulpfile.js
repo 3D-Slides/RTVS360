@@ -4,11 +4,11 @@ var browserify = require('browserify');
 var watchify = require('watchify');
 var source = require('vinyl-source-stream');
 var uglify = require('gulp-uglify');
+var uglifycss = require('gulp-uglifycss');
 var glob = require('glob');
-var buffer = require('vinyl-buffer');
 var streamify = require('gulp-streamify');
 
-gulp.task('watchify', function() {
+gulp.task('watchify', function () {
 	var bundler = browserify({
 		entries: ['./client/main.jsx'],
 		transform: [reactify],
@@ -21,23 +21,23 @@ gulp.task('watchify', function() {
 	var watcher = watchify(bundler);
 
 	return watcher
-		.on('update', function() {
+		.on('update', function () {
 			watcher.bundle()
-			.on('error', function(err) {
-				console.log('There was an error compiling the components.', err.message);
-			})
-			.pipe(source('bundle.js'))
-			.pipe(gulp.dest('./dest/'));
+				.on('error', function (err) {
+					console.log('There was an error compiling the components.', err.message);
+				})
+				.pipe(source('bundle.js'))
+				.pipe(gulp.dest('./dest/'));
 		})
 		.bundle()
-		.on('error', function(err) {
+		.on('error', function (err) {
 			console.log('There was an error compiling the components.', err.message);
 		})
 		.pipe(source('bundle.js'))
 		.pipe(gulp.dest('./dest/'));
 });
 
-gulp.task('browserify', function() {
+gulp.task('browserify', function () {
 	var testFiles = glob.sync('./client/main.jsx');
 	var bundler = browserify({
 		entries: testFiles,
@@ -48,21 +48,20 @@ gulp.task('browserify', function() {
 		fullPaths: true
 	});
 
-	function rebundle () {
+	function rebundle() {
 		bundler
 		.bundle()
 		.on('error', function(err) {
 			console.log('There was an error compiling the components.', err.message);
 		})
 		.pipe(source('bundle.js'))
-		// .pipe(buffer())
-		// .pipe(uglify())
 		.pipe(gulp.dest('./dest/'));
 	}
 	return rebundle();
 });
 
-gulp.task('home', function() {
+gulp.task('home', function () {
+
 	var testFiles = glob.sync('./client/homepage.jsx');
 	var bundler = browserify({
 		entries: testFiles,
@@ -80,13 +79,26 @@ gulp.task('home', function() {
 			console.log('There was an error compiling the components.', err.message);
 		})
 		.pipe(source('homeBundle.js'))
-		// .pipe(buffer())
-		// .pipe(uglify())
 		.pipe(gulp.dest('./dest/'));
 	}
-
 
 	return rebundle();
 });
 
-gulp.task('default', ['browserify', 'home']);
+// Uglify Scripts
+gulp.task('scripts', function() {
+	gulp.src('assets/js/*.js')
+    .pipe(uglify())
+    .pipe(gulp.dest('dest/js'))
+});
+
+// Minify Styles
+gulp.task('styles', function () {
+  gulp.src('./assets/css/**/*.css')
+    .pipe(uglifycss({
+      "max-line-len": 80
+    }))
+    .pipe(gulp.dest('./dest/css'));
+});
+
+gulp.task('default', ['browserify', 'home', 'scripts', 'styles']);

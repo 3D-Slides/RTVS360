@@ -50,7 +50,7 @@ var Footer = React.createClass({
             <div className="6u 12u(mobile)">
               {/* Contact */}
               <section className="feature-list small">
-                <div className="row">
+                { /* <div className="row">
                   <div className="6u 12u(mobile)">
                     <section>
                       <h3 className="icon fa-home">Mailing Address</h3>
@@ -65,30 +65,40 @@ var Footer = React.createClass({
                     <section>
                       <h3 className="icon fa-comment">Social</h3>
                       <p>
-                        <a href="#">info@3dslides.com</a><br />
-                        <a href="#">github.com/yadayada</a><br />
+                        <a href="info@3dslides.com">Email</a><br />
+                        <a href="https://github.com/3D-Slides/RTVS360">Github Repo</a><br />
                         <a href="#">facebook.com/yadayada</a>
                       </p>
                     </section>
                   </div>
-                </div>
+                </div> */}
                 <div className="row">
+                  <div className="6u 12u(mobile)">
+                    <section>
+                      <h3 className="icon fa-github-alt">Github Repo</h3>
+                      <p>
+                        <a href="https://github.com/3D-Slides/RTVS360">Fork Me</a>
+                      </p>
+                    </section>
+
+                  </div>
+
                   <div className="6u 12u(mobile)">
                     <section>
                       <h3 className="icon fa-envelope">Email</h3>
                       <p>
-                        <a href="#">info@3dslides.com</a>
+                        <a href="#">Contact Us</a>
                       </p>
                     </section>
                   </div>
-                  <div className="6u 12u(mobile)">
+                  {/* <div className="6u 12u(mobile)">
                     <section>
                       <h3 className="icon fa-phone">Phone</h3>
                       <p>
                         (000) 555-0000
                       </p>
                     </section>
-                  </div>
+                  </div> */}
                 </div>
               </section>
             </div>
