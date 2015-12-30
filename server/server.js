@@ -8,7 +8,7 @@ var app = express();
 
 var port = process.env.PORT || 3131;
 
-app.use(compress());
+// app.use(compress());
 app.use(bodyParser.text({ type: 'text/html' }));
 app.use(cors({origin: 'http://three-d-slides.herokuapp.com'}));
 
@@ -20,7 +20,7 @@ app.get('/create', function(req, res) {
 });
 
 app.get('/', function(req, res) {
-	res.sendFile(path.join(__dirname + './index.html'))
+	res.sendFile(path.join(__dirname + './index.html'));
 })
 
 app.get('/presentation', function(req, res) {
