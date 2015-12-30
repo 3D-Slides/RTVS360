@@ -93,7 +93,7 @@ gulp.task('scripts', function() {
 });
 
 // Minify Styles
-gulp.task('styles', function () {
+gulp.task('styles', function() {
   gulp.src('./assets/css/**/*.css')
     .pipe(uglifycss({
       "max-line-len": 80
