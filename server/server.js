@@ -8,7 +8,7 @@ var app = express();
 
 var port = process.env.PORT || 3131;
 
-// app.use(compress());
+app.use(compress());
 app.use(bodyParser.text({ type: 'text/html' }));
 app.use(cors({origin: 'http://three-d-slides.herokuapp.com'}));
 
