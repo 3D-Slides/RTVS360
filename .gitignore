@@ -1,4 +1,5 @@
 dest/bundle.js
+dest/homeBundle.js
 node_modules
 .DS_store
 config
