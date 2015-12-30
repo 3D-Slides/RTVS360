@@ -1,8 +1,9 @@
 
 // ---------------------- GENERATE SLIDES --------------------- //
 
-function SlideGenerator (){
-	var cookieData = document.cookie;
+function SlideGenerator (input, colorScheme){
+	this.colorScheme = colorScheme;
+	var cookieData = input;
 	// console.log(cookieData);
 
 	if( cookieData.charAt(1) === '<' ) {
@@ -22,7 +23,6 @@ function SlideGenerator (){
 			var convertedMkdn = converter.makeHtml( trimmedArray[i] );
 			htmlConvert += convertedMkdn.replace(/\n+/g, '');
 		}
-		console.log(htmlConvert);
 		var html = addQuotes(htmlConvert);
 	}
 	var splitSlides = R.split('<hr />');
@@ -44,32 +44,32 @@ SlideGenerator.prototype.addOneSlide3D = function (coords, html) {
 	// individual properties for each tag
 	var tagProps = {
 		h1: {
-			color: 0x00d1ff,
+			color: this.colorScheme.h1,
 			size: 2,
 			indent: ''
 		},
 		h2: {
-			color: 0xffffff,
+			color: this.colorScheme.h2,
 			size: 1.75,
 			indent: ''
 		},
 		h3: {
-			color: 0xffffff,
+			color: this.colorScheme.h3,
 			size: 1.4,
 			indent: '* '
 		},
 		h4: {
-			color: 0x00d1ff,
+			color: this.colorScheme.h4,
 			size: 1.25,
 			indent: ''
 		},
 		p: {
-			color: 0xB8F2FF,
+			color: this.colorScheme.p,
 			size: 1,
 			indent: '       '
 		},
 		li: {
-			color: 0xB8F2FF,
+			color: this.colorScheme.li,
 			size: 1,
 			indent: ' - '
 		},
