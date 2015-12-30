@@ -3,18 +3,47 @@ var box, plane, slidePlane, floor, olsenPlane, fantasyPlane, lionPlane, mainPlan
 var cssScene, cssRenderer, cssMeshes, cssObj, imgPlane;
 var camera, controls, spotLight;
 var cameraPivot;
-var loader, manager;
-
+var manager;
 
 var counter = 0;
-var SlideGenerator = new SlideGenerator();
+var colors = JSON.parse(localStorage.colors);
+var SlideGenerator = new SlideGenerator(localStorage.input, colors);
+var loader = new THREE.TextureLoader();
 
-init();
+if (localStorage.world === "Ocean Sunset") {
+	var imagePrefix = '/assets/DarkSea-',
+	images = ['xneg', 'xpos', 'ypos', 'yneg', 'zneg', 'zpos'],
+	imageSuffix = '.jpg',
+	imageUrls = images.map(function(img) {
+		return imagePrefix + img + imageSuffix;
+	});
+	var glScene, camera, glRenderer, controls, clock;
+	var water, waterTexture, waveNormal, waveSpecular;
+
+	initOceanScene();
+	renderOceanScene();
+} else {
+	initTronScene(colors.h1);
+	renderTronScene();
+}
 SlideGenerator.addAllSlides3D( [-160, 25, -50], SlideGenerator.data );
-render();
 
+window.addEventListener( 'resize', onWindowResize, false );
+function onWindowResize() {
 
-function init() {
+	WIDTH = window.innerWidth;
+	HEIGHT = window.innerHeight;
+	ASPECT = window.innerWidth / window.innerHeight;
+
+	camera.aspect = ASPECT;
+	camera.updateProjectionMatrix();
+
+	glRenderer.setSize( WIDTH, HEIGHT );
+
+}
+
+function initTronScene(gridColor) {
+	console.log(gridColor);
 						// INIT SCENE PROCEDURES
 /*_____________________________________________________________________*/
 	var WIDTH = window.innerWidth,
@@ -24,9 +53,6 @@ function init() {
 	glScene = new THREE.Scene();
 	glScene.fog = new THREE.FogExp2(0x000000, 0.015);
 	cssScene = new THREE.Scene();
-
-	loader = new THREE.TextureLoader();
-	loader.crossOrigin = "anonymous";
 
 	camera = new THREE.PerspectiveCamera(75, ASPECT, 0.1, 20000);
 	camera.position.set(0, 5, 0);
@@ -68,7 +94,7 @@ function init() {
 	var yDepth = 0;
 	var grid = new THREE.Group();
 	var material = new THREE.LineBasicMaterial({
-		color: 0x00D1FF,
+		color: gridColor,
 		linewidth: 0.3,
 		fog: true
 	});
@@ -117,34 +143,137 @@ function init() {
 
 	controls = new THREE.OrbitControls(camera, glRenderer.domElement);
 	// controls.maxDistance = 9000;
-
-	// create window resize function
-	window.addEventListener( 'resize', onWindowResize, false );
-	function onWindowResize() {
-
-		WIDTH = window.innerWidth;
-		HEIGHT = window.innerHeight;
-		ASPECT = window.innerWidth / window.innerHeight;
-
-		camera.aspect = ASPECT;
-		camera.updateProjectionMatrix();
-
-		glRenderer.setSize( WIDTH, HEIGHT );
-
-	}
 }
 
-function render() {
-	requestAnimationFrame(render);
+function renderTronScene() {
+	requestAnimationFrame(renderTronScene);
 	controls.update();
 	glRenderer.render(glScene, camera);
 	cssRenderer.render(cssScene, camera);
 	TWEEN.update();
-	animate();
+	animateTronScene();
 }
 
-function animate () {
+function animateTronScene () {
 	spotLight.target = marker;
-	// cssObj.position.copy(imgPlane.position);
-	// cssObj.rotation.copy(imgPlane.rotation);
+}
+
+
+
+
+
+
+
+//************************************************************************//
+//                             Ocean Scene                                //
+//************************************************************************//
+
+
+
+
+
+
+
+
+
+function initOceanScene() {
+	var WIDTH = window.innerWidth,
+		HEIGHT = window.innerHeight,
+		ASPECT = WIDTH / HEIGHT;
+	clock = new THREE.Clock();
+	glScene = new THREE.Scene();
+
+	camera = new THREE.PerspectiveCamera(75, ASPECT, 0.1, 20000);
+	camera.position.set (0, 20, 100);
+	camera.lookAt(new THREE.Vector3(0, 0, 0));
+
+	// var axisHelper = new THREE.AxisHelper( 40 );
+	// glScene.add( axisHelper );
+
+	var ambientLight = new THREE.AmbientLight(0xffffff);
+	glScene.add(ambientLight);
+
+	var directionLight = new THREE.DirectionalLight(0xFC7825);
+	directionLight.position.set(-300, 150, 500);
+	glScene.add(directionLight);
+
+	marker = new THREE.Object3D();
+	marker.position.set(0,0,0);
+	glScene.add(marker);
+
+	// SKYBOX
+	var skyBoxTextures = THREE.ImageUtils.loadTextureCube( imageUrls );
+	skyBoxTextures.format = THREE.RGBFormat;
+
+	var shader = THREE.ShaderLib.cube;
+	shader.uniforms.tCube.value = skyBoxTextures;
+
+	var skyBoxGeometry = new THREE.BoxGeometry(10000, 10000, 10000);
+	var skyBoxMaterial = new THREE.ShaderMaterial({
+			fragmentShader: shader.fragmentShader,
+			vertexShader: shader.vertexShader,
+			uniforms: shader.uniforms,
+			depthWrite: false,
+			side: THREE.BackSide
+		});
+
+	var skyBox = new THREE.Mesh(skyBoxGeometry, skyBoxMaterial);
+	skyBox.rotation.x = Math.PI/2;
+	glScene.add(skyBox);
+
+
+	// WATER
+	waterTexture = THREE.ImageUtils.loadTexture('assets/water512.jpg');
+	waterTexture.crossOrigin = 'anonymous';
+	waterTexture.wrapS = waterTexture.wrapT = THREE.RepeatWrapping;
+	waterTexture.repeat.set(64,64);
+
+	waveNormal = THREE.ImageUtils.loadTexture('/assets/water-normal-2.png');
+	waveNormal.wrapS = waveNormal.wrapT = THREE.RepeatWrapping;
+	waveNormal.repeat.set(512,512);
+
+	var waterGeometry = new THREE.PlaneGeometry(10000, 10000, 100, 100);
+	var waterMaterial = new THREE.MeshPhongMaterial({
+		map: waterTexture,
+		combine: THREE.MixOperation,
+		normalMap: waveNormal,
+		reflectivity:0.91,
+		envMap: skyBoxTextures,
+		shininess: 10,
+		opacity: 1
+	});
+	water = new THREE.Mesh( waterGeometry, waterMaterial);
+	water.rotation.x = Math.PI/2;
+	water.rotation.y = Math.PI;
+	glScene.add(water);
+
+	// CREATE THE GLRENDERER AND APPEND IT ON TOP OF HTML
+	// OR THE CSSRENDERER
+	glRenderer = new THREE.WebGLRenderer({
+		antialias: true,
+		alpha: true
+	});
+	glRenderer.setSize(WIDTH, HEIGHT);
+	glRenderer.setPixelRatio(window.devicePixelRatio);
+	glRenderer.setClearColor(0xFFFFFF, 0);
+	glRenderer.domElement.style.position = 'absolute';
+	glRenderer.domElement.style.top = 0;
+	glRenderer.domElement.style.zIndex = 1;
+	document.body.appendChild(glRenderer.domElement);
+
+	controls = new THREE.OrbitControls(camera, glRenderer.domElement);
+}
+
+function renderOceanScene() {
+	requestAnimationFrame(renderOceanScene);
+	controls.update();
+	animateOceanScene();
+	glRenderer.render(glScene, camera);
+	TWEEN.update();
+}
+
+function animateOceanScene () {
+	var delta = clock.getDelta();
+	var time = clock.getElapsedTime();
+	waterTexture.offset.set(0, time/80);
 }
