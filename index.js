@@ -5,16 +5,17 @@ var camera, controls, spotLight;
 var cameraPivot;
 var loader, manager;
 
-
 var counter = 0;
-var SlideGenerator = new SlideGenerator();
+var colors = JSON.parse(localStorage.colors);
+var SlideGenerator = new SlideGenerator(localStorage.input, colors);
 
-init();
+init(colors.h1);
 SlideGenerator.addAllSlides3D( [-160, 25, -50], SlideGenerator.data );
 render();
 
 
-function init() {
+function init(gridColor) {
+	console.log(gridColor);
 						// INIT SCENE PROCEDURES
 /*_____________________________________________________________________*/
 	var WIDTH = window.innerWidth,
@@ -68,7 +69,7 @@ function init() {
 	var yDepth = 0;
 	var grid = new THREE.Group();
 	var material = new THREE.LineBasicMaterial({
-		color: 0x00D1FF,
+		color: gridColor,
 		linewidth: 0.3,
 		fog: true
 	});
