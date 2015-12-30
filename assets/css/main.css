@@ -2619,6 +2619,12 @@
 					font-size: 0.9em;
 				}
 
+
+			.logo-LRG {
+				width: 100%;
+				height: auto;
+			}
+
 		/* Nav */
 
 			#nav {

@@ -10,7 +10,7 @@ var Header = React.createClass({
         <div id="header">
           {/* Logo */}
           <div id="logo">
-            <h1><a href="#" /><img src="assets/images/logo-LRG.png" /></h1>
+            <h1><a href="" /><img className="logo-LRG" src="assets/images/logo-LRG.png" /></h1>
             <p>Present your HTML and or Markup slides in 3D.</p>
           </div>
 
