@@ -1,5 +1,9 @@
+<<<<<<< HEAD
 dest/homeBundle.js
+=======
+>>>>>>> 5bd3b724f577f4e96b0725db327516b8954ea362
 dest/bundle.js
+dest/homeBundle.js
 node_modules
 .DS_store
 config
