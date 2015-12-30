@@ -12,7 +12,6 @@ app.use(compress());
 app.use(bodyParser.text({ type: 'text/html' }));
 app.use(cors({origin: 'http://three-d-slides.herokuapp.com'}));
 
-
 app.use(express.static(path.join(__dirname + './../')));
 
 app.get('/create', function(req, res) {

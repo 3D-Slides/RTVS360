@@ -1,3 +1,4 @@
+			
 			//			Slideshow Object			//
 
 var Slideshow = function(camera) {
@@ -46,8 +47,7 @@ var Slideshow = function(camera) {
 
 		card2A.chain(card2B).chain(card2C).start();
 	};
-
-	var moveBack = function(index){
+	var moveBack = function(index) {
 		if(index > _snapshots.length - 1) _currentSnap = index = 0;
 		if(index < 0) _currentSnap = index = _snapshots.length -1;
 
@@ -80,8 +80,7 @@ var Slideshow = function(camera) {
 		.easing(TWEEN.Easing.Back.InOut)
 		.start();
 	};
-
-	var moveExpo = function(index){
+	var moveExpo = function(index) {
 		if(index > _snapshots.length - 1) _currentSnap = index = 0;
 		if(index < 0) _currentSnap = index = _snapshots.length -1;
 
@@ -114,7 +113,6 @@ var Slideshow = function(camera) {
 		.easing(TWEEN.Easing.Exponential.InOut)
 		.start();
 	};
-
 	var moveSin = function(index) {
 		if(index > _snapshots.length - 1) _currentSnap = index = 0;
 		if(index < 0) _currentSnap = index = _snapshots.length -1;
@@ -148,7 +146,6 @@ var Slideshow = function(camera) {
 		.easing(TWEEN.Easing.Sinusoidal.InOut)
 		.start();
 	};	
-
 	var moveDefault = function(index) {
 		if (index > _snapshots.length - 1) _currentSnap = index = 0;
 		if (index < 0) _currentSnap = index = _snapshots.length - 1;
@@ -218,8 +215,8 @@ var Slideshow = function(camera) {
 		// remove all of the scene helpers
 	};
 };
-Slideshow.prototype.constructor = Slideshow;
 
+Slideshow.prototype.constructor = Slideshow;
 
 			//			Snapshot Object			//
 var Snapshot = function(location, rotation, options) {
@@ -244,7 +241,6 @@ var Snapshot = function(location, rotation, options) {
 
 Snapshot.prototype.constructor = Snapshot;
 
-
 var show = new Slideshow(camera);
 var posArray = SlideGenerator.slideLocations;
 var saveCoords = R.forEach(function(coord) {
@@ -252,8 +248,3 @@ var saveCoords = R.forEach(function(coord) {
 	show.addSnapshot(moveCoord);
 })(posArray);
 show.addTransitionTo('all', 'Quadratic.InOut');
-
-
-
-
-
