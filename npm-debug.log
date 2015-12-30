@@ -1,0 +1,224 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/local/bin/node', '/usr/local/bin/npm', 'install' ]
+2 info using npm@2.14.2
+3 info using node@v4.0.0
+4 verbose readDependencies loading dependencies from /Users/joshuadavid/Documents/Codesmith/RTVS360/package.json
+5 warn package.json 3DSlides@1.0.0 No repository field.
+6 warn package.json 3DSlides@1.0.0 No README data
+7 warn package.json Dependency 'gulp-uglify' exists in both dependencies and devDependencies, using 'gulp-uglify@^1.5.1' from dependencies
+8 warn package.json Dependency 'vinyl-buffer' exists in both dependencies and devDependencies, using 'vinyl-buffer@^1.0.0' from dependencies
+9 verbose install where, deps [ '/Users/joshuadavid/Documents/Codesmith/RTVS360',
+9 verbose install   [ 'body-parser',
+9 verbose install     'browserify',
+9 verbose install     'compression',
+9 verbose install     'cors',
+9 verbose install     'express',
+9 verbose install     'glob',
+9 verbose install     'gulp',
+9 verbose install     'gulp-streamify',
+9 verbose install     'gulp-uglify',
+9 verbose install     'nodemon',
+9 verbose install     'path',
+9 verbose install     'react',
+9 verbose install     'react-dom',
+9 verbose install     'react-markdown',
+9 verbose install     'reactify',
+9 verbose install     'remarkable',
+9 verbose install     'vinyl-buffer',
+9 verbose install     'vinyl-source-stream',
+9 verbose install     'watchify',
+9 verbose install     'gulp-minify' ] ]
+10 verbose install where, peers [ '/Users/joshuadavid/Documents/Codesmith/RTVS360', [] ]
+11 verbose installManyTop reading for lifecycle /Users/joshuadavid/Documents/Codesmith/RTVS360/package.json
+12 info preinstall 3DSlides@1.0.0
+13 verbose installManyTop reading scoped package data from /Users/joshuadavid/Documents/Codesmith/RTVS360/node_modules/body-parser/package.json
+14 verbose installManyTop reading scoped package data from /Users/joshuadavid/Documents/Codesmith/RTVS360/node_modules/browserify/package.json
+15 verbose installManyTop reading scoped package data from /Users/joshuadavid/Documents/Codesmith/RTVS360/node_modules/compression/package.json
+16 verbose installManyTop reading scoped package data from /Users/joshuadavid/Documents/Codesmith/RTVS360/node_modules/cors/package.json
+17 verbose installManyTop reading scoped package data from /Users/joshuadavid/Documents/Codesmith/RTVS360/node_modules/express/package.json
+18 verbose installManyTop reading scoped package data from /Users/joshuadavid/Documents/Codesmith/RTVS360/node_modules/glob/package.json
+19 verbose installManyTop reading scoped package data from /Users/joshuadavid/Documents/Codesmith/RTVS360/node_modules/gulp/package.json
+20 verbose installManyTop reading scoped package data from /Users/joshuadavid/Documents/Codesmith/RTVS360/node_modules/gulp-minify/package.json
+21 verbose installManyTop reading scoped package data from /Users/joshuadavid/Documents/Codesmith/RTVS360/node_modules/gulp-streamify/package.json
+22 verbose installManyTop reading scoped package data from /Users/joshuadavid/Documents/Codesmith/RTVS360/node_modules/gulp-uglify/package.json
+23 verbose installManyTop reading scoped package data from /Users/joshuadavid/Documents/Codesmith/RTVS360/node_modules/history/package.json
+24 verbose installManyTop reading scoped package data from /Users/joshuadavid/Documents/Codesmith/RTVS360/node_modules/nodemon/package.json
+25 verbose installManyTop reading scoped package data from /Users/joshuadavid/Documents/Codesmith/RTVS360/node_modules/path/package.json
+26 verbose installManyTop reading scoped package data from /Users/joshuadavid/Documents/Codesmith/RTVS360/node_modules/react/package.json
+27 verbose installManyTop reading scoped package data from /Users/joshuadavid/Documents/Codesmith/RTVS360/node_modules/react-dom/package.json
+28 verbose installManyTop reading scoped package data from /Users/joshuadavid/Documents/Codesmith/RTVS360/node_modules/react-markdown/package.json
+29 verbose installManyTop reading scoped package data from /Users/joshuadavid/Documents/Codesmith/RTVS360/node_modules/react-router/package.json
+30 verbose installManyTop reading scoped package data from /Users/joshuadavid/Documents/Codesmith/RTVS360/node_modules/reactify/package.json
+31 verbose installManyTop reading scoped package data from /Users/joshuadavid/Documents/Codesmith/RTVS360/node_modules/remarkable/package.json
+32 verbose installManyTop reading scoped package data from /Users/joshuadavid/Documents/Codesmith/RTVS360/node_modules/request/package.json
+33 verbose installManyTop reading scoped package data from /Users/joshuadavid/Documents/Codesmith/RTVS360/node_modules/vinyl-buffer/package.json
+34 verbose installManyTop reading scoped package data from /Users/joshuadavid/Documents/Codesmith/RTVS360/node_modules/vinyl-source-stream/package.json
+35 verbose installManyTop reading scoped package data from /Users/joshuadavid/Documents/Codesmith/RTVS360/node_modules/watchify/package.json
+36 info package.json gulp-streamify@1.0.2 No license field.
+37 info package.json path@0.12.7 path is also the name of a node core module.
+38 verbose readDependencies loading dependencies from /Users/joshuadavid/Documents/Codesmith/RTVS360/package.json
+39 verbose targetResolver reading package data from /Users/joshuadavid/Documents/Codesmith/RTVS360/node_modules/body-parser/package.json
+40 verbose targetResolver reading package data from /Users/joshuadavid/Documents/Codesmith/RTVS360/node_modules/browserify/package.json
+41 verbose targetResolver reading package data from /Users/joshuadavid/Documents/Codesmith/RTVS360/node_modules/compression/package.json
+42 verbose targetResolver reading package data from /Users/joshuadavid/Documents/Codesmith/RTVS360/node_modules/cors/package.json
+43 verbose targetResolver reading package data from /Users/joshuadavid/Documents/Codesmith/RTVS360/node_modules/express/package.json
+44 verbose targetResolver reading package data from /Users/joshuadavid/Documents/Codesmith/RTVS360/node_modules/glob/package.json
+45 verbose targetResolver reading package data from /Users/joshuadavid/Documents/Codesmith/RTVS360/node_modules/gulp/package.json
+46 verbose targetResolver reading package data from /Users/joshuadavid/Documents/Codesmith/RTVS360/node_modules/gulp-minify/package.json
+47 verbose targetResolver reading package data from /Users/joshuadavid/Documents/Codesmith/RTVS360/node_modules/gulp-streamify/package.json
+48 verbose targetResolver reading package data from /Users/joshuadavid/Documents/Codesmith/RTVS360/node_modules/gulp-uglify/package.json
+49 verbose targetResolver reading package data from /Users/joshuadavid/Documents/Codesmith/RTVS360/node_modules/history/package.json
+50 verbose targetResolver reading package data from /Users/joshuadavid/Documents/Codesmith/RTVS360/node_modules/nodemon/package.json
+51 verbose targetResolver reading package data from /Users/joshuadavid/Documents/Codesmith/RTVS360/node_modules/path/package.json
+52 verbose targetResolver reading package data from /Users/joshuadavid/Documents/Codesmith/RTVS360/node_modules/react/package.json
+53 verbose targetResolver reading package data from /Users/joshuadavid/Documents/Codesmith/RTVS360/node_modules/react-dom/package.json
+54 verbose targetResolver reading package data from /Users/joshuadavid/Documents/Codesmith/RTVS360/node_modules/react-markdown/package.json
+55 verbose targetResolver reading package data from /Users/joshuadavid/Documents/Codesmith/RTVS360/node_modules/react-router/package.json
+56 verbose targetResolver reading package data from /Users/joshuadavid/Documents/Codesmith/RTVS360/node_modules/reactify/package.json
+57 verbose targetResolver reading package data from /Users/joshuadavid/Documents/Codesmith/RTVS360/node_modules/remarkable/package.json
+58 verbose targetResolver reading package data from /Users/joshuadavid/Documents/Codesmith/RTVS360/node_modules/request/package.json
+59 verbose targetResolver reading package data from /Users/joshuadavid/Documents/Codesmith/RTVS360/node_modules/vinyl-buffer/package.json
+60 verbose targetResolver reading package data from /Users/joshuadavid/Documents/Codesmith/RTVS360/node_modules/vinyl-source-stream/package.json
+61 verbose targetResolver reading package data from /Users/joshuadavid/Documents/Codesmith/RTVS360/node_modules/watchify/package.json
+62 verbose targetResolver reading package data from /Users/joshuadavid/Documents/Codesmith/RTVS360/node_modules/.bin/browserify/package.json
+63 verbose targetResolver reading package data from /Users/joshuadavid/Documents/Codesmith/RTVS360/node_modules/.bin/gulp/package.json
+64 verbose targetResolver reading package data from /Users/joshuadavid/Documents/Codesmith/RTVS360/node_modules/.bin/nodemon/package.json
+65 verbose targetResolver reading package data from /Users/joshuadavid/Documents/Codesmith/RTVS360/node_modules/.bin/watchify/package.json
+66 verbose already installed skipping express@^4.13.3 /Users/joshuadavid/Documents/Codesmith/RTVS360
+67 verbose already installed skipping glob@^6.0.1 /Users/joshuadavid/Documents/Codesmith/RTVS360
+68 verbose already installed skipping gulp@^3.9.0 /Users/joshuadavid/Documents/Codesmith/RTVS360
+69 verbose already installed skipping gulp-streamify@^1.0.2 /Users/joshuadavid/Documents/Codesmith/RTVS360
+70 verbose already installed skipping gulp-uglify@^1.5.1 /Users/joshuadavid/Documents/Codesmith/RTVS360
+71 verbose already installed skipping nodemon@^1.8.1 /Users/joshuadavid/Documents/Codesmith/RTVS360
+72 verbose already installed skipping path@^0.12.7 /Users/joshuadavid/Documents/Codesmith/RTVS360
+73 verbose already installed skipping react@^0.14.2 /Users/joshuadavid/Documents/Codesmith/RTVS360
+74 verbose already installed skipping react-dom@^0.14.3 /Users/joshuadavid/Documents/Codesmith/RTVS360
+75 verbose already installed skipping react-markdown@^1.1.1 /Users/joshuadavid/Documents/Codesmith/RTVS360
+76 verbose already installed skipping reactify@^1.1.1 /Users/joshuadavid/Documents/Codesmith/RTVS360
+77 verbose already installed skipping remarkable@^1.6.1 /Users/joshuadavid/Documents/Codesmith/RTVS360
+78 verbose already installed skipping vinyl-buffer@^1.0.0 /Users/joshuadavid/Documents/Codesmith/RTVS360
+79 verbose already installed skipping vinyl-source-stream@^1.1.0 /Users/joshuadavid/Documents/Codesmith/RTVS360
+80 verbose already installed skipping watchify@^3.6.1 /Users/joshuadavid/Documents/Codesmith/RTVS360
+81 verbose already installed skipping gulp-minify@0.0.5 /Users/joshuadavid/Documents/Codesmith/RTVS360
+82 verbose already installed skipping body-parser@^1.14.2 /Users/joshuadavid/Documents/Codesmith/RTVS360
+83 verbose already installed skipping browserify@^12.0.1 /Users/joshuadavid/Documents/Codesmith/RTVS360
+84 verbose already installed skipping compression@^1.6.0 /Users/joshuadavid/Documents/Codesmith/RTVS360
+85 verbose already installed skipping cors@^2.7.1 /Users/joshuadavid/Documents/Codesmith/RTVS360
+86 silly install resolved []
+87 info build /Users/joshuadavid/Documents/Codesmith/RTVS360
+88 info linkStuff 3DSlides@1.0.0
+89 silly linkStuff 3DSlides@1.0.0 has /Users/joshuadavid/Documents/Codesmith as its parent node_modules
+90 verbose linkBins 3DSlides@1.0.0
+91 verbose linkMans 3DSlides@1.0.0
+92 verbose rebuildBundles 3DSlides@1.0.0
+93 verbose rebuildBundles [ '.bin',
+93 verbose rebuildBundles   'body-parser',
+93 verbose rebuildBundles   'browserify',
+93 verbose rebuildBundles   'compression',
+93 verbose rebuildBundles   'cors',
+93 verbose rebuildBundles   'express',
+93 verbose rebuildBundles   'glob',
+93 verbose rebuildBundles   'gulp',
+93 verbose rebuildBundles   'gulp-minify',
+93 verbose rebuildBundles   'gulp-streamify',
+93 verbose rebuildBundles   'gulp-uglify',
+93 verbose rebuildBundles   'history',
+93 verbose rebuildBundles   'nodemon',
+93 verbose rebuildBundles   'path',
+93 verbose rebuildBundles   'react',
+93 verbose rebuildBundles   'react-dom',
+93 verbose rebuildBundles   'react-markdown',
+93 verbose rebuildBundles   'react-router',
+93 verbose rebuildBundles   'reactify',
+93 verbose rebuildBundles   'remarkable',
+93 verbose rebuildBundles   'request',
+93 verbose rebuildBundles   'vinyl-buffer',
+93 verbose rebuildBundles   'vinyl-source-stream',
+93 verbose rebuildBundles   'watchify' ]
+94 verbose rebuild bundle /Users/joshuadavid/Documents/Codesmith/RTVS360/node_modules/history
+95 info build /Users/joshuadavid/Documents/Codesmith/RTVS360/node_modules/history
+96 info preinstall history@1.13.1
+97 info linkStuff history@1.13.1
+98 silly linkStuff history@1.13.1 has /Users/joshuadavid/Documents/Codesmith/RTVS360/node_modules as its parent node_modules
+99 verbose linkBins history@1.13.1
+100 verbose linkMans history@1.13.1
+101 verbose rebuildBundles history@1.13.1
+102 verbose rebuildBundles [ 'deep-equal', 'invariant', 'qs', 'warning' ]
+103 info install history@1.13.1
+104 info postinstall history@1.13.1
+105 verbose unsafe-perm in lifecycle true
+106 verbose rebuild bundle /Users/joshuadavid/Documents/Codesmith/RTVS360/node_modules/react-router
+107 info build /Users/joshuadavid/Documents/Codesmith/RTVS360/node_modules/react-router
+108 info preinstall react-router@1.0.2
+109 info linkStuff react-router@1.0.2
+110 silly linkStuff react-router@1.0.2 has /Users/joshuadavid/Documents/Codesmith/RTVS360/node_modules as its parent node_modules
+111 verbose linkBins react-router@1.0.2
+112 verbose linkMans react-router@1.0.2
+113 verbose rebuildBundles react-router@1.0.2
+114 verbose rebuildBundles [ 'invariant', 'warning' ]
+115 info install react-router@1.0.2
+116 info postinstall react-router@1.0.2
+117 verbose unsafe-perm in lifecycle true
+118 verbose rebuild bundle /Users/joshuadavid/Documents/Codesmith/RTVS360/node_modules/request
+119 info build /Users/joshuadavid/Documents/Codesmith/RTVS360/node_modules/request
+120 info preinstall request@2.67.0
+121 info linkStuff request@2.67.0
+122 silly linkStuff request@2.67.0 has /Users/joshuadavid/Documents/Codesmith/RTVS360/node_modules as its parent node_modules
+123 verbose linkBins request@2.67.0
+124 verbose linkMans request@2.67.0
+125 verbose rebuildBundles request@2.67.0
+126 verbose rebuildBundles [ '.bin',
+126 verbose rebuildBundles   'aws-sign2',
+126 verbose rebuildBundles   'bl',
+126 verbose rebuildBundles   'caseless',
+126 verbose rebuildBundles   'combined-stream',
+126 verbose rebuildBundles   'extend',
+126 verbose rebuildBundles   'forever-agent',
+126 verbose rebuildBundles   'form-data',
+126 verbose rebuildBundles   'har-validator',
+126 verbose rebuildBundles   'hawk',
+126 verbose rebuildBundles   'http-signature',
+126 verbose rebuildBundles   'is-typedarray',
+126 verbose rebuildBundles   'isstream',
+126 verbose rebuildBundles   'json-stringify-safe',
+126 verbose rebuildBundles   'mime-types',
+126 verbose rebuildBundles   'node-uuid',
+126 verbose rebuildBundles   'oauth-sign',
+126 verbose rebuildBundles   'qs',
+126 verbose rebuildBundles   'stringstream',
+126 verbose rebuildBundles   'tough-cookie',
+126 verbose rebuildBundles   'tunnel-agent' ]
+127 info install request@2.67.0
+128 info postinstall request@2.67.0
+129 info install 3DSlides@1.0.0
+130 info postinstall 3DSlides@1.0.0
+131 verbose unsafe-perm in lifecycle true
+132 info 3DSlides@1.0.0 Failed to exec postinstall script
+133 verbose stack Error: 3DSlides@1.0.0 postinstall: `gulp browserify`
+133 verbose stack Exit status 1
+133 verbose stack     at EventEmitter.<anonymous> (/usr/local/lib/node_modules/npm/lib/utils/lifecycle.js:214:16)
+133 verbose stack     at emitTwo (events.js:87:13)
+133 verbose stack     at EventEmitter.emit (events.js:172:7)
+133 verbose stack     at ChildProcess.<anonymous> (/usr/local/lib/node_modules/npm/lib/utils/spawn.js:24:14)
+133 verbose stack     at emitTwo (events.js:87:13)
+133 verbose stack     at ChildProcess.emit (events.js:172:7)
+133 verbose stack     at maybeClose (internal/child_process.js:817:16)
+133 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:211:5)
+134 verbose pkgid 3DSlides@1.0.0
+135 verbose cwd /Users/joshuadavid/Documents/Codesmith/RTVS360
+136 error Darwin 14.5.0
+137 error argv "/usr/local/bin/node" "/usr/local/bin/npm" "install"
+138 error node v4.0.0
+139 error npm  v2.14.2
+140 error code ELIFECYCLE
+141 error 3DSlides@1.0.0 postinstall: `gulp browserify`
+141 error Exit status 1
+142 error Failed at the 3DSlides@1.0.0 postinstall script 'gulp browserify'.
+142 error This is most likely a problem with the 3DSlides package,
+142 error not with npm itself.
+142 error Tell the author that this fails on your system:
+142 error     gulp browserify
+142 error You can get their info via:
+142 error     npm owner ls 3DSlides
+142 error There is likely additional logging output above.
+143 verbose exit [ 1, true ]

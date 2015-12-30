@@ -3,7 +3,6 @@
 
 function SlideGenerator (){
 	var cookieData = document.cookie;
-	// console.log(cookieData);
 
 	if( cookieData.charAt(1) === '<' ) {
 		var html = cookieData.replace(/\\t|\\n+|\s{2,}/g, '');
@@ -22,7 +21,6 @@ function SlideGenerator (){
 			var convertedMkdn = converter.makeHtml( trimmedArray[i] );
 			htmlConvert += convertedMkdn.replace(/\n+/g, '');
 		}
-		console.log(htmlConvert);
 		var html = addQuotes(htmlConvert);
 	}
 	var splitSlides = R.split('<hr />');
