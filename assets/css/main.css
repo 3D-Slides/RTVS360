@@ -2243,6 +2243,7 @@
 
 			#logo {
 				margin-top: -0.5em !important;
+				top: 20%;
 			}
 
 				#logo h1 {
@@ -2618,6 +2619,12 @@
 					letter-spacing: 0.2em;
 					font-size: 0.9em;
 				}
+
+
+			.logo-LRG {
+				width: 100%;
+				height: auto;
+			}
 
 		/* Nav */
 
