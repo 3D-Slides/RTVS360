@@ -1450,7 +1450,7 @@ fieldset[disabled].btn-link:focus {
   border-top-color: #fff;
 }
 .btn-default {
-  background-color: #e0e6eb;
+  background-color: #eeeeee;
   color: #616c76;
 }
 .btn-default .caret {
