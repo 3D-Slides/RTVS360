@@ -2,22 +2,12 @@
 @import "http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700";
 @import "../plugins/bootstrap/css/bootstrap.min.css";
 @import "../plugins/bootstrap/css/bootstrap-rtl.min.css";
-@import "../plugins/mcustom-scrollbar/mcustom_scrollbar.min.css";
-@import "../plugins/animation-css/animate.min.css";
 @import "icons/font-awesome/font-awesome.css";
 @import "icons/line-icons/line-icons.css";
 @import "icons/line-icons/simple-line-icons.css";
-@import "../plugins/select2/select2.css";
-@import "../plugins/slick/slick.css";
-@import "../plugins/icheck/skins/all.css";
 @import "../plugins/bootstrap/css/jasny-bootstrap.css";
 @import "icons/rounded/style.css";
 @import "icons/octicons/octicons.css";
-@import "icons/weather/css/weather-icons.min.css";
-@import "../plugins/bootstrap-loading/lada.min.css";
-@import "../plugins/bootstrap-tags-input/bootstrap-tagsinput.css";
-@import "../plugins/bootstrap-editable/css/bootstrap-editable.css";
-@import "../plugins/prettify/prettify.css";
 /**** SIDEBAR  ****/
 /**** TOPBAR ****/
 /**** QUICKVIEW SIDEBAR ****/

@@ -1538,7 +1538,7 @@
 				left: -35px;
 				width: 35px;
 				height: 38px;
-				background: url("images/shadow.png");
+				/*background: url("images/shadow.png");*/
 			}
 
 			.wrapper .title:after {
@@ -1552,7 +1552,7 @@
 				right: -35px;
 				width: 35px;
 				height: 38px;
-				background: url("images/shadow.png");
+				/*background: url("images/shadow.png");*/
 			}
 
 		.wrapper.style1 {
