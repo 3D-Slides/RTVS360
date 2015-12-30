@@ -4,8 +4,8 @@ var Slideshow = function(camera) {
 
 	document.addEventListener('keydown', function(e) {
 		if (e.keyCode === 37 || e.keyCode === 39) TWEEN.removeAll();
-		if (e.keyCode === 39) moveSin(++_currentSnap);
-		if (e.keyCode === 37) moveSin(--_currentSnap);
+		if (e.keyCode === 39) moveDefault(++_currentSnap);
+		if (e.keyCode === 37) moveDefault(--_currentSnap);
 
 	});
 	// Private Variables
