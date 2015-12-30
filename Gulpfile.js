@@ -50,12 +50,12 @@ gulp.task('browserify', function () {
 
 	function rebundle() {
 		bundler
-			.bundle()
-			.on('error', function (err) {
-				console.log('There was an error compiling the components.', err.message);
-			})
-			.pipe(source('bundle.js'))
-			.pipe(gulp.dest('./dest/'));
+		.bundle()
+		.on('error', function(err) {
+			console.log('There was an error compiling the components.', err.message);
+		})
+		.pipe(source('bundle.js'))
+		.pipe(gulp.dest('./dest/'));
 	}
 	return rebundle();
 });
@@ -74,12 +74,12 @@ gulp.task('home', function () {
 
 	function rebundle() {
 		bundler
-			.bundle()
-			.on('error', function (err) {
-				console.log('There was an error compiling the components.', err.message);
-			})
-			.pipe(source('homeBundle.js'))
-			.pipe(gulp.dest('./dest/'));
+		.bundle()
+		.on('error', function(err) {
+			console.log('There was an error compiling the components.', err.message);
+		})
+		.pipe(source('homeBundle.js'))
+		.pipe(gulp.dest('./dest/'));
 	}
 
 	return rebundle();
