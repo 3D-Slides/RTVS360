@@ -85,11 +85,12 @@ gulp.task('home', function () {
 	return rebundle();
 });
 
+
 // Uglify Scripts
 gulp.task('scripts', function() {
 	gulp.src('assets/js/*.js')
     .pipe(uglify())
-    .pipe(gulp.dest('dest/js'))
+    .pipe(gulp.dest('dist/js'))
 });
 
 // Minify Styles
@@ -98,7 +99,8 @@ gulp.task('styles', function() {
     .pipe(uglifycss({
       "max-line-len": 80
     }))
-    .pipe(gulp.dest('./dest/css'));
+    .pipe(gulp.dest('./dist/css'));
 });
 
-gulp.task('default', ['browserify', 'home', 'scripts', 'styles']);
+
+gulp.task('default', ['browserify', 'home','scripts', 'styles']);
