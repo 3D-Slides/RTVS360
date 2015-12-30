@@ -47,6 +47,8 @@ var Slideshow = function(camera) {
 
 		card2A.chain(card2B).chain(card2C).start();
 	};
+
+
 	var moveBack = function(index) {
 		if(index > _snapshots.length - 1) _currentSnap = index = 0;
 		if(index < 0) _currentSnap = index = _snapshots.length -1;
