@@ -1,5 +1,5 @@
 <html class="" lang="en">
-  <head>
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
     <link rel="shortcut icon" href="assets/images/favicon.ico" type="image/png">
@@ -11,23 +11,14 @@
     <link rel="stylesheet" href="assets/plugins/uikit/css/uikit.css" />
     <link rel="stylesheet" href="assets/plugins/codemirror/lib/codemirror.css">
     <link rel="stylesheet" href="assets/plugins/uikit/css/components/htmleditor.css">
-
-
-
-  </head>
+</head>
 
 	<!-- BEGIN BODY -->
-	<body class="sidebar-collapsed color-default bg-lighter fixed-sidebar theme-sdtl ">
-	  <section style="opacity: 1;">
-
-
-    	<div id="appContainer"></div>
-
-
-		</section>
-
-
-		<!-- BEGIN PAGE SCRIPTS -->
+<body class="sidebar-collapsed color-default bg-lighter fixed-sidebar theme-sdtl ">
+    <section style="opacity: 1;">
+        <div id="appContainer"></div>
+    </section>
+    	<!-- BEGIN PAGE SCRIPTS -->
     <script src="assets/plugins/jquery/jquery.js"></script>
     <script src="assets/plugins/uikit/js/uikit.min.js"></script>
     <script src="assets/plugins/codemirror/lib/codemirror.js"></script>
@@ -37,27 +28,24 @@
     <script src="assets/plugins/codemirror/mode/gfm/gfm.js"></script>
     <script src="assets/plugins/marked/lib/marked.js"></script>
     <script src="assets/plugins/uikit/js/components/htmleditor.js"></script>
-		<script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
-		<script src="assets/plugins/jquery-cookies/jquery.cookies.js"></script> <!-- Jquery Cookies, for theme -->
-		<!-- END PAGE SCRIPTS -->
+    <script src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/plugins/jquery-cookies/jquery.cookies.js"></script> <!-- Jquery Cookies, for theme -->
+    <!-- END PAGE SCRIPTS -->
 
     <!-- REACT SCRIPTS -->
     <script type="text/javascript" src="./dest/bundle.js"></script>
-		<script type="text/jsx">
-
-		var slides = React.createElement(SlidesCreator);
-		React.render(slides, document.body);
-
-		</script>
-
-		<script type="text/javascript">
-		window.onload = function () {
-			if(document.cookie) {
-				document.cookie = '<div class' +'=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-			}
-			// console.log(document.cookie);
-		}
-		</script>
-  </body>
+    <script type="text/jsx">
+    	var slides = React.createElement(SlidesCreator);
+    	React.render(slides, document.body);
+    </script>
+    <script type="text/javascript">
+    	window.onload = function () {
+    		if(document.cookie) {
+    			document.cookie = '<div class' +'=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+    		}
+    		// console.log(document.cookie);
+        }
+    </script>
+</body>
 
 </html>

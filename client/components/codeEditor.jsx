@@ -1,8 +1,9 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
+var Themes = require('./Themes.jsx');
+var WorldSelector = require('./WorldSelector.jsx');
 
 var CodeEditor = React.createClass({
-
   getLocalStorage: function () {
     if(window.localStorage.input){
       return window.localStorage.input;
@@ -19,25 +20,29 @@ var CodeEditor = React.createClass({
           <a href="#" id="no-page-builder" className="btn btn-dark btn-lg btn-square">Awesome!</a>
           <a href="#" id="no-page-builder" className="btn btn-primary btn-lg btn-square">Let's Do It!</a>
         </div> */}
+        <h2 style={styles.icon}><i className="icon-note" /> <strong>Slides</strong> Editor</h2>
         <div className="row">
-          <div className="col-md-12 portlets">
+          <div className="col-sm-12 portlets">
             <div className="panel maximized">
-              <div className="panel-header ">
-                <h3><i className="icon-note" /> <strong>Slides</strong> Editor
-                  <button type="submit" id="no-page-builder" onClick={this.props.postSub} className="btn btn-primary btn-lg btn-square">Create Slides</button>
-                  </h3>
-
-                { /*<div className="control-btn">
-                  <a href="#" className="panel-maximize"><i className="icon-size-fullscreen" /></a>
-                </div> */ }
+              <div style={styles.panel} className="panel-header">
+                <Themes 
+                  updateTheme={this.props.updateTheme}
+                  theme={this.props.theme}
+                />
+                <WorldSelector/>
+                <button style={styles.btn}
+                  type="submit"
+                  id="no-page-builder"
+                  onClick={this.props.postSub}
+                  className="btn btn-primary btn-lg btn-square"
+                  >
+                      Create Slideshow
+                  </button>
               </div>
-              <div className="panel-content">
+              <div className="panel-content" style={styles.content}>
                 <div className="row">
-                  <div className="col-md-12">
-
+                  <div className="col-xs-12">
                     <textarea data-uk-htmleditor id="code-input-box" defaultValue={this.getLocalStorage()} />
-
-
                   </div>
                 </div>
               </div>
@@ -49,6 +54,26 @@ var CodeEditor = React.createClass({
   }
 });
 
+styles = {
+  icon: {
+    marginTop: "-8px",
+    textAlign: "center"
+  },
+  panel: {
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "flex-start",
+    paddingTop: "0"
+  },
+  btn: {
+    marginTop: "0",
+    marginBottom: "0",
+    marginLeft: "auto"
+  },
+  content: {
+    paddingTop: "5px"
+  }
+}
 { /*<div className="slide-preview col-md-3"><img src={'build/assets/images/tron-world-bg.png'} /></div> */}
 { /*<button type="submit" onClick={this.props.postSub} className="btn btn-info">Submit</button> */ }
 
