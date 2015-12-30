@@ -35,12 +35,12 @@ var SlidesCreator = React.createClass({
 				li: "#EB85FF"
 			},
 			"Hello Kitty": {
-				h1: "#FA2C5C",
-				h2: "#7FD7ED",
-				h3: "#7FD7ED",
-				h4: "#7FD7ED",
-				p: "#F8A7CC",
-				li: "#F8A7CC"
+				h1: "#FF4FA7",
+				h2: "#FF00FF",
+				h3: "#FF00FF",
+				h4: "#FF00FF",
+				p: "#00FFFF",
+				li: "#00FFFF"
 			}
 		}
 
