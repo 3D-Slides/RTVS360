@@ -40,7 +40,7 @@ gulp.task('watchify', function () {
 });
 
 gulp.task('browserify', function () {
-  var testFiles = glob.sync('./src/main.js');
+  var testFiles = glob.sync('./client/main.jsx');
 
   var bundler = browserify({
     entries: testFiles,
@@ -66,7 +66,7 @@ gulp.task('browserify', function () {
 });
 
 gulp.task('home', function () {
-  var testFiles = glob.sync('./src/main2.js');
+  var testFiles = glob.sync('./client/homepage.jsx');
 
   var bundler = browserify({
     entries: testFiles,
