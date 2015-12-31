@@ -5,9 +5,14 @@ var ReactDOM = require('react-dom');
 var Footer = React.createClass({
   render: function() {
     return (
+      <div>
 
+        <section  id="foot-landing">
 
       <div id="footer-wrapper" className="wrapper">
+
+
+
         <div id="foot" className="title">All of the other stuff</div>
         <div id="footer" className="container">
           <header className="style1">
@@ -110,7 +115,12 @@ var Footer = React.createClass({
             <li>© 3D-SLIDES</li><li>Copyright <a href>2015</a></li>
           </ul>
         </div>
+
+
+
       </div>
+      </section>
+    </div>
 
     );
   }

@@ -13,21 +13,24 @@ var LandingPage = React.createClass({
 	return (
 	  <div>
 
+
+
 	  		{/* BEGIN HEADER */}
         <Header/>
-        <Intro />
 
-					<div className="wrapper style3">
+        	<Intro />
 
-					<Info/>
+						<div className="wrapper style3">
 
-					</div>
+						<Info/>
 
-					{ /*<!-- BEGIN PAGE CONTENT -->*/ }
-	        <div id="main" className="wrapper style2">
-          	<Main/>
+						</div>
 
-        	</div>
+						{ /*<!-- BEGIN PAGE CONTENT -->*/ }
+		        <div id="main" className="wrapper style2">
+	          	<Main/>
+
+	        	</div>
 
 
 					<Footer />
