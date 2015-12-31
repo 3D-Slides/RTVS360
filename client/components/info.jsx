@@ -5,6 +5,7 @@ var Info = React.createClass({
   render: function() {
     return (
       <div>
+        <section id="howitworks-landing">
         <div id="howitworks" className="title">Instructions</div>
         <div id="highlights" className="container">
           <div className="row 150%">
@@ -34,6 +35,9 @@ var Info = React.createClass({
             </div>
           </div>
         </div>
+
+
+      </section>
       </div>
     );
   }

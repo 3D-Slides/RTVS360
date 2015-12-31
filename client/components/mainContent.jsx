@@ -8,8 +8,11 @@ var Main = React.createClass({
       <div>
 
 
+        <section id="details-landing">
+
         <div id="details" className="title">Details</div>
-        <div id="main" className="container">
+
+        <div id="main" className="container text-center">
           {/* Image */}
           {/* <a href="#" class="image featured">
 								<img src="images/pic01.jpg" alt="" />
@@ -79,6 +82,8 @@ var Main = React.createClass({
           </section>
         </div>
 
+
+      </section>
       </div>
     );
   }

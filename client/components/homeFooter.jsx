@@ -5,9 +5,12 @@ var ReactDOM = require('react-dom');
 var Footer = React.createClass({
   render: function() {
     return (
+      <div>
 
+      <section  id="foot-landing">
 
       <div id="footer-wrapper" className="wrapper">
+
         <div id="foot" className="title">All of the other stuff</div>
         <div id="footer" className="container">
           <header className="style1">
@@ -18,9 +21,42 @@ var Footer = React.createClass({
             </p>
           </header>
           <hr />
-          <div className="row 150%">
-            <div className="6u 12u(mobile)">
-              {/* Contact Form */}
+
+            <div id="main" className="container ">
+
+              <section id="features">
+
+                <div className="feature-list">
+                  <div className="row">
+                    <div className="6u 12u(mobile)">
+                      <section>
+                        <h3 className="icon fa-github-alt">GitHub Repo</h3>
+                        <p><a href="https://github.com/3D-Slides/RTVS360">Fork Me... </a>Head on over to the GitHub Repo and look around. Please make sure to star and fork it if you like the application. </p>
+                      </section>
+                    </div>
+                    <div className="6u 12u(mobile)">
+                      <section>
+                        <h3 className="icon fa-envelope">Email</h3>
+                        <p><a href="#">Contact Us... </a>If you have any questions or concerns shoot us an email, or submit an issue on the GitHub Repo. Thanks for stopping by!</p>
+                      </section>
+                    </div>
+                  </div>
+
+
+
+                </div>
+
+              </section>
+            </div>
+
+
+
+
+            {/* Contact Form */}
+            {/* <<div className="6u 12u(mobile)">
+
+
+
               <section>
                 <form method="post" action="#">
                   <div className="row 50%">
@@ -46,10 +82,14 @@ var Footer = React.createClass({
                   </div>
                 </form>
               </section>
-            </div>
+
+
+            </div>*/}
+
+
             <div className="6u 12u(mobile)">
               {/* Contact */}
-              <section className="feature-list small">
+              <div className="feature-list">
                 { /* <div className="row">
                   <div className="6u 12u(mobile)">
                     <section>
@@ -72,12 +112,14 @@ var Footer = React.createClass({
                     </section>
                   </div>
                 </div> */}
-                <div className="row">
+
+
+                {/*<div className="row">
                   <div className="6u 12u(mobile)">
                     <section>
                       <h3 className="icon fa-github-alt">Github Repo</h3>
                       <p>
-                        <a href="https://github.com/3D-Slides/RTVS360">Fork Me</a>
+                        <a href="https://github.com/3D-Slides/RTVS360">Fork Me </a>
                       </p>
                     </section>
 
@@ -99,10 +141,14 @@ var Footer = React.createClass({
                       </p>
                     </section>
                   </div> */}
-                </div>
-              </section>
+                {/*</div>
+                */}
+
+
+              </div>
             </div>
-          </div>
+
+
           <hr />
         </div>
         <div id="copyright">
@@ -110,7 +156,12 @@ var Footer = React.createClass({
             <li>© 3D-SLIDES</li><li>Copyright <a href>2015</a></li>
           </ul>
         </div>
+
+
+
       </div>
+      </section>
+    </div>
 
     );
   }
