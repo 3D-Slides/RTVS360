@@ -151,7 +151,6 @@ var Slideshow = function(camera) {
 	var moveDefault = function(index) {
 		if (index > _snapshots.length - 1) _currentSnap = index = 0;
 		if (index < 0) _currentSnap = index = _snapshots.length - 1;
-		console.log(_transitions);
 		var cameraTween = new TWEEN.Tween(camera.position),
 			markerTween = new TWEEN.Tween(marker.position),
 			look = new TWEEN.Tween(controls.target),
