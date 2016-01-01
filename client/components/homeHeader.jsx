@@ -19,12 +19,15 @@ var Header = React.createClass({
             {/* <li><a href="#intro-wrapper" className="button style2 big">More Info</a></li> */}
           </ul>
           {/* Nav */}
+
+
+
           <nav id="nav">
             <ul>
-              <li className="current"><a href="#intro-wrapper">Introduction</a></li>
-              <li><a href="#howitworks">How it Works</a></li>
-              <li><a href="#details">Current Features</a></li>
-              <li><a href="#foot">Contact</a></li>
+              <li><a className="scroll" href="#intro-landing">Introduction</a></li>
+              <li><a className="scroll" href="#howitworks-landing">How it Works</a></li>
+              <li><a className="scroll" href="#details-landing">Current Features</a></li>
+              <li><a className="scroll" href="#foot-landing">Contact</a></li>
             </ul>
           </nav>
         </div>

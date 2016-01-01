@@ -4,9 +4,14 @@ var ReactDOM = require('react-dom');
 var Intro = React.createClass({
   render: function() {
     return (
+      <div>
 
+      <section id="intro-landing">
 
       <div id="intro-wrapper" className="wrapper style1">
+
+
+
         <div className="title">Introduction</div>
         <section id="intro" className="container">
           <p className="style1">So, in case you were wondering what this is all about ...</p>
@@ -21,7 +26,12 @@ var Intro = React.createClass({
             <li><a href="/create" className="button style3 big">Get Started</a></li>
           </ul> */ }
         </section>
+
+
       </div>
+      </section>
+
+    </div>
 
     );
   }

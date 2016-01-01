@@ -2,6 +2,7 @@ var React = require('react');
 var ReactDOM = require('react-dom');
 var Themes = require('./Themes.jsx');
 var WorldSelector = require('./WorldSelector.jsx');
+var MarkdownInstructions = require('./MarkdownInstructions.jsx');
 
 var CodeEditor = React.createClass({
   getLocalStorage: function () {
@@ -25,23 +26,30 @@ var CodeEditor = React.createClass({
           <div className="col-sm-12 portlets">
             <div className="panel maximized">
               <div style={styles.panel} className="panel-header">
-                <Themes 
+                <div className="col-sm-12">
+                  <Themes 
                   updateTheme={this.props.updateTheme}
                   theme={this.props.theme}
-                />
-                <WorldSelector/>
-                <button style={styles.btn}
-                  type="submit"
-                  id="no-page-builder"
-                  onClick={this.props.postSub}
-                  className="btn btn-primary btn-lg btn-square"
+                  />
+                </div>
+                <div className="col-md-4">
+                  <WorldSelector/>
+                </div>
+                <div className="col-md-4">
+                  <button style={styles.btn}
+                    type="submit"
+                    id="no-page-builder"
+                    onClick={this.props.postSub}
+                    className="btn btn-primary btn-lg btn-square"
                   >
-                      Create Slideshow
+                        Create Slideshow
                   </button>
+                </div>
               </div>
               <div className="panel-content" style={styles.content}>
                 <div className="row">
                   <div className="col-xs-12">
+                    <MarkdownInstructions />
                     <textarea data-uk-htmleditor id="code-input-box" defaultValue={this.getLocalStorage()} />
                   </div>
                 </div>
