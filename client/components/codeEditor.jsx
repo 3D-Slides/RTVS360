@@ -25,7 +25,7 @@ var CodeEditor = React.createClass({
           <div className="col-sm-12 portlets">
             <div className="panel maximized">
               <div style={styles.panel} className="panel-header">
-                <Themes 
+                <Themes
                   updateTheme={this.props.updateTheme}
                   theme={this.props.theme}
                 />
@@ -56,7 +56,7 @@ var CodeEditor = React.createClass({
 
 styles = {
   icon: {
-    marginTop: "-8px",
+    marginTop: "-2px",
     textAlign: "center"
   },
   panel: {
@@ -71,7 +71,7 @@ styles = {
     marginLeft: "auto"
   },
   content: {
-    paddingTop: "5px"
+    paddingTop: "10px"
   }
 }
 { /*<div className="slide-preview col-md-3"><img src={'build/assets/images/tron-world-bg.png'} /></div> */}
