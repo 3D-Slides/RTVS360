@@ -111,7 +111,6 @@ SlideGenerator.prototype.addOneSlide3D = function (coords, html) {
 		for (var i = 0; i < url.length; i++) {
 			if(url[i].charAt(0) === 's' && url[i].charAt(1) === 'r') {
 				var imgSrc = url[i].replace(/src=|\s+|\'|\"|\\/g, '');
-				// console.log('trimmed src:', imgSrc);
 
 				// create image element to get the width and height attributes so we can render the sprite at the nessessary size
 				var image = document.createElement('img');

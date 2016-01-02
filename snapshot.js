@@ -1,10 +1,12 @@
+			
 			//			Slideshow Object			//
 
 var Slideshow = function(camera) {
+
 	document.addEventListener('keydown', function(e) {
 		if (e.keyCode === 37 || e.keyCode === 39) TWEEN.removeAll();
-		if (e.keyCode === 39) move(++_currentSnap);
-		if (e.keyCode === 37) move(--_currentSnap);
+		if (e.keyCode === 39) moveDefault(++_currentSnap);
+		if (e.keyCode === 37) moveDefault(--_currentSnap);
 
 	});
 	// Private Variables
@@ -46,10 +48,109 @@ var Slideshow = function(camera) {
 		card2A.chain(card2B).chain(card2C).start();
 	};
 
-	var move = function(index) {
+
+	var moveBack = function(index) {
+		if(index > _snapshots.length - 1) _currentSnap = index = 0;
+		if(index < 0) _currentSnap = index = _snapshots.length -1;
+
+		var cameraTween = new TWEEN.Tween(camera.position),
+			markerTween = new TWEEN.Tween(marker.position),
+			look = new TWEEN.Tween(controls.target),
+			dest = _snapshots[index];
+
+		cameraTween.to({
+			x: dest.location.x + 25,
+			y: dest.location.y - 9,
+			z: (dest.location.z + 30)
+		}, 1200)
+		.easing(TWEEN.Easing.Back.InOut)
+		.start();
+
+		markerTween.to({
+			x: dest.location.x + 25,
+			y: dest.location.y - 9,
+			z: dest.location.z
+		})
+		.easing(TWEEN.Easing.Back.InOut)
+		.start();
+
+		look.to({
+			x: dest.location.x + 25,
+			y: dest.location.y - 11,
+			z: dest.location.z
+		}, 1200)
+		.easing(TWEEN.Easing.Back.InOut)
+		.start();
+	};
+	var moveExpo = function(index) {
+		if(index > _snapshots.length - 1) _currentSnap = index = 0;
+		if(index < 0) _currentSnap = index = _snapshots.length -1;
+
+		var cameraTween = new TWEEN.Tween(camera.position),
+			markerTween = new TWEEN.Tween(marker.position),
+			look = new TWEEN.Tween(controls.target),
+			dest = _snapshots[index];
+
+		cameraTween.to({
+			x: dest.location.x + 25,
+			y: dest.location.y - 9,
+			z: (dest.location.z + 30)
+		})
+		.easing(TWEEN.Easing.Exponential.InOut)
+		.start();
+
+		markerTween.to({
+			x: dest.location.x + 25,
+			y: dest.location.y - 9,
+			z: dest.location.z
+		})
+		.easing(TWEEN.Easing.Exponential.InOut)
+		.start();
+
+		look.to({
+			x: dest.location.x + 25,
+			y: dest.location.y - 11,
+			z: dest.location.z
+		})
+		.easing(TWEEN.Easing.Exponential.InOut)
+		.start();
+	};
+	var moveSin = function(index) {
+		if(index > _snapshots.length - 1) _currentSnap = index = 0;
+		if(index < 0) _currentSnap = index = _snapshots.length -1;
+
+		var cameraTween = new TWEEN.Tween(camera.position),
+			markerTween = new TWEEN.Tween(marker.position),
+			look = new TWEEN.Tween(controls.target),
+			dest = _snapshots[index];
+
+		cameraTween.to({
+			x: dest.location.x + 25,
+			y: [dest.location.y, dest.location.y - 9],
+			z: [dest.location.z + 50, dest.location.z + 30]
+		}, 1500)
+		.easing(TWEEN.Easing.Sinusoidal.InOut)
+		.start();
+
+		markerTween.to({
+			x: dest.location.x + 25,
+			y: dest.location.y - 9,
+			z: dest.location.z
+		},1600)
+		.easing(TWEEN.Easing.Sinusoidal.InOut)
+		.start();
+
+		look.to({
+			x: dest.location.x + 25,
+			y: [dest.location.y - 9],
+			z: dest.location.z
+		}, 1400)
+		.easing(TWEEN.Easing.Sinusoidal.InOut)
+		.start();
+	};	
+	var moveDefault = function(index) {
 		if (index > _snapshots.length - 1) _currentSnap = index = 0;
 		if (index < 0) _currentSnap = index = _snapshots.length - 1;
-
 		var cameraTween = new TWEEN.Tween(camera.position),
 			markerTween = new TWEEN.Tween(marker.position),
 			look = new TWEEN.Tween(controls.target),
@@ -78,7 +179,6 @@ var Slideshow = function(camera) {
 		})
 		.easing(_transitions[index])
 		.start();
-
 	};
 
 	this.addSnapshot = function(location, rotation, options) {
@@ -116,11 +216,10 @@ var Slideshow = function(camera) {
 		// remove all of the scene helpers
 	};
 };
+
 Slideshow.prototype.constructor = Slideshow;
 
-
 			//			Snapshot Object			//
-
 var Snapshot = function(location, rotation, options) {
 	var _this = this;
 	var _coords = {};
@@ -134,14 +233,14 @@ var Snapshot = function(location, rotation, options) {
 		} else {
 			console.error("These are not coordinates!");
 		}
-	}
+	};
 
 	loadCoords('location', location);
 	loadCoords('rotation', rotation);
 	return _coords;
 };
-Snapshot.prototype.constructor = Snapshot;
 
+Snapshot.prototype.constructor = Snapshot;
 
 var show = new Slideshow(camera);
 var posArray = SlideGenerator.slideLocations;
@@ -150,8 +249,3 @@ var saveCoords = R.forEach(function(coord) {
 	show.addSnapshot(moveCoord);
 })(posArray);
 show.addTransitionTo('all', 'Quadratic.InOut');
-
-
-
-
-
