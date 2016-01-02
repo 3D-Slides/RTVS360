@@ -24,25 +24,42 @@
 
 }
 
+/******* World Selection Media *******/
 @media ( max-width: 768px ) {
 	.worldSelect {
 		margin-left: 33% !important;
 		position: relative;
     	right: 9px;
+
 	}
 }
-
 @media (max-width: 750px) {
 	.worldSelect {
 		top: -20px;
 	}
 }
-
 @media (max-width: 859px) {
 	.worldSelect {
 		margin-left: 33% !important;
 	}
 }
+
+
+/********** MKDN Info Bubble Media **********/
+@media ( max-width: 655px ) {
+	.mkdnButton {
+		top: 40px;
+	}
+
+}
+
+@media ( max-width: 458px ) {
+	.mkdnButton {
+		top: 80px;
+	}
+}
+
+
 
 @media (max-width: 400px) {
 	.codeInputBox {
