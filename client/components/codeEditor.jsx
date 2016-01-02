@@ -2,6 +2,7 @@ var React = require('react');
 var ReactDOM = require('react-dom');
 var Themes = require('./Themes.jsx');
 var WorldSelector = require('./WorldSelector.jsx');
+var MarkdownInstructions = require('./MarkdownInstructions.jsx');
 
 var CodeEditor = React.createClass({
   getLocalStorage: function () {
@@ -24,25 +25,34 @@ var CodeEditor = React.createClass({
         <div className="row">
           <div className="col-sm-12 portlets">
             <div className="panel maximized">
-              <div style={styles.panel} className="panel-header">
-                <Themes 
-                  updateTheme={this.props.updateTheme}
-                  theme={this.props.theme}
-                />
-                <WorldSelector/>
-                <button style={styles.btn}
-                  type="submit"
-                  id="no-page-builder"
-                  onClick={this.props.postSub}
-                  className="btn btn-primary btn-lg btn-square"
-                  >
-                      Create Slideshow
-                  </button>
+              <div className="panel-header">
+                <div>
+                    <Themes 
+                    updateTheme={this.props.updateTheme}
+                    theme={this.props.theme}
+                    />
+                </div>
+
+                <div>
+                    <WorldSelector/>
+                </div>
+                <div>
+                    <button style={styles.submitBtn}
+                      type="submit"
+                      id="no-page-builder"
+                      onClick={this.props.postSub}
+                      className="btn btn-primary btn-lg btn-square submitBtn"
+                    >
+                          Create Slideshow
+                    </button>
+                </div>
+
               </div>
               <div className="panel-content" style={styles.content}>
                 <div className="row">
                   <div className="col-xs-12">
-                    <textarea data-uk-htmleditor id="code-input-box" defaultValue={this.getLocalStorage()} />
+                    <MarkdownInstructions />
+                    <textarea data-uk-htmleditor id="code-input-box" className="codeInputBox" defaultValue={this.getLocalStorage()} />
                   </div>
                 </div>
               </div>
@@ -56,22 +66,25 @@ var CodeEditor = React.createClass({
 
 styles = {
   icon: {
-    marginTop: "-8px",
+    marginTop: "-2px",
     textAlign: "center"
   },
-  panel: {
-    display: "flex",
-    flexDirection: "row",
-    alignItems: "flex-start",
-    paddingTop: "0"
-  },
-  btn: {
+  // panel: {
+  //   display: "flex",
+  //   flexDirection: "row",
+  //   alignItems: "flex-start",
+  //   paddingTop: "0"
+  // },
+  submitBtn: {
     marginTop: "0",
     marginBottom: "0",
-    marginLeft: "auto"
+    marginLeft: "auto",
+    top: '-21px',
+    position: 'relative'
+
   },
   content: {
-    paddingTop: "5px"
+    paddingTop: "10px"
   }
 }
 { /*<div className="slide-preview col-md-3"><img src={'build/assets/images/tron-world-bg.png'} /></div> */}

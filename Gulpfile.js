@@ -67,7 +67,6 @@ gulp.task('browserify', function () {
 
 gulp.task('home', function () {
   var testFiles = glob.sync('./client/homepage.jsx');
-
   var bundler = browserify({
     entries: testFiles,
     transform: [reactify],

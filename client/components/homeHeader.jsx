@@ -15,7 +15,7 @@ var Header = React.createClass({
           </div>
 
           <ul className="actions actions-centered">
-            <li><a href="/create" className="button style1 big">Get Started</a></li>
+            <li><a className="buttonPos" href="/create" className="button style1 big">Get Started</a></li>
             {/* <li><a href="#intro-wrapper" className="button style2 big">More Info</a></li> */}
           </ul>
           {/* Nav */}

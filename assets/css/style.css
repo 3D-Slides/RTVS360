@@ -4548,10 +4548,10 @@ body:not(.fixed-sidebar):not(.fixed-topbar):not(.sidebar-top) .sidebar .logopane
   bottom: 0px;
   left: 190px;
   margin: 0px;
-  padding-top: 10px;
+  padding-top: 15px;
   position: fixed;
   right: 0px;
-  top: 50px;
+  top: 70px;
   z-index: 11;
   -webkit-border-radius: 0;
   -moz-border-radius: 0;

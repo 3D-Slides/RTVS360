@@ -3,14 +3,14 @@ var React = require('react');
 var WorldSelector = React.createClass({
 	render: function() {
 		return (
-			<div style={styles} className="input-group col-xs-3 col-xs-offset-2">
+			<div style={styles} className="input-group worldSelect">
 				<label className="radio-inline">
 					<input type="radio" name="optradio"/>
-						<span style={styles}>Tron Grid</span>
+						<span style={text}>Tron Grid</span>
 				</label>
 				<label className="radio-inline">
 					<input type="radio" name="optradio"/>
-						<span>Ocean Sunset</span>
+						<span style={text}>Ocean Sunset</span>
 				</label>
 			</div>
 		);
@@ -18,7 +18,12 @@ var WorldSelector = React.createClass({
 });
 
 var styles = {
-	fontSize: "16px",
 	alignSelf: "center",
+	margin: '0 auto',
+	marginLeft: '40%'
+}
+
+var text = {
+	fontSize: "16px",
 }
 module.exports = WorldSelector;
