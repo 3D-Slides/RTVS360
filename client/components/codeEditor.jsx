@@ -26,25 +26,26 @@ var CodeEditor = React.createClass({
           <div className="col-sm-12 portlets">
             <div className="panel maximized">
               <div style={styles.panel} className="panel-header">
-                <div className="col-sm-12">
-                  <Themes 
-                  updateTheme={this.props.updateTheme}
-                  theme={this.props.theme}
-                  />
-                </div>
-                <div className="col-md-4">
-                  <WorldSelector/>
-                </div>
-                <div className="col-md-4">
-                  <button style={styles.btn}
-                    type="submit"
-                    id="no-page-builder"
-                    onClick={this.props.postSub}
-                    className="btn btn-primary btn-lg btn-square"
-                  >
-                        Create Slideshow
-                  </button>
-                </div>
+
+                 
+                  
+                    <Themes 
+                    updateTheme={this.props.updateTheme}
+                    theme={this.props.theme}
+                    />
+
+                    <WorldSelector/>
+
+                    <button style={styles.btn}
+                      type="submit"
+                      id="no-page-builder"
+                      onClick={this.props.postSub}
+                      className="btn btn-primary btn-lg btn-square"
+                    >
+                          Create Slideshow
+                    </button>
+
+                
               </div>
               <div className="panel-content" style={styles.content}>
                 <div className="row">
@@ -64,7 +65,7 @@ var CodeEditor = React.createClass({
 
 styles = {
   icon: {
-    marginTop: "-8px",
+    marginTop: "-2px",
     textAlign: "center"
   },
   panel: {
@@ -79,7 +80,7 @@ styles = {
     marginLeft: "auto"
   },
   content: {
-    paddingTop: "5px"
+    paddingTop: "10px"
   }
 }
 { /*<div className="slide-preview col-md-3"><img src={'build/assets/images/tron-world-bg.png'} /></div> */}

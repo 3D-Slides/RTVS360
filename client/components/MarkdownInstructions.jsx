@@ -19,10 +19,10 @@ var MarkdownInstructions = React.createClass({
 				<div style={mkdnInfoStyles} id="mkdnInfo" className="displayNone">
 					<span style={bold}> Supported Markdown:</span><br/>
 					<span style={bold}>Headers: </span><br/>
-					# h1<br/>
-					## h2<br/>
-					### h3<br/>
-					#### h4<br/>
+					# Large Title<br/>
+					## Sub Title 1<br/>
+					### Sub Title 2<br/>
+					#### Sub Title 3<br/>
 					<span style={bold}>ListItems:</span><br/>
 					* Item<br/>
 					* Item<br/>

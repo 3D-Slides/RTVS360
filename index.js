@@ -17,7 +17,7 @@ if (localStorage.world === "Ocean Sunset") {
 	imageUrls = images.map(function(img) {
 		return imagePrefix + img + imageSuffix;
 	});
-	var glScene, camera, glRenderer, controls, clock;
+	var glScene, camera, mirrorCamera, glRenderer, controls, clock;
 	var water, waterTexture, waveNormal, waveSpecular;
 
 	initOceanScene();
@@ -142,6 +142,10 @@ function initTronScene(gridColor) {
 	document.body.appendChild( cssRenderer.domElement );
 
 	controls = new THREE.OrbitControls(camera, glRenderer.domElement);
+	controls.maxDistance = 300;
+	controls.minDistance = 15;
+	controls.zoomSpeed = 0.8;
+	controls.maxPolarAngle = 1.6;
 	// controls.maxDistance = 9000;
 }
 
@@ -187,6 +191,9 @@ function initOceanScene() {
 	camera.position.set (0, 20, 100);
 	camera.lookAt(new THREE.Vector3(0, 0, 0));
 
+	// mirrorCamera = new THREE.CubeCamera(1, 10000, 1024);
+	// mirrorCamera.renderTarget.minFilter = THREE.LinearMipMapLinearFilter;
+	// glScene.add(mirrorCamera);
 	// var axisHelper = new THREE.AxisHelper( 40 );
 	// glScene.add( axisHelper );
 
@@ -194,7 +201,7 @@ function initOceanScene() {
 	glScene.add(ambientLight);
 
 	var directionLight = new THREE.DirectionalLight(0xFC7825);
-	directionLight.position.set(-300, 150, 500);
+	directionLight.position.set(300, 150, -500);
 	glScene.add(directionLight);
 
 	marker = new THREE.Object3D();
@@ -208,7 +215,7 @@ function initOceanScene() {
 	var shader = THREE.ShaderLib.cube;
 	shader.uniforms.tCube.value = skyBoxTextures;
 
-	var skyBoxGeometry = new THREE.BoxGeometry(10000, 10000, 10000);
+	var skyBoxGeometry = new THREE.BoxGeometry(8000, 8000, 8000);
 	var skyBoxMaterial = new THREE.ShaderMaterial({
 			fragmentShader: shader.fragmentShader,
 			vertexShader: shader.vertexShader,
@@ -226,20 +233,22 @@ function initOceanScene() {
 	waterTexture = THREE.ImageUtils.loadTexture('assets/water512.jpg');
 	waterTexture.crossOrigin = 'anonymous';
 	waterTexture.wrapS = waterTexture.wrapT = THREE.RepeatWrapping;
-	waterTexture.repeat.set(64,64);
+	waterTexture.repeat.set(128,128);
 
 	waveNormal = THREE.ImageUtils.loadTexture('/assets/water-normal-2.png');
 	waveNormal.wrapS = waveNormal.wrapT = THREE.RepeatWrapping;
 	waveNormal.repeat.set(512,512);
 
-	var waterGeometry = new THREE.PlaneGeometry(10000, 10000, 100, 100);
+	var waterGeometry = new THREE.PlaneGeometry(8000, 8000, 100, 100);
 	var waterMaterial = new THREE.MeshPhongMaterial({
+		color: '#5A6CA0',
 		map: waterTexture,
 		combine: THREE.MixOperation,
 		normalMap: waveNormal,
-		reflectivity:0.91,
+		reflectivity:0.92,
+		// envMap: mirrorCamera.renderTarget,
 		envMap: skyBoxTextures,
-		shininess: 10,
+		shininess: 5,
 		opacity: 1
 	});
 	water = new THREE.Mesh( waterGeometry, waterMaterial);
@@ -262,6 +271,11 @@ function initOceanScene() {
 	document.body.appendChild(glRenderer.domElement);
 
 	controls = new THREE.OrbitControls(camera, glRenderer.domElement);
+	controls.maxDistance = 300;
+	controls.minDistance = 15;
+	controls.zoomSpeed = 0.8;
+	controls.maxPolarAngle = 1.6;
+
 }
 
 function renderOceanScene() {
@@ -276,4 +290,7 @@ function animateOceanScene () {
 	var delta = clock.getDelta();
 	var time = clock.getElapsedTime();
 	waterTexture.offset.set(0, time/80);
+	// water.visible = false;
+	// mirrorCamera.updateCubeMap(glRenderer, glScene);
+	// water.visible = true;
 }
