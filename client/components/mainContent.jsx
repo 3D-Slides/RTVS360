@@ -41,6 +41,20 @@ var Main = React.createClass({
               <div className="row">
                 <div className="6u 12u(mobile)">
                   <section>
+                    <h3 className="icon fa-paint-brush">Choose Different Color Schemes</h3>
+                    <p>Click the top left dropdown to select from 3 different color schemes. Tron, Neon, and Hello Kitty.</p>
+                  </section>
+                </div>
+                <div className="6u 12u(mobile)">
+                  <section>
+                    <h3 className="icon fa-globe">Choose From Two Different Themes</h3>
+                    <p>Currently you can select two different themes, either the Tron Universe or a beautiful Ocean Sunset.</p>
+                  </section>
+                </div>
+              </div>
+              <div className="row">
+                <div className="6u 12u(mobile)">
+                  <section>
                     <h3 className="icon fa-picture-o">Add images to your slides</h3>
                     <p>You can add images by selecting the image Icon at the top of the editor. At this point only https images are supported.</p>
                   </section>
