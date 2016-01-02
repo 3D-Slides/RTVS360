@@ -10,13 +10,21 @@ var CodeEditor = require('./components/codeEditor.jsx');
 var SlidesCreator = React.createClass({
 	getInitialState: function() {
 		return {
-			theme: null
+			theme: "Tron Blue"
 		}
 	},
-
+	componentDidMount: function() {
+		var _this = this;
+		_this.updateTheme();
+		$('body').on('render', function() {
+			setTimeout(function(){
+				_this.updateTheme();
+			}, 0)
+		});
+	},
 	updateTheme: function (e) {
-		e.preventDefault();
-		var theme = e.currentTarget.innerText
+		if (e) e.preventDefault();
+		var theme = e ? e.currentTarget.innerText : this.state.theme;
 		var colorScheme = {
 			"Tron Blue": {
 				h1: "#00d1ff",
@@ -41,13 +49,14 @@ var SlidesCreator = React.createClass({
 				h4: "#FF00FF",
 				p: "#00FFFF",
 				li: "#00FFFF"
-			}
+			},
 		}
-
-		this.setState({
-			theme: theme,
-			colorScheme: colorScheme[theme]
-		});
+		if (e) {
+			this.setState({
+				theme: theme,
+				colorScheme: colorScheme[theme]
+			});
+		}	
 
 		$('.uk-htmleditor-preview').css("background", "#1F1E24");
 		Object.keys(colorScheme[theme]).forEach(function(tag) {
@@ -56,7 +65,6 @@ var SlidesCreator = React.createClass({
 				.css("font-family", "Helvetica")
 				.css("font-weight", "500");
 		});
-
 	},
 
 	postSubmit: function (event) {
@@ -75,10 +83,9 @@ var SlidesCreator = React.createClass({
 		var colorScheme = this.state.colorScheme || defaultColor;
 
 		var worlds = document.getElementsByTagName('input');
-		var worldInfo = "Tron Grid";
 		for (var i = 0; i < worlds.length; i++) {
 			if (worlds[i].checked) {
-				var worldInfo = worlds[i].parentNode.innerText
+				var worldInfo = worlds[i].parentNode.textContent || "Tron Grid";
 			}
 		}
 
