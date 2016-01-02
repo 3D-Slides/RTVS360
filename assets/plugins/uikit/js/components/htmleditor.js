@@ -29,7 +29,7 @@
             height       : 500,
             maxsplitsize : 1000,
             codemirror   : { mode: 'htmlmixed', lineWrapping: true, dragDrop: false, autoCloseTags: true, matchTags: true, autoCloseBrackets: true, matchBrackets: true, indentUnit: 4, indentWithTabs: false, tabSize: 4, hintOptions: {completionSingle:false}  },
-            toolbar      : [ 'bold', 'italic', 'strike', 'link', 'image', 'blockquote', 'listUl', 'listOl' ],
+            toolbar      : [ 'bold', 'italic', 'strike', 'blockquote', 'link', 'image',  'listUl', 'listOl' ],
             lblPreview   : 'Preview',
             lblCodeview  : 'HTML',
             lblMarkedview: 'Editor'
@@ -414,8 +414,8 @@
                     label  : '<strong>Sub-Title 2</strong>'
                 },
                 blockquote : {
-                    title  : 'Blockquote',
-                    label  : '<i class="uk-icon-quote-right"></i>'
+                    title  : 'Sub-Title 3',
+                    label  : '<strong>Sub-Title 3</strong>'
                 },
                 link : {
                     title  : 'Link',
@@ -437,9 +437,9 @@
             });
 
             addAction('bold', '<h1>$1</h1>');
-            addAction('italic', '<em>$1</em>');
-            addAction('strike', '<del>$1</del>');
-            // addAction('blockquote', '<blockquote><p>$1</p></blockquote>', 'replaceLine');
+            addAction('italic', '<h2>$1</h2>');
+            addAction('strike', '<h2>$1</h3>');
+            addAction('blockquote', '<h4>$1</h4>');
             addAction('link', '<a href="http://">$1</a>');
             addAction('image', '<img src="http://" alt="$1">');
 
@@ -521,7 +521,7 @@
             addAction('bold', '# $1');
             addAction('italic', '## $1');
             addAction('strike', '### $1');
-            addAction('blockquote', '> $1', 'replaceLine');
+            addAction('blockquote', '#### $1');
             addAction('link', '[$1](http://)');
             addAction('image', '![$1](http://)');
 
