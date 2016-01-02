@@ -1469,6 +1469,10 @@
 
 /* List */
 
+.buttonPos {
+	position: relative;
+}
+
 	ul.default {
 		list-style: disc;
 		padding-left: 1em;
@@ -2372,6 +2376,7 @@
 				padding: 1em 0 1em 0;
 				max-width: 30em;
 				margin: 0 auto;
+				position: relative
 			}
 
 		/* List */
