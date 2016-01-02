@@ -23,7 +23,7 @@ var MarkdownInstructions = React.createClass({
 					##    Sub Title <br/>
 					###   Sub Title 1<br/>
 					####  Sub Title 2<br/>
-					<span style={[bold, underline]}>ListItems:</span><br/>
+					<span style={bold}>ListItems:</span><br/>
 					* Item<br/>
 					* Item<br/>
 					* Item<br/>
