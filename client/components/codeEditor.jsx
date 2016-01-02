@@ -34,8 +34,7 @@ var CodeEditor = React.createClass({
                   type="submit"
                   id="no-page-builder"
                   onClick={this.props.postSub}
-                  className="btn btn-primary btn-lg btn-square"
-                  >
+                  className="btn btn-primary btn-lg btn-square">
                       Create Slideshow
                   </button>
               </div>
