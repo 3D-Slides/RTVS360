@@ -402,16 +402,16 @@
                     label  : '<i class="uk-icon-expand"></i>'
                 },
                 bold : {
-                    title  : 'Bold',
-                    label  : '<i class="uk-icon-bold"></i>'
+                    title  : 'Title',
+                    label  : '<strong>Title</strong>'
                 },
                 italic : {
-                    title  : 'Italic',
-                    label  : '<i class="uk-icon-italic"></i>'
+                    title  : 'Sub-title',
+                    label  : '<strong>Sub-Title</strong>'
                 },
                 strike : {
-                    title  : 'Strikethrough',
-                    label  : '<i class="uk-icon-strikethrough"></i>'
+                    title  : 'Sub-Title 2',
+                    label  : '<strong>Sub-Title 2</strong>'
                 },
                 blockquote : {
                     title  : 'Blockquote',
@@ -428,18 +428,18 @@
                 listUl : {
                     title  : 'Unordered List',
                     label  : '<i class="uk-icon-list-ul"></i>'
-                },
-                listOl : {
-                    title  : 'Ordered List',
-                    label  : '<i class="uk-icon-list-ol"></i>'
                 }
+                // listOl : {
+                //     title  : 'Ordered List',
+                //     label  : '<i class="uk-icon-list-ol"></i>'
+                // }
 
             });
 
-            addAction('bold', '<strong>$1</strong>');
+            addAction('bold', '<h1>$1</h1>');
             addAction('italic', '<em>$1</em>');
             addAction('strike', '<del>$1</del>');
-            addAction('blockquote', '<blockquote><p>$1</p></blockquote>', 'replaceLine');
+            // addAction('blockquote', '<blockquote><p>$1</p></blockquote>', 'replaceLine');
             addAction('link', '<a href="http://">$1</a>');
             addAction('image', '<img src="http://" alt="$1">');
 
@@ -518,9 +518,9 @@
                 enableMarkdown();
             }
 
-            addAction('bold', '**$1**');
-            addAction('italic', '*$1*');
-            addAction('strike', '~~$1~~');
+            addAction('bold', '# $1');
+            addAction('italic', '## $1');
+            addAction('strike', '### $1');
             addAction('blockquote', '> $1', 'replaceLine');
             addAction('link', '[$1](http://)');
             addAction('image', '![$1](http://)');
