@@ -20,9 +20,9 @@ var MarkdownInstructions = React.createClass({
 					<span style={bold}> Supported Markdown:</span><br/>
 					<span style={bold}>Headers: </span><br/>
 					#     Large Title<br/>
-					##    Sub Title 1<br/>
-					###   Sub Title 2<br/>
-					####  Sub Title 3<br/>
+					##    Sub Title <br/>
+					###   Sub Title 1<br/>
+					####  Sub Title 2<br/>
 					<span style={[bold, underline]}>ListItems:</span><br/>
 					* Item<br/>
 					* Item<br/>

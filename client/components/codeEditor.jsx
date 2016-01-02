@@ -47,7 +47,6 @@ var CodeEditor = React.createClass({
                     </button>
                 </div>
 
-
               </div>
               <div className="panel-content" style={styles.content}>
                 <div className="row">
