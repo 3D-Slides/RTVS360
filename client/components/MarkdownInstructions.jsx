@@ -19,11 +19,11 @@ var MarkdownInstructions = React.createClass({
 				<div style={mkdnInfoStyles} id="mkdnInfo" className="displayNone">
 					<span style={bold}> Supported Markdown:</span><br/>
 					<span style={bold}>Headers: </span><br/>
-					# Large Title<br/>
-					## Sub Title 1<br/>
-					### Sub Title 2<br/>
-					#### Sub Title 3<br/>
-					<span style={bold}>ListItems:</span><br/>
+					#     Large Title<br/>
+					##    Sub Title 1<br/>
+					###   Sub Title 2<br/>
+					####  Sub Title 3<br/>
+					<span style={[bold, underline]}>ListItems:</span><br/>
 					* Item<br/>
 					* Item<br/>
 					* Item<br/>
@@ -39,6 +39,9 @@ var MarkdownInstructions = React.createClass({
 
 var bold = {
 	fontWeight: '700',
+}
+var underline = {
+	textDecoration: 'underline',
 }
 
 var mkdnInfoStyles = {

@@ -25,33 +25,35 @@ var CodeEditor = React.createClass({
         <div className="row">
           <div className="col-sm-12 portlets">
             <div className="panel maximized">
-              <div style={styles.panel} className="panel-header">
-
-                 
-                  
+              <div className="panel-header">
+                <div>
                     <Themes 
                     updateTheme={this.props.updateTheme}
                     theme={this.props.theme}
                     />
+                </div>
 
+                <div>
                     <WorldSelector/>
-
-                    <button style={styles.btn}
+                </div>
+                <div>
+                    <button style={styles.submitBtn}
                       type="submit"
                       id="no-page-builder"
                       onClick={this.props.postSub}
-                      className="btn btn-primary btn-lg btn-square"
+                      className="btn btn-primary btn-lg btn-square submitBtn"
                     >
                           Create Slideshow
                     </button>
+                </div>
 
-                
+
               </div>
               <div className="panel-content" style={styles.content}>
                 <div className="row">
                   <div className="col-xs-12">
                     <MarkdownInstructions />
-                    <textarea data-uk-htmleditor id="code-input-box" defaultValue={this.getLocalStorage()} />
+                    <textarea data-uk-htmleditor id="code-input-box" className="codeInputBox" defaultValue={this.getLocalStorage()} />
                   </div>
                 </div>
               </div>
@@ -68,16 +70,19 @@ styles = {
     marginTop: "-2px",
     textAlign: "center"
   },
-  panel: {
-    display: "flex",
-    flexDirection: "row",
-    alignItems: "flex-start",
-    paddingTop: "0"
-  },
-  btn: {
+  // panel: {
+  //   display: "flex",
+  //   flexDirection: "row",
+  //   alignItems: "flex-start",
+  //   paddingTop: "0"
+  // },
+  submitBtn: {
     marginTop: "0",
     marginBottom: "0",
-    marginLeft: "auto"
+    marginLeft: "auto",
+    top: '-21px',
+    position: 'relative'
+
   },
   content: {
     paddingTop: "10px"

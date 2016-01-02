@@ -19,17 +19,52 @@
 	transition: 1s;
 }
 
-@media ( max-width: 587px ) {
-	.mkdnButton {
-		top: 40px;
+.worldSelect {
+	top: 15px;
+
+}
+
+@media ( max-width: 768px ) {
+	.worldSelect {
+		margin-left: 33% !important;
+		position: relative;
+    	right: 9px;
+
 	}
 }
 
-@media ( max-width: 458px ) {
-	.mkdnButton {
-		top: 80px;
+@media (max-width: 750px) {
+	.worldSelect {
+		top: -20px;
 	}
 }
+
+@media (max-width: 859px) {
+	.worldSelect {
+		margin-left: 33% !important;
+	}
+}
+
+@media (max-width: 400px) {
+	.codeInputBox {
+		top: 50px;
+		position: relative;
+	}
+	.themeBtn {
+		width: 308px !important;
+	    top: 28px;
+	    position: relative;
+	}
+	.submitBtn {
+		margin-top: 35px;
+		width: 308px;
+	}
+	.worldSelect {
+		margin-left: 25% !important;
+	}
+}
+
+
 
 #mkdnInfo {
 	transition: 1s;
