@@ -12,7 +12,6 @@ app.use(compress());
 app.use(bodyParser.text({ type: 'text/html' }));
 app.use(cors({origin: 'http://three-d-slides.herokuapp.com'}));
 
-
 app.use(express.static(path.join(__dirname + './../')));
 
 app.get('/create', function(req, res) {
@@ -20,7 +19,7 @@ app.get('/create', function(req, res) {
 });
 
 app.get('/', function(req, res) {
-	res.sendFile(path.join(__dirname + './index.html'))
+	res.sendFile(path.join(__dirname + './index.html'));
 })
 
 app.get('/presentation', function(req, res) {
@@ -32,5 +31,5 @@ app.post('/presentation', function(req, res) {
 });
 
 app.listen(port, function(){
-	console.log("Yo fool! The server is connected on port 3131! ...");
+	console.log("Server is connected on port 3131! ...");
 });

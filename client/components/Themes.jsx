@@ -6,7 +6,7 @@ var Themes = React.createClass({
 		return (
 			<div className="dropdown col-xs-3">
 				<button
-					className="btn btn-default btn-square dropdown-toggle"
+					className="btn btn-default btn-square dropdown-toggle themeBtn"
 					type="button"
 					id="dropdownMenu1"
 					data-toggle="dropdown"
