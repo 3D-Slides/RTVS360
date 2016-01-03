@@ -8,7 +8,7 @@
 	line-height: 40px;
     text-align: center;
     cursor: pointer;
-    transition: 1s;
+    transition: .4s;
 }
 
 #mkdnHelp:hover {
@@ -16,7 +16,7 @@
 	height: 400px;
 	width: 300px;
 	z-index: 5;
-	transition: 1s;
+	transition: .4s;
 }
 
 .worldSelect {
@@ -83,7 +83,7 @@
 
 
 #mkdnInfo {
-	transition: 1s;
+	transition: .6s;
 	z-index: 6;
 	padding: 20px;
 }
@@ -103,9 +103,9 @@
 }
 
 .fadeIn {
-	-webkit-animation-duration: .7s;
-  	animation-duration: .7s;
-  	animation-delay: .8s;
+	-webkit-animation-duration: .5s;
+  	animation-duration: .5s;
+  	animation-delay: .2s;
   	-webkit-animation-fill-mode: both;
   	animation-fill-mode: both;
   	-webkit-animation-name: fadeIn;
