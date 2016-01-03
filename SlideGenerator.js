@@ -28,6 +28,7 @@ function SlideGenerator (input, colorScheme){
 	var splitSlides = R.split('<hr />');
 
 	this.data = splitSlides(html);
+
 	this.slideLocations = [];
 }
 
@@ -103,7 +104,7 @@ SlideGenerator.prototype.addOneSlide3D = function (coords, html) {
 	    var content = contentStore.pop();
 	    if(content !== '') {
 	      	var mesh = makeMesh(tag, content);
-	      	group.add(mesh);
+	      	group.add( mesh );
 	    }
 	  } else if (subArray[0][0] === 'i') {
 		var url = subArray[0].split(' ');
