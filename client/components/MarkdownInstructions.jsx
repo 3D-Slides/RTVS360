@@ -15,7 +15,7 @@ var MarkdownInstructions = React.createClass({
 	render: function () {
 		return (
 			<div onMouseEnter={this.showInfo} onMouseLeave={this.hideInfo} id="mkdnHelp" className='mkdnButton'>
-				?
+				<i style={icon} className="fa fa-question-circle"></i>
 				<div style={mkdnInfoStyles} id="mkdnInfo" className="displayNone">
 					<span style={bold}> Supported Markdown:</span><br/>
 					<span style={bold}>Headers: </span><br/>
@@ -47,6 +47,10 @@ var underline = {
 var mkdnInfoStyles = {
 	lineHeight: '20px',
 	fontSize: '12px'
+}
+
+var icon = {
+	lineHeight: '40px'
 }
 
 module.exports = MarkdownInstructions;
