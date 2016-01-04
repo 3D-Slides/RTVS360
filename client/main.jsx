@@ -100,7 +100,7 @@ var SlidesCreator = React.createClass({
 			if (colorScheme[theme] === colorScheme["Tron Blue"]) {
 				$('.slide-preview img:last-child' ).remove();
 				$('.slide-preview video:last-child' ).remove();
-				$('.slide-preview').append('<video width="301" height="169" autoplay loop> <source src=' + themeVideo[0] + '></video>');
+				$('.slide-preview').append('<video width="308" height="173" autoplay loop> <source src=' + themeVideo[0] + '></video>');
 			}
 			if (colorScheme[theme] === colorScheme["Neon Lights"]) {
 				$('.slide-preview img:last-child' ).remove();
