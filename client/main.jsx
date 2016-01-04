@@ -107,7 +107,6 @@ var SlidesCreator = React.createClass({
 
 		}
 
-
 		$('.uk-htmleditor-preview').css("background", "#1F1E24");
 		Object.keys(colorScheme[theme]).forEach(function(tag) {
 			$(tag, '.uk-htmleditor-preview')
