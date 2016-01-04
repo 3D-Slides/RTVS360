@@ -2,8 +2,6 @@ var React = require('react');
 var ReactDOM = require('react-dom');
 var CodeEditor = require('./components/codeEditor.jsx');
 
-
-
 var SlidesCreator = React.createClass({
 	getInitialState: function() {
 		return {
