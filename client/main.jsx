@@ -18,9 +18,8 @@ var SlidesCreator = React.createClass({
 		});
 	},
 	updateTheme: function (e) {
-<<<<<<< HEAD
-		e.preventDefault();
-
+		if (e) e.preventDefault();
+		var theme = e ? e.currentTarget.innerText : this.state.theme;
 		var theme = e.currentTarget.innerText
 		var themePreview = ['assets/images/Tron-Blue.png',
 												'assets/images/Neon-Lights.png',
@@ -30,10 +29,7 @@ var SlidesCreator = React.createClass({
 												'assets/images/Kitty-Ocean.png'
 		];
 		var themeVideo = ['/assets/videos/Tron-Ocean.mp4'];
-=======
-		if (e) e.preventDefault();
-		var theme = e ? e.currentTarget.innerText : this.state.theme;
->>>>>>> 47fba9d3040659cf688008affea12cebc6805369
+
 		var colorScheme = {
 			"Tron Blue": {
 				h1: "#00d1ff",
@@ -65,7 +61,7 @@ var SlidesCreator = React.createClass({
 				theme: theme,
 				colorScheme: colorScheme[theme]
 			});
-		}	
+		}
 
 
 		var worlds = document.getElementsByTagName('input');
