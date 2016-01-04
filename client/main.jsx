@@ -20,6 +20,7 @@ var SlidesCreator = React.createClass({
 												'assets/images/Neon-Ocean.png',
 												'assets/images/Kitty-Ocean.png'
 		];
+		var themeVideo = ['/assets/videos/Tron-Ocean.mp4'];
 		var colorScheme = {
 			"Tron Blue": {
 				h1: "#00d1ff",
@@ -63,28 +64,34 @@ var SlidesCreator = React.createClass({
 
 		if (colorScheme[theme] === colorScheme["Tron Blue"]) {
 			$('.slide-preview img:last-child' ).remove();
+			$('.slide-preview video:last-child' ).remove();
 			$('.slide-preview').append('<img src=' + themePreview[0] + ' />');
 		}
 		if (colorScheme[theme] === colorScheme["Neon Lights"]) {
 			$('.slide-preview img:last-child' ).remove();
+			$('.slide-preview video:last-child' ).remove();
 			$('.slide-preview').append('<img src=' + themePreview[1] + ' />');
 		}
 		if (colorScheme[theme] === colorScheme["Hello Kitty"]) {
 			$('.slide-preview img:last-child' ).remove();
+			$('.slide-preview video:last-child' ).remove();
 			$('.slide-preview').append('<img src=' + themePreview[2] + ' />');
 		}
 
 		if (worldInfo === "Tron Grid") {
 			if (colorScheme[theme] === colorScheme["Tron Blue"]) {
 				$('.slide-preview img:last-child' ).remove();
+				$('.slide-preview video:last-child' ).remove();
 				$('.slide-preview').append('<img src=' + themePreview[0] + ' />');
 			}
 			if (colorScheme[theme] === colorScheme["Neon Lights"]) {
 				$('.slide-preview img:last-child' ).remove();
+				$('.slide-preview video:last-child' ).remove();
 				$('.slide-preview').append('<img src=' + themePreview[1] + ' />');
 			}
 			if (colorScheme[theme] === colorScheme["Hello Kitty"]) {
 				$('.slide-preview img:last-child' ).remove();
+				$('.slide-preview video:last-child' ).remove();
 				$('.slide-preview').append('<img src=' + themePreview[2] + ' />');
 			}
 		}
@@ -92,14 +99,17 @@ var SlidesCreator = React.createClass({
 		if (worldInfo === "Ocean Sunset") {
 			if (colorScheme[theme] === colorScheme["Tron Blue"]) {
 				$('.slide-preview img:last-child' ).remove();
-				$('.slide-preview').append('<img src=' + themePreview[3] + ' />');
+				$('.slide-preview video:last-child' ).remove();
+				$('.slide-preview').append('<video width="301" height="169" autoplay loop> <source src=' + themeVideo[0] + '></video>');
 			}
 			if (colorScheme[theme] === colorScheme["Neon Lights"]) {
 				$('.slide-preview img:last-child' ).remove();
+				$('.slide-preview video:last-child' ).remove();
 				$('.slide-preview').append('<img src=' + themePreview[4] + ' />');
 			}
 			if (colorScheme[theme] === colorScheme["Hello Kitty"]) {
 				$('.slide-preview img:last-child' ).remove();
+				$('.slide-preview video:last-child' ).remove();
 				$('.slide-preview').append('<img src=' + themePreview[5] + ' />');
 			}
 

@@ -13037,6 +13037,19 @@ body.rtl .layout-options .img-sidebar-right {
   bottom: 10px;
   /*left: 1000px;*/
   border: 10px solid white;
-  /*box-shadow: 10px 10px 5px #888888;*/
+  box-shadow: 0 3px 25px #000;
+  float: right;
+}
+
+.slide-preview video {
+	position: relative;
+	z-index: 999999999;
+	top: -190px;
+	margin-right: 20px;
+  left: 10px;
+  bottom: 10px;
+  /*left: 1000px;*/
+  border: 10px solid white;
+  box-shadow: 0 3px 25px #000;
   float: right;
 }
