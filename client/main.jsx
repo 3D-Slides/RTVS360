@@ -62,10 +62,13 @@ var SlidesCreator = React.createClass({
 			}
 		}
 
+		var slidePreText = document.getElementById('markDownPre').innerHTML;
+
 		if (colorScheme[theme] === colorScheme["Tron Blue"]) {
 			$('.slide-preview img:last-child' ).remove();
 			$('.slide-preview video:last-child' ).remove();
 			$('.slide-preview').append('<img src=' + themePreview[0] + ' />');
+			// $('.slide-preview').append('<div id="slidePreTextTron" class="col-md-3">' + slidePreText + '</div>');
 		}
 		if (colorScheme[theme] === colorScheme["Neon Lights"]) {
 			$('.slide-preview img:last-child' ).remove();

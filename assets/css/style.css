@@ -13030,7 +13030,7 @@ body.rtl .layout-options .img-sidebar-right {
 
 .slide-preview img {
 	position: relative;
-	z-index: 999999999;
+	z-index: 9999;
 	top: -190px;
 	margin-right: 20px;
   left: 10px;
@@ -13043,7 +13043,7 @@ body.rtl .layout-options .img-sidebar-right {
 
 .slide-preview video {
 	position: relative;
-	z-index: 999999999;
+	z-index: 9999;
 	top: -190px;
 	margin-right: 20px;
   left: 10px;
@@ -13052,4 +13052,56 @@ body.rtl .layout-options .img-sidebar-right {
   border: 10px solid white;
   box-shadow: 0 3px 25px #000;
   float: right;
+}
+
+#slidePreTextTron {
+  position: relative;
+  margin: 0 auto;
+  display: block;
+	z-index: 999999;
+	top: -390px;
+  left: 10px;
+  bottom: 10px;
+  /*left: 1000px;*/
+  float: right;
+  width: 307px;
+  height: 173px;
+  line-height: 0;
+  text-align: center;
+}
+
+#slidePreTextTron h1 {
+  color: #00d1ff;
+  font-size: 10px;
+  line-height: 0;
+}
+
+#slidePreTextTron h2 {
+  color: #fff;
+  font-size: 8px;
+  line-height: 0;
+}
+
+#slidePreTextTron h3 {
+  color: #fff;
+  font-size: 6px;
+  line-height: 0;
+}
+
+#slidePreTextTron h4 {
+  color: #00d1ff;
+  font-size: 5px;
+  line-height: 0;
+}
+
+#slidePreTextTron p {
+  color: #B8F2FF;
+  font-size: 4px;
+  line-height: 0;
+}
+
+#slidePreTextTron li {
+  color: #B8F2FF;
+  font-size: 4px;
+  line-height: 0;
 }
