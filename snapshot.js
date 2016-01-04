@@ -161,7 +161,7 @@ var Slideshow = function(camera) {
 			y: dest.location.y - 9,
 			z: (dest.location.z + 30)
 		}, 1500)
-		.easing(_transitions[index])
+		.easing(TWEEN.Easing.Quadratic.InOut)
 		.start();
 
 		markerTween.to({
@@ -169,7 +169,7 @@ var Slideshow = function(camera) {
 			y: dest.location.y - 13,
 			z: dest.location.z
 		})
-		.easing(_transitions[index])
+		.easing(TWEEN.Easing.Quadratic.InOut)
 		.start();
 
 		look.to({
@@ -177,7 +177,7 @@ var Slideshow = function(camera) {
 			y: dest.location.y - 11,
 			z: dest.location.z
 		})
-		.easing(_transitions[index])
+		.easing(TWEEN.Easing.Quadratic.InOut)
 		.start();
 	};
 
