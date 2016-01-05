@@ -12,7 +12,8 @@ var Intro = React.createClass({
 
 
 
-        <div className="title">Introduction</div>
+        <div className="title"><a className="scroll" href="#intro-landing">Introduction</a></div>
+
         <section id="intro" className="container">
           <p className="style1">So, in case you were wondering what this is all about ...</p>
           <p className="style2">
