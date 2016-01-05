@@ -303,6 +303,7 @@
             this.trigger('renderLate', [this]);
 
             this.preview.container.html(this.currentvalue);
+            
         },
 
         addShortcut: function(name, callback) {
