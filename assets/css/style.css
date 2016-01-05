@@ -13053,12 +13053,12 @@ body.rtl .layout-options .img-sidebar-right {
   float: right;
 }
 
-/*#slidePreTextTron {
+#slidePreTextTron {
   position: relative;
   margin: 0 auto;
   display: block;
 	z-index: 999999;
-	top: -190;
+	top: -335;
   left: 25px;
   bottom: 10px;
   float: right;
@@ -13066,7 +13066,7 @@ body.rtl .layout-options .img-sidebar-right {
   height: 173px;
   line-height: 0;
   text-align: center;
-}*/
+}
 
 #slidePreTextTron h1 {
   color: #00d1ff;
@@ -13105,5 +13105,5 @@ body.rtl .layout-options .img-sidebar-right {
 #slidePreTextTron li {
   color: #B8F2FF;
   font-size: 7px;
-  line-height: 0;
+  line-height: 12px;
 }
