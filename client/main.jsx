@@ -12,12 +12,11 @@ var SlidesCreator = React.createClass({
 		var _this = this;
 		_this.updateTheme();
 		$('body').on('render', function() {
-			setTimeout(function(){
-				_this.updateTheme();
-			}, 0)
+			requestAnimationFrame( _this.updateTheme );
 		});
 	},
 	updateTheme: function (e) {
+		if (typeof e === "number") e = null;
 		if (e) e.preventDefault();
 		var theme = e ? e.currentTarget.innerText : this.state.theme;
 		var theme = e.currentTarget.innerText
