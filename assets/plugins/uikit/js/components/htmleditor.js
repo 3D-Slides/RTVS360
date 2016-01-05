@@ -303,6 +303,7 @@
             this.trigger('renderLate', [this]);
 
             this.preview.container.html(this.currentvalue);
+            
         },
 
         addShortcut: function(name, callback) {
@@ -385,7 +386,7 @@
             '</div>',
             '<div class="uk-htmleditor-content">',
                 '<div class="uk-htmleditor-code"></div>',
-                '<div class="uk-htmleditor-preview"><div></div></div>',
+                '<div id="markDownPre" class="uk-htmleditor-preview"><div></div></div>',
             '</div>',
         '</div>'
     ].join('');

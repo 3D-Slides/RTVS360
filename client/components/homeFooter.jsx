@@ -11,7 +11,7 @@ var Footer = React.createClass({
 
       <div id="footer-wrapper" className="wrapper">
 
-        <div id="foot" className="title">All of the other stuff</div>
+        <div id="foot" className="title"><a className="scroll" href="#foot-landing">All of the Other Stuff</a></div>
         <div id="footer" className="container">
           <header className="style1">
             <h2>Not convinced yet?</h2>
