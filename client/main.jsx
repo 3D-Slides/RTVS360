@@ -21,7 +21,7 @@ var SlidesCreator = React.createClass({
 		if (e) e.preventDefault();
 		var theme = e ? e.currentTarget.innerText : this.state.theme;
 		var theme = e.currentTarget.innerText
-		var themePreview = ['assets/images/Tron-Blue.png',
+		var themePreview = ['assets/images/Tron-Blue-Bg.png',
 												'assets/images/Neon-Lights.png',
 												'assets/images/Hello-Kitty.png',
 												'assets/images/Tron-Ocean.png',
@@ -72,7 +72,8 @@ var SlidesCreator = React.createClass({
 			}
 		}
 
-		var slidePreText = document.getElementById('markDownPre').innerHTML;
+		var slidePre = document.getElementById('markDownPre').innerHTML;
+		 var slidePreText = slidePre.split('<hr>', 1);
 
 		if (colorScheme[theme] === colorScheme["Tron Blue"]) {
 			$('.slide-preview img:last-child' ).remove();
