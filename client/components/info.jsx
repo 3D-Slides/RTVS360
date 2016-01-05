@@ -6,7 +6,7 @@ var Info = React.createClass({
     return (
       <div>
         <section id="howitworks-landing">
-        <div id="howitworks" className="title">Instructions</div>
+        <div id="howitworks" className="title"><a className="scroll" href="#howitworks-landing">Instructions</a></div>
         <div id="highlights" className="container">
           <div className="row 150%">
             <div className="4u 12u(mobile)">

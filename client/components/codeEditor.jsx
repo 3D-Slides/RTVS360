@@ -27,7 +27,7 @@ var CodeEditor = React.createClass({
             <div className="panel maximized">
               <div className="panel-header">
                 <div>
-                    <Themes 
+                    <Themes
                     updateTheme={this.props.updateTheme}
                     theme={this.props.theme}
                     />
@@ -52,7 +52,10 @@ var CodeEditor = React.createClass({
                 <div className="row">
                   <div className="col-xs-12">
                     <MarkdownInstructions />
+
                     <textarea data-uk-htmleditor id="code-input-box" className="codeInputBox" defaultValue={this.getLocalStorage()} />
+                    <div className="slide-preview col-md-3 pull-right"> </div>
+
                   </div>
                 </div>
               </div>

@@ -11,7 +11,7 @@ var Header = React.createClass({
           {/* Logo */}
           <div id="logo">
             <h1><a href="" /><img className="logo-LRG" src="assets/images/logo-LRG.png" /></h1>
-            <p>Present your HTML and or Markup slides in 3D.</p>
+            <p>Present your HTML and or Markdown slides in 3D.</p>
           </div>
 
           <ul className="actions actions-centered">
