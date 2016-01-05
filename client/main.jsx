@@ -19,15 +19,6 @@ var SlidesCreator = React.createClass({
 		if (typeof e === "number") e = null;
 		if (e) e.preventDefault();
 		var theme = e ? e.currentTarget.innerText : this.state.theme;
-		var theme = e.currentTarget.innerText
-		// var themePreview = ['assets/images/Tron-Blue-Bg.png',
-		// 										'assets/images/Neon-Lights.png',
-		// 										'assets/images/Hello-Kitty.png',
-		// 										'assets/images/Tron-Ocean.png',
-		// 										'assets/images/Neon-Ocean.png',
-		// 										'assets/images/Kitty-Ocean.png'
-		// ];
-		// var themeVideo = ['/assets/videos/Tron-Ocean.mp4'];
 
 		var colorScheme = {
 			"Tron Blue": {
@@ -70,78 +61,6 @@ var SlidesCreator = React.createClass({
 				var worldInfo = worlds[i].parentNode.innerText
 			}
 		}
-
-		// var slidePre = document.getElementById('markDownPre').innerHTML;
-		// var slidePreText = slidePre.split('<hr>', 1);
-		//
-	  // var slideElement = document.getElementById('markDownPre');
-		//
-	  // $('#slideElement').bind('propertychange change click keyup input paste', function(event) {
-		//
-		//   var slidePreNew = slideElement.innerHTML;
-		//   var slidePreTextNew = slidePre.split('<hr>', 1);
-		//
-		//   if(slidePreText !== slidePreTextNew) {
-		// 	  slidePreText === slidePreTextNew;
-		//
-		//   }
-		//
-	  // });
-
-
-		// if (colorScheme[theme] === colorScheme["Tron Blue"]) {
-		// 	$('.slide-preview img:last-child' ).remove();
-		// 	$('.slide-preview video:last-child' ).remove();
-		// 	$('.slide-preview').append('<img src=' + themePreview[0] + ' />');
-		// 	$('.slide-preview').append('<div id="slidePreTextTron" class="col-md-3">' + slidePreText + '</div>');
-		// }
-		// if (colorScheme[theme] === colorScheme["Neon Lights"]) {
-		// 	$('.slide-preview img:last-child' ).remove();
-		// 	$('.slide-preview video:last-child' ).remove();
-		// 	$('.slide-preview').append('<img src=' + themePreview[1] + ' />');
-		// }
-		// if (colorScheme[theme] === colorScheme["Hello Kitty"]) {
-		// 	$('.slide-preview img:last-child' ).remove();
-		// 	$('.slide-preview video:last-child' ).remove();
-		// 	$('.slide-preview').append('<img src=' + themePreview[2] + ' />');
-		// }
-		//
-		// if (worldInfo === "Tron Grid") {
-		// 	if (colorScheme[theme] === colorScheme["Tron Blue"]) {
-		// 		$('.slide-preview img:last-child' ).remove();
-		// 		$('.slide-preview video:last-child' ).remove();
-		// 		$('.slide-preview').append('<img src=' + themePreview[0] + ' />');
-		// 	}
-		// 	if (colorScheme[theme] === colorScheme["Neon Lights"]) {
-		// 		$('.slide-preview img:last-child' ).remove();
-		// 		$('.slide-preview video:last-child' ).remove();
-		// 		$('.slide-preview').append('<img src=' + themePreview[1] + ' />');
-		// 	}
-		// 	if (colorScheme[theme] === colorScheme["Hello Kitty"]) {
-		// 		$('.slide-preview img:last-child' ).remove();
-		// 		$('.slide-preview video:last-child' ).remove();
-		// 		$('.slide-preview').append('<img src=' + themePreview[2] + ' />');
-		// 	}
-		// }
-		//
-		// if (worldInfo === "Ocean Sunset") {
-		// 	if (colorScheme[theme] === colorScheme["Tron Blue"]) {
-		// 		$('.slide-preview img:last-child' ).remove();
-		// 		$('.slide-preview video:last-child' ).remove();
-		// 		$('.slide-preview').append('<video width="308" height="173" autoplay loop> <source src=' + themeVideo[0] + '></video>');
-		// 	}
-		// 	if (colorScheme[theme] === colorScheme["Neon Lights"]) {
-		// 		$('.slide-preview img:last-child' ).remove();
-		// 		$('.slide-preview video:last-child' ).remove();
-		// 		$('.slide-preview').append('<img src=' + themePreview[4] + ' />');
-		// 	}
-		// 	if (colorScheme[theme] === colorScheme["Hello Kitty"]) {
-		// 		$('.slide-preview img:last-child' ).remove();
-		// 		$('.slide-preview video:last-child' ).remove();
-		// 		$('.slide-preview').append('<img src=' + themePreview[5] + ' />');
-		// 	}
-		//
-		// }
 
 		$('.uk-htmleditor-preview').css("background", "#1F1E24");
 		Object.keys(colorScheme[theme]).forEach(function(tag) {
