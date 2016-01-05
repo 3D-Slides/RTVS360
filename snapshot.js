@@ -147,7 +147,7 @@ var Slideshow = function(camera) {
 		}, 1400)
 		.easing(TWEEN.Easing.Sinusoidal.InOut)
 		.start();
-	};	
+	};
 	var moveDefault = function(index) {
 		if (index > _snapshots.length - 1) _currentSnap = index = 0;
 		if (index < 0) _currentSnap = index = _snapshots.length - 1;
@@ -233,7 +233,7 @@ var Snapshot = function(location, rotation, options) {
 		} else {
 			console.error("These are not coordinates!");
 		}
-	};
+	}
 
 	loadCoords('location', location);
 	loadCoords('rotation', rotation);

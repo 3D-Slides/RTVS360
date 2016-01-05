@@ -43,7 +43,6 @@ function onWindowResize() {
 }
 
 function initTronScene(gridColor) {
-	console.log(gridColor);
 						// INIT SCENE PROCEDURES
 /*_____________________________________________________________________*/
 	var WIDTH = window.innerWidth,
@@ -55,26 +54,23 @@ function initTronScene(gridColor) {
 	cssScene = new THREE.Scene();
 
 	camera = new THREE.PerspectiveCamera(75, ASPECT, 0.1, 20000);
-	camera.position.set(0, 5, 0);
+	camera.position.set(-135, 30, -10);
 	glScene.add(camera);
 
-	spotLight = new THREE.SpotLight(0xffffff, 2.2, 1000, Math.PI/3, 0.001);
-	spotLight.position.copy( camera.position );
-	spotLight.position.z = 10;
-	spotLight.position.y = 45;
-	spotLight.position.x = 50;
+	spotLight = new THREE.SpotLight(0xffffff, 2.2, 1000, Math.PI/10.5, 0.001);
 	spotLight.castShadow = true;
+	spotLight.position.set(45, 75, 50);
 	spotLight.shadowMapWidth = 1024;
 	spotLight.shadowMapHeight = 1024;
 	spotLight.shadowCameraNear = 1;
 	spotLight.shadowCameraFar = 1000;
-	camera.add(spotLight);
 	glScene.add(camera);
 
 					// CREATE OPAQUE PLANES FOR ELEMENTS
 /*_____________________________________________________________________*/
 	marker = new THREE.Object3D();
 	marker.position.set(0,0,0);
+	marker.add(spotLight);
 	glScene.add(marker);
 
 	// CONSTRUCT A FLOOR
@@ -146,6 +142,7 @@ function initTronScene(gridColor) {
 	controls.minDistance = 15;
 	controls.zoomSpeed = 0.8;
 	controls.maxPolarAngle = 1.6;
+	controls.target = new THREE.Vector3(-135, 10, -50);
 	// controls.maxDistance = 9000;
 }
 
