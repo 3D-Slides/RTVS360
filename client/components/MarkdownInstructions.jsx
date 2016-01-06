@@ -3,12 +3,10 @@ var React = require('react');
 var MarkdownInstructions = React.createClass({
 
 	showInfo: function () {
-		console.log('entering!');
 		document.getElementById('mkdnInfo').className = 'fadeIn';
 	},
 
 	hideInfo: function () {
-		console.log('leaving!');
 		document.getElementById('mkdnInfo').className = 'displayNone';
 	},
 
@@ -21,8 +19,8 @@ var MarkdownInstructions = React.createClass({
 					<span style={bold}>Headers: </span><br/>
 					#     Large Title<br/>
 					##    Sub Title <br/>
-					###   Sub Title 1<br/>
-					####  Sub Title 2<br/>
+					###   Sub Title 2<br/>
+					####  Sub Title 3<br/>
 					<span style={bold}>ListItems:</span><br/>
 					* Item<br/>
 					* Item<br/>
@@ -55,4 +53,3 @@ var icon = {
 
 module.exports = MarkdownInstructions;
 
-//onMouseEnter={this.showInfo} onMouseLeave={this.hideInfo}
