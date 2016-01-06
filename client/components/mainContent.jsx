@@ -10,7 +10,7 @@ var Main = React.createClass({
 
         <section id="details-landing">
 
-        <div id="details" className="title">Details</div>
+        <div id="details" className="title"><a className="scroll" href="#details-landing">Details</a></div>
 
         <div id="main" className="container text-center">
           {/* Image */}
