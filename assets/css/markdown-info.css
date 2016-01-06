@@ -3,9 +3,9 @@
 	font-size: 16px;
 	width: 40px;
 	height: 40px;
-	z-index: 5;
+	z-index: 50;
 	/*right: 15px;*/
-	right: 145px;
+	left: 450px;
 	line-height: 40px;
     text-align: center;
     cursor: pointer;
@@ -16,7 +16,7 @@
 	background-color: #f5f5f5;
 	height: 400px;
 	width: 300px;
-	z-index: 5;
+	z-index: 50;
 	transition: .4s;
 }
 
@@ -47,22 +47,8 @@
 
 
 /********** MKDN Info Bubble Media **********/
-@media ( max-width: 655px ) {
-	.mkdnButton {
-		top: 40px;
-	}
 
-}
-
-@media ( max-width: 458px ) {
-	.mkdnButton {
-		top: 80px;
-	}
-}
-
-
-
-@media (max-width: 400px) {
+/*@media (max-width: 400px) {
 	.codeInputBox {
 		top: 50px;
 		position: relative;
@@ -79,7 +65,7 @@
 	.worldSelect {
 		margin-left: 25% !important;
 	}
-}
+}*/
 
 
 
