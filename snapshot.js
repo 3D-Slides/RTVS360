@@ -7,39 +7,36 @@ var Slideshow = function(camera) {
 		if (e.keyCode === 37 || e.keyCode === 39) TWEEN.removeAll();
 		if (e.keyCode === 39) moveDefault(++_currentSnap);
 		if (e.keyCode === 37) moveDefault(--_currentSnap);
-		if (e.keyCode === 32) shuffle(c1, c2);
-
 	});
 	// Private Variables
 	var _this = this;
 	var _snapshots = [];
 	var _currentSnap = -1;
 	var _transitions = [];
-	var c1 = 1;
-	var c2 = 2;
-	var shuffle = function(a, b) {
-		var card1 = new TWEEN.Tween(glScene.children[imgSlide].children[a].position);
-		var card2 = new TWEEN.Tween(glScene.children[imgSlide].children[b].position);
-		// TODO: Fix the hard coding of this function
-		card1.to({
-			z: "-5"
-		}, 300)
-		.delay(100)
-		.easing(TWEEN.Easing.Quadratic.In)
-		.start();
+	// var c1 = 1;
+	// var c2 = 2;
+	// var shuffle = function(a, b) {
+	// 	var card1 = new TWEEN.Tween(glScene.children[imgSlide].children[a].position);
+	// 	var card2 = new TWEEN.Tween(glScene.children[imgSlide].children[b].position);
+	// 	// TODO: Fix the hard coding of this function
+	// 	card1.to({
+	// 		z: "-5"
+	// 	}, 300)
+	// 	.delay(100)
+	// 	.easing(TWEEN.Easing.Quadratic.In)
+	// 	.start();
 
-		card2.to({
-			x: [60, 20],
-			z: [-52.5, -50]
-		}, 725)
-		.easing(TWEEN.Easing.Sinusoidal.Out)
-		.start();
+	// 	card2.to({
+	// 		x: [60, 20],
+	// 		z: [-52.5, -50]
+	// 	}, 725)
+	// 	.easing(TWEEN.Easing.Sinusoidal.Out)
+	// 	.start();
 
-		var temp = c2;
-		c2 = c1;
-		c1 = temp;
-	};
-
+	// 	var temp = c2;
+	// 	c2 = c1;
+	// 	c1 = temp;
+	// };
 
 	var moveBack = function(index) {
 		if(index > _snapshots.length - 1) _currentSnap = index = 0;
@@ -241,7 +238,3 @@ var saveCoords = R.forEach(function(coord) {
 	show.addSnapshot(moveCoord);
 })(posArray);
 show.addTransitionTo('all', 'Quadratic.InOut');
-setTimeout(function () {
-	imgSlide = glScene.children.length - 2;
-	glScene.children[imgSlide].children[2].position.set(20, 12, -55);
-}, 0);
