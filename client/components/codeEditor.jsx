@@ -9,7 +9,29 @@ var CodeEditor = React.createClass({
     if(window.localStorage.input){
       return window.localStorage.input;
     } else {
-      return "# Welcome to 3D Slides Beta Version 0.0.1!\n# For HTML you can currently use h1 tags,\n## h2 tags\n### h3 tags\n\n* List items work!\n* Ordered and unordered lists render the same\n* Updates to tags rendered are currently in the works!\n___\n\n# Paragraphs\nParagraph tags render as well, if your list item runs too long, \n\nuse a paragraph tag to escape to next line.\n___\n\n# To start a new slide, use the 'hr' tag\n\nImg tags, among others, will render with the next update, so hold tight!\n___\n\n# Same goes for markdown\n# H1 works\n## H2 works\n### H3 works\n\n* You can make an un-ordered list by preceding list items with either a * or a - \n- For now, ordered lists render the same\n___\n\n# To create a new slide in markdown\n## Use three underscores\n\nTo start a paragraph with markdown, just start a new line with no indicators.\n\n# Now your all set! \n\nGive it a try, have fun, and let us know what you want added!";
+      return "# Welcome to 3D Slides Beta!\n" +
+        "## We currently support markdown and html\n" +
+        " When you're ready, delete the text and write your own!\n" +
+        "___\n" +
+        "# Live Updates\n" +
+        "Type on the left side\n\n" +
+        "And the text appears on the right\n" +
+        "___\n" +
+        "# For markdown tags\n" +
+        "* Hover over the ? icon\n" +
+        "* or click the tabs to automatically insert markdown prefixes\n" +
+        "___\n" +
+        "# How to make a new slide\n" +
+        "use 3 underscores in a row\n" +
+        "___\n"+
+        "# For Images\n" +
+        "![]( http://i.imgur.com/TYl9A7z.jpg )\n"+
+        "___\n" +
+        "# For Bullet Points\n" +
+        "* Use stars or use the list icon\n"+
+        "___\n"+
+        "# And Leave us feedback or suggestions!\n"+
+        "## email: info@3dslides.io\n"+
     }
   },
 
