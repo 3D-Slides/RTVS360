@@ -44,7 +44,7 @@ var SlidesCreator = React.createClass({
 				h4: "#FF00FF",
 				p: "#00FFFF",
 				li: "#00FFFF"
-			},
+			}
 		}
 		if (e) {
 			this.setState({

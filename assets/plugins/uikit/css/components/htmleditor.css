@@ -4,6 +4,14 @@
  ========================================================================== */
 /* Sub-object `uk-htmleditor-navbar`
  ========================================================================== */
+.uk-htmleditor {
+  min-width: 630px !important;
+}
+
+.panel-header {
+  min-width: 709px !important;
+}
+
 .uk-htmleditor-navbar {
   background: #eeeeee;
 }
@@ -139,6 +147,11 @@
 [data-mode='tab'][data-active-tab='preview'] .uk-htmleditor-code {
   display: none;
 }
+[data-mode='tab'][data-active-tab='code'] #mkdnHelp {
+  right: 145px !important;
+}
+
+
 /*
  * Split view
  */
