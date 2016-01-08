@@ -37,7 +37,7 @@ var Footer = React.createClass({
                     <div className="6u 12u(mobile)">
                       <section>
                         <h3 className="icon fa-envelope">Email</h3>
-                        <p><a href="#">Contact Us... </a>If you have any questions or concerns shoot us an email, or submit an issue on the GitHub Repo. Thanks for stopping by!</p>
+                        <p><a mailto:info@3dslides.io>Contact Us... </a>If you have any questions or concerns shoot us an email, or submit an issue on the GitHub Repo. Thanks for stopping by!</p>
                       </section>
                     </div>
                   </div>
