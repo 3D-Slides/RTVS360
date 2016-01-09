@@ -19,6 +19,7 @@ var SlidesCreator = React.createClass({
 		if (typeof e === "number") e = null;
 		if (e) e.preventDefault();
 		var theme = e ? e.currentTarget.innerText : this.state.theme;
+
 		var colorScheme = {
 			"Tron Blue": {
 				h1: "#00d1ff",
@@ -60,7 +61,6 @@ var SlidesCreator = React.createClass({
 				var worldInfo = worlds[i].parentNode.innerText
 			}
 		}
-
 
 		$('.uk-htmleditor-preview').css("background", "#1F1E24");
 		Object.keys(colorScheme[theme]).forEach(function(tag) {
