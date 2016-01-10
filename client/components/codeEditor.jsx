@@ -31,7 +31,7 @@ var CodeEditor = React.createClass({
         "* Use stars or use the list icon\n"+
         "___\n\n"+
         "# And Leave us feedback or suggestions!\n"+
-        "## email: info@3dslides.io\n"+
+        "## email: info@3dslides.io\n"
     }
   },
 
