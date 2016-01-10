@@ -7,47 +7,36 @@ var Slideshow = function(camera) {
 		if (e.keyCode === 37 || e.keyCode === 39) TWEEN.removeAll();
 		if (e.keyCode === 39) moveDefault(++_currentSnap);
 		if (e.keyCode === 37) moveDefault(--_currentSnap);
-
 	});
 	// Private Variables
 	var _this = this;
 	var _snapshots = [];
 	var _currentSnap = -1;
 	var _transitions = [];
+	// var c1 = 1;
+	// var c2 = 2;
+	// var shuffle = function(a, b) {
+	// 	var card1 = new TWEEN.Tween(glScene.children[imgSlide].children[a].position);
+	// 	var card2 = new TWEEN.Tween(glScene.children[imgSlide].children[b].position);
+	// 	// TODO: Fix the hard coding of this function
+	// 	card1.to({
+	// 		z: "-5"
+	// 	}, 300)
+	// 	.delay(100)
+	// 	.easing(TWEEN.Easing.Quadratic.In)
+	// 	.start();
 
-	var shuffle = function() {
-		// TODO: Fix the hard coding of this function
-		var card1 = new TWEEN.Tween(glScene.children[8].children[1].position);
-		var card2A = new TWEEN.Tween(glScene.children[8].children[2].position);
-		var card2B = new TWEEN.Tween(glScene.children[8].children[2].position);
-		var card2C = new TWEEN.Tween(glScene.children[8].children[2].position);
-		card1.to({
-			z: -60
-		}, 400)
-		.delay(200)
-		.easing(TWEEN.Easing.Quadratic.In)
-		.start();
+	// 	card2.to({
+	// 		x: [60, 20],
+	// 		z: [-52.5, -50]
+	// 	}, 725)
+	// 	.easing(TWEEN.Easing.Sinusoidal.Out)
+	// 	.start();
 
-		card2A.to({
-			x: 130
-		}, 500)
-		.easing(TWEEN.Easing.Cubic.InOut)
-		.start();
-
-		card2B.to({
-			z: -50
-		}, 500)
-		.easing(TWEEN.Easing.Linear.None)
-		.start();
-
-		card2C.to({
-			x: 85
-		}, 500)
-		.easing(TWEEN.Easing.Cubic.InOut);
-
-		card2A.chain(card2B).chain(card2C).start();
-	};
-
+	// 	var temp = c2;
+	// 	c2 = c1;
+	// 	c1 = temp;
+	// };
 
 	var moveBack = function(index) {
 		if(index > _snapshots.length - 1) _currentSnap = index = 0;
@@ -147,7 +136,7 @@ var Slideshow = function(camera) {
 		}, 1400)
 		.easing(TWEEN.Easing.Sinusoidal.InOut)
 		.start();
-	};	
+	};
 	var moveDefault = function(index) {
 		if (index > _snapshots.length - 1) _currentSnap = index = 0;
 		if (index < 0) _currentSnap = index = _snapshots.length - 1;
@@ -233,7 +222,7 @@ var Snapshot = function(location, rotation, options) {
 		} else {
 			console.error("These are not coordinates!");
 		}
-	};
+	}
 
 	loadCoords('location', location);
 	loadCoords('rotation', rotation);
