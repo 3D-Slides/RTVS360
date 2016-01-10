@@ -12,24 +12,24 @@ var CodeEditor = React.createClass({
       return "# Welcome to 3D Slides Beta!\n" +
         "## We currently support markdown and html\n" +
         " When you're ready, delete the text and write your own!\n" +
-        "___\n" +
+        "___\n\n" +
         "# Live Updates\n" +
         "Type on the left side\n\n" +
         "And the text appears on the right\n" +
-        "___\n" +
+        "___\n\n" +
         "# For markdown tags\n" +
         "* Hover over the ? icon\n" +
         "* or click the tabs to automatically insert markdown prefixes\n" +
-        "___\n" +
+        "___\n\n" +
         "# How to make a new slide\n" +
         "use 3 underscores in a row\n" +
-        "___\n"+
+        "___\n\n"+
         "# For Images\n" +
         "![]( http://i.imgur.com/TYl9A7z.jpg )\n"+
-        "___\n" +
+        "___\n\n" +
         "# For Bullet Points\n" +
         "* Use stars or use the list icon\n"+
-        "___\n"+
+        "___\n\n"+
         "# And Leave us feedback or suggestions!\n"+
         "## email: info@3dslides.io\n"+
     }
