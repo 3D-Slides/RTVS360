@@ -117,7 +117,7 @@ SlideGenerator.prototype.addOneSlide3D = function (coords, html) {
 		}
 		var slideGeo = new THREE.TextGeometry(props.indent +content, {
 			size: props.size,
-			height: 0.1,
+			height: 0.15,
 			curveSegments: 12,
 			font: 'helvetiker'
 		});
