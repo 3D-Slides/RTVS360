@@ -44,7 +44,6 @@ function onWindowResize() {
 }
 
 function initTronScene(gridColor) {
-	console.log(gridColor);
 						// INIT SCENE PROCEDURES
 /*_____________________________________________________________________*/
 	var WIDTH = window.innerWidth,
@@ -56,26 +55,23 @@ function initTronScene(gridColor) {
 	cssScene = new THREE.Scene();
 
 	camera = new THREE.PerspectiveCamera(75, ASPECT, 0.1, 20000);
-	camera.position.set(0, 5, 0);
+	camera.position.set(-135, 30, 0);
 	glScene.add(camera);
 
-	spotLight = new THREE.SpotLight(0xffffff, 2.2, 1000, Math.PI/3, 0.001);
-	spotLight.position.copy( camera.position );
-	spotLight.position.z = 10;
-	spotLight.position.y = 45;
-	spotLight.position.x = 50;
+	spotLight = new THREE.SpotLight(0xffffff, 2.2, 1000, Math.PI/10.5, 0.001);
 	spotLight.castShadow = true;
+	spotLight.position.set(52, 75, 50);
 	spotLight.shadowMapWidth = 1024;
 	spotLight.shadowMapHeight = 1024;
 	spotLight.shadowCameraNear = 1;
 	spotLight.shadowCameraFar = 1000;
-	camera.add(spotLight);
 	glScene.add(camera);
 
 					// CREATE OPAQUE PLANES FOR ELEMENTS
 /*_____________________________________________________________________*/
 	marker = new THREE.Object3D();
 	marker.position.set(0,0,0);
+	marker.add(spotLight);
 	glScene.add(marker);
 
 	// CONSTRUCT A FLOOR
@@ -147,7 +143,7 @@ function initTronScene(gridColor) {
 	controls.minDistance = 15;
 	controls.zoomSpeed = 0.8;
 	controls.maxPolarAngle = 1.6;
-	// controls.maxDistance = 9000;
+	controls.target = new THREE.Vector3(-135, 10, -50);
 }
 
 function renderTronScene() {
@@ -189,8 +185,7 @@ function initOceanScene() {
 	glScene = new THREE.Scene();
 
 	camera = new THREE.PerspectiveCamera(75, ASPECT, 0.1, 20000);
-	camera.position.set (0, 20, 100);
-	camera.lookAt(new THREE.Vector3(0, 0, 0));
+	camera.position.set(-135, 30, 0);
 
 	// mirrorCamera = new THREE.CubeCamera(1, 10000, 1024);
 	// mirrorCamera.renderTarget.minFilter = THREE.LinearMipMapLinearFilter;
@@ -198,7 +193,7 @@ function initOceanScene() {
 	// var axisHelper = new THREE.AxisHelper( 40 );
 	// glScene.add( axisHelper );
 
-	var ambientLight = new THREE.AmbientLight(0xffffff);
+	var ambientLight = new THREE.AmbientLight(0xFFFFFF);
 	glScene.add(ambientLight);
 
 	var directionLight = new THREE.DirectionalLight(0xFC7825);
@@ -276,6 +271,7 @@ function initOceanScene() {
 	controls.minDistance = 15;
 	controls.zoomSpeed = 0.8;
 	controls.maxPolarAngle = 1.6;
+	controls.target = new THREE.Vector3(-135, 15, -50);
 
 }
 
