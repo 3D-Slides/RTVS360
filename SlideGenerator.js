@@ -4,7 +4,6 @@
 function SlideGenerator (input, colorScheme){
 	this.colorScheme = colorScheme;
 	var cookieData = input;
-	// console.log(cookieData);
 
 	if( cookieData.charAt(1) === '<' ) {
 		var html = cookieData.replace(/\\t|\\n+|\s{2,}/g, '');
@@ -47,32 +46,49 @@ SlideGenerator.prototype.addOneSlide3D = function (coords, html) {
 		h1: {
 			color: this.colorScheme.h1,
 			size: 2,
-			indent: ''
+			indent: '',
+			lineLength: 40,
+			lineOffset: 2
+
 		},
 		h2: {
 			color: this.colorScheme.h2,
 			size: 1.75,
-			indent: ''
+			indent: '',
+			lineLength: 45,
+			lineOffset: 2
+
 		},
 		h3: {
 			color: this.colorScheme.h3,
 			size: 1.4,
-			indent: '* '
+			indent: '* ',
+			lineLength: 50,
+			lineOffset: 2
+
 		},
 		h4: {
 			color: this.colorScheme.h4,
 			size: 1.25,
-			indent: ''
+			indent: '',
+			lineLength: 55,
+			lineOffset: 2
+
 		},
 		p: {
 			color: this.colorScheme.p,
 			size: 1,
-			indent: '       '
+			indent: '       ',
+			lineLength: 80,
+			lineOffset: 2.5
+
 		},
 		li: {
 			color: this.colorScheme.li,
 			size: 1,
-			indent: ' - '
+			indent: ' - ',
+			lineLength: 80,
+			lineOffset: 2.5
 		},
 
 	};
@@ -82,6 +98,23 @@ SlideGenerator.prototype.addOneSlide3D = function (coords, html) {
 	// helper function to create 3D Text Mesh
 	function makeMesh(tag, content) {
 		var props =  tagProps[tag];
+		if(content.length > props.lineLength) {
+			var wrapped = Wrapper.Wrap({
+				string: content,
+				size: props.size,
+				color: props.color,
+				lineLength: props.lineLength,
+				height: 0.1,
+				indent: props.indent,
+				startingX: posArray[0],
+				startingY: posArray[1],
+				startingZ: posArray[2]
+			})
+
+			posArray[1] = wrapped.children[wrapped.children.length-1].position.y - props.size*props.lineOffset;
+			return wrapped;
+
+		}
 		var slideGeo = new THREE.TextGeometry(props.indent +content, {
 			size: props.size,
 			height: 0.1,
@@ -93,7 +126,7 @@ SlideGenerator.prototype.addOneSlide3D = function (coords, html) {
 		slideMesh.position.set(posArray[0], posArray[1], posArray[2]);
 		slideMesh.castShadow = true;
 		slideMesh.receiveShadow = true;
-		posArray[1]-=4;
+		posArray[1]-= props.size*props.lineOffset;
 		return slideMesh;
 	}
 
@@ -112,7 +145,7 @@ SlideGenerator.prototype.addOneSlide3D = function (coords, html) {
 		for (var i = 0; i < url.length; i++) {
 			if(url[i].charAt(0) === 's' && url[i].charAt(1) === 'r') {
 				var imgSrc = url[i].replace(/src=|\s+|\'|\"|\\/g, '');
-
+				
 				// create image element to get the width and height attributes so we can render the sprite at the nessessary size
 				var image = document.createElement('img');
 				image.src = imgSrc;
@@ -123,7 +156,7 @@ SlideGenerator.prototype.addOneSlide3D = function (coords, html) {
 					var sprite = new THREE.Sprite( material );
 					sprite.position.set( posArray[0]+20, posArray[1]-9, posArray[2] )
 					group.add( sprite );
-					posArray[1]-=20;
+					posArray[1]-=image.height;
 					// set max height and width for sprites
 					var maxHeight = 23,
 						maxWidth = 25,

@@ -9,6 +9,7 @@ var counter = 0;
 var colors = JSON.parse(localStorage.colors);
 var SlideGenerator = new SlideGenerator(localStorage.input, colors);
 var loader = new THREE.TextureLoader();
+var Wrapper = new TextWrapper();
 
 if (localStorage.world === "Ocean Sunset") {
 	var imagePrefix = '/assets/DarkSea-',
